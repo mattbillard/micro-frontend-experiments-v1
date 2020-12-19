@@ -8,38 +8,7 @@
     <script src="../../node_modules/@babel/standalone/babel.min.js"></script>
   </head>
   <body>
-    <div id="root"></div>
-    <script type="text/babel">
-
-      class MicroApp extends React.Component {
-        state = {
-          rows: []
-        }
-
-        addRow = () => {
-          const rows = [...this.state.rows, 'Lorem ipsum dolor sit amet'];
-          this.setState({ rows });
-        };
-
-        render () {
-          const { rows } = this.state;
-
-          return (
-            <div>
-              <h1>Micro App</h1>
-              <button onClick={this.addRow}>Add Row</button>
-              <div>
-                {rows.map((row, idx) => <p key={idx}>{row}</p>)}
-              </div>
-            </div>
-          );
-        }
-      }
-
-      ReactDOM.render(
-        <MicroApp />,
-        document.getElementById('root')
-      );
-    </script>
+    <div id="micro-app"></div>
+    <script type="text/babel" src="./scripts/micro-app.js"></script>
   </body>
 </html>
