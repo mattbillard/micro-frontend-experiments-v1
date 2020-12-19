@@ -5,10 +5,28 @@
     <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <link rel="stylesheet/less" type="text/css" href="styles.less" />
   </head>
   <body>
     <div id="root"></div>
     <script type="text/babel">
+
+      const ContainerApp = (props) => {
+        return (
+          <div class="container">
+            <h1>Hello, world!</h1>
+            <div class="row">
+              <div>
+                <MicroIframe />
+              </div>
+              <div>
+                <MicroWebComponent />
+              </div>
+            </div>
+          </div>
+        )
+      }
 
       const MicroIframe = (props) => {
         return (
@@ -25,13 +43,11 @@
       }
 
       ReactDOM.render(
-        <div>
-          <h1>Hello, world!</h1>
-          <MicroIframe />
-          <MicroWebComponent />
-        </div>,
+        <ContainerApp />,
         document.getElementById('root')
       );
     </script>
+
+    <script src="../node_modules/less/dist/less.min.js"></script>
   </body>
 </html>
