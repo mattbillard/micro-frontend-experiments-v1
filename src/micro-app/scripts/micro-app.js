@@ -1,3 +1,5 @@
+console.log('....micro-app.js')
+
 class MicroApp extends React.Component {
   state = {
     rows: []
@@ -23,4 +25,10 @@ class MicroApp extends React.Component {
   }
 }
 
-ReactDOM.render(<MicroApp />, document.getElementById('micro-app'));
+// console.log('....#micro-app', document.getElementById('micro-app'));
+// ReactDOM.render(<MicroApp />, document.getElementById('micro-app'));
+
+function bootstrap() {
+  console.log('....inside bootstrap');
+  ReactDOM.render(<MicroApp />, document.getElementById('micro-app'));
+}

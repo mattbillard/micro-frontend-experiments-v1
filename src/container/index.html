@@ -10,7 +10,19 @@
   </head>
   <body>
     <div id="root"></div>
+
+    <template id="myTemplate">
+      <div id="micro-app">
+        <h1>Root template</h1>
+        <!-- <script type="text/babel" src="/src/micro-app/scripts/micro-app.js"></script> -->
+        <!-- <script src="/src/micro-app/scripts/micro-app.js"></script> -->
+        <script>
+          bootstrap();
+        </script>
+      </div>
+    </template>
     
+    <script type="text/babel" src="/src/micro-app/scripts/micro-app.js"></script>
     <script type="text/babel" src="scripts/app.js"></script>
     <script src="../../node_modules/less/dist/less.min.js"></script>
   </body>
