@@ -6,7 +6,7 @@
     <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
-    <link rel="stylesheet/less" type="text/css" href="styles.less" />
+    <link rel="stylesheet/less" type="text/css" href="./styles/styles.less" />
   </head>
   <body>
     <div id="root"></div>
@@ -14,9 +14,9 @@
 
       const ContainerApp = (props) => {
         return (
-          <div class="container">
+          <div className="container">
             <h1>Hello, world!</h1>
-            <div class="row">
+            <div className="row">
               <div>
                 <MicroIframe />
               </div>
@@ -30,7 +30,7 @@
 
       const MicroIframe = (props) => {
         return (
-          <iframe src="./micro-app.html"></iframe>
+          <iframe src="../micro-app/micro-app.html"></iframe>
         )
       }
 
@@ -48,6 +48,6 @@
       );
     </script>
 
-    <script src="../node_modules/less/dist/less.min.js"></script>
+    <script src="../../node_modules/less/dist/less.min.js"></script>
   </body>
 </html>
