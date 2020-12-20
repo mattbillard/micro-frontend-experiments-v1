@@ -1,0 +1,7 @@
+{
+  "team": "foo",
+  "project": "bar",
+  "initialize": "initFooBar",
+  "scriptSrc": "/src/micro-app/scripts/micro-app.js",
+  "tagName": "foo-bar"
+}

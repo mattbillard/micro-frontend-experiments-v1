@@ -25,10 +25,16 @@ class MicroApp extends React.Component {
   }
 }
 
-// console.log('....#micro-app', document.getElementById('micro-app'));
-// ReactDOM.render(<MicroApp />, document.getElementById('micro-app'));
+const elem = document.getElementById('micro-app');
+if (elem) {
+  ReactDOM.render(<MicroApp />, elem);
+}
 
-function bootstrap() {
-  console.log('....inside bootstrap');
-  ReactDOM.render(<MicroApp />, document.getElementById('micro-app'));
+// function bootstrap() {
+//   console.log('....inside bootstrap');
+//   ReactDOM.render(<MicroApp />, document.getElementById('micro-app'));
+// }
+
+function initFooBar() {
+  ReactDOM.render(<MicroApp />, document.querySelector('foo-bar'));
 }
