@@ -126,22 +126,23 @@ class MicroWebComponent extends React.Component {
     html: ''
   }
 
-  componentDidMount() {
-    (async() => {
-      var res = await fetch(`/src/micro-app/manifest.json`);
-      var json = await res.json();
-      const { initialize, scriptSrc, tagName } = json;
+  // componentDidMount() {
+  //   (async() => {
+  //     var res = await fetch(`/src/micro-app/manifest.json`);
+  //     var json = await res.json();
+  //     const { initialize, scriptSrc, tagName } = json;
       
-      const html = `<${tagName} />`;
-      this.setState({ html }, () => {
-        const script = document.createElement('script');
-        script.src = scriptSrc;
-        script.type = 'text/babel';
-        script.onLoad = window[initialize]();
-        document.body.appendChild(script);
-      });
-    })();
-  }
+  //     const html = `<${tagName} />`;
+  //     this.setState({ html }, () => {
+  //       const context = document.querySelector('.micro-web-component');
+  //       const script = document.createElement('script');
+  //       script.src = scriptSrc;
+  //       script.type = 'text/babel';
+  //       script.onLoad = window[initialize](context);
+  //       document.body.appendChild(script);
+  //     });
+  //   })();
+  // }
 
   // componentDidMount() {
   //   (async() => {
@@ -151,6 +152,25 @@ class MicroWebComponent extends React.Component {
   //     });
   //   })();
   // }
+
+  componentDidMount() {
+    (async() => {
+      var res = await fetch(`/src/micro-app/manifest.json`);
+      var json = await res.json();
+      const { initialize, scriptSrc, tagName } = json;
+      
+      const elem = document.createElement(tagName);
+      const ref = document.querySelector('.micro-web-component');
+      const shadowRoot = ref.attachShadow({ mode: 'open' });
+      shadowRoot.appendChild(elem);
+
+      const script = document.createElement('script');
+      script.src = scriptSrc;
+      script.type = 'text/babel';
+      script.onLoad = window[initialize](shadowRoot);
+      document.body.appendChild(script);
+    })();
+  }
 
   render () {
     return (

@@ -35,6 +35,7 @@ if (elem) {
 //   ReactDOM.render(<MicroApp />, document.getElementById('micro-app'));
 // }
 
-function initFooBar() {
-  ReactDOM.render(<MicroApp />, document.querySelector('foo-bar'));
+function initFooBar(context) {
+  const elem = context.querySelector('foo-bar');
+  ReactDOM.render(<MicroApp />, elem);
 }
