@@ -30,12 +30,27 @@ if (elem) {
   ReactDOM.render(<MicroApp />, elem);
 }
 
-// function bootstrap() {
-//   console.log('....inside bootstrap');
-//   ReactDOM.render(<MicroApp />, document.getElementById('micro-app'));
+function bootstrap() {
+  console.log('....inside bootstrap');
+  const elem = document.getElementById('micro-app');
+  ReactDOM.render(<MicroApp />, elem);
+}
+function bootstrap2() {
+  console.log('....inside bootstrap');
+  const elem = document.querySelector('.micro-web-component').shadowRoot.querySelector('#micro-app');
+  ReactDOM.render(<MicroApp />, elem);
+}
+
+// function initFooBar(context) {
+//   const elem = context.querySelector('foo-bar');
+//   ReactDOM.render(<MicroApp />, elem);
 // }
 
-function initFooBar(context) {
-  const elem = context.querySelector('foo-bar');
+function initFooBar(elem) {
+  ReactDOM.render(<MicroApp />, elem);
+}
+
+function initFooBar2(context) {
+  const elem = context.querySelector('#micro-app');
   ReactDOM.render(<MicroApp />, elem);
 }
