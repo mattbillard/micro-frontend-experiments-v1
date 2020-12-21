@@ -1,14 +1,12 @@
 import * as React from 'react';
 import { IframeComponent } from './iframe-component';
-import { ShadowComponent } from './shadow-component';
+import { WebComponent } from './web-component';
 
-interface Props {
-   name: string;
+interface IContainerAppProps {
 }
 
-class App extends React.Component<Props> {
+export class ContainerApp extends React.Component<IContainerAppProps> {
   render() {
-    // const url = '/micro-app/for-template.html';
     const url = '/micro-app/index.html';
 
     return (
@@ -17,16 +15,14 @@ class App extends React.Component<Props> {
         <div className="row">
           <div>
             <h1>Iframe</h1>
-            <IframeComponent />
+            <IframeComponent url={url} />
           </div>
           <div>
             <h1>WebComponent</h1>
-            <ShadowComponent url={url} />
+            <WebComponent url={url} />
           </div>
         </div>
       </div>
     )
   }
 }
-
-export default App;

@@ -10,21 +10,21 @@ module.exports = (env = {}) => {
 
       progress: true,                                         // Show percentage progress
 
-      port: 8081,
+      port: 8080,
       https: true,
       host: '0.0.0.0',                                        // Allow other computers on this network to access this localhost via this machine's IP address
       useLocalIp: true,                                       // Open browser to IP of this machine instead of 'localhost'
       index: '',                                              // Allows proxying when URI===''
       proxy: {                                                // NOTE: Webpack proxy is http-proxy-middleware. See their Github for extra documentation WebPack doesn't have 
         '/container': {
-          target: 'http://localhost:8082/',
+          target: 'http://localhost:8081/',
           secure: false,
           ws: true,
           changeOrigin: true,
           cookieDomainRewrite: 'localhost',
         },
         '/micro-app': {
-          target: 'http://localhost:8083/',
+          target: 'http://localhost:8082/',
           secure: false,
           ws: true,
           changeOrigin: true,

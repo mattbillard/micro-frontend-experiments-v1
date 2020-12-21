@@ -1,9 +1,10 @@
 import * as React from 'react';
 
-interface Props {
+interface IWebComponentProps {
   url: string;
 }
-export class ShadowComponent extends React.Component<Props> {
+
+export class WebComponent extends React.Component<IWebComponentProps> {
   componentDidMount() {
     (async() => {
       var res = await fetch(this.props.url); // TODO: pass in URL as props

@@ -1,19 +1,18 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Empty project</title>
-        <meta charset="utf-8">
-    </head>
-    <body>
-        <div>
-            <div id="micro-app"></div>
-            <script onload="console.log('.....loaded');" src="index.tsx"></script>
-            <script>
-                setTimeout(() => {
-                    // window.initFooBar2();
-                    window.bootstrap2();
-                }, 500)
-            </script>
-        </div>
-    </body>
+  <head>
+    <title>Empty project</title>
+    <meta charset="utf-8">
+  </head>
+  <body>
+    <div>
+      <div id="micro-app"></div>
+      <script src="index.tsx" onload="console.log('....onload');"></script>
+      <script>
+        setTimeout(() => {
+          window.bootstrap2();
+        }, 500)
+      </script>
+    </div>
+  </body>
 </html>
