@@ -16,25 +16,18 @@ module.exports = (env = {}) => {
       useLocalIp: true,                                       // Open browser to IP of this machine instead of 'localhost'
       index: '',                                              // Allows proxying when URI===''
       proxy: {                                                // NOTE: Webpack proxy is http-proxy-middleware. See their Github for extra documentation WebPack doesn't have 
-        '/src': {
-          target: 'http://localhost:8080/',
-          secure: false,                                      // Do not insist target has valid SSL. (Useful for local development)
-          ws: true,                                           // Also proxy WebSockets
-          changeOrigin: true,                                 // So the target site doesn't see hostname as 'localhost'
+        '/container': {
+          target: 'http://localhost:8082/',
+          secure: false,
+          ws: true,
+          changeOrigin: true,
           cookieDomainRewrite: 'localhost',
         },
-        '/node_modules': {
-          target: 'http://localhost:8080/',
-          secure: false,                                      // Do not insist target has valid SSL. (Useful for local development)
-          ws: true,                                           // Also proxy WebSockets
-          changeOrigin: true,                                 // So the target site doesn't see hostname as 'localhost'
-          cookieDomainRewrite: 'localhost',
-        },
-        '/': {
-          target: 'http://localhost:3000/',
-          secure: false,                                      // Do not insist target has valid SSL. (Useful for local development)
-          ws: true,                                           // Also proxy WebSockets
-          changeOrigin: true,                                 // So the target site doesn't see hostname as 'localhost'
+        '/micro-app': {
+          target: 'http://localhost:8083/',
+          secure: false,
+          ws: true,
+          changeOrigin: true,
           cookieDomainRewrite: 'localhost',
         },
       }

@@ -1,22 +1,31 @@
-
 import * as React from 'react';
 
 interface Props {
-   name:
-    string
 }
 
-class App extends React.Component<Props> {
-  render() {
-    const { name } = this.props;
+class MicroApp extends React.Component<Props> {
+  state = {
+    rows: []
+  }
+
+  addRow = () => {
+    const rows = [...this.state.rows, 'Lorem ipsum dolor sit amet'];
+    this.setState({ rows });
+  };
+
+  render () {
+    const { rows } = this.state;
+
     return (
-      <>
-        <h1>
-          Hello {name}
-        </h1>
-      </>
+      <div>
+        <h1>Micro App</h1>
+        <button onClick={this.addRow}>Add Row</button>
+        <div>
+          {rows.map((row, idx) => <p key={idx}>{row}</p>)}
+        </div>
+      </div>
     );
   }
 }
 
-export default App;
+export default MicroApp;

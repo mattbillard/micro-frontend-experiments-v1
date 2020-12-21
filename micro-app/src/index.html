@@ -5,7 +5,15 @@
         <meta charset="utf-8">
     </head>
     <body>
-        <div id="app"></div>
-        <script src="index.tsx"></script>
+        <div>
+            <div id="micro-app"></div>
+            <script onload="console.log('.....loaded');" src="index.tsx"></script>
+            <script>
+                setTimeout(() => {
+                    // window.initFooBar2();
+                    window.bootstrap2();
+                }, 500)
+            </script>
+        </div>
     </body>
 </html>

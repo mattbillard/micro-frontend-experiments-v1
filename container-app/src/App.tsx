@@ -1,21 +1,31 @@
-
 import * as React from 'react';
+import { IframeComponent } from './iframe-component';
+import { ShadowComponent } from './shadow-component';
 
 interface Props {
-   name:
-    string
+   name: string;
 }
 
 class App extends React.Component<Props> {
   render() {
-    const { name } = this.props;
+    // const url = '/micro-app/for-template.html';
+    const url = '/micro-app/index.html';
+
     return (
-      <>
-        <h1>
-          Hello {name}
-        </h1>
-      </>
-    );
+      <div className="container">
+        <h1>Container App</h1>
+        <div className="row">
+          <div>
+            <h1>Iframe</h1>
+            <IframeComponent />
+          </div>
+          <div>
+            <h1>WebComponent</h1>
+            <ShadowComponent url={url} />
+          </div>
+        </div>
+      </div>
+    )
   }
 }
 
