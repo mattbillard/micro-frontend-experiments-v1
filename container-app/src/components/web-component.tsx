@@ -14,24 +14,24 @@ export class WebComponent extends React.Component<IWebComponentProps> {
       container.innerHTML = text;
 
       const ref = document.querySelector('.micro-web-component'); // TODO: use React ref
-      const shadowRoot = ref.attachShadow({ mode: 'open' });
+      const shadowRoot = ref!.attachShadow({ mode: 'open' });
 
       const context = (typeof shadowRoot !== 'undefined') ? shadowRoot : ref;
-      context.appendChild(container);
+      context!.appendChild(container);
 
       setTimeout(() => {
         const scripts = container.querySelectorAll('script');        
-        [...scripts].forEach(script => {
+        // @ts-ignore
+        [...scripts].forEach(script => { 
           var scriptTag = document.createElement('script');
+          // @ts-ignore
           Object.values({...script.attributes}).map((attr) => {
-            console.log(attr.name, attr.value);
-            scriptTag[attr.name] = attr.value;
+            scriptTag.setAttribute(attr.name, attr.value);
           })
           scriptTag.text = script.text;
-          console.log(scriptTag);
 
           script.remove();
-          context.appendChild(scriptTag);
+          container.appendChild(scriptTag);
         });
       })
     })();

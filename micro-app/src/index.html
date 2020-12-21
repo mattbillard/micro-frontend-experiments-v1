@@ -7,12 +7,7 @@
   <body>
     <div>
       <div id="micro-app"></div>
-      <script src="index.tsx" onload="console.log('....onload');"></script>
-      <script>
-        setTimeout(() => {
-          window.bootstrap2();
-        }, 500)
-      </script>
+      <script src="index.tsx" onload="window.bootstrap2(this.parentElement);"></script>
     </div>
   </body>
 </html>
