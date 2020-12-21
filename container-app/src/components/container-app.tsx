@@ -22,6 +22,10 @@ export class ContainerApp extends React.Component<IContainerAppProps> {
             <WebComponent url={url} />
           </div>
         </div>
+
+        <div>
+          <WebComponent url={'/create-react-app'} />
+        </div>
       </div>
     )
   }

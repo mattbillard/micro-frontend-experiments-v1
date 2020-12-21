@@ -1,47 +1,43 @@
 import * as React from 'react';
+import { useEffect, useRef } from 'react';
 
 interface IWebComponentProps {
   url: string;
 }
 
-export class WebComponent extends React.Component<IWebComponentProps> {
-  componentDidMount() {
-    (async() => {
-      var res = await fetch(this.props.url); // TODO: pass in URL as props
-      var text = await res.text();
+export const WebComponent = (props: IWebComponentProps) => {
+  const { url } = props;
+  const ref = useRef(null);
 
-      const container = document.createElement('div');
-      container.innerHTML = text;
+  useEffect(() => {
+    init(ref.current, url);
+  }, []);
 
-      const ref = document.querySelector('.micro-web-component'); // TODO: use React ref
-      const shadowRoot = ref!.attachShadow({ mode: 'open' });
+  return (
+    <div ref={ref}></div>
+  )
+}
 
-      const context = (typeof shadowRoot !== 'undefined') ? shadowRoot : ref;
-      context!.appendChild(container);
+const init = async (refCurrent, url: string) => {
+  // Fetch HTML
+  var res = await fetch(url);
+  var text = await res.text();
 
-      setTimeout(() => {
-        const scripts = container.querySelectorAll('script');        
-        // @ts-ignore
-        [...scripts].forEach(script => { 
-          var scriptTag = document.createElement('script');
-          // @ts-ignore
-          Object.values({...script.attributes}).map((attr) => {
-            scriptTag.setAttribute(attr.name, attr.value);
-          })
-          scriptTag.text = script.text;
+  // Create shadow DOM to encapsulate CSS. Append new HTML
+  const shadowRoot = refCurrent!.attachShadow({ mode: 'open' });
+  const context = (typeof shadowRoot !== 'undefined') ? shadowRoot : refCurrent;
+  context.innerHTML = text;
 
-          script.remove();
-          container.appendChild(scriptTag);
-        });
-      })
-    })();
-  }
-
-  render () {
-    return (
-      <div className="micro-web-component">
-        ...
-      </div>
-    )
-  }
+  // Recreate script tags or browser will ignore them
+  const oldScripts = context.querySelectorAll('script'); // @ts-ignore
+  [...oldScripts].forEach(oldScript => { 
+    var newScript = document.createElement('script');
+    newScript.text = oldScript.text; // @ts-ignore
+    Object.values({...oldScript.attributes}).map((attr) => {
+      newScript.setAttribute(attr.name, attr.value);
+    })
+    const parent = oldScript.parentNode;
+    oldScript.remove();
+    parent.appendChild(newScript);
+  });
 }

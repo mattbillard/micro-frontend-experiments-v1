@@ -17,13 +17,13 @@ class MicroApp extends React.Component<Props> {
     const { rows } = this.state;
 
     return (
-      <div>
+      <>
         <h1>Micro App</h1>
         <button onClick={this.addRow}>Add Row</button>
         <div>
           {rows.map((row, idx) => <p key={idx}>{row}</p>)}
         </div>
-      </div>
+      </>
     );
   }
 }
