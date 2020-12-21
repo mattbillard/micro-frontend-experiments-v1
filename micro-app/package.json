@@ -8,7 +8,7 @@
   "license": "ISC",
   "scripts": {
     "clean": "rm dist/bundle.js",
-    "start": "parcel src/index.html --public-url=/container --port 8082",
+    "start": "parcel src/index.html --public-url=/micro-app --port 8083",
     "build-prod": "parcel build src/index.html"
   },
   "dependencies": {
