@@ -6,8 +6,17 @@ import "./styles/styles.less";
 
 declare const window: any;
 
+// const elem = document.querySelector('#micro-app');
+// ReactDOM.render(<MicroApp />, elem);
+
+
 // TODO: better not to use global function
-window.bootstrap2 = (context) => {
-  const elem = context.querySelector('#micro-app');
-  ReactDOM.render(<MicroApp />, elem);
-}
+// window.bootstrap2 = (context = document.body) => {
+//   const elem = context.querySelector('#micro-app');
+//   ReactDOM.render(<MicroApp />, elem);
+// }
+
+
+[...document.querySelectorAll('.micro-app')]
+  .map(elem => !elem.children.length && ReactDOM.render(<MicroApp />, elem))
+

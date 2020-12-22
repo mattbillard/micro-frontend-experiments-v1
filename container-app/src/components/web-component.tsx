@@ -24,7 +24,7 @@ const init = async (refCurrent, url: string) => {
   var text = await res.text();
 
   // Create shadow DOM to encapsulate CSS. Append new HTML
-  const shadowRoot = refCurrent!.attachShadow({ mode: 'open' });
+  // const shadowRoot = refCurrent!.attachShadow({ mode: 'open' });
   const context = (typeof shadowRoot !== 'undefined') ? shadowRoot : refCurrent;
   context.innerHTML = text;
 
