@@ -1,31 +1,27 @@
 import * as React from 'react';
+import { useState } from 'react';
 
-interface Props {
+export const MicroApp = () => {
+  const [count, setCount] = useState<number>(1);
+  const [text, setText] = useState<string>('Lorem ipsum dolor sit amet. ');
+
+  return (
+    <>
+      <h1>Micro App</h1>
+      <div>
+        <input type="text" value={text} onChange={(event) => setText(event.target.value)}/>
+      </div>
+      <div>
+        <button onClick={() => setCount(count - 1)}> - </button>
+        <button onClick={() => setCount(count + 1)}> + </button>
+      </div>
+      <div>
+        {([...new Array(count)]).map((val, idx) => {
+          return (
+            <p key={idx}>{text}</p>
+          );
+        })}
+      </div>
+    </>
+  );
 }
-
-class MicroApp extends React.Component<Props> {
-  state = {
-    rows: []
-  }
-
-  addRow = () => {
-    const rows = [...this.state.rows, 'Lorem ipsum dolor sit amet'];
-    this.setState({ rows });
-  };
-
-  render () {
-    const { rows } = this.state;
-
-    return (
-      <>
-        <h1>Micro App</h1>
-        <button onClick={this.addRow}>Add Row</button>
-        <div>
-          {rows.map((row, idx) => <p key={idx}>{row}</p>)}
-        </div>
-      </>
-    );
-  }
-}
-
-export default MicroApp;

@@ -9,8 +9,8 @@ interface IContainerAppProps {
 export const ContainerApp = (props: IContainerAppProps) => {
   const [count, setCount] = useState<number>(1);
 
-  // const url = '/micro-app/index.html';
-  const url = '/create-react-app';
+  const url = '/micro-app/index.html';
+  // const url = '/create-react-app';
 
   return (
     <div className="container">
@@ -22,15 +22,16 @@ export const ContainerApp = (props: IContainerAppProps) => {
 
       {([...new Array(count)]).map((val, idx) => {
         return (
-          <div key={idx} className="row">
+          // <div key={idx} className="row">
+          <div key={idx} className="">
             <div>
               <h1>Iframe</h1>
               <IframeComponent url={url} />
             </div>
-            <div>
+            {/* <div>
               <h1>WebComponent</h1>
               <WebComponent url={url} />
-            </div>
+            </div> */}
           </div>
         )
       })}
