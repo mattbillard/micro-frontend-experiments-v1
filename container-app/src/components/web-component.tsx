@@ -40,4 +40,10 @@ const init = async (refCurrent, url: string) => {
     oldScript.remove();
     parent.appendChild(newScript);
   });
+
+  // setTimeout(() => {
+  //   const children = refCurrent.children;
+  //   const shadowRoot = refCurrent!.attachShadow({ mode: 'open' });
+  //   [...children].forEach(child => shadowRoot.appendChild(child));
+  // }, 1000)
 }
