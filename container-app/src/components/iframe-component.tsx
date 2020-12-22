@@ -10,17 +10,21 @@ export const IframeComponent = (props: IIframeComponentProps) => {
   const [width, setWidth] = useState<number>();
   const [height, setHeight] = useState<number>();
 
+  const setSize = (elem) => {
+      // setWidth(elem.offsetWidth);
+      // setHeight(elem.offsetHeight);
+      setWidth(elem.scrollWidth);
+      setHeight(elem.scrollHeight);    
+  }
+
   const handleOnload = () => {
     const iframe = ref.current;
     const iframeWindow = iframe.contentWindow;
     const iframeDocument = iframe.contentDocument;
-    const iframeHtmlTag = iframeDocument.body.parentNode;
+    // const iframeHtmlTag = iframeDocument.body.parentNode;
+    const iframeHtmlTag = iframeDocument.body;
 
-    const resizeObserver = new iframeWindow.ResizeObserver(entries => {
-      const elem = entries[0].target;
-      setWidth(elem.offsetWidth);
-      setHeight(elem.offsetHeight);
-    });
+    const resizeObserver = new iframeWindow.ResizeObserver(entries => setSize(entries[0].target));
     resizeObserver.observe(iframeHtmlTag);
   }
 
