@@ -2,16 +2,13 @@ import * as React from 'react';
 import { useState } from 'react';
 
 export const MicroApp = () => {
-  const [rowCount, setRowCount] = useState<number>(10);
-  const [colCount, setColCount] = useState<number>(10);
-  // const [text, setText] = useState<string>('Lorem ipsum dolor sit amet. ');
+  const [rowCount, setRowCount] = useState<number>(5);
+  const [colCount, setColCount] = useState<number>(5);
+  const [text, setText] = useState<string>('Lorem ipsum dolor sit amet. ');
 
   return (
     <>
       <h1>Micro App</h1>
-      {/* <div>
-        <input type="text" value={text} onChange={(event) => setText(event.target.value)} />
-      </div> */}
       <div>
         &nbsp;&nbsp;
         <button onClick={() => setColCount(colCount - 1)}> - </button>
@@ -21,6 +18,18 @@ export const MicroApp = () => {
         <br />
         <button onClick={() => setRowCount(rowCount + 1)}> + </button>
       </div>
+
+      <div>
+        <input type="text" value={text} onChange={(event) => setText(event.target.value)} />
+        <p>
+        {([...new Array(rowCount)]).map((val, rowIdx) => {
+          return (
+            <span key={rowIdx}>{text}</span>
+          )
+        })}
+        </p>
+      </div>
+
       <table>
         <tbody>
           {([...new Array(rowCount)]).map((val, rowIdx) => {
@@ -36,13 +45,6 @@ export const MicroApp = () => {
           })}
         </tbody>
       </table>
-      {/* <div>
-        {([...new Array(rowCount)]).map((val, idx) => {
-          return (
-            <p key={idx}>{text}</p>
-          );
-        })}
-      </div> */}
     </>
   );
 }

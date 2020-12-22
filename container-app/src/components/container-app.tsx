@@ -22,16 +22,16 @@ export const ContainerApp = (props: IContainerAppProps) => {
 
       {([...new Array(count)]).map((val, idx) => {
         return (
-          // <div key={idx} className="row">
-          <div key={idx} className="">
+          // <div key={idx} className="">
+          <div key={idx} className="row">
             <div>
               <h1>Iframe</h1>
               <IframeComponent url={url} />
             </div>
-            {/* <div>
+            <div>
               <h1>WebComponent</h1>
               <WebComponent url={url} />
-            </div> */}
+            </div>
           </div>
         )
       })}
