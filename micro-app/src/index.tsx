@@ -20,3 +20,7 @@ declare const window: any;
 [...document.querySelectorAll('.micro-app')]
   .map(elem => !elem.children.length && ReactDOM.render(<MicroApp />, elem))
 
+
+// const currentScript = document.currentScript;
+// const elem = currentScript.parentNode.querySelector('.micro-app');
+// ReactDOM.render(<MicroApp />, elem);
