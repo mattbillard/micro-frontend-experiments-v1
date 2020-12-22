@@ -8,6 +8,7 @@ interface IContainerAppProps {
 export class ContainerApp extends React.Component<IContainerAppProps> {
   render() {
     const url = '/micro-app/index.html';
+    // const url = '/create-react-app';
 
     return (
       <div className="container">
@@ -20,11 +21,13 @@ export class ContainerApp extends React.Component<IContainerAppProps> {
           <div>
             <h1>WebComponent</h1>
             <WebComponent url={url} />
+            {/* <WebComponent url={url} />
+            <WebComponent url={url} />
+            <WebComponent url={url} />
+            <WebComponent url={url} />
+            <WebComponent url={url} />
+            <WebComponent url={url} /> */}
           </div>
-        </div>
-
-        <div>
-          <WebComponent url={'/create-react-app'} />
         </div>
       </div>
     )

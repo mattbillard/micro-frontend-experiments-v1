@@ -33,7 +33,7 @@ module.exports = (env = {}) => {
         '/create-react-app': {
           target: 'http://localhost:3000/',
           secure: false,
-          ws: true,
+          // ws: true,
           changeOrigin: true,
           cookieDomainRewrite: 'localhost',
         },
