@@ -9,8 +9,8 @@ interface IContainerAppProps {
 export const ContainerApp = (props: IContainerAppProps) => {
   const [count, setCount] = useState<number>(1);
 
-  const url = '/micro-app/index.html';
-  // const url = '/create-react-app';
+  // const url = '/micro-app/index.html';
+  const url = '/create-react-app';
 
   return (
     <div className="container">
