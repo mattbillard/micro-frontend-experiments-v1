@@ -8,15 +8,18 @@ window.$ = $;
 window.jQuery = $;
 
 import Highcharts from 'highcharts';
-// import { Grid, Data, Formatters } from 'slickgrid-es6';
 import Slick from 'slickgrid-es6';
 
-const GoldenLayout = require('./goldenlayout');
+// const GoldenLayout = require('./goldenlayout');
+const GoldenLayout = require('golden-layout');
+require('../css/startpage.css');
+require('../css/goldenlayout-base.css');
+require('../css/goldenlayout-dark-theme.css');
 
 // import * as GoldenLayout from 'golden-layout';
 // import {GoldenLayout} from 'golden-layout';
 // const GoldenLayout = require('goldenlayout');
-console.log('....GoldenLayout', GoldenLayout);
+// console.log('....GoldenLayout', GoldenLayout);
 
 
 // (function () {
