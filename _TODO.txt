@@ -1,0 +1,25 @@
+
+TODO 
+- Micro front end 
+  - Web component 
+    - Fetch HTML, CSS, JS 
+    - Try Shadow DOM 
+  - Iframe 
+    - Resize automatically 
+- Proxy 
+- GoldenLayout
+  - Strip down demo 
+  - Save/restore
+  - Iframe component 
+  - Separate widgets' CSS, JS 
+
+  - Add to Simple SPA
+  - React
+  - Convert widgets to apps and iframe/fetch them 
+- Each app should save its own state 
+- Save/restore state from server 
+- View on multiple devices 
+- WS live updates 
+- Drop down menu 
+- Fake login 
+- More features 
