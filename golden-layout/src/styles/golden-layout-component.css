@@ -1,9 +1,8 @@
-/*
-IMPORTANT:
-In order to preserve the uniform grid appearance, all cell styles need to have padding, margin and border sizes.
-No built-in (selected, editable, highlight, flashing, invalid, loading, :focus) or user-specified CSS
-classes should alter those!
-*/
+#exampleLayoutContainer{
+  height: 518px;
+  width: 100%;
+}
+
 
 .slick-header.ui-state-default, .slick-headerrow.ui-state-default {
   width: 100%;
@@ -181,22 +180,6 @@ classes should alter those!
   background: #242424;
 }
 
-/* .ui-widget ::-webkit-scrollbar {
-    width: 16px;
-}
- 
-.ui-widget ::-webkit-scrollbar-track {
-    background: #222;
-    box-shadow: inset 2px 2px 2px rgba( 0, 0, 0, 0.2 );
-}
- 
-.ui-widget ::-webkit-scrollbar-thumb {
-    background: #2a2a2a; 
-}
-.ui-widget ::-webkit-scrollbar-thumb:window-inactive {
-    background: #111; 
-} */
-
 .fibonacci-spiral{
   position: relative;
   left: 0;
@@ -234,132 +217,3 @@ classes should alter those!
   font-size: 20px;
   color: #ccc;
 }
-
-/* body .lm_tab.lm_active{
-  color: #aaa;
-}
-
-body .lm_header .lm_tab.lm_active .lm_close_tab{
-  opacity: 0.7;
-  filter: alpha(opacity=70);
-} */
-
-
-/* #getting-started{
-  padding: 120px 0;
-  overflow: hidden;
-  position: relative;
-  width: 1200px;
-  margin: 0 auto;
-}
-
-#getting-started a{
-    width: 28%;
-    height: 100px;
-    float: left;
-    color: #fff;
-    overflow: hidden;
-    cursor: pointer;
-    background-color: rgba(255,255,255,0.1);
-    font-size: 24px;
-    font-weight: 100;
-    display: block;
-    transition: all 500ms ease;
-}
-
-#getting-started a:hover{
-  background-color: rgba(255,255,255,0.2);
-}
-
-#getting-started a:hover div{
-  opacity: 0.8;
-}
-
-#getting-started a p{
-  padding: 20px;
-  float: left;
-}
-
-#getting-started a p b{
-  font-weight: 300;
-  display: block;
-}
-
-#getting-started a.center{
-  margin: 0 8%;
-}
-
-#getting-started a div{
-    width: 92px;
-    height: 100%;
-    float: left;
-    background-size: contain;
-    transition: all 500ms ease;
-    opacity: 0.55;
-    background-repeat: no-repeat;
-}
-
-#getting-started a.js div{
-  background-image: url(../images/getting-started-js.png);
-}
-
-#getting-started a.react div{
-  background-image: url(../images/getting-started-react.png);
-}
-
-#getting-started a.angular{
-  background: none;
-  border: 1px dashed rgba(255,255,255,0.5);
-  box-sizing: border-box;
-  color: rgba(255,255,255,0.5);
-}
-#getting-started a.angular div{
-
-  background-image: url(../images/getting-started-angular.png);
-}
-
-#used-by{
-  position: relative;
-  background: #fff;
-  padding: 26px 0;
-  box-shadow: 0 0 16px 0px rgba( 0, 0, 0, 0.4);
-}
-
-#used-by .center{
-  width: 1200px;
-  margin: 0 auto;
-  overflow: hidden;
-}
-
-#used-by .center > *{
-  float: left;
-  width: 600px;
-  padding: 0;
-}
-
-#used-by h4{
-    color: #999;
-    font-weight: 300;
-    margin: 10px 0;
-    font-size: 12px;
-    text-align: center;
-}
-
-#used-by .video{
-  width: 514px;
-  height: 331px;
-  border: 1px solid #ccc;
-  background: url(../images/merchant-video-placeholder.png);
-  margin: 0 auto 20px;
-  cursor: pointer;
-  transition: all 500ms ease;
-}
-
-#used-by .video:hover{
-  border-color: #999;
-  box-shadow: 3px 3px 3px rgba(0,0,0,0.1);
-}
-
-#footer{
-  position: relative;
-} */

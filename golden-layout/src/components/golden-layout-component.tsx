@@ -17,7 +17,8 @@ const GoldenLayout = require('golden-layout');
 import 'golden-layout/src/css/goldenlayout-base.css';
 import 'golden-layout/src/css/goldenlayout-dark-theme.css';
 
-import '../assets/css/startpage.css';
+// import '../assets/css/startpage.css';
+import '../styles/golden-layout-component.css';
 
 
 const defaultConfig = {
