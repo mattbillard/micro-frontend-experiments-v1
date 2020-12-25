@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useState } from 'react';
 
-import { GoldenLayoutComponent } from './golden-layout-component/golden-layout-component';
+import { GoldenLayoutComponent } from './golden-layout-component';
 import { IframeComponent } from './iframe-component';
 import { WebComponent } from './web-component';
 

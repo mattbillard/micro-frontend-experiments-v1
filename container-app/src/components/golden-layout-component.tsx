@@ -18,7 +18,7 @@ const GoldenLayout = require('golden-layout');
 import 'golden-layout/src/css/goldenlayout-base.css';
 import 'golden-layout/src/css/goldenlayout-dark-theme.css';
 
-import './golden-layout-component.css';
+import '../styles/golden-layout-component.css';
 
 
 const defaultConfig = {
@@ -54,11 +54,11 @@ const defaultConfig = {
                   type: 'component',
                   componentName: 'iframe-example'
                 },
-                // {
-                //   type: 'react-component',
-                //   component: 'testReactComponent',
-                //   props: { label: 'X' }
-                // }
+                {
+                  type: 'react-component',
+                  component: 'testReactComponent',
+                  props: { label: 'X' }
+                }
               ]
             },
             {
@@ -395,12 +395,12 @@ myLayout.registerComponent('iframe-example', function (container, state) {
     .append('<iframe src="https://localhost:8080/micro-app/index.html" style="border:0; width:100%; height:100%;"></iframe>');
 });
 
-// class TestReactComponent extends React.Component {
-//   render() {
-//     return (<h1>{this.props.label}</h1>)
-//   }
-// };
-// myLayout.registerComponent('testReactComponent', TestReactComponent);
+class TestReactComponent extends React.Component {
+  render() {
+    return (<h1>{this.props.label}</h1>)
+  }
+};
+myLayout.registerComponent('testReactComponent', TestReactComponent);
 
 
 
