@@ -9,7 +9,7 @@
         "target": "es5",
         "allowJs": true,
         "jsx": "react",
-        "noImplicitAny": true,
+        "noImplicitAny": false,
     },
     "include": [
         "./src/**/*"

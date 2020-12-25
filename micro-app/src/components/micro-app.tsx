@@ -11,10 +11,10 @@ export const MicroApp = () => {
       <h1>Micro App</h1>
       <div>
         &nbsp;&nbsp;
-        <button onClick={() => setColCount(colCount - 1)}> - </button>
+        <button onClick={() => colCount > 0 && setColCount(colCount - 1)}> - </button>
         <button onClick={() => setColCount(colCount + 1)}> + </button>
         <br />
-        <button onClick={() => setRowCount(rowCount - 1)}> - </button>
+        <button onClick={() => rowCount > 0 && setRowCount(rowCount - 1)}> - </button>
         <br />
         <button onClick={() => setRowCount(rowCount + 1)}> + </button>
       </div>

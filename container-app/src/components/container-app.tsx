@@ -2,6 +2,7 @@ import * as React from 'react';
 import { useState } from 'react';
 
 import { GoldenLayoutComponent } from './golden-layout-component';
+import { GoldenLayoutComponent2 } from './golden-layout-component2';
 import { IframeComponent } from './iframe-component';
 import { WebComponent } from './web-component';
 
@@ -43,7 +44,8 @@ interface IContainerAppProps {
 export const ContainerApp = (props: IContainerAppProps) => {
   return (
     <div className="container">
-      <GoldenLayoutComponent />
+      {/* <GoldenLayoutComponent /> */}
+      <GoldenLayoutComponent2 />
     </div>
   )
 }
