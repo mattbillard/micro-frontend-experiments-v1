@@ -423,7 +423,9 @@ interface IGoldenLayoutComponentProps {
 
 export const GoldenLayoutComponent = (props: IGoldenLayoutComponentProps) => {
   useEffect(() => {
-    myLayout.init();
+    setTimeout(() => {
+      myLayout.init();
+    })
   }, []);
 
   // TODO: use ref
