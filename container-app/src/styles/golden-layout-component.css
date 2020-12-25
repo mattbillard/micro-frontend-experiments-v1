@@ -1,8 +1,9 @@
 #exampleLayoutContainer{
-  height: 518px;
-  width: 100%;
+  /* height: 518px;
+  width: 100%; */
+  width: 100vw;
+  height: 100vh;
 }
-
 
 .slick-header.ui-state-default, .slick-headerrow.ui-state-default {
   width: 100%;

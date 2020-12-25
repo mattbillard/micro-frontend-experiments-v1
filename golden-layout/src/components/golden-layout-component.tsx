@@ -50,16 +50,16 @@ const init = function() {
                     type: 'component',
                     componentName: 'gl-text'
                   },
-                  {
-                    title: 'Iframe Example',
-                    type: 'component',
-                    componentName: 'iframe-example'
-                  },
-                  {
-                    type: 'react-component',
-                    component: 'testReactComponent',
-                    props: { label: 'X' }
-                  }
+                  // {
+                  //   title: 'Iframe Example',
+                  //   type: 'component',
+                  //   componentName: 'iframe-example'
+                  // },
+                  // {
+                  //   type: 'react-component',
+                  //   component: 'testReactComponent',
+                  //   props: { label: 'X' }
+                  // }
                 ]
               },
               {
