@@ -62,7 +62,7 @@ const init = function () {
                     // componentName: 'gl-text',
                     type: 'react-component',
                     component: 'MicroFrontEndComponent',
-                    props: { url: '/micro-app' },
+                    props: { url: '/micro-app/text' },
                   },
                   {
                     title: 'React Component',
@@ -81,7 +81,7 @@ const init = function () {
                     // componentName: 'stockChart',
                     type: 'react-component',
                     component: 'MicroFrontEndComponent',
-                    props: { url: '/micro-app' },
+                    props: { url: '/micro-app/stock-chart' },
                     componentState: {
                       companyName: 'Stock X'
                     },
@@ -92,7 +92,7 @@ const init = function () {
                     // componentName: 'stockChart',
                     type: 'react-component',
                     component: 'MicroFrontEndComponent',
-                    props: { url: '/micro-app' },
+                    props: { url: '/micro-app/stock-chart' },
                     componentState: { companyName: 'Stock Y' },
                   },
                   {
@@ -101,7 +101,7 @@ const init = function () {
                     // componentName: 'stockChart',
                     type: 'react-component',
                     component: 'MicroFrontEndComponent',
-                    props: { url: '/micro-app' },
+                    props: { url: '/micro-app/stock-chart' },
                     componentState: { companyName: 'Stock Z' },
                   }
                 ]

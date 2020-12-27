@@ -393,6 +393,10 @@ const init = function() {
   };
   myLayout.registerComponent('stockGrid', StockGridComponent);
   
+
+
+
+  
   myLayout.registerComponent('iframe-example', function (container, state) {
     container
       .getElement()

@@ -1,7 +1,7 @@
-/* body {
+body {
   margin: 0;
   padding: 0;
-} */
+}
 
 
 .slick-header.ui-state-default, .slick-headerrow.ui-state-default {
@@ -181,11 +181,13 @@
 }
 
 .fibonacci-spiral{
-  position: relative;
+  /* position: relative;
   left: 0;
   top: 0;
   width: 100%;
-  height: 100%;
+  height: 100%; */
+  width: 100vw;
+  height: 100vh;
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
