@@ -13,12 +13,11 @@ export const ChartComponent = (props) => {
 
   useEffect(() => {
     config.chart.renderTo = ref.current;
-    // debugger;
     const chart = new Highcharts.Chart(config);
     setChart(chart);
   }, []);
 
   return (
-    <div ref={ref}></div>
+    <div ref={ref} style={{width:'100vw',height:'100vh'}}></div>
   );
 }

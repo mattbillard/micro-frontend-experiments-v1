@@ -36,7 +36,8 @@ export const IframeComponent = (props: IIframeComponentProps) => {
       src={props.url} 
       onLoad={handleOnload}
       // style={{width:width, height:height}}
-      style={{height:height}}
+      // style={{height:height}}
+      style={{width:'100%',height:'100%'}}
     ></iframe>
   )
 }

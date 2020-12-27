@@ -42,7 +42,7 @@ const init = function () {
                 // componentName: 'stockGrid',
                 type: 'react-component',
                 component: 'MicroFrontEndComponent',
-                props: { url: '/micro-app' },
+                props: { url: '/micro-app/stock-grid' },
               },
               {
                 type: 'row',
@@ -64,12 +64,12 @@ const init = function () {
                     component: 'MicroFrontEndComponent',
                     props: { url: '/micro-app/text' },
                   },
-                  {
-                    title: 'React Component',
-                    type: 'react-component',
-                    component: 'MicroFrontEndComponent',
-                    props: { url: '/micro-app' },
-                  }
+                  // {
+                  //   title: 'React Component',
+                  //   type: 'react-component',
+                  //   component: 'MicroFrontEndComponent',
+                  //   props: { url: '/micro-app' },
+                  // }
                 ]
               },
               {

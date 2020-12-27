@@ -6,6 +6,7 @@ import {
   ColumnChart,
   GoldenSpiral,
   GoldenText,
+  StockGrid,
   PieChart,
   StockChart,
   TextTester,
@@ -22,6 +23,7 @@ export const MicroApp = () => {
         <Route path="/micro-app/pie-chart" component={PieChart} />
         <Route path="/micro-app/spiral" component={GoldenSpiral} />
         <Route path="/micro-app/stock-chart" component={StockChart} />
+        <Route path="/micro-app/stock-grid" component={StockGrid} />
         <Route path="/micro-app/text" component={GoldenText} />
         <Route path="/micro-app" component={TextTester} />
         {/* <Redirect from="/*" to="/micro-app" /> */}
