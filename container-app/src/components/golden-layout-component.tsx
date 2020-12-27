@@ -7,18 +7,23 @@ window.React = React;
 window.ReactDOM = ReactDOM;
 
 
-import $ from "jquery";
+import $ from 'jquery';
 window.$ = $;
 window.jQuery = $;
 
-import * as Highcharts from 'highcharts';
-import Slick from 'slickgrid-es6';
+// import * as Highcharts from 'highcharts';
+// import Slick from 'slickgrid-es6';
 
 const GoldenLayout = require('golden-layout');
 import 'golden-layout/src/css/goldenlayout-base.css';
 import 'golden-layout/src/css/goldenlayout-dark-theme.css';
 
 import '../styles/golden-layout-component.css';
+
+import { IframeComponent } from './iframe-component';
+import { IframeComponent2 } from './iframe-component2';
+import { WebComponent } from './web-component';
+import { WebComponent2 } from './web-component2';
 
 const init = function () {
 
@@ -33,32 +38,37 @@ const init = function () {
             content: [
               {
                 title: 'Fnts 100',
-                type: 'component',
-                componentName: 'stockGrid',
+                // type: 'component',
+                // componentName: 'stockGrid',
+                type: 'react-component',
+                component: 'MicroFrontEndComponent',
+                props: { url: '/micro-app/index.html' },
               },
               {
                 type: 'row',
                 content: [
                   {
-                    type: 'component',
                     title: 'Golden',
-                    componentName: 'fibonacci-spiral',
-                    width: 30
+                    // type: 'component',
+                    // componentName: 'fibonacci-spiral',
+                    type: 'react-component',
+                    component: 'MicroFrontEndComponent',
+                    props: { url: '/micro-app/index.html' },
+                    width: 30,
                   },
                   {
                     title: 'Layout',
-                    type: 'component',
-                    componentName: 'gl-text'
-                  },
-                  {
-                    title: 'Iframe Example',
-                    type: 'component',
-                    componentName: 'iframe-example'
-                  },
-                  {
+                    // type: 'component',
+                    // componentName: 'gl-text',
                     type: 'react-component',
-                    component: 'testReactComponent',
-                    props: { label: 'X' }
+                    component: 'MicroFrontEndComponent',
+                    props: { url: '/micro-app/index.html' },
+                  },
+                  {
+                    title: 'React Component',
+                    type: 'react-component',
+                    component: 'MicroFrontEndComponent',
+                    props: { url: '/micro-app/index.html' },
                   }
                 ]
               },
@@ -66,28 +76,33 @@ const init = function () {
                 type: 'stack',
                 content: [
                   {
-                    type: 'component',
                     title: 'Acme, inc.',
-                    componentName: 'stockChart',
+                    // type: 'component',
+                    // componentName: 'stockChart',
+                    type: 'react-component',
+                    component: 'MicroFrontEndComponent',
+                    props: { url: '/micro-app/index.html' },
                     componentState: {
                       companyName: 'Stock X'
-                    }
+                    },
                   },
                   {
-                    type: 'component',
                     title: 'LexCorp plc.',
-                    componentName: 'stockChart',
-                    componentState: {
-                      companyName: 'Stock Y'
-                    }
+                    // type: 'component',
+                    // componentName: 'stockChart',
+                    type: 'react-component',
+                    component: 'MicroFrontEndComponent',
+                    props: { url: '/micro-app/index.html' },
+                    componentState: { companyName: 'Stock Y' },
                   },
                   {
-                    type: 'component',
                     title: 'Springshield plc.',
-                    componentName: 'stockChart',
-                    componentState: {
-                      companyName: 'Stock Z'
-                    }
+                    // type: 'component',
+                    // componentName: 'stockChart',
+                    type: 'react-component',
+                    component: 'MicroFrontEndComponent',
+                    props: { url: '/micro-app/index.html' },
+                    componentState: { companyName: 'Stock Z' },
                   }
                 ]
               }
@@ -98,15 +113,21 @@ const init = function () {
             type: 'column',
             content: [
               {
-                type: 'component',
                 title: 'Performance',
-                componentName: 'columnChart'
+                // type: 'component',
+                // componentName: 'columnChart',
+                type: 'react-component',
+                component: 'MicroFrontEndComponent',
+                props: { url: '/micro-app/index.html' },
               },
               {
-                height: 40,
-                type: 'component',
                 title: 'Market',
-                componentName: 'pieChart'
+                // type: 'component',
+                // componentName: 'pieChart',
+                type: 'react-component',
+                component: 'MicroFrontEndComponent',
+                props: { url: '/micro-app/index.html' },
+                height: 40,
               }
             ]
           }
@@ -114,7 +135,7 @@ const init = function () {
       }
     ]
   };
-
+  
   // const savedState = localStorage.getItem('savedState');
   // const config = savedState ? JSON.parse(savedState) : defaultConfig;
   const config = defaultConfig;
@@ -124,284 +145,14 @@ const init = function () {
 
 
 
-  myLayout.registerComponent('fibonacci-spiral', function (container, state) {
-    container
-      .getElement()
-      .append('<div class="fibonacci-spiral"></div>');
-  });
+  // myLayout.registerComponent('MicroFrontEndComponent', IframeComponent2);
+  // myLayout.registerComponent('MicroFrontEndComponent', WebComponent2);
 
-  myLayout.registerComponent('gl-text', function (container, state) {
-    container
-      .getElement()
-      .append(
-        '<div class="gl-text">' +
-        '<div>' +
-        '<h1>GoldenLayout</h1>' +
-        '<h3>a multi-screen layout manager for webapps</h3>' +
-        '</div>' +
-        '</div>'
-      );
-  });
-
-  /****************************************
-  * Chart Component
-  * **************************************/
-  const ChartComponent = function (container, name, chartConfig) {
-    this._highChartsConfig = chartConfig;
-    this._container = container;
-    this._name = name;
-    this._chart = null;
-
-    this._container.on('open', this._createChart.bind(this));
+  class MicroFrontEndComponent extends React.Component {
+    // render() { return (<IframeComponent {...this.props} />) }
+    render() { return (<div style={{width:'100%',height:'100%',overflow:'auto',}}><WebComponent {...this.props} /></div>) }
   };
-
-  ChartComponent.prototype._createChart = function () {
-    this._chart = new Highcharts.Chart(this._highChartsConfig);
-    this._bindContainerEvents();
-  };
-
-  ChartComponent.prototype._bindContainerEvents = function () {
-    this._container.on('resize', this._setSize.bind(this));
-    this._container.on('destroy', this._chart.destroy.bind(this._chart));
-  };
-
-  ChartComponent.prototype._setSize = function () {
-    this._chart.setSize(this._container.width, this._container.height);
-  };
-
-  /****************************************
-  * Stock Chart Component
-  * **************************************/
-  myLayout.registerComponent('stockChart', function (container, state) {
-
-    const data = [],
-      config,
-      i,
-      time = (new Date()).getTime() - 30758400000, // 1 Year in MS
-      value = Math.random() * 1000;
-
-    for (i = 0; i < 100; i++) {
-      value *= 0.9 + (Math.random() * 0.2);
-      time += 86400000; // 1 Day in ms
-      data.push([time, parseFloat(value.toFixed(2))]);
-    }
-
-    config = {
-      title: null,
-      legend: { enabled: false },
-      credits: { enabled: false },
-      plotOptions: { line: { marker: { enabled: false } } },
-      xAxis: { type: 'datetime', gridLineColor: '#3A3A3A', lineColor: '#3A3A3A', tickColor: '#3A3A3A' },
-      yAxis: { title: 'Price in USD', gridLineColor: '#3A3A3A' },
-      series: [{
-        color: '#555',
-        name: 'Close price',
-        data: data
-      }],
-      chart: {
-        renderTo: container.getElement()[0],
-        marginBottom: 28,
-        marginTop: 15,
-        backgroundColor: '#222'
-      }
-    };
-
-    return new ChartComponent(container, state.companyName, config);
-  });
-
-  /****************************************
-  * Pie Chart Component
-  * **************************************/
-  myLayout.registerComponent('pieChart', function (container, state) {
-    const config = {
-      title: {
-        text: 'Market Share',
-        style: { 'color': '#555', 'fontSize': '14px' }
-      },
-      legend: { enabled: false },
-      credits: { enabled: false },
-      plotOptions: {
-        pie: {
-          colors: ['#4A4A4A', '#444444', '#3A3A3A'],
-          allowPointSelect: true,
-          cursor: 'pointer',
-          borderColor: '#111',
-          dataLabels: { enabled: false },
-          tooltip: {
-            headerFormat: '<span style="font-size: 10px">Market Share</span><br/>',
-            pointFormat: '<b>{point.name}</b>: {point.percentage:.1f} %'
-          }
-        }
-      },
-      xAxis: { type: 'datetime', gridLineColor: '#3A3A3A', lineColor: '#3A3A3A', tickColor: '#3A3A3A' },
-      yAxis: { title: 'Price in USD', gridLineColor: '#3A3A3A' },
-      series: [{
-        type: 'pie',
-        name: 'market share',
-        data: [
-          ['Competitor A', 45.0],
-          ['Competitor B', 26.8],
-          {
-            name: 'us',
-            y: 12.8,
-            sliced: true,
-            selected: true
-          },
-          ['Competitor C', 8.5],
-          ['Competitor D', 4],
-          ['Competitor E', 3.9]
-        ]
-      }],
-      chart: {
-        renderTo: container.getElement()[0],
-
-        backgroundColor: '#222'
-      }
-    };
-
-    return new ChartComponent(container, 'share', config);
-  });
-
-  /****************************************
-  * Column Chart Component
-  * **************************************/
-  myLayout.registerComponent('columnChart', function (container, state) {
-    const config = {
-      title: {
-        text: 'Relative Performance',
-        style: { 'color': '#555', 'fontSize': '14px' }
-      },
-      legend: { enabled: false },
-      credits: { enabled: false },
-      plotOptions: {
-
-      },
-      xAxis: {
-        categories: ['Q1', 'Q2', 'Q3', 'Q4'],
-        gridLineColor: '#3A3A3A',
-        lineColor: '#3A3A3A',
-        tickColor: '#3A3A3A'
-      },
-      yAxis: {
-        min: 0,
-        title: { text: null },
-        labels: { enabled: false },
-        gridLineColor: '#3A3A3A',
-        lineColor: '#3A3A3A',
-        tickColor: '#3A3A3A'
-      },
-      series: [{
-        color: '#444',
-        borderWidth: 0,
-        name: 'rel. performance',
-        data: [49.9, 71.5, 26, 33]
-      }],
-      chart: {
-        renderTo: container.getElement()[0],
-        type: 'column',
-        backgroundColor: '#222'
-      }
-    };
-
-    return new ChartComponent(container, 'share', config);
-  });
-  /****************************************
-  * StockGrid Component
-  * **************************************/
-
-  const StockGridComponent = function (container, state) {
-    this._container = container;
-    this._state = state;
-    this._grid = null;
-    this._columns = [
-      { id: "symbol", name: "Symbol", field: "symbol" },
-      { id: "company", name: "Company", field: "company" },
-      { id: "price", name: "Price", field: "price" },
-      { id: "change", name: "Change", field: "change" },
-      { id: "changeRel", name: "Change %", field: "changeRel" },
-      { id: "volume", name: "Volume", field: "volume" }
-    ];
-    this._options = {
-      editable: false,
-      enableAddRow: false,
-      enableCellNavigation: true,
-      enableColumnReorder: false
-    };
-
-    container.on('open', this._scheduleGridCreation, this);
-  };
-
-
-  StockGridComponent.prototype._scheduleGridCreation = function () {
-    const interval = setInterval(function () {
-      const stylesheetNodes = $('link[rel=stylesheet]'), i;
-
-      for (i = 0; i < stylesheetNodes.length; i++) {
-        if (stylesheetNodes[i].sheet === null) {
-          return;
-        }
-      }
-
-      clearInterval(interval);
-      this._createGrid();
-
-    }.bind(this), 10);
-  };
-
-  StockGridComponent.prototype._createGrid = function () {
-    this._grid = new Slick.Grid(
-      this._container.getElement(),
-      (function () {
-        const data = ['Acme, inc.', 'ACI', 'Ajax', 'AJX', 'Allied Biscuit', 'ABS', 'Ankh-Sto Associates', 'ASA', 'Atlantic Northern', 'ANO', 'Axis Chemical Co.', 'ACC', 'Barrytron', 'BRT', 'Big Kahuna Burger', 'BKB', 'Big T Burgers and Frie', 'BBF', 'Blammo', 'BLM', 'BLAND Corporation', 'BLC', 'Bluth Company', 'BLU', 'Burleigh and Strongint', 'BAS', 'C.H. Lavatory and Sons', 'CLS', 'Carrys Candles', 'CCD', 'Central Perk', 'CEP', 'Charles Townsend Agenc', 'CTA', 'Chasers', 'CSS', 'Chez Quis', 'CQU', 'Chotchkies', 'CKI', 'Cogswell Cogs', 'CCO', 'Colonial Movers', 'CMO', 'Compuglobalhypermegane', 'CCH', 'Corellian Engineering', 'CEN', 'Data Systems', 'DAS', 'Duff Brewing Company', 'DBC', 'Dunder Mifflin', 'DMF', 'Extensive Enterprise', 'EEP', 'Fake Brothers', 'FBR', 'Flowers By Irene', 'FBI', 'Foo Bars', 'FOB', 'Gadgetron', 'GAG', 'Galaxy Corp', 'GAC', 'General Forge and Foun', 'GFF', 'General Products', 'GPO', 'General Services Corpo', 'GSC', 'Gizmonic Institute', 'GIT', 'Globex Corporation', 'GLC', 'Globo Gym American Cor', 'GGA', 'Globo-Chemimacals', 'GCE', 'Gringotts', 'GGO', 'Incom Corporation', 'ICO', 'Industrial Automation', 'IAU', 'Initech', 'IIT', 'Initrode', 'INT', 'Input, Inc.', 'INP', 'Keedsler Motors', 'KMS', 'Klimpys', 'KLM', 'Krustyco', 'KUC', 'Kumatsu Motors', 'KMO', 'Leeding Engines Ltd.', 'LEL', 'LexCorp', 'LCO', 'LuthorCorp', 'LCP', 'Mainway Toys', 'MTO', 'Mammoth Pictures', 'MPI', 'McMahon and Tate', 'MAT', 'Megadodo Publications', 'MPU', 'Milliways', 'MIW', 'Minuteman Cafe', 'MIC', 'Moes Tavern', 'MOT', 'Monarch Playing Card Corp', 'MPC', 'Monks Diner', 'MOD', 'Mooby Corp', 'MOB', 'Mr. Sparkle', 'MRS', 'Niagular', 'NIA', 'Nordyne Defense Dynamimics', 'NDD', 'North Central Positron', 'NCP', 'Omni Consimer Products', 'OCP', 'Osato Chemicals', 'OCE', 'Petrox Oil Company', 'POC', 'Plow King', 'PLK', 'Powell Motors', 'PWM', 'Praxis Corporation', 'PRX', 'Primatech', 'PMT', 'QWERTY Logistics', 'QWR', 'Roboto Industries', 'ROI', 'Rouster and Sideways', 'RAS', 'Roxxon', 'ROX', 'Sirius Cybernetics Cor', 'SCC', 'Sixty Second Avenue', 'SSA', 'Smith and Co.', 'SAC', 'Sombra Corporation', 'SOC', 'Sonky Rubber Goods', 'SRG', 'Spacely Sprockets', 'SPR', 'Spade and Archer', 'SAA', 'SpringShield', 'SSH', 'St. Anky Beer', 'SAB', 'Stay Puft Corporation', 'SPC', 'Sto Plains Holdings', 'SPH', 'Strickland Propane', 'SPO', 'Taco Grande', 'TAG', 'Taggart Transcontinent', 'TTA', 'Tessier-Ashpool', 'TEA', 'Thatherton Fuels', 'TAF', 'The Frying Dutchman', 'TFD', 'The Krusty Krab', 'TKK', 'The Legitimate Busines', 'TLB', 'The New Firm', 'TNF', 'Three Waters', 'TWA', 'Thrift Bank', 'TBA', 'Tip Top Cafe', 'TTC', 'Transworld Consortium', 'TWC', 'U.S. Robotics and Mech', 'URM', 'United Fried Chicken', 'UFC', 'Universal Export', 'UEX', 'Vandelay Industries', 'VAI', 'Videlectrix', 'VEX', 'Virtucon', 'VUC', 'Water and Power', 'WAP', 'Wentworth Industries', 'WEI', 'Wernham Hogg', 'WEH', 'Western Gas & Electric', 'WGE', 'Widget Corp', 'WCO', 'Zevo Toys', 'ZET', 'ZiffCorp', 'ZFC'];
-        const output = [];
-        const changeRel, price;
-        for (const i = 0; i < data.length; i += 2) {
-          price = (1000 * Math.random()).toFixed(2);
-          changeRel = (-5 + (10 * Math.random())).toFixed(2);
-          output.push({
-            'symbol': data[i],
-            'company': data[i + 1],
-            'price': price,
-            'change': (price * (changeRel / 100)).toFixed(2),
-            'changeRel': changeRel,
-            'volume': Math.floor(Math.random() * 100000)
-          });
-        }
-
-        return output;
-      })(),
-
-      this._columns,
-      this._options
-    );
-
-    this._container.on('resize', this._resize, this);
-    this._container.on('destroy', this._destroy, this);
-    this._resize();
-  };
-
-  StockGridComponent.prototype._resize = function () {
-    this._grid.resizeCanvas();
-    this._grid.autosizeColumns();
-  };
-
-  StockGridComponent.prototype._destroy = function () {
-    this._grid.destroy();
-  };
-  myLayout.registerComponent('stockGrid', StockGridComponent);
-
-  myLayout.registerComponent('iframe-example', function (container, state) {
-    container
-      .getElement()
-      .append('<iframe src="https://localhost:8080/micro-app/index.html" style="border:0; width:100%; height:100%;"></iframe>');
-  });
-
-  class TestReactComponent extends React.Component {
-    render() {
-      return (<h1>{this.props.label}</h1>)
-    }
-  };
-  myLayout.registerComponent('testReactComponent', TestReactComponent);
+  myLayout.registerComponent('MicroFrontEndComponent', MicroFrontEndComponent);
 
 
 
@@ -413,6 +164,7 @@ const init = function () {
 
   myLayout.init();
 }
+
 
 
 

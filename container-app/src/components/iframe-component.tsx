@@ -7,11 +7,11 @@ interface IIframeComponentProps {
 
 export const IframeComponent = (props: IIframeComponentProps) => {
   const ref = useRef(null);
-  const [width, setWidth] = useState<number>();
+  // const [width, setWidth] = useState<number>();
   const [height, setHeight] = useState<number>();
 
   const setSize = (elem) => {
-      setWidth(elem.offsetWidth);
+      // setWidth(elem.offsetWidth);
       setHeight(elem.offsetHeight);
       // setWidth(elem.scrollWidth);
       // setHeight(elem.scrollHeight);    
