@@ -118,7 +118,7 @@ const init = function () {
                 // componentName: 'columnChart',
                 type: 'react-component',
                 component: 'MicroFrontEndComponent',
-                props: { url: '/micro-app' },
+                props: { url: '/micro-app/column-chart' },
               },
               {
                 title: 'Market',
@@ -126,7 +126,7 @@ const init = function () {
                 // componentName: 'pieChart',
                 type: 'react-component',
                 component: 'MicroFrontEndComponent',
-                props: { url: '/micro-app' },
+                props: { url: '/micro-app/pie-chart' },
                 height: 40,
               }
             ]

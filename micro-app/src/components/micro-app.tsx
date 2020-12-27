@@ -3,9 +3,11 @@ import { useState } from 'react';
 import { BrowserRouter, Link, Redirect, Route, Switch } from 'react-router-dom';
 
 import { 
+  ColumnChart,
   GoldenSpiral,
   GoldenText,
-  StockChart
+  PieChart,
+  StockChart,
   TextTester,
 } from './';
 
@@ -16,6 +18,8 @@ export const MicroApp = () => {
   return (
     <BrowserRouter>
       <Switch>
+        <Route path="/micro-app/column-chart" component={ColumnChart} />
+        <Route path="/micro-app/pie-chart" component={PieChart} />
         <Route path="/micro-app/spiral" component={GoldenSpiral} />
         <Route path="/micro-app/stock-chart" component={StockChart} />
         <Route path="/micro-app/text" component={GoldenText} />
