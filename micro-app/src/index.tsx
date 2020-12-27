@@ -2,7 +2,6 @@ import * as React from 'react';
 import * as ReactDOM from "react-dom";
 
 import { MicroApp } from './components/micro-app';
-import "./styles/styles.less";
 
 declare const window: any;
 

@@ -42,7 +42,7 @@ const init = function () {
                 // componentName: 'stockGrid',
                 type: 'react-component',
                 component: 'MicroFrontEndComponent',
-                props: { url: '/micro-app/index.html' },
+                props: { url: '/micro-app' },
               },
               {
                 type: 'row',
@@ -53,7 +53,7 @@ const init = function () {
                     // componentName: 'fibonacci-spiral',
                     type: 'react-component',
                     component: 'MicroFrontEndComponent',
-                    props: { url: '/micro-app/index.html' },
+                    props: { url: '/micro-app/spiral' },
                     width: 30,
                   },
                   {
@@ -62,13 +62,13 @@ const init = function () {
                     // componentName: 'gl-text',
                     type: 'react-component',
                     component: 'MicroFrontEndComponent',
-                    props: { url: '/micro-app/index.html' },
+                    props: { url: '/micro-app' },
                   },
                   {
                     title: 'React Component',
                     type: 'react-component',
                     component: 'MicroFrontEndComponent',
-                    props: { url: '/micro-app/index.html' },
+                    props: { url: '/micro-app' },
                   }
                 ]
               },
@@ -81,7 +81,7 @@ const init = function () {
                     // componentName: 'stockChart',
                     type: 'react-component',
                     component: 'MicroFrontEndComponent',
-                    props: { url: '/micro-app/index.html' },
+                    props: { url: '/micro-app' },
                     componentState: {
                       companyName: 'Stock X'
                     },
@@ -92,7 +92,7 @@ const init = function () {
                     // componentName: 'stockChart',
                     type: 'react-component',
                     component: 'MicroFrontEndComponent',
-                    props: { url: '/micro-app/index.html' },
+                    props: { url: '/micro-app' },
                     componentState: { companyName: 'Stock Y' },
                   },
                   {
@@ -101,7 +101,7 @@ const init = function () {
                     // componentName: 'stockChart',
                     type: 'react-component',
                     component: 'MicroFrontEndComponent',
-                    props: { url: '/micro-app/index.html' },
+                    props: { url: '/micro-app' },
                     componentState: { companyName: 'Stock Z' },
                   }
                 ]
@@ -118,7 +118,7 @@ const init = function () {
                 // componentName: 'columnChart',
                 type: 'react-component',
                 component: 'MicroFrontEndComponent',
-                props: { url: '/micro-app/index.html' },
+                props: { url: '/micro-app' },
               },
               {
                 title: 'Market',
@@ -126,7 +126,7 @@ const init = function () {
                 // componentName: 'pieChart',
                 type: 'react-component',
                 component: 'MicroFrontEndComponent',
-                props: { url: '/micro-app/index.html' },
+                props: { url: '/micro-app' },
                 height: 40,
               }
             ]
@@ -149,8 +149,8 @@ const init = function () {
   // myLayout.registerComponent('MicroFrontEndComponent', WebComponent2);
 
   class MicroFrontEndComponent extends React.Component {
-    // render() { return (<IframeComponent {...this.props} />) }
-    render() { return (<div style={{width:'100%',height:'100%',overflow:'auto',}}><WebComponent {...this.props} /></div>) }
+    render() { return (<IframeComponent {...this.props} />) }
+    // render() { return (<div style={{width:'100%',height:'100%',overflow:'auto',}}><WebComponent {...this.props} /></div>) }
   };
   myLayout.registerComponent('MicroFrontEndComponent', MicroFrontEndComponent);
 
