@@ -18,6 +18,7 @@ export const ChartComponent = (props) => {
   }, []);
 
   return (
-    <div ref={ref} style={{width:'100vw',height:'100vh'}}></div>
+    // <div ref={ref} style={{width:'100vw',height:'100vh'}}></div>
+    <div ref={ref}></div>
   );
 }

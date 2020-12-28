@@ -18,6 +18,7 @@
     "jquery": "^3.5.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
+    "react-router-dom": "^5.2.0",
     "slickgrid-es6": "^3.0.3"
   },
   "devDependencies": {

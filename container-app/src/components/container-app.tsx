@@ -1,9 +1,16 @@
 import * as React from 'react';
 import { useState } from 'react';
+import { BrowserRouter, Link, Redirect, Route, Switch } from 'react-router-dom';
+import { createBrowserHistory } from "history";
 
-import { GoldenLayoutComponent } from './golden-layout-component';
-import { IframeComponent } from './iframe-component';
-import { WebComponent } from './web-component';
+const customHistory = createBrowserHistory();
+
+import {
+  GoldenLayoutComponent,
+  IframeComponent,
+  PageComponent,
+  WebComponent,
+} from './';
 
 interface IContainerAppProps {
 }
@@ -40,10 +47,34 @@ interface IContainerAppProps {
 //     </div>
 //   )
 // }
+
+
+// export const ContainerApp = (props: IContainerAppProps) => {
+//   return (
+//     <div className="container">
+//       <GoldenLayoutComponent />
+//     </div>
+//   )
+// }
+
+
 export const ContainerApp = (props: IContainerAppProps) => {
   return (
-    <div className="container">
-      <GoldenLayoutComponent />
-    </div>
+    <BrowserRouter history={customHistory}>
+      <div>
+        <Link to='/container/golden-layout'>Golden</Link> |
+        <Link to='/container/micro-app/spiral'>Spiral</Link> |
+        <Link to='/container/micro-app/text'>Text</Link> |
+        <Link to='/container/micro-app/stock-grid'>StockGrid</Link> |
+        <Link to='/container/micro-app/stock-chart'>StockChart</Link> |
+      </div>
+      {/* <BrowserRouter> */}
+      <Switch>
+        <Route path="/container/golden-layout" component={GoldenLayoutComponent} />
+        {/* <Route path="/container/:topicId" component={PageComponent} /> */}
+        <Route path="/container/*" component={PageComponent} />
+        <Redirect from="/*" to="/container/golden-layout" />
+      </Switch>
+    </BrowserRouter>
   )
 }
