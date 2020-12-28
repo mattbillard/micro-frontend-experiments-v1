@@ -5,22 +5,14 @@ import { createBrowserHistory } from "history";
 
 const customHistory = createBrowserHistory();
 
-import { GoldenLayoutComponent } from './golden-layout-component';
-import { IframeComponent } from './iframe-component';
-import { WebComponent } from './web-component';
+import { 
+  GoldenLayoutComponent,
+  IframeComponent,
+  WebComponent 
+} from './';
 
 interface IPageComponentProps {
 }
-
-// export const PageComponent = (props: IPageComponentProps) => {
-//   let { topicId } = useParams();
-
-//   return (
-//     // <IframeComponent url={`/micro-app/${topicId}`} />
-//     <IframeComponent url={topicId} />
-//   )
-// }
-
 
 export const PageComponent = (props: IPageComponentProps) => {
   let { params, path, url } = useRouteMatch();
