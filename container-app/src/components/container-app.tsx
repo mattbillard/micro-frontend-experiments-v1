@@ -66,6 +66,8 @@ export const ContainerApp = (props: IContainerAppProps) => {
         <Link to='/container/micro-app/spiral'>Spiral</Link> |
         <Link to='/container/micro-app/text'>Text</Link> |
         <Link to='/container/micro-app/stock-grid'>StockGrid</Link> |
+        <Link to='/container/micro-app/column-chart'>ColumnChart</Link> |
+        <Link to='/container/micro-app/pie-chart'>PieChart</Link> |
         <Link to='/container/micro-app/stock-chart'>StockChart</Link> |
       </div>
       {/* <BrowserRouter> */}

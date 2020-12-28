@@ -149,8 +149,8 @@ const init = function () {
   // myLayout.registerComponent('MicroFrontEndComponent', WebComponent2);
 
   class MicroFrontEndComponent extends React.Component {
-    render() { return (<IframeComponent {...this.props} />) }
-    // render() { return (<div style={{width:'100%',height:'100%',overflow:'auto',}}><WebComponent {...this.props} /></div>) }
+    // render() { return (<IframeComponent {...this.props} />) }
+    render() { return (<div style={{width:'100%',height:'100%',overflow:'auto',}}><WebComponent {...this.props} /></div>) }
   };
   myLayout.registerComponent('MicroFrontEndComponent', MicroFrontEndComponent);
 

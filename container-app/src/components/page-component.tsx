@@ -28,6 +28,7 @@ export const PageComponent = (props: IPageComponentProps) => {
   return (
     <div style={{width:'100vw',height:'100vh',position:'relative'}}>
       <IframeComponent url={`/${params[0]}`} />
+      {/* <WebComponent url={`/${params[0]}`} /> */}
     </div>
   )
 }
