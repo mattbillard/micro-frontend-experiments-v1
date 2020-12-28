@@ -29,6 +29,26 @@ export const LazyPage = (props: ILazyPageProps) => {
 
 
 
+// // DOES NOT WORK
+// // const OtherComponent = React.lazy(() => import('../../../micro-app/src/components/golden-text'));
+// const OtherComponent = React.lazy(() => import('../../../micro-app/src/components/micro-app'));
+
+// export const LazyPage = (props: ILazyPageProps) => {
+//   let { params, path, url } = useRouteMatch();
+//   const theUrl = `/micro-app/${params[0]}`;
+//   console.log('....theUrl', theUrl);
+
+//   return (
+//     <div>
+//       <Suspense fallback={<div>Loading...</div>}>
+//         <OtherComponent url={theUrl} />
+//       </Suspense>
+//     </div>
+//   );
+// }
+
+
+
 // DOES NOT WORK
 // export const LazyPage = (props: ILazyPageProps) => {
 //   const [hasLoaded, setHasLoaded] = useState<boolean>(false);
@@ -71,13 +91,18 @@ export const LazyPage = (props: ILazyPageProps) => {
 
 
 
-// WORKS
+// // WORKS
 // export const LazyPage = (props: ILazyPageProps) => {
 //   const OtherComponent = loadable(() => import('../../../micro-app/src/components/golden-text'))
+//   // const OtherComponent = loadable(() => import('../../../micro-app/src/components/micro-app'))
+//   let { params, path, url } = useRouteMatch();
+//   const theUrl = `/micro-app/${params[0]}`;
+//   console.log('....theUrl', theUrl);
+  
 //   return (
 //     <div>
 //       <Suspense fallback={<div>Loading...</div>}>
-//         <OtherComponent />
+//         <OtherComponent url={theUrl} />
 //       </Suspense>
 //     </div>
 //   );

@@ -64,7 +64,6 @@ export const ContainerApp = (props: IContainerAppProps) => {
     <BrowserRouter history={customHistory}>
       <div>
         <Link to='/container/golden-layout'>Golden</Link> |
-        <Link to='/container/lazy/*'>Lazy</Link> |
         <Link to='/container/micro-app/spiral'>Spiral</Link> |
         <Link to='/container/micro-app/text'>Text</Link> |
         <Link to='/container/micro-app/stock-grid'>StockGrid</Link> |
