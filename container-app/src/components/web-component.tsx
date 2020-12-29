@@ -19,6 +19,7 @@ export const WebComponent = (props: IWebComponentProps) => {
 }
 
 const init = async (refCurrent, url: string) => {
+  console.log('....url: ', url);
   // Fetch HTML
   var res = await fetch(url);
   var text = await res.text();
@@ -40,4 +41,8 @@ const init = async (refCurrent, url: string) => {
     oldScript.remove();
     parent.appendChild(newScript);
   });
+
+  setTimeout(() => {
+    window.bootstrap2(context, url);
+  }, 500)
 }

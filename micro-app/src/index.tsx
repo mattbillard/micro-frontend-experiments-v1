@@ -10,14 +10,14 @@ declare const window: any;
 
 
 // TODO: better not to use global function
-window.bootstrap2 = (context = document.body) => {
-  const elem = context.querySelector('#micro-app');
-  ReactDOM.render(<MicroApp />, elem);
+window.bootstrap2 = (context = document.body, url = '') => {
+  const elem = context.querySelector('.micro-app');
+  ReactDOM.render(<MicroApp url={url} />, elem);
 }
 
 
-[...document.querySelectorAll('.micro-app')]
-  .map(elem => !elem.children.length && ReactDOM.render(<MicroApp />, elem))
+// [...document.querySelectorAll('.micro-app')]
+//   .map(elem => !elem.children.length && ReactDOM.render(<MicroApp />, elem))
 
 
 // const currentScript = document.currentScript;
