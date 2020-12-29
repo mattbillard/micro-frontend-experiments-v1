@@ -37,12 +37,16 @@ const init = async (refCurrent, url: string) => {
     Object.values({...oldScript.attributes}).map((attr) => {
       newScript.setAttribute(attr.name, attr.value);
     })
+
+    newScript.onload = () => window.MicroApp.init(context, url);
+
+
     const parent = oldScript.parentNode;
     oldScript.remove();
     parent.appendChild(newScript);
   });
 
-  setTimeout(() => {
-    window.bootstrap2(context, url);
-  }, 500)
+  // setTimeout(() => {
+  //   window.bootstrap2(context, url);
+  // }, 500)
 }

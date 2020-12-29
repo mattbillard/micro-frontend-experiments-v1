@@ -9,10 +9,18 @@ declare const window: any;
 // ReactDOM.render(<MicroApp />, elem);
 
 
+// // TODO: better not to use global function
+// window.bootstrap2 = (context = document.body, url = '') => {
+//   const elem = context.querySelector('.micro-app');
+//   ReactDOM.render(<MicroApp url={url} />, elem);
+// }
+
 // TODO: better not to use global function
-window.bootstrap2 = (context = document.body, url = '') => {
-  const elem = context.querySelector('.micro-app');
-  ReactDOM.render(<MicroApp url={url} />, elem);
+window.MicroApp = {
+  init: (context = document.body, url = '') => {
+    const elem = context.querySelector('.micro-app');
+    ReactDOM.render(<MicroApp url={url} />, elem);
+  }
 }
 
 
