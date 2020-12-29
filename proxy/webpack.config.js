@@ -37,6 +37,13 @@ module.exports = (env = {}) => {
           changeOrigin: true,
           cookieDomainRewrite: 'localhost',
         },
+        '/webpack-app': {
+          target: 'http://localhost:8084/',
+          secure: false,
+          ws: true,
+          changeOrigin: true,
+          cookieDomainRewrite: 'localhost',
+        },
       }
     },
   };
