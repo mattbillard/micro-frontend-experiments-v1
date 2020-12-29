@@ -12,7 +12,8 @@ const config = {
   ],
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js'
+    filename: 'bundle.js',
+    publicPath: '/webpack-app/'
   },
   module: {
     rules: [
@@ -78,7 +79,9 @@ const config = {
     }
   },
   devServer: {
-    contentBase: './dist'
+    port: 8084,
+    contentBase: './dist',
+    publicPath: '/webpack-app/'
   },
   plugins: [
     new CopyPlugin({
