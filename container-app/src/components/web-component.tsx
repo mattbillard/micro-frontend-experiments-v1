@@ -8,25 +8,32 @@ interface IWebComponentProps {
 export const WebComponent = (props: IWebComponentProps) => {
   const { url } = props;
   const ref = useRef(null);
+  const isShadow = localStorage.isShadow || 'false';
+  const className = isShadow === 'true' ? 'shadow-component' : 'web-component';
 
   useEffect(() => {
     init(ref.current, url);
   }, []);
 
   return (
-    <div ref={ref} className='web-component'></div>
+    <div ref={ref} className={className}></div>
   )
 }
 
 const init = async (refCurrent, url: string) => {
-  console.log('....url: ', url);
+  const isShadow = localStorage.isShadow || 'false';
+  
   // Fetch HTML
   var res = await fetch(url);
   var text = await res.text();
 
   // Create shadow DOM to encapsulate CSS. Append new HTML
-  // const shadowRoot = refCurrent!.attachShadow({ mode: 'open' });
-  const context = (typeof shadowRoot !== 'undefined') ? shadowRoot : refCurrent;
+  let shadowRoot;
+  if (isShadow === 'true') {
+    shadowRoot = refCurrent!.attachShadow({ mode: 'open' });
+  }
+  // const context = (typeof shadowRoot !== 'undefined') ? shadowRoot : refCurrent;
+  const context = shadowRoot ? shadowRoot : refCurrent;
   context.innerHTML = text;
 
   // Recreate script tags or browser will ignore them

@@ -52,19 +52,24 @@ interface IContainerAppProps {
 
 export const ContainerApp = (props: IContainerAppProps) => {
   const mode = localStorage.mode || 'IFRAME_MODE';
+  const isShadow = localStorage.isShadow || 'false';
 
   const toggleMode = () => {
     const newMode = mode === 'IFRAME_MODE' ? 'WC_MODE' : 'IFRAME_MODE'
     localStorage.mode = newMode;
   }
+  const toggleShadow = () => {
+    localStorage.isShadow = isShadow === 'true' ? 'false' : 'true';
+  }
 
   return (
     <BrowserRouter history={customHistory}>
       <div>
-        {/* <a href="#" style={{float:'right'}} onClick={() => setIsIframeMode(!isIframeMode)}>{isIframeMode ? 'Iframe' : 'WebComponent'}</a> */}
-        <a href="" style={{float:'right'}} onClick={toggleMode}>
-          {mode}
-        </a>
+        <div style={{float:'right'}}>
+          <a href="" onClick={toggleMode}>{mode}</a> | 
+          <a href="" onClick={toggleShadow}>{String(isShadow)}</a>
+        </div>
+
         <Link to='/container/golden-layout'>Golden</Link> |
         <Link to='/container/page/micro-app/spiral'>Spiral</Link> |
         <Link to='/container/page/micro-app/text'>Text</Link> |
