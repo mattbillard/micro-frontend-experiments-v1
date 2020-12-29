@@ -16,11 +16,12 @@ interface IPageComponentProps {
 
 export const PageComponent = (props: IPageComponentProps) => {
   let { params, path, url } = useRouteMatch();
+  const mode = localStorage.mode || 'IFRAME_MODE';
 
   return (
     <div style={{width:'100vw',height:'100vh',position:'relative'}}>
-      <IframeComponent url={`/${params[0]}`} />
-      {/* <WebComponent url={`/${params[0]}`} /> */}
+      {mode === 'IFRAME_MODE' && <IframeComponent url={`/${params[0]}`} />}
+      {mode === 'WC_MODE' && <WebComponent url={`/${params[0]}`} />}
     </div>
   )
 }

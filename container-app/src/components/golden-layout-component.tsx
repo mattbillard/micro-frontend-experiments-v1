@@ -145,12 +145,16 @@ const init = function () {
 
 
 
-  // myLayout.registerComponent('MicroFrontEndComponent', IframeComponent2);
-  // myLayout.registerComponent('MicroFrontEndComponent', WebComponent2);
-
+  const mode = localStorage.mode || 'IFRAME_MODE';  
   class MicroFrontEndComponent extends React.Component {
-    // render() { return (<IframeComponent {...this.props} />) }
-    render() { return (<div style={{width:'100%',height:'100%',overflow:'auto',}}><WebComponent {...this.props} /></div>) }
+    render() { 
+      return (
+        <>
+          {mode === 'IFRAME_MODE' && <IframeComponent {...this.props} />}
+          {mode === 'WC_MODE' && <WebComponent {...this.props} />}
+        </>
+      );
+    }
   };
   myLayout.registerComponent('MicroFrontEndComponent', MicroFrontEndComponent);
 

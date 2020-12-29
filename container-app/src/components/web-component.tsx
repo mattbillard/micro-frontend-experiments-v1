@@ -14,7 +14,7 @@ export const WebComponent = (props: IWebComponentProps) => {
   }, []);
 
   return (
-    <div ref={ref}></div>
+    <div ref={ref} className='web-component'></div>
   )
 }
 

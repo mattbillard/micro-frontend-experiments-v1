@@ -51,16 +51,27 @@ interface IContainerAppProps {
 
 
 export const ContainerApp = (props: IContainerAppProps) => {
+  const mode = localStorage.mode || 'IFRAME_MODE';
+
+  const toggleMode = () => {
+    const newMode = mode === 'IFRAME_MODE' ? 'WC_MODE' : 'IFRAME_MODE'
+    localStorage.mode = newMode;
+  }
+
   return (
     <BrowserRouter history={customHistory}>
       <div>
+        {/* <a href="#" style={{float:'right'}} onClick={() => setIsIframeMode(!isIframeMode)}>{isIframeMode ? 'Iframe' : 'WebComponent'}</a> */}
+        <a href="" style={{float:'right'}} onClick={toggleMode}>
+          {mode}
+        </a>
         <Link to='/container/golden-layout'>Golden</Link> |
-        <Link to='/container/micro-app/spiral'>Spiral</Link> |
-        <Link to='/container/micro-app/text'>Text</Link> |
-        <Link to='/container/micro-app/stock-grid'>StockGrid</Link> |
-        <Link to='/container/micro-app/column-chart'>ColumnChart</Link> |
-        <Link to='/container/micro-app/pie-chart'>PieChart</Link> |
-        <Link to='/container/micro-app/stock-chart'>StockChart</Link> |
+        <Link to='/container/page/micro-app/spiral'>Spiral</Link> |
+        <Link to='/container/page/micro-app/text'>Text</Link> |
+        <Link to='/container/page/micro-app/stock-grid'>StockGrid</Link> |
+        <Link to='/container/page/micro-app/column-chart'>ColumnChart</Link> |
+        <Link to='/container/page/micro-app/pie-chart'>PieChart</Link> |
+        <Link to='/container/page/micro-app/stock-chart'>StockChart</Link> |
       </div>
 
       {/* EXERPIMENTS WITH LAZY LOADING. DOESN'T WORK WELL B/C MICRO-APP NEEDS TO SET REACT+REACT-DOM AS EXTERNAL */}
@@ -76,7 +87,7 @@ export const ContainerApp = (props: IContainerAppProps) => {
       <Switch>
         <Route path="/container/golden-layout" component={GoldenLayoutComponent} />
         <Route path="/container/lazy/*" component={LazyPage} />
-        <Route path="/container/*" component={PageComponent} />
+        <Route path="/container/page/*" component={PageComponent} />
         <Redirect from="/*" to="/container/golden-layout" />
       </Switch>
     </BrowserRouter>
