@@ -50,15 +50,6 @@ interface IContainerAppProps {
 // }
 
 
-// export const ContainerApp = (props: IContainerAppProps) => {
-//   return (
-//     <div className="container">
-//       <GoldenLayoutComponent />
-//     </div>
-//   )
-// }
-
-
 export const ContainerApp = (props: IContainerAppProps) => {
   return (
     <BrowserRouter history={customHistory}>
@@ -71,19 +62,20 @@ export const ContainerApp = (props: IContainerAppProps) => {
         <Link to='/container/micro-app/pie-chart'>PieChart</Link> |
         <Link to='/container/micro-app/stock-chart'>StockChart</Link> |
       </div>
-      <div>
+
+      {/* EXERPIMENTS WITH LAZY LOADING. DOESN'T WORK WELL B/C MICRO-APP NEEDS TO SET REACT+REACT-DOM AS EXTERNAL */}
+      {/* <div>
         <Link to='/container/lazy/golden-spiral'>Spiral</Link> |
         <Link to='/container/lazy/golden-text'>Text</Link> |
         <Link to='/container/lazy/stock-grid'>StockGrid</Link> |
         <Link to='/container/lazy/column-chart'>ColumnChart</Link> |
         <Link to='/container/lazy/pie-chart'>PieChart</Link> |
         <Link to='/container/lazy/stock-chart'>StockChart</Link> |
-      </div>
-      {/* <BrowserRouter> */}
+      </div> */}
+
       <Switch>
         <Route path="/container/golden-layout" component={GoldenLayoutComponent} />
         <Route path="/container/lazy/*" component={LazyPage} />
-        {/* <Route path="/container/:topicId" component={PageComponent} /> */}
         <Route path="/container/*" component={PageComponent} />
         <Redirect from="/*" to="/container/golden-layout" />
       </Switch>
