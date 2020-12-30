@@ -80,14 +80,14 @@ export const ContainerApp = (props: IContainerAppProps) => {
       </div>
 
       {/* EXERPIMENTS WITH LAZY LOADING. DOESN'T WORK WELL B/C MICRO-APP NEEDS TO SET REACT+REACT-DOM AS EXTERNAL */}
-      {/* <div>
+      <div>
         <Link to='/container/lazy/golden-spiral'>Spiral</Link> |
         <Link to='/container/lazy/golden-text'>Text</Link> |
         <Link to='/container/lazy/stock-grid'>StockGrid</Link> |
         <Link to='/container/lazy/column-chart'>ColumnChart</Link> |
         <Link to='/container/lazy/pie-chart'>PieChart</Link> |
         <Link to='/container/lazy/stock-chart'>StockChart</Link> |
-      </div> */}
+      </div>
 
       <Switch>
         <Route path="/container/golden-layout" component={GoldenLayoutComponent} />

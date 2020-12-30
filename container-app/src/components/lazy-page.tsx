@@ -15,9 +15,15 @@ interface ILazyPageProps {
 
 // WORKS
 // TODO: try loading JS from a URL. Will need to adjust parcel exports
-const OtherComponent = React.lazy(() => import('../../../micro-app/src/components/golden-text'));
+// import { TextTester as OtherComponent } from 'micro-app/src/components/text-tester';
+// import OtherComponent from '../../node_modules/micro-app';
 
 export const LazyPage = (props: ILazyPageProps) => {
+  // const OtherComponent = React.lazy(() => import('../../../micro-app/src/components/golden-text'));
+  // const OtherComponent = React.lazy(() => import('./text-tester'));
+  // const OtherComponent = React.lazy(() => import('micro-app/src/components/text-tester'));
+  const OtherComponent = React.lazy(() => import('./micro-app-components/text-tester'));
+
   return (
     <div>
       <Suspense fallback={<div>Loading...</div>}>

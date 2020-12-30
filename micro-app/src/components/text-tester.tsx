@@ -48,3 +48,5 @@ export const TextTester = () => {
     </>
   );
 }
+
+export default TextTester;
