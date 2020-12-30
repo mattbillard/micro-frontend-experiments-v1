@@ -11,7 +11,7 @@
     "_start:proxy": "cd proxy && npm start",
     "x_start:webpack-app": "cd webpack-app && npm start",
     "start": "run-p _start:*",
-    "symlink": "cd ./container-app/src/components && ln -s ../../../micro-app/src/components/ micro-app-components"
+    "symlink": "cd ./container-app/src/components && ln -s ../../../micro-app/src micro-app-src"
   },
   "keywords": [],
   "author": "",

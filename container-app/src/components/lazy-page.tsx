@@ -21,8 +21,8 @@ interface ILazyPageProps {
 //   // const OtherComponent = React.lazy(() => import('../../../micro-app/src/components/golden-text'));
 //   // const OtherComponent = React.lazy(() => import('./text-tester'));
 //   // const OtherComponent = React.lazy(() => import('micro-app/src/components/text-tester'));
-//   // const OtherComponent = React.lazy(() => import('./micro-app-components/text-tester'));
-//   const OtherComponent = loadable(() => import('./micro-app-components/text-tester'));
+//   // const OtherComponent = React.lazy(() => import('./micro-app-src/components/text-tester'));
+//   const OtherComponent = loadable(() => import('./micro-app-src/components/text-tester'));
 
 //   return (
 //     <div>
@@ -101,13 +101,13 @@ interface ILazyPageProps {
 export const LazyPage = (props: ILazyPageProps) => {
   // const OtherComponent = loadable(() => import('../../../micro-app/src/components/golden-text'))
   // const OtherComponent = loadable(() => import('../../../micro-app/src/components/micro-app'))
-  const OtherComponent = loadable(() => import('./micro-app-components/micro-app'));
+  const OtherComponent = loadable(() => import('./micro-app-src/components/micro-app'));
   let { params, path, url } = useRouteMatch();
   const theUrl = `/micro-app/${params[0]}`;
   console.log('....theUrl', theUrl);
   
   return (
-    <div>
+    <div className="lazy-import">
       <Suspense fallback={<div>Loading...</div>}>
         <OtherComponent url={theUrl} />
       </Suspense>
@@ -121,7 +121,7 @@ export const LazyPage = (props: ILazyPageProps) => {
 // export const LazyPage = (props: ILazyPageProps) => {
 //   // const OtherComponent = loadable(() => import('../../../micro-app/src/components/micro-app'))
 //   let { params, path, url } = useRouteMatch();
-//   const filePath = `./micro-app-components/${params[0]}`;
+//   const filePath = `./micro-app-src/components/${params[0]}`;
 //   console.log('....theUrl', filePath);
 
 //   const OtherComponent = loadable(() => import(filePath))

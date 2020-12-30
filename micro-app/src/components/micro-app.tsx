@@ -15,8 +15,8 @@ import {
   TextTester,
 } from './';
 
-// import "../styles/styles.less";
-// import "../styles/golden-micro-app-styles.css";
+import "../styles/styles.less";
+import "../styles/golden-micro-app-styles.css";
 
 const TheSwitch = (props) => {
   const { url } = props;
