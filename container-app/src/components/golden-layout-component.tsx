@@ -11,8 +11,6 @@ import $ from 'jquery';
 window.$ = $;
 window.jQuery = $;
 
-// import * as Highcharts from 'highcharts';
-// import Slick from 'slickgrid-es6';
 
 const GoldenLayout = require('golden-layout');
 import 'golden-layout/src/css/goldenlayout-base.css';
@@ -22,10 +20,8 @@ import '../styles/golden-layout-component.css';
 
 import { 
   IframeComponent, 
-  // IframeComponent2, 
   LazyImportComponent,
   WebComponent, 
-  // WebComponent2 
 } from './';
 
 const init = function () {
@@ -56,7 +52,7 @@ const init = function () {
                     // componentName: 'fibonacci-spiral',
                     type: 'react-component',
                     component: 'MicroFrontEndComponent',
-                    props: { url: '/micro-app/spiral' },
+                    props: { url: '/micro-app/golden-spiral' },
                     width: 30,
                   },
                   {
@@ -65,7 +61,7 @@ const init = function () {
                     // componentName: 'gl-text',
                     type: 'react-component',
                     component: 'MicroFrontEndComponent',
-                    props: { url: '/micro-app/text' },
+                    props: { url: '/micro-app/golden-text' },
                   },
                   // {
                   //   title: 'React Component',
