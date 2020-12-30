@@ -15,17 +15,18 @@ import {
   TextTester,
 } from './';
 
-import "../styles/styles.less";
-import "../styles/golden-micro-app-styles.css";
+// import "../styles/styles.less";
+// import "../styles/golden-micro-app-styles.css";
 
 const TheSwitch = (props) => {
   const { url } = props;
+  // console.log('....url', url);
 
   return (
     <div>
       <div>
-        <Link to='/micro-app/spiral'>Spiral</Link> |
-        <Link to='/micro-app/text'>Text</Link> |
+        <Link to='/micro-app/golden-spiral'>Spiral</Link> |
+        <Link to='/micro-app/golden-text'>Text</Link> |
         <Link to='/micro-app/stock-grid'>StockGrid</Link> |
         <Link to='/micro-app/column-chart'>ColumnChart</Link> |
         <Link to='/micro-app/pie-chart'>PieChart</Link> |
@@ -34,10 +35,10 @@ const TheSwitch = (props) => {
       <Switch>
         <Route path="/micro-app/column-chart" component={ColumnChart} />
         <Route path="/micro-app/pie-chart" component={PieChart} />
-        <Route path="/micro-app/spiral" component={GoldenSpiral} />
+        <Route path="/micro-app/golden-spiral" component={GoldenSpiral} />
         <Route path="/micro-app/stock-chart" component={StockChart} />
         <Route path="/micro-app/stock-grid" component={StockGrid} />
-        <Route path="/micro-app/text" component={GoldenText} />
+        <Route path="/micro-app/golden-text" component={GoldenText} />
         <Route path="/micro-app" component={TextTester} />
         {/* <Route path="/*" component={TextTester} /> */}
         {/* <Redirect from="/*" to="/micro-app" /> */}

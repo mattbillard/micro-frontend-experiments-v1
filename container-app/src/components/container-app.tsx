@@ -71,8 +71,8 @@ export const ContainerApp = (props: IContainerAppProps) => {
         </div>
 
         <Link to='/container/golden-layout'>Golden</Link> |
-        <Link to='/container/page/micro-app/spiral'>Spiral</Link> |
-        <Link to='/container/page/micro-app/text'>Text</Link> |
+        <Link to='/container/page/micro-app/golden-spiral'>Spiral</Link> |
+        <Link to='/container/page/micro-app/golden-text'>Text</Link> |
         <Link to='/container/page/micro-app/stock-grid'>StockGrid</Link> |
         <Link to='/container/page/micro-app/column-chart'>ColumnChart</Link> |
         <Link to='/container/page/micro-app/pie-chart'>PieChart</Link> |
