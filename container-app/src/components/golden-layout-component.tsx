@@ -20,10 +20,13 @@ import 'golden-layout/src/css/goldenlayout-dark-theme.css';
 
 import '../styles/golden-layout-component.css';
 
-import { IframeComponent } from './iframe-component';
-import { IframeComponent2 } from './iframe-component2';
-import { WebComponent } from './web-component';
-import { WebComponent2 } from './web-component2';
+import { 
+  IframeComponent, 
+  // IframeComponent2, 
+  LazyImportComponent,
+  WebComponent, 
+  // WebComponent2 
+} from './';
 
 const init = function () {
 
@@ -152,6 +155,7 @@ const init = function () {
         <>
           {mode === 'IFRAME_MODE' && <IframeComponent {...this.props} />}
           {mode === 'WC_MODE' && <WebComponent {...this.props} />}
+          {mode === 'IMP_MODE' && <LazyImportComponent {...this.props} />}
         </>
       );
     }

@@ -55,7 +55,10 @@ export const ContainerApp = (props: IContainerAppProps) => {
   const isShadow = localStorage.isShadow || 'false';
 
   const toggleMode = () => {
-    const newMode = mode === 'IFRAME_MODE' ? 'WC_MODE' : 'IFRAME_MODE'
+    const newMode = 
+      mode === 'IFRAME_MODE' ? 'WC_MODE' : 
+      mode === 'WC_MODE' ? 'IMP_MODE' : 
+      'IFRAME_MODE'
     localStorage.mode = newMode;
   }
   const toggleShadow = () => {
@@ -67,7 +70,7 @@ export const ContainerApp = (props: IContainerAppProps) => {
       <div>
         <div style={{float:'right'}}>
           <a href="" onClick={toggleMode}>{mode}</a> | 
-          <a href="" onClick={toggleShadow}>{String(isShadow)}</a>
+          {mode === 'WC_MODE' && <a href="" onClick={toggleShadow}>{String(isShadow)}</a>}
         </div>
 
         <Link to='/container/golden-layout'>Golden</Link> |
@@ -80,14 +83,14 @@ export const ContainerApp = (props: IContainerAppProps) => {
       </div>
 
       {/* EXERPIMENTS WITH LAZY LOADING. DOESN'T WORK WELL B/C MICRO-APP NEEDS TO SET REACT+REACT-DOM AS EXTERNAL */}
-      <div>
+      {/* <div>
         <Link to='/container/lazy/golden-spiral'>Spiral</Link> |
         <Link to='/container/lazy/golden-text'>Text</Link> |
         <Link to='/container/lazy/stock-grid'>StockGrid</Link> |
         <Link to='/container/lazy/column-chart'>ColumnChart</Link> |
         <Link to='/container/lazy/pie-chart'>PieChart</Link> |
         <Link to='/container/lazy/stock-chart'>StockChart</Link> |
-      </div>
+      </div> */}
 
       <Switch>
         <Route path="/container/golden-layout" component={GoldenLayoutComponent} />

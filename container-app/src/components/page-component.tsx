@@ -3,11 +3,9 @@ import { useState } from 'react';
 import { BrowserRouter, Link, Redirect, Route, Switch, useParams, useRouteMatch } from 'react-router-dom';
 import { createBrowserHistory } from "history";
 
-const customHistory = createBrowserHistory();
-
 import { 
-  GoldenLayoutComponent,
   IframeComponent,
+  LazyImportComponent,
   WebComponent 
 } from './';
 
@@ -22,6 +20,7 @@ export const PageComponent = (props: IPageComponentProps) => {
     <div style={{width:'100vw',height:'100vh',position:'relative'}}>
       {mode === 'IFRAME_MODE' && <IframeComponent url={`/${params[0]}`} />}
       {mode === 'WC_MODE' && <WebComponent url={`/${params[0]}`} />}
+      {mode === 'IMP_MODE' && <LazyImportComponent url={`/${params[0]}`} />}
     </div>
   )
 }
