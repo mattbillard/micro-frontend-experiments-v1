@@ -4,14 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "_start:container-app": "cd container-app && npm start",
-    "x_start:create-react-app": "cd create-react-app && npm start",
-    "_start:micro-app": "cd micro-app && npm start",
+    "_start:container-app": "cd packages/container-app && npm start",
+    "x_start:create-react-app": "cd packages/create-react-app && npm start",
+    "_start:micro-app": "cd packages/micro-app && npm start",
     "_start:open": "sleep 3 && open https://localhost:8080/container/",
-    "_start:proxy": "cd proxy && npm start",
-    "x_start:webpack-app": "cd webpack-app && npm start",
+    "_start:proxy": "cd packages/proxy && npm start",
+    "x_start:webpack-app": "cd packages/webpack-app && npm start",
     "start": "run-p _start:*",
-    "symlink": "cd ./container-app/src/components && ln -s ../../../micro-app/src micro-app-src"
+    "symlink": "cd packages/container-app/src/components && ln -sf ../../../micro-app/src micro-app-src"
   },
   "keywords": [],
   "author": "",
