@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as ReactDOM from "react-dom";
 
-import { MicroApp } from './components/micro-app';
+import { MicroApp } from './micro-components/components/micro-app';
 
 declare const window: any;
 
