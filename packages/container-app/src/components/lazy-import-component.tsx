@@ -14,8 +14,8 @@ interface ILazyImportComponentProps {
 }
 
 export const LazyImportComponent = (props: ILazyImportComponentProps) => {
-  const OtherComponent = React.lazy(() => import('./micro-app-src/components/micro-app'));
-  // const OtherComponent = loadable(() => import('./micro-app-src/components/micro-app'));
+  const OtherComponent = React.lazy(() => import('./micro-components-src/components/micro-app'));
+  // const OtherComponent = loadable(() => import('./micro-components-src/components/micro-app'));
   let { url } = props
   console.log('....url', url);
   

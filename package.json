@@ -11,8 +11,8 @@
     "_start:proxy": "cd packages/proxy && npm start",
     "x_start:webpack-app": "cd packages/webpack-app && npm start",
     "start": "run-p _start:*",
-    "_symlink:1": "cd packages/container-app/src/components && ln -sf ../../../micro-app/src micro-app-src",
-    "_symlink:2": "cd packages/micro-app/src && ln -sf ../../micro-components/src micro-components",
+    "_symlink:1": "cd packages/container-app/src/components && ln -s ../../../micro-components/src micro-components-src",
+    "_symlink:2": "cd packages/micro-app/src && ln -s ../../micro-components/src micro-components",
     "symlink": "run-p _symlink:*"
   },
   "keywords": [],
