@@ -2,6 +2,8 @@ import * as React from 'react';
 import * as ReactDOM from "react-dom";
 
 import { MicroApp } from './micro-components/components/micro-app';
+// import { MicroApp } from 'micro-components';
+// import { TextTester as MicroApp } from 'micro-components';
 
 declare const window: any;
 
