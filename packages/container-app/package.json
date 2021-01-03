@@ -12,7 +12,6 @@
     "build": "parcel build src/index.html"
   },
   "dependencies": {
-    "@loadable/component": "^5.14.1",
     "@types/node": "^14.14.16",
     "golden-layout": "^1.5.9",
     "highcharts": "^8.2.2",

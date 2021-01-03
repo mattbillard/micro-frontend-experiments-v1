@@ -32,7 +32,6 @@ const init = async (refCurrent, url: string) => {
   if (isShadow === 'true') {
     shadowRoot = refCurrent!.attachShadow({ mode: 'open' });
   }
-  // const context = (typeof shadowRoot !== 'undefined') ? shadowRoot : refCurrent;
   const context = shadowRoot ? shadowRoot : refCurrent;
   context.innerHTML = text;
 
@@ -45,15 +44,15 @@ const init = async (refCurrent, url: string) => {
       newScript.setAttribute(attr.name, attr.value);
     })
 
+    /**
+     * TODO: 
+     * - Won't work for multiple scripts. Needs to be promise.all
+     * - Also need to register/look up which micro app to initialize 
+     */
     newScript.onload = () => window.MicroApp.init(context, url);
-
 
     const parent = oldScript.parentNode;
     oldScript.remove();
     parent.appendChild(newScript);
   });
-
-  // setTimeout(() => {
-  //   window.bootstrap2(context, url);
-  // }, 500)
 }

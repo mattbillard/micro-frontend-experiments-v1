@@ -13,7 +13,7 @@ import {
   PieChart,
   StockChart,
   TextTester,
-} from './';
+} from '../components';
 
 import "../styles/styles.less";
 import "../styles/golden-micro-app-styles.css";

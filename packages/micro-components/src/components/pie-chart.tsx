@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useState } from 'react';
 
-import { ChartComponent } from './';
+import { ChartComponent } from '../components';
 
 export const PieChart = () => {
   const config = {

@@ -1,26 +1,17 @@
 import * as React from 'react';
-import { useState } from 'react';
-import { BrowserRouter, Link, Redirect, Route, Switch, useParams, useRouteMatch } from 'react-router-dom';
-import { createBrowserHistory } from "history";
-
-import { 
-  IframeComponent,
-  LazyImportComponent,
-  WebComponent 
-} from './';
+import { useRouteMatch } from 'react-router-dom';
+import { MicroFrontEndComponent } from '../components';
 
 interface IPageComponentProps {
 }
 
 export const PageComponent = (props: IPageComponentProps) => {
-  let { params, path, url } = useRouteMatch();
-  const mode = localStorage.mode || 'IFRAME_MODE';
+  let { params } = useRouteMatch();
+  const url = `/${params[0]}`;
 
   return (
     <div style={{width:'100vw',height:'100vh',position:'relative'}}>
-      {mode === 'IFRAME_MODE' && <IframeComponent url={`/${params[0]}`} />}
-      {mode === 'WC_MODE' && <WebComponent url={`/${params[0]}`} />}
-      {mode === 'IMP_MODE' && <LazyImportComponent url={`/${params[0]}`} />}
+      <MicroFrontEndComponent url={url} />
     </div>
   )
 }
