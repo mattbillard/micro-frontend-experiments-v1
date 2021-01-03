@@ -48,12 +48,12 @@ const TheSwitch = (props) => {
   )
 }
 
-export const MicroApp = (props) => {
+export const MicroAppRouter = (props) => {
   const { url } = props;
   const isIframe = window.parent !== window;
 
   return (
-    // <h1>MicroApp</h1>
+    // <h1>MicroAppRouter</h1>
     // <BrowserRouter><TheSwitch url={url} /></BrowserRouter>
     // <BrowserRouter history={customHistory}><TheSwitch /></BrowserRouter>
     // <MemoryRouter><TheSwitch url={url}/></MemoryRouter>
@@ -66,4 +66,4 @@ export const MicroApp = (props) => {
   );
 }
 
-export default MicroApp;
+export default MicroAppRouter;

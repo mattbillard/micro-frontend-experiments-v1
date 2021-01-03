@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as ReactDOM from "react-dom";
 
-import { MicroApp } from './micro-components/components/micro-app';
+import { MicroAppRouter } from './micro-components';
 // import { MicroApp } from 'micro-components';
 // import { TextTester as MicroApp } from 'micro-components';
 
@@ -21,7 +21,7 @@ declare const window: any;
 window.MicroApp = {
   init: (context = document.body, url = '') => {
     const elem = context.querySelector('.micro-app');
-    ReactDOM.render(<MicroApp url={url} />, elem);
+    ReactDOM.render(<MicroAppRouter url={url} />, elem);
   }
 }
 
