@@ -4,16 +4,18 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "_clean:container-app": "cd packages/container-app && npm run clean",
+    "_clean:micro-app": "cd packages/micro-app && npm run clean",
+    "_clean:micro-components": "cd packages/micro-components && npm run clean",
+    "clean": "run-p _clean:*",
     "_start:container-app": "cd packages/container-app && npm start",
-    "x_start:create-react-app": "cd packages/create-react-app && npm start",
     "_start:micro-app": "cd packages/micro-app && npm start",
     "_start:open": "sleep 3 && open https://localhost:8080/container/",
     "_start:proxy": "cd packages/proxy && npm start",
-    "x_start:webpack-app": "cd packages/webpack-app && npm start",
     "start": "run-p _start:*",
-    "_symlink:1": "cd packages/container-app/src/components && ln -s ../../../micro-components/src micro-components-src",
-    "_symlink:2": "cd packages/micro-app/src && ln -s ../../micro-components/src micro-components",
-    "symlink": "run-p _symlink:*"
+    "_symlink:container-app": "cd packages/container-app/src/components && ln -sf ../../../micro-components/src micro-components-src",
+    "_symlink:micro-app": "cd packages/micro-app/src && ln -sf ../../micro-components/src micro-components",
+    "symlinks": "run-p _symlink:*"
   },
   "keywords": [],
   "author": "",
