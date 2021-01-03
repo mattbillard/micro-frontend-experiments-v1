@@ -1,8 +1,12 @@
+* {
+  background: #222;
+  color: #ccc;
+}
+
 body {
   margin: 0;
   padding: 0;
 }
-
 
 .slick-header.ui-state-default, .slick-headerrow.ui-state-default {
   width: 100%;
