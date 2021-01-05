@@ -11,21 +11,24 @@ import {
   TextTester,
 } from '../components';
 
-import "../styles/golden-micro-app-styles.css";
+import "../styles/styles.css";
 
 const TheSwitch = (props) => {
   const { url } = props;
+  const showHints = localStorage.showHints === 'true' || false;
 
   return (
     <div>
-      <div>
-        <Link to='/micro-app/golden-spiral'>Spiral</Link> |
-        <Link to='/micro-app/golden-text'>Text</Link> |
-        <Link to='/micro-app/stock-grid'>StockGrid</Link> |
-        <Link to='/micro-app/column-chart'>ColumnChart</Link> |
-        <Link to='/micro-app/pie-chart'>PieChart</Link> |
-        <Link to='/micro-app/stock-chart'>StockChart</Link> |
-      </div>
+      {showHints && 
+        <div>
+          <Link to='/micro-app/golden-spiral'>Spiral</Link> |
+          <Link to='/micro-app/golden-text'>Text</Link> |
+          <Link to='/micro-app/stock-grid'>StockGrid</Link> |
+          <Link to='/micro-app/column-chart'>ColumnChart</Link> |
+          <Link to='/micro-app/pie-chart'>PieChart</Link> |
+          <Link to='/micro-app/stock-chart'>StockChart</Link> |
+        </div>
+      }
       <Switch>
         <Route path="/micro-app/column-chart" component={ColumnChart} />
         <Route path="/micro-app/pie-chart" component={PieChart} />

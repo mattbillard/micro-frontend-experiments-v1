@@ -10,6 +10,10 @@ body {
   padding: 0;
 }
 
+a {
+  color: #aaa;
+}
+
 .row {
   display: flex;
 
@@ -26,16 +30,18 @@ iframe {
   width: 100%;
 }
 
-.web-component {
-  border: solid 1px red;
-}
-
-.shadow-component {
-  border: solid 1px purple;
-}
-
-.lazy-import {
-  border: solid 1px green;
+.show-hints {
+  .web-component {
+    border: solid 1px red;
+  }
+  
+  .shadow-component {
+    border: solid 1px purple;
+  }
+  
+  .lazy-import {
+    border: solid 1px green;
+  }
 }
 
 h1 {
@@ -45,4 +51,13 @@ h1 {
 .golden-layout-container{
   width: 100vw;
   height: 100vh;
+}
+
+.settings-menu {
+  position: absolute;
+  background: #333;
+  color: #aaa;
+  z-index: 100;
+  padding: 10px;
+  right: 0;
 }

@@ -8,8 +8,8 @@ interface IWebComponentProps {
 export const WebComponent = (props: IWebComponentProps) => {
   const { url } = props;
   const ref = useRef(null);
-  const isShadow = localStorage.isShadow || 'false';
-  const className = isShadow === 'true' ? 'shadow-component' : 'web-component';
+  const isShadow = localStorage.isShadow === 'true' || false;
+  const className = isShadow === true ? 'shadow-component' : 'web-component';
 
   useEffect(() => {
     init(ref.current, url);
@@ -21,7 +21,7 @@ export const WebComponent = (props: IWebComponentProps) => {
 }
 
 const init = async (refCurrent, url: string) => {
-  const isShadow = localStorage.isShadow || 'false';
+  const isShadow = localStorage.isShadow === 'true' || false;
   
   // Fetch HTML
   var res = await fetch(url);
@@ -29,7 +29,7 @@ const init = async (refCurrent, url: string) => {
 
   // Create shadow DOM to encapsulate CSS. Append new HTML
   let shadowRoot;
-  if (isShadow === 'true') {
+  if (isShadow) {
     shadowRoot = refCurrent!.attachShadow({ mode: 'open' });
   }
   const context = shadowRoot ? shadowRoot : refCurrent;
