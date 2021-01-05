@@ -10,7 +10,7 @@ export const PageComponent = (props: IPageComponentProps) => {
   const url = `/${params[0]}`;
 
   return (
-    <div style={{width:'100vw',height:'100vh',position:'relative'}}>
+    <div className="page-component">
       <MicroFrontEndComponent url={url} />
     </div>
   )

@@ -39,8 +39,7 @@ export const StockGrid = (props) => {
   }, []);
 
   return (
-    <div ref={ref} style={{width:'100vw',height:'100vh'}}></div>
-    // <div ref={ref}></div>
+    <div ref={ref} className="grid-component"></div>
   );
 }
 

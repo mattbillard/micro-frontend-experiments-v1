@@ -30,6 +30,14 @@ iframe {
   border: 0;
 }
 
+.lazy-import, 
+.shadow-component,
+.web-component {
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+}
+
 .show-hints {
   iframe { border: solid 1px blue; }
   .web-component { border: solid 1px red; }
@@ -41,9 +49,11 @@ h1 {
   color: red;
 }
 
-.golden-layout-container{
+.golden-layout-container,
+.page-component {
+  position: absolute;
   width: 100vw;
-  height: 100vh;
+  height: calc(100vh - 20px);
 }
 
 .settings-menu {
