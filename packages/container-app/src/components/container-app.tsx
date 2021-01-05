@@ -16,7 +16,7 @@ interface IContainerAppProps {
 
 export const ContainerApp = (props: IContainerAppProps) => {
   const [showSettings, setShowSettings] = useState<boolean>(localStorage.showSettings === 'true');
-  const showHints = localStorage.showHints === 'true' || false;
+  const showHints = localStorage.showHints === 'true' ? true : false;
   const className = showHints ? 'show-hints' : '';
 
   const toggleShowSettings = ()  => {

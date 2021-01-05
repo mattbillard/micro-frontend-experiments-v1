@@ -15,7 +15,7 @@ import "../styles/styles.css";
 
 const TheSwitch = (props) => {
   const { url } = props;
-  const showHints = localStorage.showHints === 'true' || false;
+  const showHints = localStorage.showHints === 'true' ? true : false;
 
   return (
     <div>

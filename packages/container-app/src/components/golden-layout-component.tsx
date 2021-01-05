@@ -122,9 +122,8 @@ const defaultConfig = {
 };
 
 const init = (ref) => {
-  // const savedState = localStorage.getItem('savedState');
-  // const config = savedState ? JSON.parse(savedState) : defaultConfig;
-  const config = defaultConfig;
+  const savedState = localStorage.getItem('savedState');
+  const config = savedState ? JSON.parse(savedState) : defaultConfig;
 
   const myLayout = new GoldenLayout(config, ref.current);
   myLayout.registerComponent('MicroFrontEndComponent', MicroFrontEndComponent);

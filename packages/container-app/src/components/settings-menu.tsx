@@ -18,8 +18,12 @@ interface ISettingsMenuProps {
 export const SettingsMenu = (props: ISettingsMenuProps) => {
   const { toggleShowSettings } = props;
   const mode = localStorage.mode || 'IFRAME_MODE';
-  const isShadow = localStorage.isShadow === 'true' || false;
-  const showHints = localStorage.showHints === 'true' || false;
+  const isShadow = localStorage.isShadow === 'true' ? true : false;
+  const showHints = localStorage.showHints === 'true' ? true : false;
+
+  const clearLocalStorage = () => {
+    localStorage.clear();
+  }
 
   const setMode = (newMode: string) => {
     localStorage.mode = newMode;
@@ -28,9 +32,11 @@ export const SettingsMenu = (props: ISettingsMenuProps) => {
   const toggleShadow = () => {
     localStorage.isShadow = !isShadow;
   }
+
   const toggleShowHints = () => {
     localStorage.showHints = !showHints;
   }
+
 
   return (
     <div className="settings-menu">
@@ -48,6 +54,9 @@ export const SettingsMenu = (props: ISettingsMenuProps) => {
       <div>
         Show hints: 
         <a href="" onClick={toggleShowHints}>{String(showHints)}</a>
+      </div>
+      <div>
+        <a href="" onClick={clearLocalStorage}>Clear localStorage</a>
       </div>
       <div>
         <br/>
