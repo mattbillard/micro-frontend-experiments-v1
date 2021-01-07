@@ -2,11 +2,13 @@ import * as React from 'react';
 import { useState } from 'react';
 import { BrowserRouter, Link, Redirect, Route, Switch } from 'react-router-dom';
 import { createBrowserHistory } from "history";
+import * as jsCookie from 'js-cookie';
 
 const customHistory = createBrowserHistory();
 
 import {
   GoldenLayoutComponent,
+  LoginPage,
   PageComponent,
   SettingsMenu,
 } from '../components';
@@ -18,10 +20,22 @@ export const ContainerApp = (props: IContainerAppProps) => {
   const [showSettings, setShowSettings] = useState<boolean>(localStorage.showSettings === 'true');
   const showHints = localStorage.showHints === 'true' ? true : false;
   const className = showHints ? 'show-hints' : '';
+  const username = jsCookie.get('username');
+
+  const logout = () => {
+    jsCookie.remove('username');
+    window.location.reload();
+  }
 
   const toggleShowSettings = ()  => {
     setShowSettings(!showSettings);
     localStorage.showSettings = !showSettings;
+  }
+
+  if (!username) {
+    return (
+      <LoginPage />
+    );
   }
 
   return (
@@ -29,8 +43,9 @@ export const ContainerApp = (props: IContainerAppProps) => {
       <BrowserRouter history={customHistory}>
         <div>
           <div style={{float:'right'}}>
-            <a href="#" onClick={toggleShowSettings}>Settings</a>
+            <a href="#" onClick={toggleShowSettings}>Settings</a> | 
             {showSettings && <SettingsMenu toggleShowSettings={toggleShowSettings} />}
+            <a href="#" onClick={logout}>Logout</a>
           </div>
 
           <Link to='/container/golden-layout'>Golden</Link> |

@@ -1,15 +1,4 @@
 import * as React from 'react';
-import { BrowserRouter, Link, Redirect, Route, Switch } from 'react-router-dom';
-import { createBrowserHistory } from "history";
-
-const customHistory = createBrowserHistory();
-
-import {
-  GoldenLayoutComponent,
-  IframeComponent,
-  PageComponent,
-  WebComponent,
-} from '../components';
 
 interface ISettingsMenuProps {
   toggleShowSettings: () => void;

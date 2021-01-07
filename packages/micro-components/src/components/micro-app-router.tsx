@@ -5,9 +5,9 @@ import {
   ColumnChart,
   GoldenSpiral,
   GoldenText,
-  StockGrid,
   PieChart,
   StockChart,
+  StockGrid,
   TextTester,
 } from '../components';
 
