@@ -21,3 +21,23 @@ export const ChartComponent = (props) => {
     <div ref={ref} className="chart-component"></div>
   );
 }
+
+
+
+// import * as React from 'react';
+// import { useEffect, useRef, useState } from 'react';
+// import * as Highcharts from 'highcharts';
+// import { default as HighchartsReact } from 'highcharts-react-official';
+
+// export const ChartComponent = (props) => {
+//   const { config } = props;
+
+//   return (
+//     <div className="chart-component flex-rows">
+//       <HighchartsReact
+//         highcharts={Highcharts}
+//         options={config}
+//       />
+//     </div>
+//   );
+// }
