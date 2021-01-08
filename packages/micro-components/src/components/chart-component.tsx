@@ -37,6 +37,9 @@ export const ChartComponent = (props) => {
 //       <HighchartsReact
 //         highcharts={Highcharts}
 //         options={config}
+//         containerProps={{
+//           className:"XXXX"
+//         }}
 //       />
 //     </div>
 //   );

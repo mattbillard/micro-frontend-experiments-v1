@@ -4,6 +4,7 @@ export * from './iframe-component';
 export * from './lazy-import-component';
 export * from './login-page';
 export * from './micro-frontend-components';
+export * from './navigation';
 export * from './page-component';
 export * from './settings-menu';
 export * from './web-component';
