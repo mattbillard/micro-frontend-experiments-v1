@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from 'react';
 import * as ReactDOM from "react-dom";
 import $ from 'jquery';
 import { useDispatch, useSelector } from "react-redux";
+import { debounce } from 'lodash-es';
 
 // Golden Layout needs these
 declare const window: any;
@@ -24,12 +25,17 @@ interface IGoldenLayoutComponentProps {
 export const GoldenLayoutComponent = (props: IGoldenLayoutComponentProps) => {
   const ref = useRef(null);
   const dispatch = useDispatch();
-  const [myLayout, setMyLayout] = useState();
+  const myLayoutRef = useRef(null);
 
   useEffect(() => {
+    const onResize = () => redrawDebounced(ref, myLayoutRef);
+
     setTimeout(() => {
       init(ref);
+      window.addEventListener('resize', onResize);
     })
+
+    return () => window.removeEventListener('resize', onResize);
   }, []);
 
   const init = (ref) => {
@@ -41,7 +47,8 @@ export const GoldenLayoutComponent = (props: IGoldenLayoutComponentProps) => {
 
     initAutoSave(myLayout);
     myLayout.init();
-    setMyLayout(myLayout);
+    myLayoutRef.current = myLayout;
+    window.myLayout = myLayout;
   }
 
   const initAutoSave = (myLayout) => {
@@ -57,6 +64,14 @@ export const GoldenLayoutComponent = (props: IGoldenLayoutComponentProps) => {
     <div ref={ref} className="golden-layout-container"></div>
   )
 }
+
+const redraw = (ref, myLayoutRef) => {
+  const container = ref.current;
+  const myLayout = myLayoutRef.current;
+  var { width, height } = container!.getBoundingClientRect();
+  myLayout!.updateSize(width, height);
+}
+const redrawDebounced = debounce(redraw, 250);
 
 
 const defaultConfig = {
