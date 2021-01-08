@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
-import { createBrowserHistory } from "history";
+import { Provider } from 'react-redux';
 import * as jsCookie from 'js-cookie';
 
-const customHistory = createBrowserHistory();
+import { configureStore } from '../redux';
 
 import {
   GoldenLayoutComponent,
@@ -11,6 +11,8 @@ import {
   Navigation,
   PageComponent,
 } from '../components';
+
+const store = configureStore();
 
 interface IContainerAppProps {
 }
@@ -28,14 +30,18 @@ export const ContainerApp = (props: IContainerAppProps) => {
 
   return (
     <div className={className}>
-      <BrowserRouter history={customHistory}>
-        <Navigation />
-        <Switch>
-          <Route path="/container/golden-layout" component={GoldenLayoutComponent} />
-          <Route path="/container/page/*" component={PageComponent} />
-          <Redirect from="/*" to="/container/golden-layout" />
-        </Switch>
-      </BrowserRouter>
+      <Provider store={store}>
+        <BrowserRouter>
+          <Navigation />
+          <Switch>
+            <Route path="/container/golden-layout" component={GoldenLayoutComponent} />
+            <Route path="/container/page/*" component={PageComponent} />
+            <Redirect from="/*" to="/container/golden-layout" />
+          </Switch>
+        </BrowserRouter>
+      </Provider>
     </div>
   )
 }
+
+

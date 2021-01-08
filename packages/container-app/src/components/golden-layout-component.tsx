@@ -1,11 +1,11 @@
-declare const window: any;
-
 import * as React from 'react';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import * as ReactDOM from "react-dom";
 import $ from 'jquery';
+import { useDispatch, useSelector } from "react-redux";
 
 // Golden Layout needs these
+declare const window: any;
 window.React = React;
 window.ReactDOM = ReactDOM;
 window.$ = $;
@@ -16,12 +16,15 @@ import 'golden-layout/src/css/goldenlayout-base.css';
 import 'golden-layout/src/css/goldenlayout-dark-theme.css';
 
 import { MicroFrontEndComponent } from '../components';
+import { saveGoldenLayoutConfig } from '../redux';
 
 interface IGoldenLayoutComponentProps {
 }
 
 export const GoldenLayoutComponent = (props: IGoldenLayoutComponentProps) => {
   const ref = useRef(null);
+  const dispatch = useDispatch();
+  const [myLayout, setMyLayout] = useState();
 
   useEffect(() => {
     setTimeout(() => {
@@ -29,10 +32,32 @@ export const GoldenLayoutComponent = (props: IGoldenLayoutComponentProps) => {
     })
   }, []);
 
+  const init = (ref) => {
+    const savedConfig = localStorage.getItem('goldenLayoutConfig');
+    const config = savedConfig ? JSON.parse(savedConfig) : defaultConfig;
+
+    const myLayout = new GoldenLayout(config, ref.current);
+    myLayout.registerComponent('MicroFrontEndComponent', MicroFrontEndComponent);
+
+    initAutoSave(myLayout);
+    myLayout.init();
+    setMyLayout(myLayout);
+  }
+
+  const initAutoSave = (myLayout) => {
+    myLayout.on('stateChanged', () => {
+      // const config = myLayout.toConfig();
+      // localStorage.setItem('goldenLayoutConfig', JSON.stringify(config));
+      const config = myLayout.toConfig();
+      dispatch(saveGoldenLayoutConfig(config));
+    });
+  }
+
   return (
     <div ref={ref} className="golden-layout-container"></div>
   )
 }
+
 
 const defaultConfig = {
   content: [
@@ -47,7 +72,10 @@ const defaultConfig = {
               title: 'Fnts 100',
               type: 'react-component',
               component: 'MicroFrontEndComponent',
-              props: { url: '/micro-app/stock-grid' },
+              props: {
+                // key: '/micro-app/stock-grid',
+                url: '/micro-app/stock-grid',
+              },
             },
             {
               type: 'row',
@@ -56,14 +84,20 @@ const defaultConfig = {
                   title: 'Golden',
                   type: 'react-component',
                   component: 'MicroFrontEndComponent',
-                  props: { url: '/micro-app/golden-spiral' },
+                  props: {
+                    // key: '/micro-app/golden-spiral',
+                    url: '/micro-app/golden-spiral',
+                  },
                   width: 30,
                 },
                 {
                   title: 'Layout',
                   type: 'react-component',
                   component: 'MicroFrontEndComponent',
-                  props: { url: '/micro-app/golden-text' },
+                  props: {
+                    // key: '/micro-app/golden-text',
+                    url: '/micro-app/golden-text',
+                  },
                 },
               ]
             },
@@ -74,7 +108,10 @@ const defaultConfig = {
                   title: 'Acme, inc.',
                   type: 'react-component',
                   component: 'MicroFrontEndComponent',
-                  props: { url: '/micro-app/stock-chart' },
+                  props: {
+                    // key: '/micro-app/stock-chart',
+                    url: '/micro-app/stock-chart',
+                  },
                   componentState: {
                     companyName: 'Stock X'
                   },
@@ -83,14 +120,20 @@ const defaultConfig = {
                   title: 'LexCorp plc.',
                   type: 'react-component',
                   component: 'MicroFrontEndComponent',
-                  props: { url: '/micro-app/stock-chart' },
+                  props: {
+                    // key: '/micro-app/stock-chart',
+                    url: '/micro-app/stock-chart',
+                  },
                   componentState: { companyName: 'Stock Y' },
                 },
                 {
                   title: 'Springshield plc.',
                   type: 'react-component',
                   component: 'MicroFrontEndComponent',
-                  props: { url: '/micro-app/stock-chart' },
+                  props: {
+                    // key: '/micro-app/stock-chart',
+                    url: '/micro-app/stock-chart',
+                  },
                   componentState: { companyName: 'Stock Z' },
                 }
               ]
@@ -105,13 +148,19 @@ const defaultConfig = {
               title: 'Performance',
               type: 'react-component',
               component: 'MicroFrontEndComponent',
-              props: { url: '/micro-app/column-chart' },
+              props: {
+                // key: '/micro-app/column-chart',
+                url: '/micro-app/column-chart',
+              },
             },
             {
               title: 'Market',
               type: 'react-component',
               component: 'MicroFrontEndComponent',
-              props: { url: '/micro-app/pie-chart' },
+              props: {
+                // key: '/micro-app/pie-chart',
+                url: '/micro-app/pie-chart',
+              },
               height: 40,
             }
           ]
@@ -120,21 +169,3 @@ const defaultConfig = {
     }
   ]
 };
-
-const init = (ref) => {
-  const savedState = localStorage.getItem('savedState');
-  const config = savedState ? JSON.parse(savedState) : defaultConfig;
-
-  const myLayout = new GoldenLayout(config, ref.current);
-  myLayout.registerComponent('MicroFrontEndComponent', MicroFrontEndComponent);
-
-  initAutoSave(myLayout);
-  myLayout.init();
-}
-
-const initAutoSave = (myLayout) => {
-  myLayout.on('stateChanged', function () {
-    const state = JSON.stringify(myLayout.toConfig());
-    localStorage.setItem('savedState', state);
-  });
-}
