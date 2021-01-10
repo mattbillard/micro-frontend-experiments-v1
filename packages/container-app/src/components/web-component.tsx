@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { useEffect, useRef } from 'react';
+import { connect, IStoreState, useSelector, Provider } from 'react-redux';
 
 interface IWebComponentProps {
   url: string;
@@ -8,11 +9,11 @@ interface IWebComponentProps {
 export const WebComponent = (props: IWebComponentProps) => {
   const { url } = props;
   const ref = useRef(null);
-  const isShadow = localStorage.isShadow === 'true' || false;
+  const { isShadow } = useSelector((state: IStoreState) => state.containerAppReducer.settings);
   const className = isShadow === true ? 'shadow-component' : 'web-component';
 
   useEffect(() => {
-    init(ref.current, url);
+    init(ref.current, url, isShadow);
   }, []);
 
   return (
@@ -20,9 +21,7 @@ export const WebComponent = (props: IWebComponentProps) => {
   )
 }
 
-const init = async (refCurrent, url: string) => {
-  const isShadow = localStorage.isShadow === 'true' || false;
-  
+const init = async (refCurrent, url: string, isShadow) => {
   // Fetch HTML
   var res = await fetch(url);
   var text = await res.text();

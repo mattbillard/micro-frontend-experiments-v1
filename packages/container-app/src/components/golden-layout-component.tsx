@@ -1,8 +1,7 @@
 import * as React from 'react';
-import { useEffect, useRef, useState } from 'react';
 import * as ReactDOM from "react-dom";
 import $ from 'jquery';
-import { useDispatch, useSelector } from "react-redux";
+import { connect, IStoreState, Provider } from 'react-redux';
 import { debounce } from 'lodash-es';
 
 // Golden Layout needs these
@@ -17,61 +16,78 @@ import 'golden-layout/src/css/goldenlayout-base.css';
 import 'golden-layout/src/css/goldenlayout-dark-theme.css';
 
 import { MicroFrontEndComponent } from '../components';
-import { saveGoldenLayoutConfig } from '../redux';
+import { saveGoldenLayoutConfig, store } from '../redux';
 
 interface IGoldenLayoutComponentProps {
 }
 
-export const GoldenLayoutComponent = (props: IGoldenLayoutComponentProps) => {
-  const ref = useRef(null);
-  const dispatch = useDispatch();
-  const myLayoutRef = useRef(null);
+export class GoldenLayoutComponentView extends React.Component {
+  myLayout;
+  ref;
 
-  useEffect(() => {
-    const onResize = () => redrawDebounced(ref, myLayoutRef);
+  constructor(props) {
+    super(props);
+    this.ref = React.createRef();
+  }
 
-    setTimeout(() => {
-      init(ref);
-      window.addEventListener('resize', onResize);
-    })
-
-    return () => window.removeEventListener('resize', onResize);
-  }, []);
-
-  const init = (ref) => {
+  componentDidMount = () => {
     const savedConfig = localStorage.getItem('goldenLayoutConfig');
     const config = savedConfig ? JSON.parse(savedConfig) : defaultConfig;
 
-    const myLayout = new GoldenLayout(config, ref.current);
-    myLayout.registerComponent('MicroFrontEndComponent', MicroFrontEndComponent);
+    const myLayout = this.myLayout = new GoldenLayout(config, this.ref.current);
+    myLayout.registerComponent('MicroFrontEndComponent', this.withStore(MicroFrontEndComponent));
 
-    initAutoSave(myLayout);
-    myLayout.init();
-    myLayoutRef.current = myLayout;
-    window.myLayout = myLayout;
+    this.initAutoSave(myLayout);
+    setTimeout(() => myLayout.init())
+
+    window.addEventListener('resize', this.redrawDebounced);
   }
 
-  const initAutoSave = (myLayout) => {
+  componentWillUnmount = () => {
+    window.removeEventListener('resize', this.redrawDebounced);
+  }
+
+  initAutoSave = (myLayout) => {
     myLayout.on('stateChanged', () => {
-      // const config = myLayout.toConfig();
-      // localStorage.setItem('goldenLayoutConfig', JSON.stringify(config));
       const config = myLayout.toConfig();
-      dispatch(saveGoldenLayoutConfig(config));
+      this.props.dispatch(saveGoldenLayoutConfig(config));
     });
   }
 
-  return (
-    <div ref={ref} className="golden-layout-container"></div>
-  )
+  redraw = (ref, myLayoutRef) => {
+    const container = this.ref.current;
+    var { width, height } = container!.getBoundingClientRect();
+    this.myLayout!.updateSize(width, height);
+  }
+  redrawDebounced = debounce(this.redraw, 250);
+
+  // Add contexts like store because Goldenlayout does not pass them down
+  withStore = (Component) => {
+    return class WithStore extends React.Component {
+      render () {
+        return (
+          <Provider store={store}>
+            <Component {...this.props} />
+          </Provider>
+        )
+      }
+    }
+  }
+
+  render() {
+    return (
+      <div ref={this.ref} className="golden-layout-container"></div>
+    )
+  } 
 }
 
-const redraw = (ref, myLayoutRef) => {
-  const container = ref.current;
-  const myLayout = myLayoutRef.current;
-  var { width, height } = container!.getBoundingClientRect();
-  myLayout!.updateSize(width, height);
-}
-const redrawDebounced = debounce(redraw, 250);
+const mapDispatchToProps = (dispatch) => ({
+  dispatch
+});
+const mapStateToProps = (state: IStoreState) => ({
+  // sample: state.sample
+});
+export const GoldenLayoutComponent = connect(mapStateToProps,mapDispatchToProps)(GoldenLayoutComponentView);
 
 
 const defaultConfig = {

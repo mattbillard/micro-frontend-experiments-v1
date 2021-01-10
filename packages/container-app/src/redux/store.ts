@@ -15,3 +15,5 @@ export const configureStore = () => createStore(
   // initialState,
   composeWithDevTools(applyMiddleware(thunk)),
 );
+
+export const store = configureStore();

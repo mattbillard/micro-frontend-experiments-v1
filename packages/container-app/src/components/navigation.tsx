@@ -2,6 +2,8 @@ import * as React from 'react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import * as jsCookie from 'js-cookie';
+import { useDispatch, useSelector } from "react-redux";
+import { IStoreState, setSetting } from '../redux';
 
 import {
   SettingsMenu,
@@ -11,7 +13,8 @@ interface INavigationProps {
 }
 
 export const Navigation = (props: INavigationProps) => {
-  const [showSettings, setShowSettings] = useState<boolean>(localStorage.showSettings === 'true');
+  const { showSettings } = useSelector((state: IStoreState) => state.containerAppReducer.settings);
+  const dispatch = useDispatch();
 
   const logout = () => {
     jsCookie.remove('username');
@@ -19,8 +22,7 @@ export const Navigation = (props: INavigationProps) => {
   }
 
   const toggleShowSettings = () => {
-    setShowSettings(!showSettings);
-    localStorage.showSettings = !showSettings;
+    dispatch(setSetting('showSettings', !showSettings));
   }
 
   return (

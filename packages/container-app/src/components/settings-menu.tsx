@@ -1,4 +1,6 @@
 import * as React from 'react';
+import { useDispatch, useSelector } from "react-redux";
+import { IStoreState, setSetting } from '../redux';
 
 interface ISettingsMenuProps {
   toggleShowSettings: () => void;
@@ -6,43 +8,33 @@ interface ISettingsMenuProps {
 
 export const SettingsMenu = (props: ISettingsMenuProps) => {
   const { toggleShowSettings } = props;
-  const mode = localStorage.mode || 'IFRAME_MODE';
-  const isShadow = localStorage.isShadow === 'true' ? true : false;
-  const showHints = localStorage.showHints === 'true' ? true : false;
+  const dispatch = useDispatch();
+  const { isShadow, mode, showHints } = useSelector((state: IStoreState) => state.containerAppReducer.settings);
+
+  const handleChangeSetting = (key, value) => {
+    dispatch(setSetting(key, value));
+  }
 
   const clearLocalStorage = () => {
     localStorage.clear();
   }
-
-  const setMode = (newMode: string) => {
-    localStorage.mode = newMode;
-  }
-
-  const toggleShadow = () => {
-    localStorage.isShadow = !isShadow;
-  }
-
-  const toggleShowHints = () => {
-    localStorage.showHints = !showHints;
-  }
-
 
   return (
     <div className="settings-menu">
       <div>
         Mode: {mode} {isShadow}
         <ul>
-          <li><a href="" onClick={() => setMode('IFRAME_MODE')}>Iframes</a></li>
+          <li><a onClick={() => handleChangeSetting('mode', 'IFRAME_MODE')}>Iframes</a></li>
           <li>
-            <a href="" onClick={() => setMode('WC_MODE')}>Web Component</a> |
-            <a href="" onClick={toggleShadow}>{String(isShadow)}</a>
+            <a onClick={() => handleChangeSetting('mode', 'WC_MODE')}>Web Component</a> |
+            <a href="" onClick={() => handleChangeSetting('isShadow', !isShadow)}>{String(isShadow)}</a>
           </li>
-          <li><a href="" onClick={() => setMode('IMP_MODE')}>Import</a></li>
+          <li><a onClick={() => handleChangeSetting('mode', 'IMP_MODE')}>Import</a></li>
         </ul>
       </div>
       <div>
         Show hints: 
-        <a href="" onClick={toggleShowHints}>{String(showHints)}</a>
+        <a onClick={() => handleChangeSetting('showHints', !showHints)}>{String(showHints)}</a>
       </div>
       <div>
         <a href="" onClick={clearLocalStorage}>Clear localStorage</a>
