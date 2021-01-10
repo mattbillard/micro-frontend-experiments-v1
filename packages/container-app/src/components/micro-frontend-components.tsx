@@ -26,8 +26,7 @@ import {
 
 export class MicroFrontEndComponentView extends React.Component {
   render () {
-    const mode = this.props.mode;
-    console.log('....props', this.props);
+    const { mode } = this.props;
   
     return (
       <>
@@ -42,8 +41,9 @@ export class MicroFrontEndComponentView extends React.Component {
 const mapStateToProps = (state: IStoreState, ownProps) => ({
   ...ownProps,
   mode: state.containerAppReducer.settings.mode,
+  showHints: state.containerAppReducer.settings.showHints,
 });
 const mapDispatchToProps = (dispatch) => ({
   dispatch,
 });
-export const MicroFrontEndComponent = connect(mapStateToProps,mapDispatchToProps)(MicroFrontEndComponentView);
+export const MicroFrontEndComponent = connect(mapStateToProps, mapDispatchToProps)(MicroFrontEndComponentView);

@@ -7,13 +7,12 @@ interface IWebComponentProps {
 }
 
 export const WebComponent = (props: IWebComponentProps) => {
-  const { url } = props;
   const ref = useRef(null);
   const { isShadow } = useSelector((state: IStoreState) => state.containerAppReducer.settings);
   const className = isShadow === true ? 'shadow-component' : 'web-component';
 
   useEffect(() => {
-    init(ref.current, url, isShadow);
+    init(ref.current, props, isShadow);
   }, []);
 
   return (
@@ -21,7 +20,9 @@ export const WebComponent = (props: IWebComponentProps) => {
   )
 }
 
-const init = async (refCurrent, url: string, isShadow) => {
+const init = async (refCurrent, props, isShadow) => {
+  const { url } = props;
+
   // Fetch HTML
   var res = await fetch(url);
   var text = await res.text();
@@ -48,7 +49,7 @@ const init = async (refCurrent, url: string, isShadow) => {
      * - Won't work for multiple scripts. Needs to be promise.all
      * - Also need to register/look up which micro app to initialize 
      */
-    newScript.onload = () => window.MicroApp.init(context, url);
+    newScript.onload = () => window.MicroApp.init(context, props);
 
     const parent = oldScript.parentNode;
     oldScript.remove();

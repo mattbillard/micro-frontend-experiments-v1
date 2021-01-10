@@ -16,8 +16,7 @@ import "../styles/golden-apps.css";
 import "../styles/micro-app.less";
 
 const TheSwitch = (props) => {
-  const { url } = props;
-  const showHints = localStorage.showHints === 'true' ? true : false;
+  const { showHints, url } = props;
 
   return (
     <div className="micro-app-router flex-rows">
@@ -48,13 +47,12 @@ const TheSwitch = (props) => {
 }
 
 export const MicroAppRouter = (props) => {
-  const { url } = props;
   const isIframe = window.parent !== window;
 
   return (
     isIframe ? 
-      <BrowserRouter><TheSwitch url={url} /></BrowserRouter> :
-      <MemoryRouter><TheSwitch url={url}/></MemoryRouter>
+      <BrowserRouter><TheSwitch {...props} /></BrowserRouter> :
+      <MemoryRouter><TheSwitch {...props}/></MemoryRouter>
   );
 }
 
