@@ -4,7 +4,7 @@ import * as Highcharts from 'highcharts';
 
 export const ChartComponent = (props) => {
   const ref = useRef(null);
-  const [chart, setChart] = useState();
+  const chartRef = useRef(null);
 
   const {
     config,
@@ -14,8 +14,17 @@ export const ChartComponent = (props) => {
   useEffect(() => {
     config.chart.renderTo = ref.current;
     const chart = new Highcharts.Chart(config);
-    setChart(chart);
+    chartRef.current = chart;
+
+    const resizeObserver = new ResizeObserver(entries => resize());
+    resizeObserver.observe(ref.current);
   }, []);
+
+  const resize = () => {
+    chartRef.current.reflow();
+    // const { width, height } = ref.current.getBoundingClientRect();
+    // chartRef.current.setSize(width, height);
+  }
 
   return (
     <div ref={ref} className="chart-component"></div>
