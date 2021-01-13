@@ -6,11 +6,12 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const config = {
   entry: [
-    'react-hot-loader/patch',
+    // 'react-hot-loader/patch',
     './src/index.tsx'
   ],
   output: {
     path: path.resolve(__dirname, 'dist'),
+    publicPath: '/container/',
     filename: 'bundle.js'
   },
   module: {
@@ -80,11 +81,21 @@ const config = {
       '.ts'
     ],
     alias: {
+      //   'react-dom': '@hot-loader/react-dom'
+
+      // This is IMPORTANT
+      // This provides React to the component
+      'react': path.resolve(__dirname, './node_modules/react'),
       'react-dom': '@hot-loader/react-dom'
     }
   },
   devServer: {
-    contentBase: './dist'
+    port: 8081,
+    contentBase: './dist',
+    publicPath: '/container/',
+    historyApiFallback: {
+      index: '/container/index.html'
+    }
   },
   plugins: [
     new CopyPlugin({
