@@ -4,11 +4,9 @@ module.exports = (env = {}) => {
   return {
     mode,
     devServer: {
-      hot: false,                                             // Turn off hot/live reloading b/c it conflicts with proxy
-      liveReload: false,
-      inline: false,
+      injectClient: false,                                    // Force no hot reloading. Websocket can't connect through proxy
 
-      progress: true,                                         // Show percentage progress
+      progress: true,
 
       port: 8080,
       https: true,
@@ -30,15 +28,8 @@ module.exports = (env = {}) => {
           changeOrigin: true,
           cookieDomainRewrite: 'localhost',
         },
-        '/create-react-app': {
-          target: 'http://localhost:3000/',
-          secure: false,
-          // ws: true,
-          changeOrigin: true,
-          cookieDomainRewrite: 'localhost',
-        },
-        '/webpack-app': {
-          target: 'http://localhost:8084/',
+        '/micro-components': {
+          target: 'http://localhost:8083/',
           secure: false,
           ws: true,
           changeOrigin: true,

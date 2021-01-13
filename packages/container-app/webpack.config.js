@@ -11,7 +11,7 @@ const config = {
   ],
   output: {
     path: path.resolve(__dirname, 'dist'),
-    publicPath: '/container/',
+    publicPath: '/container',
     filename: 'bundle.js'
   },
   module: {
@@ -86,13 +86,15 @@ const config = {
       // This is IMPORTANT
       // This provides React to the component
       'react': path.resolve(__dirname, './node_modules/react'),
-      'react-dom': '@hot-loader/react-dom'
+      // 'react-dom': '@hot-loader/react-dom'
     }
   },
   devServer: {
+    injectClient: false,  // Force no hot reloading. Websocket can't connect through proxy
+
     port: 8081,
     contentBase: './dist',
-    publicPath: '/container/',
+    publicPath: '/container',
     historyApiFallback: {
       index: '/container/index.html'
     }

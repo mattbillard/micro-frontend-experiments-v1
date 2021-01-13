@@ -86,10 +86,12 @@ const config = {
       // This is IMPORTANT
       // This provides React to the component
       'react': path.resolve(__dirname, './node_modules/react'),
-      'react-dom': '@hot-loader/react-dom'
+      // 'react-dom': '@hot-loader/react-dom'
     }
   },
   devServer: {
+    injectClient: false,  // Force no hot reloading. Websocket can't connect through proxy
+
     port: 8082,
     contentBase: './dist',
     publicPath: '/micro-app',

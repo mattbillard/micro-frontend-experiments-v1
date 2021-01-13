@@ -1,6 +1,9 @@
 import * as React from 'react';
 import * as ReactDOM from "react-dom";
 import { MicroAppRouter } from 'micro-components';
+// import { forceDisableLiveReload } from './utils';
+
+// forceDisableLiveReload();
 
 declare const window: any;
 

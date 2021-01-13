@@ -10,7 +10,7 @@
     "clean": "rm -rf dist",
     "build-dev": "webpack --mode development",
     "build-prod": "webpack --mode production",
-    "start": "webpack serve --hot --mode development",
+    "start": "webpack serve --mode development",
     "test": "jest"
   },
   "dependencies": {
