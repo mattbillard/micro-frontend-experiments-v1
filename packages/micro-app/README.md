@@ -1,4 +1,4 @@
-# container-app
+# example-app
 
 Empty project.
 
@@ -22,11 +22,24 @@ To create a production build:
 npm run build-prod
 ```
 
+To create a development build:
+
+```sh
+npm run build-dev
+```
+
 ## Running
 
 Open the file `dist/index.html` in your browser
 
+## Testing
+
+To run unit tests:
+
+```sh
+npm test
+```
+
 ## Credits
 
 Made with [createapp.dev](https://createapp.dev/)
-

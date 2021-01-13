@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as ReactDOM from "react-dom";
-import { MicroAppRouter } from './micro-components';
+import { MicroAppRouter } from 'micro-components';
 
 declare const window: any;
 
