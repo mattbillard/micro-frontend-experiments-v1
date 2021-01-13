@@ -6,12 +6,15 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const config = {
   entry: [
-    'react-hot-loader/patch',
+    // 'react-hot-loader/patch',
     './src/index.tsx'
   ],
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js'
+    // These are IMPORTANT
+    // Output files that can be imported
+    filename: 'index.js',
+    libraryTarget: 'umd',
   },
   module: {
     rules: [
@@ -83,13 +86,29 @@ const config = {
       'react-dom': '@hot-loader/react-dom'
     }
   },
+  externals: {
+    // This is IMPORTANT
+    // Don't bundle react or react-dom or you will get errors about having multiple versions of React and violating the rule of hooks
+    react: {
+      commonjs: "react",
+      commonjs2: "react",
+      amd: "React",
+      root: "React"
+    },
+    "react-dom": {
+      commonjs: "react-dom",
+      commonjs2: "react-dom",
+      amd: "ReactDOM",
+      root: "ReactDOM"
+    }
+  },
   devServer: {
     contentBase: './dist'
   },
   plugins: [
-    new CopyPlugin({
-      patterns: [{ from: 'src/index.html' }],
-    }),
+    // new CopyPlugin({
+    //   patterns: [{ from: 'src/index.html' }],
+    // }),
     new CleanWebpackPlugin(),
     new MiniCssExtractPlugin()
   ]
