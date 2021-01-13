@@ -4,12 +4,14 @@
         "sourceMap": true,
         "strict": true,
         "noImplicitReturns": true,
-        "module": "esnext",
+        "module": "es6",
         "moduleResolution": "node",
         "target": "es5",
         "allowJs": true,
         "jsx": "react",
         "noImplicitAny": false,
+        "suppressImplicitAnyIndexErrors": true,
+        "suppressExcessPropertyErrors": true
     },
     "include": [
         "./src/**/*"

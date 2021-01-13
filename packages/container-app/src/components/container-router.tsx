@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
-import { IStoreState, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import * as jsCookie from 'js-cookie';
 
 import {
@@ -9,7 +9,7 @@ import {
   Navigation,
   PageComponent,
 } from '../components';
-
+import { IStoreState } from '../redux';
 
 interface IContainerRouterProps {
 }

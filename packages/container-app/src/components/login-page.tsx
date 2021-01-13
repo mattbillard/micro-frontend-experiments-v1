@@ -9,6 +9,7 @@ export const LoginPage = (props) => {
   const ref = useRef(null);
 
   useEffect(() => {
+    // @ts-ignore
     ref.current.focus();
   },[]);
 

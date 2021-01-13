@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
-import { IStoreState, Provider, useSelector } from 'react-redux';
+import { Provider, useSelector } from 'react-redux';
 import * as jsCookie from 'js-cookie';
 
-import { store } from '../redux';
+import { IStoreState, store } from '../redux';
 
 import {
   ContainerRouter

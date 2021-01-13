@@ -1,12 +1,12 @@
 import * as React from 'react';
-import { connect, IStoreState, useSelector, Provider } from 'react-redux';
-import { store } from '../redux';
+import { connect, useSelector, Provider } from 'react-redux';
 
 import {
   IframeComponent,
   LazyImportComponent,
   WebComponent,
 } from '../components';
+import { IStoreState, store } from '../redux';
 
 // export const MicroFrontEndComponent = (props) => {
 //   const { mode } = useSelector((state: IStoreState) => state.containerAppReducer.settings);
@@ -26,11 +26,14 @@ import {
 
 export class MicroFrontEndComponentView extends React.Component {
   render () {
+    // @ts-ignore
     const { mode } = this.props;
   
     return (
       <>
+        {/* @ts-ignore */}
         {mode === 'IFRAME_MODE' && <IframeComponent {...this.props} />}
+        {/* @ts-ignore */}
         {mode === 'WC_MODE' && <WebComponent {...this.props} />}
         {mode === 'IMP_MODE' && <LazyImportComponent {...this.props} />}
       </>

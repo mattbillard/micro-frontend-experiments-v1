@@ -1,6 +1,9 @@
 import * as React from 'react';
 import { useEffect, useRef } from 'react';
-import { connect, IStoreState, useSelector, Provider } from 'react-redux';
+import { connect, useSelector, Provider } from 'react-redux';
+import { IStoreState } from '../redux';
+
+declare const window: any;
 
 interface IWebComponentProps {
   url: string;
@@ -40,7 +43,7 @@ const init = async (refCurrent, props, isShadow) => {
   [...oldScripts].forEach(oldScript => { 
     var newScript = document.createElement('script');
     newScript.text = oldScript.text; // @ts-ignore
-    Object.values({...oldScript.attributes}).map((attr) => {
+    Object.values({...oldScript.attributes}).map((attr: any) => {
       newScript.setAttribute(attr.name, attr.value);
     })
 
