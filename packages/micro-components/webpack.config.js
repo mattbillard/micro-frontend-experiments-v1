@@ -100,6 +100,18 @@ const config = {
       commonjs2: "react-dom",
       amd: "ReactDOM",
       root: "ReactDOM"
+    },
+    "highcharts": {
+      commonjs: "highcharts",
+      commonjs2: "highcharts",
+      amd: "Highcharts",
+      root: "Highcharts"
+    },
+    "slickgrid-es6": {
+      commonjs: "slickgrid-es6",
+      commonjs2: "slickgrid-es6",
+      amd: "Slick",
+      root: "Slick"
     }
   },
   devServer: {
