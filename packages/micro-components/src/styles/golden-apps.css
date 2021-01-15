@@ -149,6 +149,10 @@
   border: 2px dashed black;
 }
 
+.slick-viewport {
+  overflow-x: hidden !important;
+}
+
 .ui-widget *{
   color: #555;
   font: 8pt/20px Arial, sans-serif;
