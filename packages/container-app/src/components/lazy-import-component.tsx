@@ -10,9 +10,12 @@ interface ILazyImportComponentProps {
 // TODO: figure out how to export react components from a project
 // Maybe try '@loadable/component' package again
 export const LazyImportComponent = (props: ILazyImportComponentProps) => {
-  const OtherComponent = React.lazy(() => import('micro-components'));
-  require('micro-components/dist/main.css');
- 
+  // const OtherComponent = React.lazy(() => import('micro-components'));
+  // require('micro-components/dist/main.css');
+  
+  const OtherComponent = React.lazy(() => import('micro-components/src'));
+  require('micro-components/src/styles/index.less');
+
   // const lazyUrl = '/micro-components/dist/index.js';
   // const OtherComponent = loadable(() => import(lazyUrl));
   
