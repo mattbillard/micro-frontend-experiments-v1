@@ -11,7 +11,7 @@ const config = {
   ],
   output: {
     path: path.resolve(__dirname, 'dist'),
-    publicPath: '/micro-app',
+    publicPath: '/micro-app/', // Needs to end in / or paths will be wrong when you serve built version
     filename: 'bundle.js'
   },
   module: {
@@ -36,15 +36,7 @@ const config = {
       },
       {
         test: /\.svg$/,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              mimetype: 'image/svg+xml',
-              publicPath: './' // Necessary or build version will not have correct paths to images
-            }
-          }
-        ]
+        loader: 'file-loader'
       },
       {
         test: /\.png$/,
@@ -52,8 +44,7 @@ const config = {
           {
             loader: 'url-loader',
             options: {
-              mimetype: 'image/png',
-              publicPath: './' // Necessary or build version will not have correct paths to images
+              mimetype: 'image/png'
             }
           }
         ]
@@ -103,7 +94,7 @@ const config = {
 
     port: 8082,
     contentBase: './dist',
-    publicPath: '/micro-app',
+    publicPath: '/micro-app', // Better UX if doesn't need / on end
     historyApiFallback: {
       index: '/micro-app/index.html'
     }

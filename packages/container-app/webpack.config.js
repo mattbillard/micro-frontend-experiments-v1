@@ -11,7 +11,7 @@ const config = {
   ],
   output: {
     path: path.resolve(__dirname, 'dist'),
-    publicPath: '/container',
+    publicPath: '/container/', // Needs to end in / or paths will be wrong when you serve built version
     filename: 'bundle.js'
   },
   module: {
@@ -94,7 +94,7 @@ const config = {
 
     port: 8081,
     contentBase: './dist',
-    publicPath: '/container',
+    publicPath: '/container', // Better UX if doesn't need / on end
     historyApiFallback: {
       index: '/container/index.html'
     }
