@@ -11,9 +11,10 @@ import {
   TextTester,
 } from '../components';
 
-import "../styles/flex-box.less";
-import "../styles/golden-apps.css";
-import "../styles/micro-app.less";
+// import "../styles/flex-box.less";
+// import "../styles/golden-apps.less";
+// import "../styles/micro-app.less";
+import "../styles/index.less"; 
 
 const TheSwitch = (props) => {
   const { showHints, url } = props;
