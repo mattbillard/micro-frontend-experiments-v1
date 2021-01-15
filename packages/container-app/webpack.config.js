@@ -11,7 +11,7 @@ const config = {
   ],
   output: {
     path: path.resolve(__dirname, 'dist'),
-    publicPath: '/container/', // Needs to end in / or paths will be wrong when you serve built version
+    publicPath: '/container', // Needs to end in / or paths will be wrong when you serve built version
     filename: 'bundle.js'
   },
   module: {
