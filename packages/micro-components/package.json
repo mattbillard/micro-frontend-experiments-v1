@@ -11,7 +11,8 @@
     "build:dev": "webpack --mode development --watch",
     "build:prod": "webpack --mode production",
     "start": "npm run build:dev",
-    "test": "jest"
+    "test": "jest",
+    "serve": "http-server ../ -p 8083"
   },
   "dependencies": {
     "highcharts": "^8.2.2",

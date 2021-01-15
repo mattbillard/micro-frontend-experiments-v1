@@ -15,6 +15,7 @@ const config = {
     // Output files that can be imported
     filename: 'index.js',
     libraryTarget: 'umd',
+    // libraryTarget: 'commonjs',
   },
   module: {
     rules: [

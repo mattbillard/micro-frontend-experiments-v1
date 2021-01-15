@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { Suspense } from 'react';
-// import loadable from '@loadable/component';
+import loadable from '@loadable/component';
+// const requireFromWeb = require('require-from-web')
+// const OtherComponent = require('micro-components'); 
 
 // import 'micro-components/dist/main.css'
 
@@ -40,9 +42,27 @@ export const LazyImportComponent = (props: ILazyImportComponentProps) => {
   // require('micro-components/src/styles/index.less');
   // bool = !bool;
 
+
+  // const url = 'https://unpkg.com/jformat@1.0.4/index.js'
+  // requireFromWeb(url).then(format => {
+  //   const text = format('Forever {Python}', {Python: 'JavaScript'})
+  //   console.log(text) // Forever JavaScript
+  // })
+  // let OtherComponent;
+  // if (!OtherComponent) {
+  //   return null;
+  // }
     
 
-  
+  // // const url = 'https://unpkg.com/jformat@1.0.4/index.js'
+  // const url = 'https://localhost:8080/micro-components/dist/index.js'
+  // let OtherComponent = loadable(() => fetch(url).then(res => res.text()));
+  // console.log('....OtherComponent', OtherComponent);
+  // // let OtherComponent;
+  // if (!OtherComponent) {
+  //   return null;
+  // }
+
 
 
   return (
