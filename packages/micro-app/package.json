@@ -11,7 +11,9 @@
     "build:dev": "webpack --mode development",
     "build:prod": "webpack --mode production",
     "start": "webpack serve --mode development",
-    "test": "jest"
+    "test": "jest",
+    "postbuild": "mv dist micro-app && mkdir dist && mv micro-app dist",
+    "serve": "http-server -p 8082 ./dist"
   },
   "dependencies": {
     "lodash-es": "^4.17.20",

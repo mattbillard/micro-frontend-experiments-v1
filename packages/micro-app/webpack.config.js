@@ -36,7 +36,15 @@ const config = {
       },
       {
         test: /\.svg$/,
-        use: 'file-loader'
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              mimetype: 'image/svg+xml',
+              publicPath: './' // Necessary or build version will not have correct paths to images
+            }
+          }
+        ]
       },
       {
         test: /\.png$/,
@@ -44,7 +52,8 @@ const config = {
           {
             loader: 'url-loader',
             options: {
-              mimetype: 'image/png'
+              mimetype: 'image/png',
+              publicPath: './' // Necessary or build version will not have correct paths to images
             }
           }
         ]

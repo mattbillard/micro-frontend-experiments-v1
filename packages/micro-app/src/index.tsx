@@ -1,11 +1,11 @@
 import * as React from 'react';
 import * as ReactDOM from "react-dom";
 
-// import { MicroAppRouter } from 'micro-components';
-// import 'micro-components/dist/main.css';
+import { MicroAppRouter } from 'micro-components';
+import 'micro-components/dist/main.css';
 
-import { MicroAppRouter } from 'micro-components/src';
-import 'micro-components/src/styles/index.less';
+// import { MicroAppRouter } from 'micro-components/src';
+// import 'micro-components/src/styles/index.less';
 
 
 // import { forceDisableLiveReload } from './utils';
