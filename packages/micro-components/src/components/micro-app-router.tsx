@@ -12,7 +12,7 @@ import {
 } from '../components';
 
 import "../styles/flex-box.less";
-// import "../styles/golden-apps.css";
+import "../styles/golden-apps.css";
 import "../styles/micro-app.less";
 
 const TheSwitch = (props) => {
