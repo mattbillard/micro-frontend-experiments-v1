@@ -1,19 +1,25 @@
 import * as React from 'react';
-import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
-import { Provider, useSelector } from 'react-redux';
+import { Provider } from 'react-redux';
 import * as jsCookie from 'js-cookie';
 
-import { IStoreState, store } from '../redux';
-
 import {
-  ContainerRouter
+  ContainerRouter,
+  LoginPage,
 } from '../components';
-
+import { store } from '../redux';
 
 interface IContainerAppProps {
 }
 
 export const ContainerApp = (props: IContainerAppProps) => {
+  const username = jsCookie.get('username');
+  
+  if (!username) {
+    return (
+      <LoginPage />
+    );
+  }
+  
   return (
     <Provider store={store}>
       <ContainerRouter />

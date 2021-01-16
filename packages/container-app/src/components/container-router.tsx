@@ -2,13 +2,11 @@ import * as React from 'react';
 import { useEffect } from 'react';
 import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
-import * as jsCookie from 'js-cookie';
 
 import { loadSettings } from '../redux';
 
 import {
   GoldenLayoutComponent,
-  LoginPage,
   Navigation,
   PageComponent,
 } from '../components';
@@ -18,14 +16,6 @@ interface IContainerRouterProps {
 }
 
 export const ContainerRouter = (props: IContainerRouterProps) => {
-  const username = jsCookie.get('username');
-  
-  if (!username) {
-    return (
-      <LoginPage />
-    );
-  }
-  
   const settings = useSelector((state: IStoreState) => state.containerAppReducer.settings);
   const dispatch = useDispatch();
 
