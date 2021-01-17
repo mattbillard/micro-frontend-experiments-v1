@@ -18,7 +18,7 @@ const TheSwitch = (props) => {
 
   return (
     <div className="micro-app-router flex-rows">
-      {/* {showHints &&  */}
+      {showHints && 
         <div>
           <Link to='/micro-app/golden-spiral'>Spiral</Link> |
           <Link to='/micro-app/golden-text'>Text</Link> |
@@ -27,7 +27,7 @@ const TheSwitch = (props) => {
           <Link to='/micro-app/pie-chart'>PieChart</Link> |
           <Link to='/micro-app/stock-chart'>StockChart</Link> |
         </div>
-      {/* } */}
+      }
       <div className="micro-app-content">
         <Switch>
           <Route path="/micro-app/column-chart" component={ColumnChart} />

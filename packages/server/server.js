@@ -26,8 +26,8 @@ const server = http.createServer(app);
 
 
 // Routes
-const homeRoute = require('./routes/home.route');
-app.use('/', homeRoute);
+app.use('/', require('./routes/home.route'));
+app.use('/api/settings', require('./routes/settings.route'));
 
 
 // WebSockets

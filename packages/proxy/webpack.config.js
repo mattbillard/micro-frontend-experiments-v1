@@ -35,7 +35,15 @@ module.exports = (env = {}) => {
           changeOrigin: true,
           cookieDomainRewrite: 'localhost',
         },
+        // TODO: consolidate?
         '/server': {
+          target: 'http://localhost:8084/',
+          secure: false,
+          ws: true,
+          changeOrigin: true,
+          cookieDomainRewrite: 'localhost',
+        },
+        '/api': {
           target: 'http://localhost:8084/',
           secure: false,
           ws: true,

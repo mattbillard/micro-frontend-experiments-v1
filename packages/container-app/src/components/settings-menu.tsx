@@ -12,8 +12,12 @@ export const SettingsMenu = (props: ISettingsMenuProps) => {
   const dispatch = useDispatch();
   const { isShadow, mode, showHints } = useSelector((state: IStoreState) => state.containerAppReducer.settings);
 
-  const handleChangeSetting = (key, value) => {
+  const handleChangeSetting = (key, value, reload = false) => {
     dispatch(setSetting(key, value));
+
+    if (reload) {
+      setTimeout(() => window.location.reload(), 100);
+    }
   }
 
   const reset = () => {
@@ -29,7 +33,7 @@ export const SettingsMenu = (props: ISettingsMenuProps) => {
           <li><a onClick={() => handleChangeSetting('mode', 'IFRAME_MODE')}>Iframes</a></li>
           <li>
             <a onClick={() => handleChangeSetting('mode', 'WC_MODE')}>Web Component</a> |
-            <a href="" onClick={() => handleChangeSetting('isShadow', !isShadow)}>{String(isShadow)}</a>
+            <a onClick={() => handleChangeSetting('isShadow', !isShadow, true)}>{String(isShadow)}</a>
           </li>
           <li><a onClick={() => handleChangeSetting('mode', 'IMP_MODE')}>Import</a></li>
         </ul>

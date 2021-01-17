@@ -1,4 +1,4 @@
-import axios from 'axios';
+import { xhrService } from '../services';
 
 export const LOAD_SETTINGS =  'LOAD_SETTINGS';
 export const SAVE_GOLDEN_LAYOUT_CONFIG =  'SAVE_GOLDEN_LAYOUT_CONFIG';
@@ -10,25 +10,15 @@ export const saveGoldenLayoutConfig = (goldenLayoutConfig) => async (dispatch) =
   dispatch({ type: SAVE_GOLDEN_LAYOUT_CONFIG, goldenLayoutConfig});
 }
 
-export const loadSettings = () => (dispatch) => {
-  setTimeout(() => {
-    const settings = localStorage.settings ? JSON.parse(localStorage.settings) : {
-      isShadow: false,
-      mode: 'IMP_MODE',
-      showHints: false,
-      showSettings: false,
-    };
-
-    dispatch({ type: LOAD_SETTINGS, settings });
-  }, 500);
+export const loadSettings = () => async (dispatch) => {
+  const settings = await xhrService.getSettings();
+  dispatch({ type: LOAD_SETTINGS, settings });
 }
 
-export const setSetting = (key, value) => (dispatch, getState) => {
+export const setSetting = (key, value) => async (dispatch, getState) => {
   const { settings } = getState().containerAppReducer;
   settings[key] = value;
-
-  setTimeout(() => {
-    localStorage.setItem('settings', JSON.stringify(settings));
-    dispatch({ type: SET_SETTING, settings });
-  }, 500);
+  
+  xhrService.saveSettings(settings);
+  dispatch({ type: SET_SETTING, settings });
 }
