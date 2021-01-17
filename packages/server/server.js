@@ -1,102 +1,52 @@
-const WebSocket = require('ws')
+'use strict';
 
-const wsServer = new WebSocket.Server({ port: 8084 })
-
-// let wsArr = []; 
-
-// wsServer.on('connection', (ws) => {
-//   wsArr.push(ws);
-
-//   ws.on('message', (message) => {
-//     console.log(`Received message => ${message}`)
-//     wsArr.forEach(_ws => {
-//       _ws.send('Hello ' + message);
-//     })
-//   })
-
-//   ws.on('close', (arg1, arg2, arg3) => {
-//     wsArr = wsArr.filter(_ws => _ws !== ws);
-//   })
-
-//   ws.send('Welcome')
-// })
+// Config
+const PORT = 8084;
 
 
+// Imports
+const bodyParser = require('body-parser');
+const chalk = require('chalk');
+const express = require('express');
+const http = require('http');
+const lessMiddleware = require('less-middleware');
+const path = require('path');
 
 
-// TODO: read username from cookie
-
-let wsArr = [];
-let db = {};
-
-const connect = (ws) => {
-  // wsByUsername[username] = wsByUsername[username] || {};
-  // db[username] = db[username] || {};
-  wsArr.push(ws);
-
-  ws.on('message', (message) => handleMessage(ws, message));
-  ws.on('close', () => close(ws));
-
-  ws.send('Welcome');
-}
-wsServer.on('connection', connect);
-
-const close = (ws) => {
-  wsArr = wsArr.filter(_ws => _ws !== ws);
-}
-
-const handleMessage = (ws, message) => {
-  const obj = JSON.parse(message);
-  const { action, payload } = obj;
-
-  switch (action) {
-    case 'GET': {
-      Object.keys(payload).forEach(key => {
-        responseObj[key] = get(key)
-      });
-
-      ws.send(JSON.stringify(responseObj));
-      break;
-    }
-
-    case 'SET':
-      Object.keys(payload).forEach(key => {
-        const value = payload[key];
-        set(key, value);
-      });
-
-      wsArr.forEach(_ws => {
-        if (ws !== _ws) {
-          _ws.send(JSON.stringify(payload));    
-        }
-      })
-      break;
-  }
-}
-
-// const get = (username, key) => {
-const get = (key) => {
-  return db[key];
-}
-
-// const set = (username, key, value) => {
-const set = (key, value) => {
-  db[key] = value;
-}
+// Express set up
+const app = express();
+app.set('port', PORT);
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'twig');
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(lessMiddleware(path.join(__dirname, 'public')));
+app.use('/public', express.static('public'));
+const server = http.createServer(app);
 
 
-/*
-{
-  action: 'GET',
-  payload: {
-    key: 'settings'
-  }
-}
+// Routes
+const homeRoute = require('./routes/home.route');
+app.use('/', homeRoute);
 
-{
-  action: 'SET',
-  payload: {
-    settings: {....}
-  }
-}
-*/
+
+// WebSockets
+const wss = require('./websocket-server');
+server.on('upgrade', function upgrade(request, socket, head) {
+  wss.handleUpgrade(request, socket, head, function done(ws) {
+    wss.emit('connection', ws, request);
+  });
+});
+
+
+// Start server
+server.listen(PORT);
+server.on('listening', () => {
+  const protocol = 'http';
+  const hostname = 'localhost';
+
+  console.log(`
+    Running on
+      ${chalk.yellow(protocol + '://' + hostname + ':' + PORT)}
+  `);
+});

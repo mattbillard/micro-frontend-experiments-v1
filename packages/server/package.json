@@ -10,7 +10,16 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.19.0",
+    "chalk": "^4.1.0",
+    "express": "^4.17.1",
+    "fs-extra": "^9.0.1",
+    "http": "0.0.1-security",
+    "less-middleware": "^3.1.0",
     "nodemon": "^2.0.7",
+    "path": "^0.12.7",
+    "request": "^2.88.2",
+    "twig": "^1.15.4",
     "ws": "^7.4.2"
   }
 }
