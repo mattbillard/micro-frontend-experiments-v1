@@ -1,8 +1,7 @@
 import { Reducer } from 'redux';
 import {
-  LOAD_SETTINGS,
+  UPDATE_SETTINGS,
   SAVE_GOLDEN_LAYOUT_CONFIG,
-  SET_SETTING,
 } from './actions';
 
 export interface IContainerAppReducerState {
@@ -28,15 +27,6 @@ const initialState: IContainerAppReducerState = {
 
 export const containerAppReducer: Reducer<IContainerAppReducerState> = (state = initialState, action) => {
   switch (action.type) {
-    case LOAD_SETTINGS: {
-      const { settings } = action;
-
-      return {
-        ...state,
-        settings,
-      };
-    }
-
     case SAVE_GOLDEN_LAYOUT_CONFIG: {
       const { goldenLayoutConfig } = action;
 
@@ -49,7 +39,7 @@ export const containerAppReducer: Reducer<IContainerAppReducerState> = (state = 
       };
     }
 
-    case SET_SETTING: {
+    case UPDATE_SETTINGS: {
       const { settings } = action;
       const newSettings = { ...settings };
 

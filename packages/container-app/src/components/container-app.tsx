@@ -13,7 +13,7 @@ interface IContainerAppProps {
 
 export const ContainerApp = (props: IContainerAppProps) => {
   const username = jsCookie.get('username');
-  
+
   if (!username) {
     return (
       <LoginPage />

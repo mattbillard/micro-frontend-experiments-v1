@@ -2,26 +2,43 @@ import * as React from 'react';
 import { useEffect } from 'react';
 import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
+import * as jsCookie from 'js-cookie';
 
-import { loadSettings } from '../redux';
+import { loadInitialSettings } from '../redux';
 
 import {
   GoldenLayoutComponent,
   Navigation,
   PageComponent,
 } from '../components';
-import { IStoreState } from '../redux';
+import { 
+  IStoreState,
+  updateSettings,
+} from '../redux';
+import { wsService } from '../services';
 
 interface IContainerRouterProps {
 }
 
 export const ContainerRouter = (props: IContainerRouterProps) => {
+  // TODO: login should be more realistic: XHR to server. Create cookie. Also whoami XHR
+  const username = jsCookie.get('username');
   const settings = useSelector((state: IStoreState) => state.containerAppReducer.settings);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(loadSettings());
+    wsService.connect(handleWsMessage);
+    dispatch(loadInitialSettings());
   }, []);
+
+  const handleWsMessage = (wsMsgObj) => {
+    switch (wsMsgObj.action) {
+      case 'UPDATE_SETTINGS':
+        const { payload } = wsMsgObj;
+        dispatch(updateSettings(payload))
+        break;
+    }
+  }
 
   if (!settings) {
     return (

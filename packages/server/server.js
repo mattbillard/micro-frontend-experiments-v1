@@ -31,7 +31,7 @@ app.use('/api/settings', require('./routes/settings.route'));
 
 
 // WebSockets
-const wss = require('./websocket-server');
+const { wss } = require('./websocket-server');
 server.on('upgrade', function upgrade(request, socket, head) {
   wss.handleUpgrade(request, socket, head, function done(ws) {
     wss.emit('connection', ws, request);
