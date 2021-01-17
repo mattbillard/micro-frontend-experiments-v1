@@ -12,6 +12,7 @@
     "_start:micro-app": "cd packages/micro-app && npm start",
     "_start:open": "sleep 8 && open https://localhost:8080/container/",
     "_start:proxy": "cd packages/proxy && npm start",
+    "_start:server": "cd packages/server && npm start",
     "start": "run-p _start:*",
     "_symlink:container-app": "cd packages/container-app/src/components && ln -sf ../../../micro-components/src micro-components",
     "_symlink:micro-app": "cd packages/micro-app/src && ln -sf ../../micro-components/src micro-components",
