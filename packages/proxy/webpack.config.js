@@ -36,7 +36,7 @@ module.exports = (env = {}) => {
           cookieDomainRewrite: 'localhost',
         },
         // TODO: consolidate?
-        '/server': {
+        '/ws': {
           target: 'http://localhost:8084/',
           secure: false,
           ws: true,
