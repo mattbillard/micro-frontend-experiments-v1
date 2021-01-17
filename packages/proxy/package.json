@@ -4,9 +4,8 @@
   "description": "",
   "private": true,
   "scripts": {
-    "start": "webpack-dev-server --env.NODE_ENV=development",
-    "pm2:start": "pm2 start ./node_modules/webpack-dev-server/bin/webpack-dev-server.js -- --env.NODE_ENV=development",
-    "pm2:kill": "pm2 kill"
+    "_start": "webpack-dev-server --env.NODE_ENV=development",
+    "start": "pm2 start ./node_modules/webpack-dev-server/bin/webpack-dev-server.js --no-daemon --watch -- --env.NODE_ENV=development"
   },
   "keywords": [],
   "author": "",
