@@ -1,11 +1,22 @@
 import axios from 'axios';
 
-const DEFAULT_SETTINGS = {
-  isShadow: false,
-  mode: 'IMP_MODE',
-  showHints: false,
-  showSettings: false,
-};
+import {
+  DEFAULT_GOLDEN_LAYOUT_CONFIG,
+  DEFAULT_SETTINGS,
+} from '../constants';
+
+export const getGoldenLayoutConfig = async () => {
+  const response = await axios.get('/api/golden-layout-config');
+  const goldenLayoutConfig = response.data || DEFAULT_GOLDEN_LAYOUT_CONFIG;
+  return goldenLayoutConfig;
+}
+
+export const saveGoldenLayoutConfig = async (goldenLayoutConfig) => {
+  return axios.post('/api/golden-layout-config', goldenLayoutConfig);
+}
+
+
+
 
 export const getSettings = async () => {
   const response = await axios.get('/api/settings');

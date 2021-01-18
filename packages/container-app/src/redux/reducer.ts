@@ -1,27 +1,23 @@
 import { Reducer } from 'redux';
 import {
+  UPDATE_GOLDEN_LAYOUT_CONFIG,
   UPDATE_SETTINGS,
   SAVE_GOLDEN_LAYOUT_CONFIG,
 } from './actions';
 
+// TODO: types
 export interface IContainerAppReducerState {
   goldenLayoutConfig: any;
-  settings?: {
+  settings: any | {
     isShadow: boolean;
     mode: string;
     showHints: boolean;
     showSettings: boolean;
-  }
+  };
 }
 
 const initialState: IContainerAppReducerState = {
-  goldenLayoutConfig: [],
-  // settings: localStorage.settings ? JSON.parse(localStorage.settings) : {
-  //   isShadow: false,
-  //   mode: 'IMP_MODE',
-  //   showHints: false,
-  //   showSettings: false,
-  // }
+  goldenLayoutConfig: undefined,
   settings: undefined,
 };
 
@@ -37,6 +33,18 @@ export const containerAppReducer: Reducer<IContainerAppReducerState> = (state = 
         ...state,
         goldenLayoutConfig,
       };
+    }
+
+    case UPDATE_GOLDEN_LAYOUT_CONFIG: {
+      // console.log('....updateGoldenLayoutConfig: reducer');
+      const { goldenLayoutConfig } = action;
+      // const newGoldenLayoutConfig = { ...goldenLayoutConfig };
+      const newGoldenLayoutConfig = JSON.parse(JSON.stringify(goldenLayoutConfig));
+
+      return {
+        ...state,
+        goldenLayoutConfig: newGoldenLayoutConfig,
+      }
     }
 
     case UPDATE_SETTINGS: {
