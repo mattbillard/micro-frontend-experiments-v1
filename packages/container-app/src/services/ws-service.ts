@@ -1,12 +1,12 @@
-
-// TODO: WS should know username 
+import * as jsCookie from 'js-cookie';
 
 // TODO: rename both variable and path to 'ws'
 const url = 'wss://localhost:8080/ws'
-let ws;
+const RETRY_TIMEOUT = 5000;
 
 export const connect = (callback) => {
-  ws = new WebSocket(url);
+  const username = jsCookie.get('username');
+  const ws = new WebSocket(`${url}/${username}`);
 
   ws.onopen = () => {
     console.log('WS connected');
@@ -26,6 +26,6 @@ export const connect = (callback) => {
     setTimeout(() => {
       console.log('WS reconnecting');
       connect(callback);
-    }, 5000);
+    }, RETRY_TIMEOUT);
   }
 }

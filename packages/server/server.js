@@ -7,6 +7,7 @@ const PORT = 8084;
 // Imports
 const bodyParser = require('body-parser');
 const chalk = require('chalk');
+const cookieParser = require("cookie-parser");
 const express = require('express');
 const http = require('http');
 const lessMiddleware = require('less-middleware');
@@ -20,6 +21,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'twig');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cookieParser());
 app.use(lessMiddleware(path.join(__dirname, 'public')));
 app.use('/public', express.static('public'));
 const server = http.createServer(app);
@@ -32,9 +34,9 @@ app.use('/api', require('./routes/api.route'));
 
 // WebSockets
 const { wss } = require('./websocket-server');
-server.on('upgrade', function upgrade(request, socket, head) {
-  wss.handleUpgrade(request, socket, head, function done(ws) {
-    wss.emit('connection', ws, request);
+server.on('upgrade', (req, socket, head) => {
+  wss.handleUpgrade(req, socket, head, (ws) => {
+    wss.emit('connection', ws, req);
   });
 });
 
