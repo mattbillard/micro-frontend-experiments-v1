@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as ReactDOM from "react-dom";
 import $ from 'jquery';
 import { connect, Provider } from 'react-redux';
-import { debounce } from 'lodash-es';
+import { debounce, isEqual } from 'lodash-es';
 
 // Golden Layout needs these
 declare const window: any;
@@ -31,27 +31,36 @@ export class GoldenLayoutComponentView extends React.Component {
   }
 
   componentDidMount = () => {
-    const config = this.props.goldenLayoutConfig;
-
-    const myLayout = this.myLayout = new GoldenLayout(config, this.ref.current);
-    myLayout.registerComponent('MicroFrontEndComponent', this.withStore(MicroFrontEndComponent));
-
-    this.initAutoSave(myLayout);
-    setTimeout(() => myLayout.init())
-
+    this.init();
     window.addEventListener('resize', this.redrawDebounced);
+  }
+
+  componentDidUpdate = (prevProps) => {
+    if (isEqual(this.myLayout.toConfig(), this.props.goldenLayoutConfig) === false) {
+      console.log('Golden Layout: redraw');
+      this.myLayout.destroy();
+      this.init();
+    }
   }
 
   componentWillUnmount = () => {
     window.removeEventListener('resize', this.redrawDebounced);
   }
 
-  initAutoSave = (myLayout) => {
-    myLayout.on('stateChanged', () => {
-      const config = myLayout.toConfig();
-      // @ts-ignore
-      this.props.dispatch(saveGoldenLayoutConfig(config));
-    });
+  init = () => {
+    const config = this.props.goldenLayoutConfig;
+    const container = this.ref.current;
+
+    this.myLayout = new GoldenLayout(config, container);
+    this.myLayout.registerComponent('MicroFrontEndComponent', this.withStore(MicroFrontEndComponent));
+
+    setTimeout(() => {
+      this.myLayout.init();
+
+      setTimeout(() => {
+        this.myLayout.on('stateChanged', this.saveConfigDebounced);
+      });
+    })
   }
 
   redraw = (ref, myLayoutRef) => {
@@ -60,6 +69,15 @@ export class GoldenLayoutComponentView extends React.Component {
     this.myLayout!.updateSize(width, height);
   }
   redrawDebounced = debounce(this.redraw, 250);
+
+  saveConfig = () => {
+    if (isEqual(this.myLayout.toConfig(), this.props.goldenLayoutConfig) === false) {
+      console.log('Golden Layout: save');
+      const config = this.myLayout.toConfig();
+      this.props.dispatch(saveGoldenLayoutConfig(config));
+    }
+  }
+  saveConfigDebounced = debounce(this.saveConfig, 1000);
 
   // Add contexts like store because Goldenlayout does not pass them down
   withStore = (Component) => {
