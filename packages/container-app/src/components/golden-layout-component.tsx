@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as ReactDOM from "react-dom";
 import $ from 'jquery';
 import { connect, Provider } from 'react-redux';
-import { debounce, isEqual } from 'lodash-es';
+import { debounce } from 'lodash-es';
 
 // Golden Layout needs these
 declare const window: any;
@@ -36,10 +36,16 @@ export class GoldenLayoutComponentView extends React.Component {
   }
 
   componentDidUpdate = (prevProps) => {
-    if (isEqual(this.myLayout.toConfig(), this.props.goldenLayoutConfig) === false) {
-      console.log('Golden Layout: redraw');
-      this.myLayout.destroy();
-      this.init();
+    // NOTE: GoldenLayouts fights with Redux. Only redraw if redux data is post-init config
+    const reduxConfigHasBeenInitialized = !!this.props.goldenLayoutConfig.settings;
+    if (reduxConfigHasBeenInitialized) {
+      
+      const isEqual = JSON.stringify(this.myLayout.toConfig()) === JSON.stringify(this.props.goldenLayoutConfig);
+      if (!isEqual) {
+        console.log('Golden Layout: redraw');
+        this.myLayout.destroy();
+        this.init();
+      }
     }
   }
 
@@ -57,9 +63,9 @@ export class GoldenLayoutComponentView extends React.Component {
     setTimeout(() => {
       this.myLayout.init();
 
-      setTimeout(() => {
+      // setTimeout(() => {
         this.myLayout.on('stateChanged', this.saveConfigDebounced);
-      });
+      // });
     })
   }
 
@@ -71,7 +77,8 @@ export class GoldenLayoutComponentView extends React.Component {
   redrawDebounced = debounce(this.redraw, 250);
 
   saveConfig = () => {
-    if (isEqual(this.myLayout.toConfig(), this.props.goldenLayoutConfig) === false) {
+    const isEqual = JSON.stringify(this.myLayout.toConfig()) === JSON.stringify(this.props.goldenLayoutConfig);
+    if (!isEqual) {
       console.log('Golden Layout: save');
       const config = this.myLayout.toConfig();
       this.props.dispatch(saveGoldenLayoutConfig(config));
