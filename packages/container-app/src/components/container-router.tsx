@@ -9,6 +9,9 @@ import {
   Navigation,
   PageComponent,
 } from '../components';
+import {
+  DEFAULT_SETTINGS,
+} from '../constants';
 import { 
   IStoreState,
   loadInitialGoldenLayoutConfig,
@@ -16,7 +19,10 @@ import {
   updateGoldenLayoutConfig,
   updateSettings,
 } from '../redux';
-import { wsService } from '../services';
+import { 
+  xhrService,
+  wsService,
+} from '../services';
 
 interface IContainerRouterProps {
 }
@@ -31,11 +37,16 @@ export const ContainerRouter = (props: IContainerRouterProps) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    wsService.connect(handleWsMessage);
+    (async () => {
+      wsService.connect(handleWsMessage);
+  
+      // Load initial data
+      dispatch(loadInitialSettings());
 
-    // Load initial data
-    dispatch(loadInitialGoldenLayoutConfig());
-    dispatch(loadInitialSettings());
+      // Load initial data
+      // const settings = await xhrService.getSettings() || DEFAULT_SETTINGS;
+      // dispatch(updateSettings(settings));
+    })();
   }, []);
 
   const handleWsMessage = (wsMsgObj) => {
@@ -54,7 +65,7 @@ export const ContainerRouter = (props: IContainerRouterProps) => {
     }
   }
 
-  if (!goldenLayoutConfig || !settings) {
+  if (!settings) {
     return (
       <div>Loading...</div>
     )

@@ -16,7 +16,19 @@ import 'golden-layout/src/css/goldenlayout-base.css';
 import 'golden-layout/src/css/goldenlayout-dark-theme.css';
 
 import { MicroFrontEndComponent } from '../components';
-import { IStoreState, saveGoldenLayoutConfig, store } from '../redux';
+import {
+  DEFAULT_GOLDEN_LAYOUT_CONFIG,
+  DEFAULT_SETTINGS,
+} from '../constants';
+import { 
+  IStoreState,
+  saveGoldenLayoutConfig,
+  updateGoldenLayoutConfig,
+  store 
+} from '../redux';
+import { 
+  xhrService,
+} from '../services';
 
 interface IGoldenLayoutComponentProps {
 }
@@ -31,21 +43,21 @@ export class GoldenLayoutComponentView extends React.Component {
   }
 
   componentDidMount = () => {
-    this.init();
-    window.addEventListener('resize', this.redrawDebounced);
+    (async () => {
+      const goldenLayoutConfig = await xhrService.getGoldenLayoutConfig() || DEFAULT_GOLDEN_LAYOUT_CONFIG;
+      this.init(goldenLayoutConfig);
+      window.addEventListener('resize', this.redrawDebounced);
+    })();
   }
 
   componentDidUpdate = (prevProps) => {
-    // NOTE: GoldenLayouts fights with Redux. Only redraw if redux data is post-init config
-    const reduxConfigHasBeenInitialized = !!this.props.goldenLayoutConfig.settings;
-    if (reduxConfigHasBeenInitialized) {
-      
-      const isEqual = JSON.stringify(this.myLayout.toConfig()) === JSON.stringify(this.props.goldenLayoutConfig);
-      if (!isEqual) {
-        console.log('Golden Layout: redraw');
-        this.myLayout.destroy();
-        this.init();
-      }
+    const { goldenLayoutConfig } = this.props;
+    const isEqual = JSON.stringify(this.myLayout.toConfig()) === JSON.stringify(goldenLayoutConfig);
+
+    if (!isEqual) {
+      console.log('Golden Layout: redraw');
+      this.myLayout.destroy();
+      this.init(goldenLayoutConfig);
     }
   }
 
@@ -53,8 +65,7 @@ export class GoldenLayoutComponentView extends React.Component {
     window.removeEventListener('resize', this.redrawDebounced);
   }
 
-  init = () => {
-    const config = this.props.goldenLayoutConfig;
+  init = (config) => {
     const container = this.ref.current;
 
     this.myLayout = new GoldenLayout(config, container);
@@ -63,9 +74,10 @@ export class GoldenLayoutComponentView extends React.Component {
     setTimeout(() => {
       this.myLayout.init();
 
-      // setTimeout(() => {
-        this.myLayout.on('stateChanged', this.saveConfigDebounced);
-      // });
+      console.log('Golden Layout: updating redux')
+      this.props.dispatch(updateGoldenLayoutConfig(this.myLayout.toConfig()));
+
+      this.myLayout.on('stateChanged', this.saveConfigDebounced);
     })
   }
 
@@ -100,16 +112,25 @@ export class GoldenLayoutComponentView extends React.Component {
   }
 
   render() {
+    // if (!this.isInitialized) {
+    //   return (
+    //     <div>Loading...</div>
+    //   )
+    // }
+
     return (
       <div ref={this.ref} className="golden-layout-container"></div>
     )
   } 
 }
 
-const mapDispatchToProps = (dispatch) => ({
-  dispatch
-});
 const mapStateToProps = (state: IStoreState) => ({
   goldenLayoutConfig: state.containerAppReducer.goldenLayoutConfig
 });
-export const GoldenLayoutComponent = connect(mapStateToProps,mapDispatchToProps)(GoldenLayoutComponentView);
+const mapDispatchToProps = (dispatch) => ({
+  dispatch
+});
+// const mapDispatchToProps = {
+//   dispatch
+// };
+export const GoldenLayoutComponent = connect(mapStateToProps, mapDispatchToProps)(GoldenLayoutComponentView);
