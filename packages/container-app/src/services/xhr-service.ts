@@ -6,8 +6,6 @@ import {
 } from '../constants';
 
 export const getGoldenLayoutConfig = async () => {
-  // return DEFAULT_GOLDEN_LAYOUT_CONFIG;
-  
   const response = await axios.get('/api/golden-layout-config');
   return response.data;
 }

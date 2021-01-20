@@ -2,8 +2,6 @@ import { xhrService } from '../services';
 
 export const UPDATE_GOLDEN_LAYOUT_CONFIG =  'UPDATE_GOLDEN_LAYOUT_CONFIG';
 export const UPDATE_SETTINGS =  'UPDATE_SETTINGS';
-export const SAVE_GOLDEN_LAYOUT_CONFIG =  'SAVE_GOLDEN_LAYOUT_CONFIG';
-export const SET_SETTING =  'SET_SETTING';
 
 export const saveGoldenLayoutConfig = (goldenLayoutConfig) => async (dispatch) => {
   xhrService.saveGoldenLayoutConfig(goldenLayoutConfig);
@@ -16,7 +14,6 @@ export const loadInitialGoldenLayoutConfig = () => async (dispatch) => {
 }
 
 export const updateGoldenLayoutConfig = (goldenLayoutConfig) => {
-  // console.log('....updateGoldenLayoutConfig: action');
   return { type: UPDATE_GOLDEN_LAYOUT_CONFIG, goldenLayoutConfig };
 }
 
