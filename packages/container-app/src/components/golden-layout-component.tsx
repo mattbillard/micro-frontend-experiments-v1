@@ -44,8 +44,8 @@ export class GoldenLayoutComponentView extends React.Component {
 
   componentDidMount = () => {
     (async () => {
-      const goldenLayoutConfig = await xhrService.getGoldenLayoutConfig() || DEFAULT_GOLDEN_LAYOUT_CONFIG;
-      // const goldenLayoutConfig = DEFAULT_GOLDEN_LAYOUT_CONFIG;
+      // const goldenLayoutConfig = await xhrService.getGoldenLayoutConfig() || DEFAULT_GOLDEN_LAYOUT_CONFIG;
+      const goldenLayoutConfig = DEFAULT_GOLDEN_LAYOUT_CONFIG;
       this.init(goldenLayoutConfig);
       window.addEventListener('resize', this.redrawDebounced);
     })();
@@ -110,8 +110,12 @@ export class GoldenLayoutComponentView extends React.Component {
       props: {
       },
     };
-  
-    this.myLayout.root.contentItems[0].addChild(newItemConfig);
+
+    let addTo = this.myLayout.root;
+    while (addTo.contentItems && addTo.contentItems[0] && addTo.contentItems[0].type !== 'component') {
+      addTo = addTo.contentItems[0];
+    }
+    addTo.addChild(newItemConfig);
   }
 
   // Add contexts like store because Goldenlayout does not pass them down

@@ -1,5 +1,9 @@
 
 export const DEFAULT_GOLDEN_LAYOUT_CONFIG = {
+  // TODO: keep? Explore more?
+  settings: {
+    selectionEnabled: true
+  },
   content: [
     {
       type: 'row',
