@@ -5,6 +5,7 @@ import {
   ColumnChart,
   GoldenSpiral,
   GoldenText,
+  MicroTableOfContents,
   PieChart,
   StockChart,
   StockGrid,
@@ -36,7 +37,8 @@ const TheSwitch = (props) => {
           <Route path="/micro-app/stock-chart" component={StockChart} />
           <Route path="/micro-app/stock-grid" component={StockGrid} />
           <Route path="/micro-app/golden-text" component={GoldenText} />
-          <Route path="/micro-app" component={TextTester} />
+          <Route path="/micro-app/text-tester" component={TextTester} />
+          <Route path="/micro-app" component={MicroTableOfContents} />
           <Redirect from="/*" to={url || '/micro-app'} />
         </Switch>
       </div>

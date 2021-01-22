@@ -45,6 +45,7 @@ export class GoldenLayoutComponentView extends React.Component {
   componentDidMount = () => {
     (async () => {
       const goldenLayoutConfig = await xhrService.getGoldenLayoutConfig() || DEFAULT_GOLDEN_LAYOUT_CONFIG;
+      // const goldenLayoutConfig = DEFAULT_GOLDEN_LAYOUT_CONFIG;
       this.init(goldenLayoutConfig);
       window.addEventListener('resize', this.redrawDebounced);
     })();
@@ -70,6 +71,7 @@ export class GoldenLayoutComponentView extends React.Component {
 
     this.myLayout = new GoldenLayout(config, container);
     this.myLayout.registerComponent('MicroFrontEndComponent', this.withStore(MicroFrontEndComponent));
+    window.myLayout = this.myLayout;
 
     setTimeout(() => {
       this.myLayout.init();
@@ -98,6 +100,20 @@ export class GoldenLayoutComponentView extends React.Component {
   }
   saveConfigDebounced = debounce(this.saveConfig, 1000);
 
+  addNewComponent = (event) => {
+    event.preventDefault();
+
+    var newItemConfig = {
+      title: 'New Item',
+      type: 'react-component',
+      component: 'MicroFrontEndComponent',
+      props: {
+      },
+    };
+  
+    this.myLayout.root.contentItems[0].addChild(newItemConfig);
+  }
+
   // Add contexts like store because Goldenlayout does not pass them down
   withStore = (Component) => {
     return class WithStore extends React.Component {
@@ -112,14 +128,13 @@ export class GoldenLayoutComponentView extends React.Component {
   }
 
   render() {
-    // if (!this.isInitialized) {
-    //   return (
-    //     <div>Loading...</div>
-    //   )
-    // }
-
     return (
-      <div ref={this.ref} className="golden-layout-container"></div>
+      <div className="golden-layout">
+        <div className="golden-layout-toolbar">
+          <a onClick={this.addNewComponent}>Add +</a>
+        </div>
+        <div ref={this.ref} className="golden-layout-container"></div>
+      </div>
     )
   } 
 }
