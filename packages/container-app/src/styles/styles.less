@@ -102,8 +102,37 @@ h1 {
 .page-component {
   position: absolute;
   width: 100vw;
-  height: calc(100vh - 20px);
+  height: calc(100vh - 45px);
 }
+
+
+.navigation {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-bottom: solid 1px #222;
+
+  .brand {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-weight: bold;
+    font-size: 1.2em;
+    padding: 10px 10px;
+    display: inline-block;
+    border-right: solid 1px #222;
+  }
+
+  > div > a {
+    padding: 10px 10px;
+    text-decoration: none;
+    border-right: solid 1px #222;
+    display: inline-block;
+
+    &:hover {
+      background: #222;
+    }
+  }
+}
+
 
 .settings-menu {
   position: absolute;

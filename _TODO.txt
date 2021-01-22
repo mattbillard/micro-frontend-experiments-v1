@@ -25,6 +25,7 @@ TODO
   - GoldenLayout - save/restore 
   - GoldenLayout - websockets
 
+  - GoldenLayout - way to add more window panes 
 - Drop down menu 
 - Middleware to send redux changes to WS?
 - Each app should save its own state 

@@ -16,30 +16,29 @@ export const Navigation = (props: INavigationProps) => {
   const { showSettings } = useSelector((state: IStoreState) => state.containerAppReducer.settings);
   const dispatch = useDispatch();
 
-  const logout = () => {
-    jsCookie.remove('username');
-    window.location.reload();
-  }
-
   const toggleShowSettings = () => {
     dispatch(setSetting('showSettings', !showSettings));
   }
 
   return (
-    <div>
-      <div style={{ float: 'right' }}>
-        <a href="#" onClick={toggleShowSettings}>Settings</a> |
-            {showSettings && <SettingsMenu toggleShowSettings={toggleShowSettings} />}
-        <a href="#" onClick={logout}>Logout</a>
+    <div className="navigation">
+      <div className="nav-links">
+        <span className="brand">
+          MattFin
+        </span>
+        <Link to='/container/golden-layout'>Golden</Link>
+        <Link to='/container/page/micro-app/golden-spiral'>Spiral</Link>
+        <Link to='/container/page/micro-app/golden-text'>Text</Link>
+        <Link to='/container/page/micro-app/stock-grid'>StockGrid</Link>
+        <Link to='/container/page/micro-app/column-chart'>ColumnChart</Link>
+        <Link to='/container/page/micro-app/pie-chart'>PieChart</Link>
+        <Link to='/container/page/micro-app/stock-chart'>StockChart</Link>
       </div>
 
-      <Link to='/container/golden-layout'>Golden</Link> |
-      <Link to='/container/page/micro-app/golden-spiral'>Spiral</Link> |
-      <Link to='/container/page/micro-app/golden-text'>Text</Link> |
-      <Link to='/container/page/micro-app/stock-grid'>StockGrid</Link> |
-      <Link to='/container/page/micro-app/column-chart'>ColumnChart</Link> |
-      <Link to='/container/page/micro-app/pie-chart'>PieChart</Link> |
-      <Link to='/container/page/micro-app/stock-chart'>StockChart</Link> |
+      <div>
+        <a href="#" onClick={toggleShowSettings}>Settings</a>
+          {showSettings && <SettingsMenu toggleShowSettings={toggleShowSettings} />}
+      </div>
     </div>
   )
 }

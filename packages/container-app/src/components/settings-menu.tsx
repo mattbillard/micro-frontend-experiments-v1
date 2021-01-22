@@ -8,6 +8,7 @@ interface ISettingsMenuProps {
 }
 
 export const SettingsMenu = (props: ISettingsMenuProps) => {
+  const username = jsCookie.get('username');
   const { toggleShowSettings } = props;
   const dispatch = useDispatch();
   const { isShadow, mode, showHints } = useSelector((state: IStoreState) => state.containerAppReducer.settings);
@@ -20,15 +21,23 @@ export const SettingsMenu = (props: ISettingsMenuProps) => {
     }
   }
 
-  const reset = () => {
-    localStorage.clear();
-    jsCookie.remove('username');
+  const logout = () => {
+    toggleShowSettings();
+    setTimeout(() => {
+      jsCookie.remove('username');
+      window.location.reload();
+    })
   }
 
   return (
     <div className="settings-menu">
       <div>
-        Mode: {mode} {isShadow}
+        <div>
+          Username: {username}
+        </div>
+        <div>
+          Mode: {mode}
+        </div>
         <ul>
           <li><a onClick={() => handleChangeSetting('mode', 'IFRAME_MODE')}>Iframes</a></li>
           <li>
@@ -43,11 +52,8 @@ export const SettingsMenu = (props: ISettingsMenuProps) => {
         <a onClick={() => handleChangeSetting('showHints', !showHints)}>{String(showHints)}</a>
       </div>
       <div>
-        <a href="" onClick={reset}>Reset</a>
-      </div>
-      <div>
         <br/>
-        <button onClick={toggleShowSettings}>OK</button>
+        <button onClick={logout}>Logout</button>
       </div>
     </div>
   )
