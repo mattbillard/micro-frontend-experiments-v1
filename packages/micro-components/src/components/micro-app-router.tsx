@@ -16,7 +16,7 @@ import {
 import "../styles/index.less"; 
 
 const TheSwitch = (props) => {
-  console.log('....props', props);
+  // console.log('....props', props);
   const { showHints, url } = props;
 
   return (

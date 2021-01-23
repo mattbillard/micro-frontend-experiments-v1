@@ -27,8 +27,11 @@ TODO
 - GoldenLayout - way to add more window panes 
 - Bugfix - fix pages 
 - Bugfix - Micro-app is no longer working standalone 
+- Propagate new props to mounted sub apps
 
-- Apply new props to mounted sub apps  
+- Bugfix - goldenLayout + web component is broken
+- Bugfix - lazy component rerenders too often. Try only fetching when url changes 
+- Bugfix - standalone Micro-app broken again
 - Each app should save its own state 
 - OpenFin / Electron
 - Try other micro frontend approaches 

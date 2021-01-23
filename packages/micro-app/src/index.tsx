@@ -17,7 +17,6 @@ import 'micro-components/src/styles/index.less';
 declare const window: any;
 
 
-
 const render = (context) => {
   let props;
   if (window !==  window.parent) {
@@ -25,8 +24,7 @@ const render = (context) => {
   } else {
     props = 
       scriptTag?.parentElement?.props ||   // WebComponent no shadow
-      scriptTag.getRootNode().host.props;      // WebComponent with shadow
-      // FYI shadowDom parent is getRootNode().host
+      scriptTag.getRootNode().host.props;  // WebComponent with shadow
   }
 
   console.log('....render props', props);  
@@ -34,17 +32,16 @@ const render = (context) => {
   ReactDOM.render(<MicroAppRouter {...props} />, elem);
 }
 
+// Miro-app watches parent for prop changes
+const initObserve = (context) => {
+  const observeThis = window.frameElement || scriptTag.parentElement || scriptTag.getRootNode().host;
+  const observer = new MutationObserver((mutationsList, observer) => { render(context);});
+  const config = { attributes: true, childList: false, subtree: false };
+  observer.observe(observeThis, config);
+}
 
 const scriptTag = window.currentScript;
 const context = scriptTag.parentElement || scriptTag.getRootNode();
-const onserveThis = window.frameElement || scriptTag.parentElement || scriptTag.getRootNode().host;
-
-const observer = new MutationObserver((mutationsList, observer) => {
-  console.log('...rerender mutationsList, observer', mutationsList, observer);
-  render(context);
-});
-const config = { attributes: true, childList: true, subtree: true };
-observer.observe(onserveThis, config);
-
-
 render(context);
+
+initObserve(context);

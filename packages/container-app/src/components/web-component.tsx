@@ -9,33 +9,24 @@ interface IWebComponentProps {
   url: string;
 }
 
+// TODO: figure out something better. This var will be shared across all components of this type
 let count = 0;
 
 export const WebComponent = (props: IWebComponentProps) => {
-  const [isInitialized, setIsInitialized] = useState<boolean>(false);
   const ref = useRef(null);
   const { isShadow } = useSelector((state: IStoreState) => state.containerAppReducer.settings);
   const className = isShadow === true ? 'shadow-component' : 'web-component';
 
   useEffect(() => {
     init(ref, props, isShadow);
-    setIsInitialized(true);
   }, []);  
 
-  // TODO: cleaner to use a class component with componentDidUpdate
-  // useEffect(() => {
-  //   if (isInitialized) {
-  //     console.log('....updateProps');
-  //     window.MicroApp.updateProps(props);
-  //   }
-  // }, [props]);
   useEffect(() => {
     ref.current.props = props;
   }, [props])
 
   return (
     <div ref={ref} className={className} count={count++}></div>
-    // <div ref={ref} className={`${className} ${count++}`}></div>
   )
 }
 

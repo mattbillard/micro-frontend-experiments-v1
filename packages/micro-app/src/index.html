@@ -7,7 +7,9 @@
     </head>
     <body>
         <div class="micro-app"></div>
-        <script src="" onerror="window.currentScript = this;"></script><!--  Workaround: document.currentScript is not available in shadowDom. -->
+
+        <!--  Workaround: document.currentScript is not available in shadowDom. Unfortunately, doesn't work well when multiple shadow micro apps load simultaneously -->
+        <script src="" onerror="window.currentScript = this;"></script>
         <script src="/micro-app/bundle.js"></script>
     </body>
 </html>

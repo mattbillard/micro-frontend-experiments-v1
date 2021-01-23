@@ -11,6 +11,8 @@ interface ILazyImportComponentProps {
 
 
 export const LazyImportComponent = (props: ILazyImportComponentProps) => {
+  // TODO: rerenders too often. Try looking at page > line chart and changing settings. Reason is it reimports below
+  
   // const OtherComponent = React.lazy(() => import('micro-components'));
   // require('micro-components/dist/main.css');
   

@@ -42,50 +42,53 @@ interface IIframeComponentProps {
 
 
 
-// export const IframeComponent = (props: IIframeComponentProps) => {
-//   const ref = useRef(null);
-//   const { url } = props;
+// TODO: figure out something better. This var will be shared across all components of this type
+var count = 0;
 
-//   useEffect(() => {
-//     ref.current.props = props;
-//   }, []);
+export const IframeComponent = (props: IIframeComponentProps) => {
+  const ref = useRef(null);
+  const { url } = props;
 
-//   return (
-//     <iframe ref={ref} src={url}></iframe>
-//   )  
-// }
+  useEffect(() => {
+    ref.current.props = props;
+  }, []);
 
+  useEffect(() => {
+    ref.current.props = props;
+  }, [props]);
 
-
-export class IframeComponent extends React.Component {
-  count = 0;
-
-  constructor(props) {
-    super(props);
-    this.ref = React.createRef();
-  }
-
-  componentDidMount = () => {
-    this.ref.current.props = props;
-  }
-
-  componentDidUpdate = (props) => {
-  //   if (this.ref.current.contentWindow ) {
-  //     this.ref.current.contentWindow.MicroApp.updateProps(this.props);
-  //   }
-    this.ref.current.props = props;
-    console.log('...updating props');
-  }
-
-  render = () => {
-    const { url } = this.props;
-
-    return (
-      // <iframe ref={this.ref} src={url} count={this.count++}></iframe>
-      <iframe ref={this.ref} src={url} className={this.count++}></iframe>
-    )  
-  }
+  return (
+    // <iframe ref={ref} src={url}></iframe>
+    <iframe ref={ref} src={url} count={count++}></iframe>
+  )  
 }
+
+
+
+// export class IframeComponent extends React.Component {
+//   count = 0;
+
+//   constructor(props) {
+//     super(props);
+//     this.ref = React.createRef();
+//   }
+
+//   componentDidMount = () => {
+//     this.ref.current.props = props;
+//   }
+
+//   componentDidUpdate = (props) => {
+//     this.ref.current.props = props;
+//   }
+
+//   render = () => {
+//     const { url } = this.props;
+
+//     return (
+//       <iframe ref={this.ref} src={url} count={this.count++}></iframe>
+//     )  
+//   }
+// }
 
 
 // /**
