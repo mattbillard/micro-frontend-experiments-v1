@@ -43,115 +43,44 @@ interface IIframeComponentProps {
 
 
 
-// export const IframeComponent = (props: IIframeComponentProps) => {
-//   const url = props.glContainer?._config?.componentState?.url || '/micro-app';
-
-//   return (
-//     <iframe src={url}></iframe>
-//   )  
-// }
-
-
-
-
-
-
-// export const IframeComponent = (props: IIframeComponentProps) => {
-//   const ref = useRef(null);
-//   // const [srcDoc, setSrcDoc] = useState<string>();
-
-//   useEffect(() => {
-//     init(ref, props);
-//   }, []);
-
-//   return (
-//     // <iframe srcDoc={srcDoc}></iframe>
-//     <iframe ref={ref}></iframe>
-//   )  
-// }
-
-// const init = async (ref, props) => {
-//   const url = props.glContainer?._config?.componentState?.url || '/micro-app';
-
-//   var res = await fetch(url);
-//   var text = await res.text();
-
-//   var context = document.createElement('div');
-//   context.innerHTML = text;
-
-//   // Recreate script tags or browser will ignore them
-//   const oldScripts = context.querySelectorAll('script'); // @ts-ignore
-//   [...oldScripts].forEach(oldScript => { 
-//     var newScript = document.createElement('script');
-//     newScript.text = oldScript.text; // @ts-ignore
-//     Object.values({...oldScript.attributes}).map((attr: any) => {
-//       newScript.setAttribute(attr.name, attr.value);
-//     })
-
-//     /**
-//      * TODO: 
-//      * - Won't work for multiple scripts. Needs to be promise.all
-//      * - Also need to register/look up which micro app to initialize 
-//      */
-//     newScript.onload = () => ref.current.contentWindow.MicroApp.init(context, props);
-
-//     const parent = oldScript.parentNode;
-//     oldScript.remove();
-//     parent.appendChild(newScript);
-//   });
-
-//   ref.current.contentDocument.body.append(context);
-// };
 
 export const IframeComponent = (props: IIframeComponentProps) => {
   const ref = useRef(null);
-  const [srcDoc, setSrcDoc] = useState<string>();
+  const url = props.glContainer?._config?.componentState?.url || '/micro-app';
 
   useEffect(() => {
-    init(ref, props, setSrcDoc);
+    ref.current.props = props;
   }, []);
 
   return (
-    <iframe ref={ref} srcDoc={srcDoc}></iframe>
+    <iframe ref={ref} src={url}></iframe>
   )  
 }
 
-const init = async (ref, props, setSrcDoc) => {
-  const url = props.glContainer?._config?.componentState?.url || '/micro-app';
 
-  var res = await fetch(url);
-  var text = await res.text();
+// /**
+//  * Experiment with sourceDoc. It works but is unnecessarily complicated. Maybe also slower.
+//  */
+// export const IframeComponent = (props: IIframeComponentProps) => {
+//   const ref = useRef(null);
+//   const [srcDoc, setSrcDoc] = useState<string>();
 
-  setSrcDoc(text);
-  // ref.current.contentWindow.props = props; // didn't work
-  ref.current.props = props;
+//   useEffect(() => {
+//     init(ref, props, setSrcDoc);
+//   }, []);
 
-  // var context = document.createElement('div');
-  // context.innerHTML = text;
+//   return (
+//     <iframe ref={ref} srcDoc={srcDoc}></iframe>
+//   )  
+// }
 
-  // // Recreate script tags or browser will ignore them
-  // const oldScripts = context.querySelectorAll('script'); // @ts-ignore
-  // [...oldScripts].forEach(oldScript => { 
-  //   var newScript = document.createElement('script');
-  //   newScript.text = oldScript.text; // @ts-ignore
-  //   Object.values({...oldScript.attributes}).map((attr: any) => {
-  //     newScript.setAttribute(attr.name, attr.value);
-  //   })
-
-  //   /**
-  //    * TODO: 
-  //    * - Won't work for multiple scripts. Needs to be promise.all
-  //    * - Also need to register/look up which micro app to initialize 
-  //    */
-  //   newScript.onload = () => ref.current.contentWindow.MicroApp.init(context, props);
-
-  //   const parent = oldScript.parentNode;
-  //   oldScript.remove();
-  //   parent.appendChild(newScript);
-  // });
-
-  // ref.current.contentDocument.body.append(context);
-};
+// const init = async (ref, props, setSrcDoc) => {
+//   const url = props.glContainer?._config?.componentState?.url || '/micro-app';
+//   var res = await fetch(url);
+//   var text = await res.text();
+//   setSrcDoc(text);
+//   ref.current.props = props;
+// };
 
 
 

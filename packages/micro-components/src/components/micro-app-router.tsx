@@ -45,11 +45,11 @@ const TheSwitch = (props) => {
 }
 
 export const MicroAppRouter = (props) => {
-  // const isIframe = window.parent !== window;
+  const isIframe = window.parent !== window;
 
   return (
-    // isIframe ? 
-      // <BrowserRouter><TheSwitch {...props} /></BrowserRouter> :
+    isIframe ? 
+      <BrowserRouter><TheSwitch {...props} /></BrowserRouter> :
       <MemoryRouter><TheSwitch {...props}/></MemoryRouter>
   );
 }

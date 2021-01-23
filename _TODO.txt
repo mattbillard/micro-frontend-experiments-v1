@@ -26,8 +26,12 @@ TODO
   - GoldenLayout - websockets
   - GoldenLayout - way to add more window panes 
 
-  - GoldenLayout - consider removing from Redux. Could make save/restore/reinit much simpler. Would need a way to listen to websocket without redux 
-- Drop down menu 
+- Bugfixes 
+  - Fix pages 
+  - GoldenLayout - consider removing Redux. Could make save/restore/reinit much simpler. Would need a way to listen to websocket without redux 
+  - Micro-app is no longer working standalone 
 - Middleware to send redux changes to WS?
 - Each app should save its own state 
 - More features 
+- OpenFin / Electron
+- Try other micro frontend approaches 
