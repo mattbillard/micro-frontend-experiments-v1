@@ -27,7 +27,10 @@ import { IStoreState, store } from '../redux';
 // GoldenLayout only works with class components
 export class MicroFrontEndComponentView extends React.Component {
   render () {
-    // console.log('....this.props', this.props);
+    const url = this.props.url || this.props.glContainer._config.componentState?.url || '/micro-app';
+    const setTitle = this.props.setTitle || ((title) => this.props.glContainer.setTitle(title));
+    const setState = this.props.setState || ((state) => this.props.glContainer.setState(state));
+    const newProps = { ...this.props, setTitle, setState, url };
 
     // @ts-ignore
     const { mode } = this.props;
@@ -35,10 +38,10 @@ export class MicroFrontEndComponentView extends React.Component {
     return (
       <>
         {/* @ts-ignore */}
-        {mode === 'IFRAME_MODE' && <IframeComponent {...this.props} />}
+        {mode === 'IFRAME_MODE' && <IframeComponent {...newProps} />}
         {/* @ts-ignore */}
-        {mode === 'WC_MODE' && <WebComponent {...this.props} />}
-        {mode === 'IMP_MODE' && <LazyImportComponent {...this.props} />}
+        {mode === 'WC_MODE' && <WebComponent key={url} {...newProps} />}
+        {mode === 'IMP_MODE' && <LazyImportComponent {...newProps} />}
       </>
     );
     }

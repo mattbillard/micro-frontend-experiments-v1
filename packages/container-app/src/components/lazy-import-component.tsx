@@ -11,11 +11,6 @@ interface ILazyImportComponentProps {
 
 
 export const LazyImportComponent = (props: ILazyImportComponentProps) => {
-  const url = props.url || props.glContainer._config.componentState?.url || '/micro-app';
-  const setTitle = props.setTitle || ((title) => props.glContainer.setTitle(title));
-  const setState = props.setState || ((state) => props.glContainer.setState(state));
-  const newProps = { ...props, setTitle, setState, url };
-
   // const OtherComponent = React.lazy(() => import('micro-components'));
   // require('micro-components/dist/main.css');
   
@@ -25,7 +20,7 @@ export const LazyImportComponent = (props: ILazyImportComponentProps) => {
   return (
     <div className="lazy-import">
       <Suspense fallback={<div>Loading...</div>}>
-        <OtherComponent {...newProps} />
+        <OtherComponent {...props} />
       </Suspense>
     </div>
   );
