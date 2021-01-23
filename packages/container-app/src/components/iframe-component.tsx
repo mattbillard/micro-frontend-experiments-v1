@@ -56,51 +56,101 @@ interface IIframeComponentProps {
 
 
 
+// export const IframeComponent = (props: IIframeComponentProps) => {
+//   const ref = useRef(null);
+//   // const [srcDoc, setSrcDoc] = useState<string>();
+
+//   useEffect(() => {
+//     init(ref, props);
+//   }, []);
+
+//   return (
+//     // <iframe srcDoc={srcDoc}></iframe>
+//     <iframe ref={ref}></iframe>
+//   )  
+// }
+
+// const init = async (ref, props) => {
+//   const url = props.glContainer?._config?.componentState?.url || '/micro-app';
+
+//   var res = await fetch(url);
+//   var text = await res.text();
+
+//   var context = document.createElement('div');
+//   context.innerHTML = text;
+
+//   // Recreate script tags or browser will ignore them
+//   const oldScripts = context.querySelectorAll('script'); // @ts-ignore
+//   [...oldScripts].forEach(oldScript => { 
+//     var newScript = document.createElement('script');
+//     newScript.text = oldScript.text; // @ts-ignore
+//     Object.values({...oldScript.attributes}).map((attr: any) => {
+//       newScript.setAttribute(attr.name, attr.value);
+//     })
+
+//     /**
+//      * TODO: 
+//      * - Won't work for multiple scripts. Needs to be promise.all
+//      * - Also need to register/look up which micro app to initialize 
+//      */
+//     newScript.onload = () => ref.current.contentWindow.MicroApp.init(context, props);
+
+//     const parent = oldScript.parentNode;
+//     oldScript.remove();
+//     parent.appendChild(newScript);
+//   });
+
+//   ref.current.contentDocument.body.append(context);
+// };
+
 export const IframeComponent = (props: IIframeComponentProps) => {
   const ref = useRef(null);
-  // const [srcDoc, setSrcDoc] = useState<string>();
+  const [srcDoc, setSrcDoc] = useState<string>();
 
   useEffect(() => {
-    init(ref, props);
+    init(ref, props, setSrcDoc);
   }, []);
 
   return (
-    // <iframe srcDoc={srcDoc}></iframe>
-    <iframe ref={ref}></iframe>
+    <iframe ref={ref} srcDoc={srcDoc}></iframe>
   )  
 }
 
-const init = async (ref, props) => {
+const init = async (ref, props, setSrcDoc) => {
   const url = props.glContainer?._config?.componentState?.url || '/micro-app';
 
   var res = await fetch(url);
   var text = await res.text();
 
-  var context = document.createElement('div');
-  context.innerHTML = text;
+  setSrcDoc(text);
+  // ref.current.contentWindow.props = props; // didn't work
+  ref.current.props = props;
 
-  // Recreate script tags or browser will ignore them
-  const oldScripts = context.querySelectorAll('script'); // @ts-ignore
-  [...oldScripts].forEach(oldScript => { 
-    var newScript = document.createElement('script');
-    newScript.text = oldScript.text; // @ts-ignore
-    Object.values({...oldScript.attributes}).map((attr: any) => {
-      newScript.setAttribute(attr.name, attr.value);
-    })
+  // var context = document.createElement('div');
+  // context.innerHTML = text;
 
-    /**
-     * TODO: 
-     * - Won't work for multiple scripts. Needs to be promise.all
-     * - Also need to register/look up which micro app to initialize 
-     */
-    newScript.onload = () => ref.current.contentWindow.MicroApp.init(context, props);
+  // // Recreate script tags or browser will ignore them
+  // const oldScripts = context.querySelectorAll('script'); // @ts-ignore
+  // [...oldScripts].forEach(oldScript => { 
+  //   var newScript = document.createElement('script');
+  //   newScript.text = oldScript.text; // @ts-ignore
+  //   Object.values({...oldScript.attributes}).map((attr: any) => {
+  //     newScript.setAttribute(attr.name, attr.value);
+  //   })
 
-    const parent = oldScript.parentNode;
-    oldScript.remove();
-    parent.appendChild(newScript);
-  });
+  //   /**
+  //    * TODO: 
+  //    * - Won't work for multiple scripts. Needs to be promise.all
+  //    * - Also need to register/look up which micro app to initialize 
+  //    */
+  //   newScript.onload = () => ref.current.contentWindow.MicroApp.init(context, props);
 
-  ref.current.contentDocument.body.append(context);
+  //   const parent = oldScript.parentNode;
+  //   oldScript.remove();
+  //   parent.appendChild(newScript);
+  // });
+
+  // ref.current.contentDocument.body.append(context);
 };
 
 
