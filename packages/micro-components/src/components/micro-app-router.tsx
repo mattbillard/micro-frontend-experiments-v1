@@ -17,8 +17,7 @@ import "../styles/index.less";
 
 const TheSwitch = (props) => {
   console.log('....props', props);
-  const { showHints } = props;
-  const url = props.glContainer?._config?.componentState?.url;
+  const { showHints, url } = props;
 
   return (
     <div className="micro-app-router flex-rows">

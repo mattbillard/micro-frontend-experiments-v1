@@ -46,10 +46,12 @@ interface IIframeComponentProps {
 
 export const IframeComponent = (props: IIframeComponentProps) => {
   const ref = useRef(null);
-  const url = props.glContainer?._config?.componentState?.url || '/micro-app';
+  const url = props.url || props.glContainer._config.componentState.url || '/micro-app';
+  const setTitle = props.setTitle || ((title) => props.glContainer.setTitle(title));
+  const setState = props.setState || ((state) => props.glContainer.setState(state));
 
   useEffect(() => {
-    ref.current.props = props;
+    ref.current.props = { ...props, setTitle, setState, url };
   }, []);
 
   return (

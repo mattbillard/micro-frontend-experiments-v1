@@ -24,8 +24,9 @@ export const WebComponent = (props: IWebComponentProps) => {
 }
 
 const init = async (ref, props, isShadow) => {
-  // const { url } = props;
-  const url = props.glContainer?._config?.componentState?.url || '/micro-app';
+  const url = props.url || props.glContainer._config.componentState?.url || '/micro-app';
+  const setTitle = props.setTitle || ((title) => props.glContainer.setTitle(title));
+  const setState = props.setState || ((state) => props.glContainer.setState(state));
 
   // Fetch HTML
   var res = await fetch(url);
@@ -53,5 +54,5 @@ const init = async (ref, props, isShadow) => {
     parent.appendChild(newScript);
   });
 
-  context.props = props;
+  context.props = { ...props, setTitle, setState, url };
 }

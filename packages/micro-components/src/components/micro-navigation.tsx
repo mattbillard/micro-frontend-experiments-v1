@@ -7,8 +7,8 @@ export const MicroNavigation = (props) => {
 
   const handleNavigate = (event, text, url) => {
     event.stopPropagation();
-    props.glContainer.setTitle(text);
-    props.glContainer.setState({ url });
+    props.setTitle(text);
+    props.setState({ url });
   }
 
   const links = [
