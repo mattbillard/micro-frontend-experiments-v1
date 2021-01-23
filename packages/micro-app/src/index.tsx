@@ -31,5 +31,46 @@ window.MicroApp = {
     
     const elem = context.querySelector('.micro-app');
     ReactDOM.render(<MicroAppRouter {...props} />, elem);
+  },
+  updateProps: (props) => {
+    const elem = document.querySelector('.micro-app');
+    ReactDOM.render(<MicroAppRouter {...props} />, elem);    
   }
 }
+
+const render = () => {
+  // console.log('....render', window.currentScript);
+  // return;
+  // const scriptTag = document.currentScript;
+  const scriptTag = window.currentScript;
+  // debugger;
+
+  // var scripts = document.getElementsByTagName('script');
+  // var scriptTag = scripts[scripts.length - 1];
+
+  let props;
+  if (window !==  window.parent) {
+    props = window.frameElement.props;    // window.frameElement = iframe tag
+  } else {
+    props = 
+      scriptTag?.parentElement?.props ||   // WebComponent no shadow
+      scriptTag.getRootNode().props;      // WebComponent with shadow
+      // this.getRootNode().props;      // WebComponent with shadow
+  }
+
+  const context = scriptTag.parentElement || scriptTag.getRootNode();
+
+  console.log('....render props', props);
+  
+  const elem = context.querySelector('.micro-app');
+  ReactDOM.render(<MicroAppRouter {...props} />, elem);
+}
+
+
+render();
+// module.exports = render(); // DOES NOT WORK. Can't call require from HTML page
+
+
+
+// FYI shadowDom parent is getRootNode().host
+
