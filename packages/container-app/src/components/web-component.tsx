@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { connect, useSelector, Provider } from 'react-redux';
 import { IStoreState } from '../redux';
 
@@ -9,17 +9,33 @@ interface IWebComponentProps {
   url: string;
 }
 
+let count = 0;
+
 export const WebComponent = (props: IWebComponentProps) => {
+  const [isInitialized, setIsInitialized] = useState<boolean>(false);
   const ref = useRef(null);
   const { isShadow } = useSelector((state: IStoreState) => state.containerAppReducer.settings);
   const className = isShadow === true ? 'shadow-component' : 'web-component';
 
   useEffect(() => {
     init(ref, props, isShadow);
-  }, []);
+    setIsInitialized(true);
+  }, []);  
+
+  // TODO: cleaner to use a class component with componentDidUpdate
+  // useEffect(() => {
+  //   if (isInitialized) {
+  //     console.log('....updateProps');
+  //     window.MicroApp.updateProps(props);
+  //   }
+  // }, [props]);
+  useEffect(() => {
+    ref.current.props = props;
+  }, [props])
 
   return (
-    <div ref={ref} className={className}></div>
+    <div ref={ref} className={className} count={count++}></div>
+    // <div ref={ref} className={`${className} ${count++}`}></div>
   )
 }
 
@@ -52,5 +68,6 @@ const init = async (ref, props, isShadow) => {
     parent.appendChild(newScript);
   });
 
-  context.props = props;
+  // context.props = props;
+  ref.current.props = props;
 }
