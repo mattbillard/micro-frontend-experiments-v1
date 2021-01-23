@@ -33,8 +33,11 @@ export const StockGrid = (props) => {
       options,
     );
 
-    grid.resizeCanvas();
-    grid.autosizeColumns();
+    const resizeObserver = new ResizeObserver(entries => {
+      grid.resizeCanvas();
+      grid.autosizeColumns();
+    });
+    resizeObserver.observe(ref.current);
 
     setGrid(grid);
   }, []);
