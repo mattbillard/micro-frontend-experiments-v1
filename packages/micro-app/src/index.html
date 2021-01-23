@@ -7,26 +7,7 @@
     </head>
     <body>
         <div class="micro-app"></div>
-        <!-- <script src="/micro-app/bundle.js" onload="window.MicroApp.init(this)"></script> -->
-
-        <!-- <script src="/micro-app/bundle.js"></script> -->
-        <!-- <script src="/micro-app/bundle.js">document.currentScript = this; debugger;</script> -->
-        <!-- <script src="/micro-app/bundle.js" onload="document.currentScript = this"></script> -->
-        <!-- <script src="/micro-app/bundle.js" onload="window.currentScript = this; debugger;"></script> -->
-        <!-- <script onloadstart="console.log('....onloadstart');" src="/micro-app/bundle.js"></script> -->
-
-        <script onload="console.log('...onload')" onerror="window.currentScript = this; console.log('...onerror')" src=""></script>
+        <script src="" onerror="window.currentScript = this;"></script><!--  Workaround: document.currentScript is not available in shadowDom. -->
         <script src="/micro-app/bundle.js"></script>
-
-        <!-- <script>
-            (() => {
-                // const render = require('/micro-app/bundle.js');
-                // console.log('....render', render);
-
-                // import * as render from '/micro-app/bundle.js';
-                
-                // render();
-            })()
-        </script> -->
     </body>
 </html>
