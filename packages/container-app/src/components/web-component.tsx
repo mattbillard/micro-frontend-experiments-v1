@@ -48,15 +48,10 @@ const init = async (ref, props, isShadow) => {
       newScript.setAttribute(attr.name, attr.value);
     })
 
-    /**
-     * TODO: 
-     * - Won't work for multiple scripts. Needs to be promise.all
-     * - Also need to register/look up which micro app to initialize 
-     */
-    newScript.onload = () => window.MicroApp.init(context, props);
-
     const parent = oldScript.parentNode;
     oldScript.remove();
     parent.appendChild(newScript);
   });
+
+  context.props = props;
 }

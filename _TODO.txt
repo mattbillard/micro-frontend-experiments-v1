@@ -24,8 +24,9 @@ TODO
   - Settings - websockets
   - GoldenLayout - save/restore 
   - GoldenLayout - websockets
-
   - GoldenLayout - way to add more window panes 
+
+  - GoldenLayout - consider removing from Redux. Could make save/restore/reinit much simpler. Would need a way to listen to websocket without redux 
 - Drop down menu 
 - Middleware to send redux changes to WS?
 - Each app should save its own state 

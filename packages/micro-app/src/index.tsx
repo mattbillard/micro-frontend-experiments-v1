@@ -15,12 +15,19 @@ import 'micro-components/src/styles/index.less';
 declare const window: any;
 
 // TODO: any way not to use global function?
+// TODO: lots of clean up
 window.MicroApp = {
-  // init: (context = document.body, props) => {
-  init: (context = document.body, props) => {
+  init: (scriptTag) => {
+    let props;
     if (window !==  window.parent) {
-      props = window.frameElement.props; // window.frameElement = iframe tag
+      props = window.frameElement.props;    // window.frameElement = iframe tag
+    } else {
+      props = 
+        scriptTag.parentElement?.props ||   // WebComponent no shadow
+        scriptTag.getRootNode().props;      // WebComponent with shadow
     }
+
+    const context = scriptTag.parentElement || scriptTag.getRootNode();
     
     const elem = context.querySelector('.micro-app');
     ReactDOM.render(<MicroAppRouter {...props} />, elem);
