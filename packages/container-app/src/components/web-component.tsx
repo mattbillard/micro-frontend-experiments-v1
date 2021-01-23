@@ -15,7 +15,7 @@ export const WebComponent = (props: IWebComponentProps) => {
   const className = isShadow === true ? 'shadow-component' : 'web-component';
 
   useEffect(() => {
-    init(ref.current, props, isShadow);
+    init(ref, props, isShadow);
   }, []);
 
   return (
@@ -23,7 +23,7 @@ export const WebComponent = (props: IWebComponentProps) => {
   )
 }
 
-const init = async (refCurrent, props, isShadow) => {
+const init = async (ref, props, isShadow) => {
   // const { url } = props;
   const url = props.glContainer?._config?.componentState?.url || '/micro-app';
 
@@ -34,9 +34,9 @@ const init = async (refCurrent, props, isShadow) => {
   // Create shadow DOM to encapsulate CSS. Append new HTML
   let shadowRoot;
   if (isShadow) {
-    shadowRoot = refCurrent!.attachShadow({ mode: 'open' });
+    shadowRoot = ref.current!.attachShadow({ mode: 'open' });
   }
-  const context = shadowRoot ? shadowRoot : refCurrent;
+  const context = shadowRoot ? shadowRoot : ref.current;
   context.innerHTML = text;
 
   // Recreate script tags or browser will ignore them
