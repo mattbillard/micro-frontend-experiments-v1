@@ -1,15 +1,34 @@
 import * as React from 'react';
 import { Link } from "react-router-dom";
 
-export const MicroTableOfContents = () => {
+// TODO: probably move to container-app
+export const MicroTableOfContents = (props) => {
+  // console.log('....this.props', props);
+  window.glContainer = props.glContainer;
+
+  const handleNavigate = (event, text, url) => {
+    event.stopPropagation();
+    props.glContainer.setTitle(text);
+    props.glContainer.setState({ url });
+  }
+
+  const links = [
+    { url: '/micro-app/golden-spiral', text: 'Spiral' },
+    { url: '/micro-app/golden-text', text: 'Text' },
+    { url: '/micro-app/stock-grid', text: 'StockGrid' },
+    { url: '/micro-app/column-chart', text: 'ColumnChart' },
+    { url: '/micro-app/pie-chart', text: 'PieChart' },
+    { url: '/micro-app/stock-chart', text: 'StockChart' },
+  ]
+
   return (
     <div className="micro-table-of-contents">
-      <Link to='/micro-app/golden-spiral'>Spiral</Link>
-      <Link to='/micro-app/golden-text'>Text</Link>
-      <Link to='/micro-app/stock-grid'>StockGrid</Link>
-      <Link to='/micro-app/column-chart'>ColumnChart</Link>
-      <Link to='/micro-app/pie-chart'>PieChart</Link>
-      <Link to='/micro-app/stock-chart'>StockChart</Link>
+      {links.map((link, idx) => {
+        const { text, url } = link;
+        return (
+          <Link key={url} onClick={(event) => handleNavigate(event, text, url)} to={url}>{text}</Link>
+        )
+      })}
     </div>
   );
 }

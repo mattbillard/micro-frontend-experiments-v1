@@ -16,7 +16,7 @@ export const DEFAULT_GOLDEN_LAYOUT_CONFIG = {
               title: 'Fnts 100',
               type: 'react-component',
               component: 'MicroFrontEndComponent',
-              props: {
+              componentState: {
                 // key: '/micro-app/stock-grid',
                 url: '/micro-app/stock-grid',
               },
@@ -28,7 +28,7 @@ export const DEFAULT_GOLDEN_LAYOUT_CONFIG = {
                   title: 'Golden',
                   type: 'react-component',
                   component: 'MicroFrontEndComponent',
-                  props: {
+                  componentState: {
                     // key: '/micro-app/golden-spiral',
                     url: '/micro-app/golden-spiral',
                   },
@@ -38,7 +38,7 @@ export const DEFAULT_GOLDEN_LAYOUT_CONFIG = {
                   title: 'Layout',
                   type: 'react-component',
                   component: 'MicroFrontEndComponent',
-                  props: {
+                  componentState: {
                     // key: '/micro-app/golden-text',
                     url: '/micro-app/golden-text',
                   },
@@ -52,11 +52,11 @@ export const DEFAULT_GOLDEN_LAYOUT_CONFIG = {
                   title: 'Acme, inc.',
                   type: 'react-component',
                   component: 'MicroFrontEndComponent',
-                  props: {
+                  componentState: {
                     // key: '/micro-app/stock-chart',
                     url: '/micro-app/stock-chart',
                   },
-                  componentState: {
+                  componentcomponentState: {
                     companyName: 'Stock X'
                   },
                 },
@@ -64,21 +64,21 @@ export const DEFAULT_GOLDEN_LAYOUT_CONFIG = {
                   title: 'LexCorp plc.',
                   type: 'react-component',
                   component: 'MicroFrontEndComponent',
-                  props: {
+                  componentState: {
                     // key: '/micro-app/stock-chart',
                     url: '/micro-app/stock-chart',
                   },
-                  componentState: { companyName: 'Stock Y' },
+                  componentcomponentState: { companyName: 'Stock Y' },
                 },
                 {
                   title: 'Springshield plc.',
                   type: 'react-component',
                   component: 'MicroFrontEndComponent',
-                  props: {
+                  componentState: {
                     // key: '/micro-app/stock-chart',
                     url: '/micro-app/stock-chart',
                   },
-                  componentState: { companyName: 'Stock Z' },
+                  componentcomponentState: { companyName: 'Stock Z' },
                 }
               ]
             }
@@ -92,7 +92,7 @@ export const DEFAULT_GOLDEN_LAYOUT_CONFIG = {
               title: 'Performance',
               type: 'react-component',
               component: 'MicroFrontEndComponent',
-              props: {
+              componentState: {
                 // key: '/micro-app/column-chart',
                 url: '/micro-app/column-chart',
               },
@@ -101,7 +101,7 @@ export const DEFAULT_GOLDEN_LAYOUT_CONFIG = {
               title: 'Market',
               type: 'react-component',
               component: 'MicroFrontEndComponent',
-              props: {
+              componentState: {
                 // key: '/micro-app/pie-chart',
                 url: '/micro-app/pie-chart',
               },

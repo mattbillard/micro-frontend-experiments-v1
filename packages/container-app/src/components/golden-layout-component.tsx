@@ -44,8 +44,8 @@ export class GoldenLayoutComponentView extends React.Component {
 
   componentDidMount = () => {
     (async () => {
-      // const goldenLayoutConfig = await xhrService.getGoldenLayoutConfig() || DEFAULT_GOLDEN_LAYOUT_CONFIG;
-      const goldenLayoutConfig = DEFAULT_GOLDEN_LAYOUT_CONFIG;
+      const goldenLayoutConfig = await xhrService.getGoldenLayoutConfig() || DEFAULT_GOLDEN_LAYOUT_CONFIG;
+      // const goldenLayoutConfig = DEFAULT_GOLDEN_LAYOUT_CONFIG;
       this.init(goldenLayoutConfig);
       window.addEventListener('resize', this.redrawDebounced);
     })();
@@ -108,7 +108,9 @@ export class GoldenLayoutComponentView extends React.Component {
       type: 'react-component',
       component: 'MicroFrontEndComponent',
       props: {
+        bbb: 'BBBBBBBB'
       },
+      componentState: { aaaa: 'AAAAAAAA' }
     };
 
     let addTo = this.myLayout.root;

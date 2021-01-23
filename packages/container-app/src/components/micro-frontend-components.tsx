@@ -24,8 +24,11 @@ import { IStoreState, store } from '../redux';
 //   );
 // };
 
+// GoldenLayout only works with class components
 export class MicroFrontEndComponentView extends React.Component {
   render () {
+    // console.log('....this.props', this.props);
+
     // @ts-ignore
     const { mode } = this.props;
   
