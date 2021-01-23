@@ -24,10 +24,11 @@ TODO
   - Settings - websockets
   - GoldenLayout - save/restore 
   - GoldenLayout - websockets
-  - GoldenLayout - way to add more window panes 
+- GoldenLayout - way to add more window panes 
 - Bugfix - fix pages 
-
 - Bugfix - Micro-app is no longer working standalone 
+
+- Apply new props to mounted sub apps  
 - Each app should save its own state 
 - OpenFin / Electron
 - Try other micro frontend approaches 

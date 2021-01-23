@@ -45,9 +45,10 @@ const TheSwitch = (props) => {
 
 export const MicroAppRouter = (props) => {
   const isIframe = window.parent !== window;
+  const hasUrlProp = !!props.url;
 
   return (
-    isIframe ? 
+    isIframe || !hasUrlProp ? 
       <BrowserRouter><TheSwitch {...props} /></BrowserRouter> :
       <MemoryRouter><TheSwitch {...props}/></MemoryRouter>
   );
