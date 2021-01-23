@@ -44,7 +44,7 @@ interface IIframeComponentProps {
 
 
 export const IframeComponent = (props: IIframeComponentProps) => {
-  const url = props.glContainer?._config?.componentState?.url;
+  const url = props.glContainer?._config?.componentState?.url || '/micro-app';
 
   return (
     <iframe src={url}></iframe>

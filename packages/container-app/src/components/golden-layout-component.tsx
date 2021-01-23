@@ -100,6 +100,7 @@ export class GoldenLayoutComponentView extends React.Component {
       console.log('Golden Layout: save');
       const config = this.myLayout.toConfig();
       this.props.dispatch(saveGoldenLayoutConfig(config));
+      window.myLayout = this.myLayout;
     }
   }
   saveConfigDebounced = debounce(this.saveConfig, 1000);

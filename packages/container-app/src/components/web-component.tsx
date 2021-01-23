@@ -25,7 +25,7 @@ export const WebComponent = (props: IWebComponentProps) => {
 
 const init = async (refCurrent, props, isShadow) => {
   // const { url } = props;
-  const url = props.glContainer?._config?.componentState?.url;
+  const url = props.glContainer?._config?.componentState?.url || '/micro-app';
 
   // Fetch HTML
   var res = await fetch(url);
