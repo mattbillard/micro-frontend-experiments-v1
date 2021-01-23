@@ -1,4 +1,22 @@
 
+export const DEFAULT_MINIMAL_GOLDEN_LAYOUT_CONFIG = {
+  // TODO: keep? Explore more?
+  settings: {
+    selectionEnabled: true
+  },
+  content: [
+    {
+      title: 'Golden',
+      type: 'react-component',
+      component: 'MicroFrontEndComponent',
+      componentState: {
+        // key: '/micro-app/golden-spiral',
+        url: '/micro-app/golden-spiral',
+      },
+    }
+  ]
+};
+
 export const DEFAULT_GOLDEN_LAYOUT_CONFIG = {
   // TODO: keep? Explore more?
   settings: {

@@ -16,6 +16,7 @@ import {
 import "../styles/index.less"; 
 
 const TheSwitch = (props) => {
+  console.log('....props', props);
   const { showHints } = props;
   const url = props.glContainer?._config?.componentState?.url;
 

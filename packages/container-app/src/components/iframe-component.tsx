@@ -44,8 +44,10 @@ interface IIframeComponentProps {
 
 
 export const IframeComponent = (props: IIframeComponentProps) => {
+  const url = props.glContainer?._config?.componentState?.url;
+
   return (
-    <iframe src={props.url}></iframe>
+    <iframe src={url}></iframe>
   )  
 }
 
