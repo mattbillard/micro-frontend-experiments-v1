@@ -104,13 +104,9 @@ export class GoldenLayoutComponentView extends React.Component {
     event.preventDefault();
 
     var newItemConfig = {
-      title: 'New Item',
+      title: 'New Tab',
       type: 'react-component',
       component: 'MicroFrontEndComponent',
-      props: {
-        bbb: 'BBBBBBBB'
-      },
-      componentState: { aaaa: 'AAAAAAAA' }
     };
 
     let addTo = this.myLayout.root;

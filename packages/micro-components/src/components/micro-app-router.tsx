@@ -5,6 +5,7 @@ import {
   ColumnChart,
   GoldenSpiral,
   GoldenText,
+  MicroNavigation,
   MicroTableOfContents,
   PieChart,
   StockChart,
@@ -15,32 +16,14 @@ import {
 import "../styles/index.less"; 
 
 const TheSwitch = (props) => {
-  // console.log('....this.props', props);
-  // const { showHints, url } = props;
-  // const { 
-  //   showHints,
-  //   glContainer,
-  // } = props;
-  // const { url } = glContainer.getState();
   const { showHints } = props;
   const url = props.glContainer?._config?.componentState?.url;
-
-  const updateTitle = (event, text) => {
-    event.preventDefault();
-    props.glContainer.setTitle(text);
-  }
 
   return (
     <div className="micro-app-router flex-rows">
       {showHints && 
-        <div>
-          <Link to='/micro-app/golden-spiral'>Spiral</Link> |
-          <Link to='/micro-app/golden-text'>Text</Link> |
-          <Link to='/micro-app/stock-grid'>StockGrid</Link> |
-          <Link to='/micro-app/column-chart'>ColumnChart</Link> |
-          <Link to='/micro-app/pie-chart'>PieChart</Link> |
-          <Link to='/micro-app/stock-chart'>StockChart</Link> |
-          <a href="#" onClick={(event) => updateTitle(event, 'hey')}>Test</a>
+        <div className="micro-nav">
+          <MicroNavigation {...props} />
         </div>
       }
       <div className="micro-app-content">
