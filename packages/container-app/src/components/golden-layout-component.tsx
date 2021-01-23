@@ -70,6 +70,9 @@ export class GoldenLayoutComponentView extends React.Component {
   init = (config) => {
     const container = this.ref.current;
 
+    fixActiveItemIndex(config.content);
+    // console.log('...done', JSON.stringify(config, null, '  '));
+
     this.myLayout = new GoldenLayout(config, container);
     this.myLayout.registerComponent('MicroFrontEndComponent', this.withStore(MicroFrontEndComponent));
     window.myLayout = this.myLayout;
@@ -152,3 +155,22 @@ const mapDispatchToProps = (dispatch) => ({
 //   dispatch
 // };
 export const GoldenLayoutComponent = connect(mapStateToProps, mapDispatchToProps)(GoldenLayoutComponentView);
+
+
+/**
+ * PROBLEM: when deleting lots of panes, GoldenLayout doesn't recalculate activeItemIndex properly
+ * SOLUTION: if activeItemIndex >= number of children in array, fix it
+ */
+const fixActiveItemIndex = (content) => {
+  content.forEach(item => {
+    const { activeItemIndex } = item;
+    if (activeItemIndex >= item.content?.length) {
+      item.activeItemIndex = 0;
+    }
+
+    if (item.content) {
+      fixActiveItemIndex(item.content);
+    }
+  })
+}
+
