@@ -1,24 +1,19 @@
 import * as React from 'react';
-import { Suspense } from 'react';
+import { Suspense, useEffect } from 'react';
 import loadable from '@loadable/component';
 // const requireFromWeb = require('require-from-web')
 // const OtherComponent = require('micro-components'); 
 
-// import 'micro-components/dist/main.css'
-
-interface ILazyImportComponentProps {
-}
 
 
-export const LazyImportComponent = (props: ILazyImportComponentProps) => {
-  // TODO: rerenders too often. Try looking at page > line chart and changing settings. Reason is it reimports below
-  
-  // const OtherComponent = React.lazy(() => import('micro-components'));
-  // require('micro-components/dist/main.css');
-  
-  const OtherComponent = React.lazy(() => import('micro-components/src'));
-  require('micro-components/src/styles/index.less');
 
+// const OtherComponent = React.lazy(() => import('micro-components'));
+// require('micro-components/dist/main.css');
+
+const OtherComponent = React.lazy(() => import('micro-components/src'));
+require('micro-components/src/styles/index.less');
+
+export const LazyImportComponent = (props) => {
   return (
     <div className="lazy-import">
       <Suspense fallback={<div>Loading...</div>}>

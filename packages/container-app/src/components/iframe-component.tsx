@@ -42,26 +42,41 @@ interface IIframeComponentProps {
 
 
 
-// TODO: figure out something better. This var will be shared across all components of this type
-var count = 0;
-
 export const IframeComponent = (props: IIframeComponentProps) => {
   const ref = useRef(null);
   const { url } = props;
 
   useEffect(() => {
-    ref.current.props = props;
-  }, []);
-
-  useEffect(() => {
-    ref.current.props = props;
+    ref.current.contentWindow.microApp?.init(ref.current.contentDocument, props);
   }, [props]);
 
   return (
-    // <iframe ref={ref} src={url}></iframe>
-    <iframe ref={ref} src={url} count={count++}></iframe>
+    <iframe ref={ref} src={url}></iframe>
   )  
 }
+
+
+
+
+// // TODO: figure out something better. This var will be shared across all components of this type
+// var count = 0;
+
+// export const IframeComponent = (props: IIframeComponentProps) => {
+//   const ref = useRef(null);
+//   const { url } = props;
+
+//   useEffect(() => {
+//     ref.current.props = props;
+//   }, []);
+
+//   useEffect(() => {
+//     ref.current.props = props;
+//   }, [props]);
+
+//   return (
+//     <iframe ref={ref} src={url} count={count++}></iframe>
+//   )  
+// }
 
 
 
