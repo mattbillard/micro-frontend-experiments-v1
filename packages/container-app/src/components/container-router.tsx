@@ -50,6 +50,10 @@ export const ContainerRouter = (props: IContainerRouterProps) => {
   }, []);
 
   const handleWsMessage = (wsMsgObj) => {
+    if (!document.hasFocus()) {
+      return;
+    }
+    
     switch (wsMsgObj.action) {
       case 'UPDATE_GOLDEN_LAYOUT_CONFIG': {
         const { payload } = wsMsgObj;
