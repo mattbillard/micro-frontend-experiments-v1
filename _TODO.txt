@@ -47,8 +47,8 @@ TODO
   - Separate Lazy and Remote components 
   - React ShadowDOM npm package
   - CSS - clean up and use flexbox
-
   - Remove disableLiveReload
+
   - Lerna - don't use it for cross-linking packages 
   - Grid - fix when in ShadowDOM 
   - live-server 
