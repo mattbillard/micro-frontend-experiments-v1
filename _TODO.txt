@@ -48,8 +48,9 @@ TODO
   - React ShadowDOM npm package
   - CSS - clean up and use flexbox
   - Remove disableLiveReload
+  - Lerna - don't use it for cross-linking packages b/c it fights against npm install 
 
-  - Lerna - don't use it for cross-linking packages 
+  - Iframes are not passing props down on mount
   - Grid - fix when in ShadowDOM 
   - live-server 
   - Parcel vs Webpack 
