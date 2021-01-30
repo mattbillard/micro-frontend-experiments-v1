@@ -51,7 +51,7 @@ export const IframeComponent = (props: IIframeComponentProps) => {
   }, [props]);
 
   return (
-    <iframe ref={ref} src={url}></iframe>
+    <iframe ref={ref} src={url} style={{border:0, width:'100%', height:'100%'}}></iframe>
   )  
 }
 

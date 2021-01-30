@@ -134,8 +134,8 @@ export const DEFAULT_GOLDEN_LAYOUT_CONFIG = {
 
 export enum MicroFrontendMode {
   Iframe = 'Iframe',
-  InjectWholeApp = 'InjectWholeApp',
-  LazyLoad = 'LazyLoad',
+  InjectWholeAppHtml = 'InjectWholeAppHtml',
+  LazyImport = 'LazyImport',
   RemoteComponent = 'RemoteComponent',
 }
 

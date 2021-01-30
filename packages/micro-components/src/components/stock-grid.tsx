@@ -3,6 +3,7 @@ import * as React from 'react';
 import { useEffect, useRef, useState } from 'react';
 import Slick from 'slickgrid-es6';
 
+import '../styles/scroll-bars.less'; // TODO: should this be included in each component?
 import '../styles/stock-grid.css';
 
 export const StockGrid = (props) => {

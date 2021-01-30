@@ -141,7 +141,7 @@ export class GoldenLayoutContainerView extends React.Component {
 
   render() {
     return (
-      <div className="golden-layout">
+      <div className="golden-layout flex-rows">
         <div className="golden-layout-toolbar">
           <a onClick={this.addNewComponent}>Add +</a>
         </div>

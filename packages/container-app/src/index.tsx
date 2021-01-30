@@ -3,7 +3,6 @@ import * as ReactDOM from "react-dom";
 
 import { ContainerApp } from './components';
 // import { forceDisableLiveReload } from './utils';
-import "./styles/styles.less";
 
 // forceDisableLiveReload();
 

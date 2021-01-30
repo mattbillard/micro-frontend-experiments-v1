@@ -15,36 +15,15 @@ body {
   line-height: 1.2rem;
 }
 
+h1 {
+  color: red; // to test CSS leaking between apps
+}
+
 a {
   color: #aaa;
   cursor: pointer;
   text-decoration: underline;
 }
-
-*::-webkit-scrollbar {
-  width: 15px;
-}
-*::-webkit-scrollbar:horizontal {
-  height: 15px;
-}
-*::-webkit-scrollbar-corner {
-  background-color: transparent;
-}
-*::-webkit-scrollbar-thumb {
-  border: solid 4px #fff;
-  border-color: transparent;
-  border-radius: 7px;
-  background-clip: padding-box;
-  background-color: rgba(255, 255, 255, 0.25); 
-}
-*::-webkit-scrollbar-thumb:hover {
-  background-color: rgba(255, 255, 255, 0.5); 
-}
-
-
-
-
-
 
 input {
   margin: 4px;
@@ -62,66 +41,57 @@ button {
   border-radius: 2px;
 }
 
-.row {
-  display: flex;
 
-  > * {
-    padding: 10px;
-    border: solid 1px black;
-
-    width: 50%;
-  }
-}
-
-iframe {
-  width: 100%;
-  height: 100%;
-  border: 0;
-}
-
-.lazy-import, 
-.remote-component,
-.shadow-component,
-.web-component {
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-}
 
 .show-hints {
-  .lazy-import { border: solid 1px green; }
-  .remote-component { border: solid 1px #21bebb; }
-  .shadow-component { border: solid 1px purple; }
-  .web-component { border: solid 1px red; }
-  iframe { border: solid 1px blue; }
+  .iframe-component { outline: dashed 1px blue; }
+  .inject-whole-app-html-component { outline: dashed 1px red; }
+  .lazy-import-component { outline: dashed 1px green; }
+  .remote-component { outline: dashed 1px #21bebb; }
+  .shadow-dom { outline-style: solid; }
 }
 
-h1 {
-  color: red;
-}
-
-.golden-layout-container,
-.page-component {
-  position: absolute;
+.container-router {
   width: 100vw;
-  height: calc(100vh - 65px);
-}
+  height: 100vh;
 
-.golden-layout-toolbar {
-  background: #111;
-
-  a {
-    display: inline-block;
-    padding: 2px 10px; 
-    text-decoration: none;
-    
-    &:hover {
-      background: #222;
-      // background: #333;
-    }
+  .golden-layout,
+  .page-component {
+    flex-grow: 1; 
+    flex-shrink: initial;
+    position: relative;
   }
 }
 
+.golden-layout {
+  .golden-layout-toolbar {
+    background: #111;
+  
+    a {
+      display: inline-block;
+      padding: 2px 10px; 
+      text-decoration: none;
+      
+      &:hover {
+        background: #222;
+      }
+    }
+  }
+
+  .golden-layout-container {
+    flex-grow: 1; 
+    flex-shrink: initial;
+  }
+}
+
+.micro-frontend-switch {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 1px;
+}
 
 .navigation {
   display: flex;
@@ -149,7 +119,6 @@ h1 {
     }
   }
 }
-
 
 .settings-menu {
   position: absolute;

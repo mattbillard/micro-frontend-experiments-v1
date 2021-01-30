@@ -45,7 +45,10 @@ TODO
   - Separate GoldenLayoutComponent vs MicroFrontendModeSwitch
   - Enum for modes 
   - Separate Lazy and Remote components 
+  - React ShadowDOM npm package
+  - CSS - clean up and use flexbox
 
+  - Remove disableLiveReload
   - Lerna - don't use it for cross-linking packages 
   - Grid - fix when in ShadowDOM 
   - live-server 
@@ -64,7 +67,6 @@ TODO
   - DefinitionsService - place to define featueres, their bootstrap script, menu items + their props, etc 
   - simulate dev - try using npm live-server for built code 
 - More 
-  - React ShadowDOM npm package?
   - ShadowDOM browser tag?
   - Try lazy + shadowDOM 
 - Bonus points 

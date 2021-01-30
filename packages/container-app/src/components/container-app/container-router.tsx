@@ -27,10 +27,7 @@ interface IContainerRouterProps {
 export const ContainerRouter = (props: IContainerRouterProps) => {
   // TODO: login should be more realistic: XHR to server. Create cookie. Also whoami XHR
   const username = jsCookie.get('username');
-  const { 
-    goldenLayoutConfig, 
-    settings,
-  } = useSelector((state: IStoreState) => state.containerAppReducer);
+  const { goldenLayoutConfig, settings, } = useSelector((state: IStoreState) => state.containerAppReducer);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -73,7 +70,7 @@ export const ContainerRouter = (props: IContainerRouterProps) => {
   }
   
   const { showHints } = settings;
-  const className = showHints ? 'show-hints' : '';
+  const className = showHints ? 'container-router flex-rows show-hints' : 'container-router flex-rows'; // TODO: clean up
 
   return (
     <div className={className}>

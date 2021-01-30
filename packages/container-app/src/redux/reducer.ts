@@ -8,7 +8,7 @@ import {
 
 export interface IContainerAppReducerState {
   goldenLayoutConfig: any;
-  settings: {
+  settings: any | {
     isShadow: boolean;
     mode: MicroFrontendMode;
     showHints: boolean;
@@ -18,7 +18,7 @@ export interface IContainerAppReducerState {
 
 const initialState: IContainerAppReducerState = {
   goldenLayoutConfig: undefined,
-  settings: DEFAULT_SETTINGS,
+  settings: undefined,
 };
 
 export const containerAppReducer: Reducer<IContainerAppReducerState> = (state = initialState, action) => {
@@ -34,13 +34,7 @@ export const containerAppReducer: Reducer<IContainerAppReducerState> = (state = 
     }
 
     case UPDATE_SETTINGS: {
-      const { settings } = action;
-      
-      // Initial XHR will not have any settings
-      if (!settings) {
-        return state;
-      }
-      
+      const { settings } = action;      
       const newSettings = { ...settings };
 
       return {

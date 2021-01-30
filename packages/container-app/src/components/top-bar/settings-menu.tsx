@@ -35,18 +35,14 @@ export const SettingsMenu = (props: ISettingsMenuProps) => {
     <div className="settings-menu">
       <div>
         <div>
-          Username: {username}
-        </div>
-        <div>
-          Mode: {mode}
+          Username: {username} <br/><br/>
+          Mode: {mode} <br/>
+          ShadowDOM: <a onClick={() => handleChangeSetting('isShadow', !isShadow)}>{String(isShadow)}</a>
         </div>
         <ul>
           <li><a onClick={() => handleChangeSetting('mode', MicroFrontendMode.Iframe)}>{MicroFrontendMode.Iframe}</a></li>
-          <li>
-            <a onClick={() => handleChangeSetting('mode', MicroFrontendMode.InjectWholeApp)}>{MicroFrontendMode.InjectWholeApp}</a> |
-            <a onClick={() => handleChangeSetting('isShadow', !isShadow, true)}>{String(isShadow)}</a>
-          </li>
-          <li><a onClick={() => handleChangeSetting('mode', MicroFrontendMode.LazyLoad)}>{MicroFrontendMode.LazyLoad}</a></li>
+          <li><a onClick={() => handleChangeSetting('mode', MicroFrontendMode.InjectWholeAppHtml)}>{MicroFrontendMode.InjectWholeAppHtml}</a></li>
+          <li><a onClick={() => handleChangeSetting('mode', MicroFrontendMode.LazyImport)}>{MicroFrontendMode.LazyImport}</a></li>
           <li><a onClick={() => handleChangeSetting('mode', MicroFrontendMode.RemoteComponent)}>{MicroFrontendMode.RemoteComponent}</a></li>
         </ul>
       </div>

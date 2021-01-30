@@ -3,13 +3,14 @@ import { Suspense, useEffect, useRef, useState } from 'react';
 
 export const LazyImportComponent = (props) => {
   const OtherComponent = React.lazy(() => import('micro-components'));
-  require('micro-components/dist/index.css');
+  // require('micro-components/dist/index.css'); // This leaks outside of shadowDOM
 
   return (
-    <div className="lazy-import">
+    <>
+      <link rel="stylesheet" href="/micro-components/dist/index.css"/> {/* Make sure CSS is loaded by time async JS is loaded  */}
       <Suspense fallback={<div>Loading...</div>}>
         <OtherComponent {...props} />
       </Suspense>
-    </div>
+    </>
   );
 }

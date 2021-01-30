@@ -37,13 +37,13 @@ export const RemoteComponent = (props) => {
     )
   }
 
-  const RemoteComponent = ref.current!;
+  const LoadedComponent = ref.current!;
 
   return (
-    <div className="remote-component">
-      {<RemoteComponent {...props} />}
+    <>
+      {<LoadedComponent {...props} />}
       <link href={`/micro-components/dist${url}.css`} rel="stylesheet" />
-    </div>
+    </>
   )
 }
 

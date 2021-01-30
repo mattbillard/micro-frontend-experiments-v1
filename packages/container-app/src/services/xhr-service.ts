@@ -19,7 +19,7 @@ export const saveGoldenLayoutConfig = async (goldenLayoutConfig) => {
 
 export const getSettings = async () => {
   const response = await axios.get('/api/settings');
-  return response.data;
+  return response.data || DEFAULT_SETTINGS;
 }
 
 export const saveSettings = async (settings) => {
