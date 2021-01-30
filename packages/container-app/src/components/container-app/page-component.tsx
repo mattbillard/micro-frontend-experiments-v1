@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useRouteMatch } from 'react-router-dom';
-import { MicroFrontendModeSwitch } from '../components';
+import { MicroFrontendModeSwitch } from '../../components';
 
 interface IPageComponentProps {
 }

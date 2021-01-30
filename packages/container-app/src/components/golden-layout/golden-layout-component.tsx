@@ -3,8 +3,8 @@ import { connect, useSelector, Provider } from 'react-redux';
 
 import {
   MicroFrontendModeSwitch,
-} from '../components';
-import { IStoreState, store } from '../redux';
+} from '../../components';
+import { IStoreState, store } from '../../redux';
 
 // GoldenLayout only works with class components
 export class GoldenLayoutComponent extends React.Component {

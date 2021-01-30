@@ -12,8 +12,8 @@ import * as jsCookie from 'js-cookie';
 import {
   ContainerRouter,
   LoginPage,
-} from '../components';
-import { store } from '../redux';
+} from '../../components';
+import { store } from '../../redux';
 
 interface IContainerAppProps {
 }

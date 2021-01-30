@@ -5,8 +5,8 @@ import {
   IframeComponent,
   LazyImportComponent,
   WebComponent,
-} from '../components';
-import { IStoreState, store } from '../redux';
+} from '../../components';
+import { IStoreState, store } from '../../redux';
 
 interface IMicroFrontEndComponent {
   url: string;

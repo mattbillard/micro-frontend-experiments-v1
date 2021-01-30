@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useEffect, useRef, useState } from 'react';
 import { connect, useSelector, Provider } from 'react-redux';
-import { IStoreState } from '../redux';
+import { IStoreState } from '../../redux';
 
 declare const window: any;
 

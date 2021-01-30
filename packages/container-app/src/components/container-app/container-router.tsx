@@ -8,21 +8,21 @@ import {
   GoldenLayoutContainer,
   Navigation,
   PageComponent,
-} from '../components';
+} from '../../components';
 import {
   DEFAULT_SETTINGS,
-} from '../constants';
+} from '../../constants';
 import { 
   IStoreState,
   loadInitialGoldenLayoutConfig,
   loadInitialSettings,
   updateGoldenLayoutConfig,
   updateSettings,
-} from '../redux';
+} from '../../redux';
 import { 
   xhrService,
   wsService,
-} from '../services';
+} from '../../services';
 
 interface IContainerRouterProps {
 }

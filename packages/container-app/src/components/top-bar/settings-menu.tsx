@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useDispatch, useSelector } from "react-redux";
-import { IStoreState, setSetting } from '../redux';
 import * as jsCookie from 'js-cookie';
+import { IStoreState, setSetting } from '../../redux';
 
 interface ISettingsMenuProps {
   toggleShowSettings: () => void;

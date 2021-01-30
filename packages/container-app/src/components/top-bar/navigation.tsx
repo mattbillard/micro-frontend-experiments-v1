@@ -3,11 +3,11 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import * as jsCookie from 'js-cookie';
 import { useDispatch, useSelector } from "react-redux";
-import { IStoreState, setSetting } from '../redux';
 
 import {
   SettingsMenu,
-} from '../components';
+} from '../../components';
+import { IStoreState, setSetting } from '../../redux';
 
 interface INavigationProps {
 }

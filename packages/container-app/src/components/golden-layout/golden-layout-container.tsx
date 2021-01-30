@@ -15,20 +15,20 @@ const GoldenLayout = require('golden-layout');
 import 'golden-layout/src/css/goldenlayout-base.css';
 import 'golden-layout/src/css/goldenlayout-dark-theme.css';
 
-import { GoldenLayoutComponent } from '../components';
+import { GoldenLayoutComponent } from '../../components';
 import {
   DEFAULT_GOLDEN_LAYOUT_CONFIG,
   DEFAULT_MINIMAL_GOLDEN_LAYOUT_CONFIG,
-} from '../constants';
+} from '../../constants';
 import { 
   IStoreState,
   saveGoldenLayoutConfig,
   updateGoldenLayoutConfig,
   store 
-} from '../redux';
+} from '../../redux';
 import { 
   xhrService,
-} from '../services';
+} from '../../services';
 
 interface IGoldenLayoutContainerProps {
 }
