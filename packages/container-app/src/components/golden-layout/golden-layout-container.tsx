@@ -54,6 +54,10 @@ export class GoldenLayoutContainerView extends React.Component {
   }
 
   componentDidUpdate = (prevProps) => {
+    if (!this.myLayout?.isInitialised) {
+      return;
+    }
+
     const { goldenLayoutConfig } = this.props;
     const isEqual = JSON.stringify(this.myLayout.toConfig()) === JSON.stringify(goldenLayoutConfig);
 

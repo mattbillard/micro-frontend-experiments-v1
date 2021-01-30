@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import * as jsCookie from 'js-cookie';
+
+import { MicroFrontendMode } from '../../constants';
 import { IStoreState, setSetting } from '../../redux';
 
 interface ISettingsMenuProps {
@@ -39,12 +41,13 @@ export const SettingsMenu = (props: ISettingsMenuProps) => {
           Mode: {mode}
         </div>
         <ul>
-          <li><a onClick={() => handleChangeSetting('mode', 'IFRAME_MODE')}>Iframes</a></li>
+          <li><a onClick={() => handleChangeSetting('mode', MicroFrontendMode.Iframe)}>{MicroFrontendMode.Iframe}</a></li>
           <li>
-            <a onClick={() => handleChangeSetting('mode', 'WC_MODE')}>Web Component</a> |
+            <a onClick={() => handleChangeSetting('mode', MicroFrontendMode.InjectWholeApp)}>{MicroFrontendMode.InjectWholeApp}</a> |
             <a onClick={() => handleChangeSetting('isShadow', !isShadow, true)}>{String(isShadow)}</a>
           </li>
-          <li><a onClick={() => handleChangeSetting('mode', 'IMP_MODE')}>Import</a></li>
+          <li><a onClick={() => handleChangeSetting('mode', MicroFrontendMode.LazyLoad)}>{MicroFrontendMode.LazyLoad}</a></li>
+          <li><a onClick={() => handleChangeSetting('mode', MicroFrontendMode.RemoteComponent)}>{MicroFrontendMode.RemoteComponent}</a></li>
         </ul>
       </div>
       <div>

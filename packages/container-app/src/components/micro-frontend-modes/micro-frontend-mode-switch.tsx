@@ -3,9 +3,11 @@ import { connect, useDispatch, useSelector, Provider } from 'react-redux';
 
 import {
   IframeComponent,
+  InjectWholeAppComponent,
   LazyImportComponent,
-  WebComponent,
+  RemoteComponent,
 } from '../../components';
+import { MicroFrontendMode, } from '../../constants';
 import { IStoreState, store } from '../../redux';
 
 interface IMicroFrontEndComponent {
@@ -20,9 +22,10 @@ export const MicroFrontendModeSwitch = (props: IMicroFrontEndComponent) =>{
 
   return (
     <>
-      {mode === 'IFRAME_MODE' && <IframeComponent {...props} />}
-      {mode === 'WC_MODE' && <WebComponent key={url} {...props} />}
-      {mode === 'IMP_MODE' && <LazyImportComponent key={url} {...props} />}
+      {mode === MicroFrontendMode.Iframe && <IframeComponent {...props} />}
+      {mode === MicroFrontendMode.InjectWholeApp && <InjectWholeAppComponent key={url} {...props} />}
+      {mode === MicroFrontendMode.LazyLoad && <LazyImportComponent key={url} {...props} />}
+      {mode === MicroFrontendMode.RemoteComponent && <RemoteComponent key={url} {...props} />}
     </>
   );
 }

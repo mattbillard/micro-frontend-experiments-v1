@@ -1,15 +1,16 @@
 import { Reducer } from 'redux';
+
+import { DEFAULT_SETTINGS, MicroFrontendMode } from '../constants';
 import {
   UPDATE_GOLDEN_LAYOUT_CONFIG,
   UPDATE_SETTINGS,
-} from './actions';
+} from '../redux';
 
-// TODO: types
 export interface IContainerAppReducerState {
   goldenLayoutConfig: any;
-  settings: any | {
+  settings: {
     isShadow: boolean;
-    mode: string;
+    mode: MicroFrontendMode;
     showHints: boolean;
     showSettings: boolean;
   };
@@ -17,7 +18,7 @@ export interface IContainerAppReducerState {
 
 const initialState: IContainerAppReducerState = {
   goldenLayoutConfig: undefined,
-  settings: undefined,
+  settings: DEFAULT_SETTINGS,
 };
 
 export const containerAppReducer: Reducer<IContainerAppReducerState> = (state = initialState, action) => {
@@ -34,6 +35,12 @@ export const containerAppReducer: Reducer<IContainerAppReducerState> = (state = 
 
     case UPDATE_SETTINGS: {
       const { settings } = action;
+      
+      // Initial XHR will not have any settings
+      if (!settings) {
+        return state;
+      }
+      
       const newSettings = { ...settings };
 
       return {

@@ -9,9 +9,6 @@ import {
   Navigation,
   PageComponent,
 } from '../../components';
-import {
-  DEFAULT_SETTINGS,
-} from '../../constants';
 import { 
   IStoreState,
   loadInitialGoldenLayoutConfig,

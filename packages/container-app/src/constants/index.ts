@@ -132,9 +132,16 @@ export const DEFAULT_GOLDEN_LAYOUT_CONFIG = {
   ]
 };
 
+export enum MicroFrontendMode {
+  Iframe = 'Iframe',
+  InjectWholeApp = 'InjectWholeApp',
+  LazyLoad = 'LazyLoad',
+  RemoteComponent = 'RemoteComponent',
+}
+
 export const DEFAULT_SETTINGS = {
   isShadow: false,
-  mode: 'IMP_MODE',
+  mode: MicroFrontendMode.RemoteComponent,
   showHints: false,
   showSettings: false,
 };

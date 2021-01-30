@@ -5,32 +5,7 @@ import { IStoreState } from '../../redux';
 
 declare const window: any;
 
-interface IWebComponentProps {
-  url: string;
-}
-
-// // TODO: figure out something better. This var will be shared across all components of this type
-// let count = 0;
-// export const WebComponent = (props: IWebComponentProps) => {
-//   const ref = useRef(null);
-//   const { isShadow } = useSelector((state: IStoreState) => state.containerAppReducer.settings);
-//   const className = isShadow === true ? 'shadow-component' : 'web-component';
-
-//   useEffect(() => {
-//     init(ref, props, isShadow);
-//   }, []);  
-
-//   useEffect(() => {
-//     ref.current.props = props;
-//   }, [props])
-
-//   return (
-//     <div ref={ref} className={className} count={count++}></div>
-//   )
-// }
-
-
-export const WebComponent = (props: IWebComponentProps) => {
+export const InjectWholeAppComponent = (props) => {
   const ref = useRef(null);
   const { isShadow } = useSelector((state: IStoreState) => state.containerAppReducer.settings);
   const className = isShadow === true ? 'shadow-component' : 'web-component';
