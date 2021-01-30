@@ -31,6 +31,7 @@ TODO
 - Bugfix - goldenLayout + web component is broken
 - Bugfix - lazy component rerenders too often. Try only fetching when url changes 
 - Bugfix - standalone Micro-app broken again
+- Lazy-load - figure out how to load components from a URL
 
 - OpenFin / Electron
 - Try other micro frontend approaches 
@@ -40,3 +41,4 @@ TODO
   - Middleware to send redux changes to WS?
   - Bugfix - GoldenLayout - consider removing Redux. Could make save/restore/reinit much simpler. Would need a way to listen to websocket without redux 
   - DefinitionsService - place to define featueres, their bootstrap script, menu items + their props, etc 
+  - simulate dev - try using npm live-server for built code 

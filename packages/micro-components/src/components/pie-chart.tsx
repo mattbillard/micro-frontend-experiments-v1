@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { useState } from 'react';
 
-import { ChartComponent } from '../components';
+// import { ChartComponent } from '../components';
+import { ChartComponent } from './chart-component';
 
 export const PieChart = () => {
   const config = {
@@ -52,4 +53,12 @@ export const PieChart = () => {
   return (
     <ChartComponent config={config} />
   );
+}
+
+export default PieChart;
+
+try {
+  // @ts-ignore
+  RemoteComponent = PieChart;
+} catch (err) {
 }

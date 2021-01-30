@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { useState } from 'react';
+
+import '../styles/golden-text.css';
 
 export const GoldenText = () => {
   return (
@@ -13,3 +14,9 @@ export const GoldenText = () => {
 }
 
 export default GoldenText;
+
+try {
+  // @ts-ignore
+  RemoteComponent = GoldenText;
+} catch (err) {
+}

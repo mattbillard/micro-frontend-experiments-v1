@@ -1,27 +1,266 @@
 import * as React from 'react';
-import { Suspense, useEffect } from 'react';
+import { Suspense, useEffect, useRef, useState } from 'react';
 import loadable from '@loadable/component';
 // const requireFromWeb = require('require-from-web')
 // const OtherComponent = require('micro-components'); 
+// import { RemoteComponent } from '@paciolan/remote-component';
+// import { createLoadRemoteModule } from "@paciolan/remote-module-loader"
 
 
+declare const window: any;
+
+
+export const LazyImportComponent = (props) => {
+  const url = props.url.replace('/micro-app', '') || '/index';
+  const [isLoading, setIsLoading] = useState(true);
+  const ref = useRef();
+
+  useEffect(() => {
+    (async () => {
+      const res = await fetch(`/micro-components/dist${url}.js`)
+      const text = await res.text();
+
+      let RemoteComponent;
+      eval(text);
+      ref.current = RemoteComponent;
+
+      setIsLoading(false);
+    })()
+  }, []);
+
+  if (isLoading) {
+    return (
+      <>
+        <div>Loading...</div>
+        <link href={`/micro-components/dist${url}.css`} rel="stylesheet" /> {/* Make sure CSS is loaded by time async JS is loaded  */}
+      </>
+    )
+  }
+
+  const Car = ref.current;
+
+  return (
+    <div className="lazy-import">
+      {/* @ts-ignore */}
+      {<Car {...props} />}
+      <link href={`/micro-components/dist${url}.css`} rel="stylesheet" />
+    </div>
+  )
+}
 
 
 // const OtherComponent = React.lazy(() => import('micro-components'));
 // require('micro-components/dist/main.css');
 
-const OtherComponent = React.lazy(() => import('micro-components/src'));
-require('micro-components/src/styles/index.less');
+// const OtherComponent = React.lazy(async () => {
+//   debugger;
+//   const result = await import('micro-components/src');
+//   debugger;
+//   return result;
+// });
+// require('micro-components/src/styles/index.less');
 
-export const LazyImportComponent = (props) => {
-  return (
-    <div className="lazy-import">
-      <Suspense fallback={<div>Loading...</div>}>
-        <OtherComponent {...props} />
-      </Suspense>
-    </div>
-  );
-}
+// export const LazyImportComponent = (props) => {
+
+//   return (
+//     <div className="lazy-import">
+//       <Suspense fallback={<div>Loading...</div>}>
+//         <OtherComponent {...props} />
+//       </Suspense>
+//     </div>
+//   );
+// }
+
+
+
+// /**
+//  * Error: Cannot find module 'http'
+//  */
+// export const LazyImportComponent = (props) => {
+//   const url = "https://raw.githubusercontent.com/Paciolan/remote-component/master/examples/remote-components/HelloWorld.js";
+//   const HelloWorld = ({ name }) => <RemoteComponent url={url} name={name} />;
+//   return (
+//     <div className="lazy-import">
+//       <HelloWorld name="Remote" />
+//     </div>
+//   );
+// }
+
+
+// // /**
+// //  * Error: Cannot find module 'http'
+// //  */
+// const main = async() => {
+//   const loadRemoteModule = createLoadRemoteModule()
+//   const myModule = await loadRemoteModule("https://raw.githubusercontent.com/Paciolan/remote-component/master/examples/remote-components/HelloWorld.js")
+//   const value = myModule.default()
+//   console.log({ value })
+// }
+// main()
+// export const LazyImportComponent = (props) => {
+//   return (
+//     <div className="lazy-import">
+//       test
+//     </div>
+//   );
+// }
+
+
+
+
+// /**
+//  * WORKS but not better than React.Lazy 
+//  * From: https://loadable-components.com/docs/loadable-vs-react-lazy/
+//  */
+// export const LazyImportComponent = (props) => {
+//   const AsyncPage = loadable(props => import(`micro-components`))
+//   return (
+//     <div className="lazy-import">
+//       <AsyncPage {...props} />
+//     </div>
+//   );
+// }
+
+
+// /**
+//  * None of this worked but top one complained the least
+//  */
+// fetch('/micro-components/dist/index.js').then(res => res.text()).then(text => eval(text));
+// // const LoadedModule = loadable(() => fetch('/micro-components/dist/index.js').then(res => res.text()));
+// // const LoadedModule = loadable(() => fetch('/micro-components/src/components/golden-text.tsx').then(res => res.text()));
+// // const LoadedModule = loadable(() => fetch('/micro-components/src/components/car.js').then(res => res.text()));
+// export const LazyImportComponent = (props) => {
+//   return (
+//     <div className="lazy-import">
+//       {/* <LoadedModule {...props} /> */}
+//       hi
+//     </div>
+//   );
+// }
+
+
+
+// /**
+//  * Works but not useful 
+//  * From: https://reactjs.org/docs/jsx-in-depth.html
+//  */
+// export const LazyImportComponent = (props) => {
+//   // return React.createElement('div', {}, 'test');
+
+//   return (
+//     <div>
+//       test 
+//       {React.createElement('div', {}, 'test')}
+//     </div>
+//   )
+// }
+
+
+
+// /**
+//  * WORKS but not very useful 
+//  */
+// let SimpleComponent;
+// (async() => {
+//   // const res = await fetch('/01-react-remote-component-demo/build/simpleComponent2.js')
+//   // const text = await res.text();
+//   // const text = `window.SimpleComponent = React.createElement('div', {className: 'sidebar'}, 'This is SimpleComponent')`;
+//   const text = `SimpleComponent = React.createElement('div', {className: 'sidebar'}, 'This is SimpleComponent')`;
+//   console.log('....text', text);
+//   eval(text);
+// })()
+
+// export const LazyImportComponent = (props) => {
+//   const [isLoading, setIsLoading] = useState(true);
+
+//   useEffect(() => {
+//     setTimeout(() => { 
+//       console.log('....setIsLoading')
+//       setIsLoading(false);
+//     }, 1000);
+//   }, []);
+
+//   if (isLoading) {
+//     return <div>Loading...</div>
+//   }
+
+//   return (
+//     <div>
+//       {/* @ts-ignore */}
+//       {SimpleComponent}
+//     </div>
+//   )
+// }
+
+
+
+// /**
+//  * DID NOT WORK
+//  * Trying to get this working: https://stackoverflow.com/questions/33225951/evaling-code-with-jsx-syntax-in-it
+//  */
+// export const LazyImportComponent = (props) => {
+//   const [isLoading, setIsLoading] = useState(true);
+
+//   useEffect(() => {
+//     setTimeout(() => { 
+//       console.log('....setIsLoading')
+
+//       const jsCode = window.Babel.transform(`window.SimpleComponent = () => (<div>Now with Babel</div>)`);
+//       console.log('....jsCode', jsCode);
+//       eval(jsCode.code);
+//       // debugger;    
+
+//       setIsLoading(false);
+//     }, 1000);
+//   }, []);
+
+//   if (isLoading) {
+//     return <div>Loading...</div>
+//   }
+
+//   return (
+//     <div>
+//       {/* @ts-ignore */}
+//       {SimpleComponent}
+//     </div>
+//   )
+// }
+
+
+
+
+// /**
+//  * Didn't work
+//  */
+// // const Other = loadable(() => import('micro-components'));
+// // const Other = loadable(() => fetch('/micro-components/dist/index.js').then(res => res.text()))
+// const Other = loadable(() => fetch('/micro-components/src/components/car3.js').then(res => res.text()))
+
+// export const LazyImportComponent = (props) => {
+//  const [isLoading, setIsLoading] = useState(true);
+
+//  useEffect(() => {
+//    setTimeout(() => { 
+//      console.log('....setIsLoading')
+//      setIsLoading(false);
+//    }, 1000);
+//  }, []);
+
+//  if (isLoading) {
+//    return <div>Loading...</div>
+//  }
+
+//  return (
+//    <div>
+//      {/* @ts-ignore */}
+//      {<Other />}
+//    </div>
+//  )
+// }
+
+
+
+
 
 
 

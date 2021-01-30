@@ -3,6 +3,8 @@ import * as React from 'react';
 import { useEffect, useRef, useState } from 'react';
 import Slick from 'slickgrid-es6';
 
+import '../styles/stock-grid.css';
+
 export const StockGrid = (props) => {
   const ref = useRef(null);
   const [grid, setGrid] = useState();
@@ -66,3 +68,11 @@ const generateData = () => {
 
   return output;
 };
+
+export default StockGrid;
+
+try {
+  // @ts-ignore
+  RemoteComponent = StockGrid;
+} catch (err) {
+}

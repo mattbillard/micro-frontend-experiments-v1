@@ -50,3 +50,9 @@ export const TextTester = () => {
 }
 
 export default TextTester;
+
+try {
+  // @ts-ignore
+  RemoteComponent = TextTester;
+} catch (err) {
+}

@@ -41,7 +41,7 @@ export class MicroFrontEndComponentView extends React.Component {
         {mode === 'IFRAME_MODE' && <IframeComponent {...newProps} />}
         {/* @ts-ignore */}
         {mode === 'WC_MODE' && <WebComponent key={url} {...newProps} />}
-        {mode === 'IMP_MODE' && <LazyImportComponent {...newProps} />}
+        {mode === 'IMP_MODE' && <LazyImportComponent key={url} {...newProps} />}
       </>
     );
     }

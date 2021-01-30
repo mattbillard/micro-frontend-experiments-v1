@@ -2,7 +2,8 @@
 import * as React from 'react';
 import { useState } from 'react';
 
-import { ChartComponent } from '../components';
+// import { ChartComponent } from '../components';
+import { ChartComponent } from './chart-component';
 
 export const StockChart = () => {
   let data = [],
@@ -40,4 +41,12 @@ export const StockChart = () => {
   return (
     <ChartComponent config={config} />
   );
+}
+
+export default StockChart;
+
+try {
+  // @ts-ignore
+  RemoteComponent = StockChart;
+} catch (err) {
 }

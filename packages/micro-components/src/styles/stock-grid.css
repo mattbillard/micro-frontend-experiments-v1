@@ -1,3 +1,8 @@
+.grid-component {
+  width: 100%;
+  height: 100%;
+}
+
 .slick-header.ui-state-default, .slick-headerrow.ui-state-default {
   width: 100%;
   overflow: hidden;
@@ -176,39 +181,4 @@
 
 .slick-row.even .slick-cell{
   background: #242424;
-}
-
-.fibonacci-spiral{
-  width: 100%;
-  height: 100%;
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-image: url(../images/fibonacci-spiral.svg);
-}
-
-.gl-text{
-  position: relative;
-}
-
-.gl-text > div{
-    margin: 0 auto;
-}
-.gl-text h1,
-.gl-text h3{
-  color: #fff;
-  font-family: 'Roboto', sans-serif;
-}
-
-.gl-text h1{
-  font-weight: 100;
-  margin: 35px 0 0 30px;
-  font-size: 40px;
-}
-
-.gl-text h3{
-  font-weight: 100;
-  margin: 10px 0 0 30px;
-  font-size: 20px;
-  color: #ccc;
 }

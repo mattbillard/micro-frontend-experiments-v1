@@ -5,18 +5,29 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const config = {
-  entry: [
+  entry: {
     // 'react-hot-loader/patch',
-    './src/index.tsx'
-  ],
+    // 'index': './src/index.js',
+    'index': './src/index.tsx',
+    'golden-spiral': './src/components/golden-spiral.tsx',
+    'golden-text': './src/components/golden-text.tsx',
+    'column-chart': './src/components/column-chart.tsx',
+    'pie-chart': './src/components/pie-chart.tsx',
+    'stock-chart': './src/components/stock-chart.tsx',
+    'stock-grid': './src/components/stock-grid.tsx',
+    'text-tester': './src/components/text-tester.tsx',
+  },
   output: {
     path: path.resolve(__dirname, 'dist'),
+    filename: '[name].js',
     // These are IMPORTANT
-    // Output files that can be imported
-    filename: 'index.js',
     libraryTarget: 'umd',
     // libraryTarget: 'commonjs',
   },
+  // Uncomment to not minify+uglify
+  // optimization: {
+  //   minimize: false
+  // },
   module: {
     rules: [
       {
@@ -111,18 +122,19 @@ const config = {
       amd: "ReactDOM",
       root: "ReactDOM"
     },
-    "highcharts": {
-      commonjs: "highcharts",
-      commonjs2: "highcharts",
-      amd: "Highcharts",
-      root: "Highcharts"
-    },
-    "slickgrid-es6": {
-      commonjs: "slickgrid-es6",
-      commonjs2: "slickgrid-es6",
-      amd: "Slick",
-      root: "Slick"
-    }
+    // TODO: think through if we want this or not
+    // "highcharts": {
+    //   commonjs: "highcharts",
+    //   commonjs2: "highcharts",
+    //   amd: "Highcharts",
+    //   root: "Highcharts"
+    // },
+    // "slickgrid-es6": {
+    //   commonjs: "slickgrid-es6",
+    //   commonjs2: "slickgrid-es6",
+    //   amd: "Slick",
+    //   root: "Slick"
+    // }
   },
   devServer: {
     contentBase: './dist'

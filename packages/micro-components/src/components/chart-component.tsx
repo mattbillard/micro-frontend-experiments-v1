@@ -3,6 +3,8 @@ import * as React from 'react';
 import { useEffect, useRef, useState } from 'react';
 import * as Highcharts from 'highcharts';
 
+import '../styles/chart-component.css';
+
 export const ChartComponent = (props) => {
   const ref = useRef(null);
   const chartRef = useRef(null);

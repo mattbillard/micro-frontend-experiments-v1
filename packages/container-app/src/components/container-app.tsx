@@ -2,6 +2,13 @@ import * as React from 'react';
 import { Provider } from 'react-redux';
 import * as jsCookie from 'js-cookie';
 
+// // TODO: figure out if it's better to provide this for all micro-apps or expect them to provide their own
+// import * as Highcharts from 'highcharts';
+// import Slick from 'slickgrid-es6';
+// declare const window: any;
+// window.Highcharts = Highcharts;
+// window.Slick = Slick;
+
 import {
   ContainerRouter,
   LoginPage,

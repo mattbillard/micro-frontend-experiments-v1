@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { Link } from "react-router-dom";
 
+declare const window: any;
+
 // TODO: probably move to container-app
 export const MicroNavigation = (props) => {
   window.glContainer = props.glContainer;
