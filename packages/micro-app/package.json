@@ -12,10 +12,10 @@
     "build:prod": "webpack --mode production",
     "start": "webpack serve --mode development",
     "test": "jest",
-    "postbuild": "mv dist micro-app && mkdir dist && mv micro-app dist",
-    "serve": "http-server -p 8082 ./dist"
+    "serve": "live-server ./dist --no-browser --port=8082 --mount=/micro-app:./dist --entry-file=./index.html"
   },
   "dependencies": {
+    "live-server": "^1.2.1",
     "lodash-es": "^4.17.20",
     "micro-components": "file:../micro-components",
     "react": "^17.0.1",

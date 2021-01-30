@@ -7,7 +7,7 @@ import {
 import { IStoreState, store } from '../../redux';
 
 // GoldenLayout only works with class components
-export class GoldenLayoutComponent extends React.Component {
+export class GoldenLayoutComponent extends React.Component<any, any> {
   render () {
     const url = this.props.glContainer._config.componentState?.url || '/micro-app';
     const setTitle = ((title) => this.props.glContainer.setTitle(title));

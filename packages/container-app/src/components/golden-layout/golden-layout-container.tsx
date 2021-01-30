@@ -30,10 +30,8 @@ import {
   xhrService,
 } from '../../services';
 
-interface IGoldenLayoutContainerProps {
-}
-
-export class GoldenLayoutContainerView extends React.Component {
+// TODO: types
+export class GoldenLayoutContainerView extends React.Component<any, any> {
   myLayout;
   ref;
 

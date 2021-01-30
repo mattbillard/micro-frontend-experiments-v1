@@ -12,8 +12,7 @@
     "build:prod": "webpack --mode production",
     "start": "webpack serve --mode development",
     "test": "jest",
-    "postbuild": "mv dist container && mkdir dist && mv container dist",
-    "serve": "http-server -p 8081 ./dist"
+    "serve": "live-server ./dist --no-browser --port=8081 --mount=/container:./dist --entry-file=./index.html"
   },
   "dependencies": {
     "@loadable/component": "^5.14.1",
@@ -23,6 +22,7 @@
     "highcharts": "^8.2.2",
     "jquery": "^3.5.1",
     "js-cookie": "^2.2.1",
+    "live-server": "^1.2.1",
     "lodash-es": "^4.17.20",
     "micro-components": "file:../micro-components",
     "nanoid": "^3.1.20",

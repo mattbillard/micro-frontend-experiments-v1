@@ -10,6 +10,7 @@
         "allowJs": true,
         "jsx": "react",
         "noImplicitAny": false,
+        "strictNullChecks": false, // TODO: remove
     },
     "include": [
         "./src/**/*"
