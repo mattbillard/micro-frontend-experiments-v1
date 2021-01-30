@@ -7,11 +7,11 @@
     </head>
     <body>
         <div class="micro-app"></div>
-        <script src="/micro-app/bundle.js" onload="microApp.init(this.parentElement, {})"></script>
+        <script src="/micro-app/index.js" onload="microApp.init(this.parentElement, {})"></script>
 
         <!-- <div class="micro-app"></div> -->
         <!--  Workaround: document.currentScript is not available in shadowDom. Unfortunately, doesn't work well when multiple shadow micro apps load simultaneously -->
         <!-- <script src="" onerror="window.currentScript = this;"></script> -->
-        <!-- <script src="/micro-app/bundle.js"></script> -->
+        <!-- <script src="/micro-app/index.js"></script> -->
     </body>
 </html>

@@ -12,7 +12,7 @@ const config = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     publicPath: '/micro-app/', // Needs to end in / or paths will be wrong when you serve built version
-    filename: 'bundle.js'
+    filename: 'index.js'
   },
   module: {
     rules: [
