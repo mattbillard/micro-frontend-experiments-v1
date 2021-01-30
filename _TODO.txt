@@ -1,4 +1,13 @@
 
+GOALS 
+1) Golden Layout 
+2) WebSocket updates 
+3) Remote component 
+4) OpenFin 
+
+
+
+
 TODO 
 - Micro front end 
   - Web component 
@@ -42,3 +51,22 @@ TODO
   - Bugfix - GoldenLayout - consider removing Redux. Could make save/restore/reinit much simpler. Would need a way to listen to websocket without redux 
   - DefinitionsService - place to define featueres, their bootstrap script, menu items + their props, etc 
   - simulate dev - try using npm live-server for built code 
+
+- Lots of small things 
+  - Separate GoldenLayoutComponent vs MicroFrontendModeSwitch
+  - Enum for modes 
+  - Separate Lazy and Remote components 
+  - Grid - fix when in ShadowDOM 
+  - live-server 
+  - Parcel vs Webpack 
+  - Easy toggle dev vs serve dist
+  - Move table of contents to container?
+  - Definitions - micro-app, navigation 
+  - Fix WS updates using a windowId 
+- More 
+  - React ShadowDOM npm package?
+  - ShadowDOM browser tag?
+  - Try lazy + shadowDOM 
+- Bonus points 
+  - Remote component - try even more approaches 
+

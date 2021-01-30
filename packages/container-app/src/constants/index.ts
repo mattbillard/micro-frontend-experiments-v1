@@ -8,7 +8,7 @@ export const DEFAULT_MINIMAL_GOLDEN_LAYOUT_CONFIG = {
     {
       title: 'Golden',
       type: 'react-component',
-      component: 'MicroFrontEndComponent',
+      component: 'GoldenLayoutComponent',
       componentState: {
         // key: '/micro-app/golden-spiral',
         url: '/micro-app/golden-spiral',
@@ -33,7 +33,7 @@ export const DEFAULT_GOLDEN_LAYOUT_CONFIG = {
             {
               title: 'Fnts 100',
               type: 'react-component',
-              component: 'MicroFrontEndComponent',
+              component: 'GoldenLayoutComponent',
               componentState: {
                 // key: '/micro-app/stock-grid',
                 url: '/micro-app/stock-grid',
@@ -45,7 +45,7 @@ export const DEFAULT_GOLDEN_LAYOUT_CONFIG = {
                 {
                   title: 'Golden',
                   type: 'react-component',
-                  component: 'MicroFrontEndComponent',
+                  component: 'GoldenLayoutComponent',
                   componentState: {
                     // key: '/micro-app/golden-spiral',
                     url: '/micro-app/golden-spiral',
@@ -55,7 +55,7 @@ export const DEFAULT_GOLDEN_LAYOUT_CONFIG = {
                 {
                   title: 'Layout',
                   type: 'react-component',
-                  component: 'MicroFrontEndComponent',
+                  component: 'GoldenLayoutComponent',
                   componentState: {
                     // key: '/micro-app/golden-text',
                     url: '/micro-app/golden-text',
@@ -69,7 +69,7 @@ export const DEFAULT_GOLDEN_LAYOUT_CONFIG = {
                 {
                   title: 'Acme, inc.',
                   type: 'react-component',
-                  component: 'MicroFrontEndComponent',
+                  component: 'GoldenLayoutComponent',
                   componentState: {
                     // key: '/micro-app/stock-chart',
                     url: '/micro-app/stock-chart',
@@ -81,7 +81,7 @@ export const DEFAULT_GOLDEN_LAYOUT_CONFIG = {
                 {
                   title: 'LexCorp plc.',
                   type: 'react-component',
-                  component: 'MicroFrontEndComponent',
+                  component: 'GoldenLayoutComponent',
                   componentState: {
                     // key: '/micro-app/stock-chart',
                     url: '/micro-app/stock-chart',
@@ -91,7 +91,7 @@ export const DEFAULT_GOLDEN_LAYOUT_CONFIG = {
                 {
                   title: 'Springshield plc.',
                   type: 'react-component',
-                  component: 'MicroFrontEndComponent',
+                  component: 'GoldenLayoutComponent',
                   componentState: {
                     // key: '/micro-app/stock-chart',
                     url: '/micro-app/stock-chart',
@@ -109,7 +109,7 @@ export const DEFAULT_GOLDEN_LAYOUT_CONFIG = {
             {
               title: 'Performance',
               type: 'react-component',
-              component: 'MicroFrontEndComponent',
+              component: 'GoldenLayoutComponent',
               componentState: {
                 // key: '/micro-app/column-chart',
                 url: '/micro-app/column-chart',
@@ -118,7 +118,7 @@ export const DEFAULT_GOLDEN_LAYOUT_CONFIG = {
             {
               title: 'Market',
               type: 'react-component',
-              component: 'MicroFrontEndComponent',
+              component: 'GoldenLayoutComponent',
               componentState: {
                 // key: '/micro-app/pie-chart',
                 url: '/micro-app/pie-chart',
