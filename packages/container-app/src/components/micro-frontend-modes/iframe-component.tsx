@@ -47,11 +47,15 @@ export const IframeComponent = (props: IIframeComponentProps) => {
   const { url } = props;
 
   useEffect(() => {
-    ref.current.contentWindow.microApp?.init(ref.current.contentDocument, props);
+    renderChild();
   }, [props]);
 
+  const renderChild = () => {
+    ref.current.contentWindow.microApp?.init(ref.current.contentDocument, props);
+  }
+
   return (
-    <iframe ref={ref} src={url} style={{border:0, width:'100%', height:'100%'}}></iframe>
+    <iframe ref={ref} src={url} style={{border:0, width:'100%', height:'100%'}} onLoad={renderChild}></iframe>
   )  
 }
 

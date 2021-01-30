@@ -49,15 +49,16 @@ TODO
   - CSS - clean up and use flexbox
   - Remove disableLiveReload
   - Lerna - don't use it for cross-linking packages b/c it fights against npm install 
+  - Bugfix - iframes are not passing props down on mount
+  X- Grid - fix when in ShadowDOM (Slickgrid inserts a style tag in head. I guess it's a good example of a lib that's not compatible with ShadowDom)
 
-  - Iframes are not passing props down on mount
-  - Grid - fix when in ShadowDOM 
   - live-server 
   - Parcel vs Webpack 
   - Easy toggle dev vs serve dist
   - Move table of contents to container?
   - Definitions - micro-app, navigation 
   - Fix WS updates using a windowId 
+  - Can micro-components build and serve instead of build:dev
 - OpenFin / Electron
 - Try other micro frontend approaches 
 - More/Extras

@@ -9,19 +9,23 @@ export const InjectWholeAppHtmlComponent = (props) => {
   const ref = useRef(null);
 
   useEffect(() => {
-    init(ref, props);
+    init(ref, props, renderChild);
   }, []);  
 
   useEffect(() => {
-    window.microApp?.init(ref.current, props);
+    renderChild();
   }, [props])
+
+  const renderChild = () => {
+    window.microApp?.init(ref.current, props);
+  }
 
   return (
     <div ref={ref}></div>
   )
 }
 
-const init = async (ref, props) => {
+const init = async (ref, props, renderChild) => {
   const { url } = props;
 
   // Fetch HTML
@@ -40,7 +44,7 @@ const init = async (ref, props) => {
       newScript.setAttribute(attr.name, attr.value);
     })
 
-    newScript.onload = () => window.microApp?.init(context, props);
+    newScript.onload = renderChild;
 
     const parent = oldScript.parentNode;
     oldScript.remove();
