@@ -11,7 +11,11 @@ export const getGoldenLayoutConfig = async () => {
 }
 
 export const saveGoldenLayoutConfig = async (goldenLayoutConfig) => {
-  return axios.post('/api/golden-layout-config', goldenLayoutConfig);
+  const payload = {
+    goldenLayoutConfig,
+    windowId: sessionStorage.windowId,
+  };
+  return axios.post('/api/golden-layout-config', payload);
 }
 
 
@@ -23,5 +27,9 @@ export const getSettings = async () => {
 }
 
 export const saveSettings = async (settings) => {
-  return axios.post('/api/settings', settings);
+  const payload = {
+    settings,
+    windowId: sessionStorage.windowId,
+  };
+  return axios.post('/api/settings', payload);
 }

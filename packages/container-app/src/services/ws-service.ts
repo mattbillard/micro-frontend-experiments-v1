@@ -6,14 +6,18 @@ const RETRY_TIMEOUT = 5000;
 
 export const connect = (callback) => {
   const username = jsCookie.get('username');
-  const ws = new WebSocket(`${url}/${username}`);
+  const clientInfo = {
+    username, 
+    windowId: sessionStorage.windowId,
+  };
+  const ws = new WebSocket(`${url}/${JSON.stringify(clientInfo)}`);
 
   ws.onopen = () => {
     console.log('WS connected');
   }
 
   ws.onerror = (error) => {
-    console.error(`WS error: ${error}`)
+    console.error('WS error: ', error);
   }
 
   ws.onmessage = (event) => {

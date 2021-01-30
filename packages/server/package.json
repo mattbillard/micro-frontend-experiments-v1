@@ -4,7 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "pm2 start ./server.js --no-daemon --watch"
   },
   "keywords": [],
   "author": "",
@@ -17,8 +17,8 @@
     "fs-extra": "^9.0.1",
     "http": "0.0.1-security",
     "less-middleware": "^3.1.0",
-    "nodemon": "^2.0.7",
     "path": "^0.12.7",
+    "pm2": "^4.5.2",
     "request": "^2.88.2",
     "twig": "^1.15.4",
     "ws": "^7.4.2"

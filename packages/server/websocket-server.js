@@ -1,34 +1,37 @@
 const WebSocket = require('ws')
 
 const wss = new WebSocket.Server({ noServer: true });
-let wsArrByUsername = {};
+let wsArr = [];
 
 const connect = (ws, req) => {
-  const username = req.url.replace('/ws/', '');
+  const clientInfo = JSON.parse(decodeURIComponent(req.url.replace('/ws/', '')));
+  clientInfo.ws = ws;
 
-  wsArrByUsername[username] = wsArrByUsername[username] || [];
-  wsArrByUsername[username].push(ws);
+  // Remember WS connection
+  wsArr.push(clientInfo);
 
   ws.on('message', (message) => console.log(`ws message: ${message}`));
   ws.on('close', () => close(ws));
 }
 wss.on('connection', connect);
 
-const sendWsMessage = (action, payload, username) => {
+const sendWsMessage = (action, payload, username, windowId) => {
   const obj = {
     action, 
     payload,
   };
   
-  wsArrByUsername[username].forEach(ws => {
-    ws.send(JSON.stringify(obj));
-  });
+  // Send WS message to same user but not same windowId so changes don't get sent to the window that made them
+  wsArr
+    .filter(clientInfo => clientInfo.username === username && clientInfo.windowId !== windowId)
+    .forEach(clientInfo => {
+      const { ws } = clientInfo;
+      ws.send(JSON.stringify(obj));
+    });
 }
 
 const close = (ws) => {
-  Object.keys(wsArrByUsername).forEach(username => {
-    wsArrByUsername[username] = wsArrByUsername[username].filter(_ws => _ws !== ws);
-  });
+  wsArr = wsArr.map(clientInfo => clientInfo.ws !== ws);
 }
 
 module.exports = {

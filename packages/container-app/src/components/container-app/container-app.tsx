@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Provider } from 'react-redux';
 import * as jsCookie from 'js-cookie';
+import { nanoid } from 'nanoid'
 import ReactShadow from 'react-shadow'; // TODO: consider "declarative shadowDom" once browsers standardize it
 
 import "../../styles/flex-box.less";
@@ -19,6 +20,9 @@ import {
   LoginPage,
 } from '../../components';
 import { store } from '../../redux';
+
+// TODO: probably move to a service
+sessionStorage.windowId = nanoid();
 
 interface IContainerAppProps {
 }

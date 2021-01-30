@@ -46,31 +46,33 @@ TODO
   - Enum for modes 
   - Separate Lazy and Remote components 
   - React ShadowDOM npm package
+  X- Declarative ShadowDOM browser tag (Not even close to standardized.)
   - CSS - clean up and use flexbox
   - Remove disableLiveReload
   - Lerna - don't use it for cross-linking packages b/c it fights against npm install 
   - Bugfix - iframes are not passing props down on mount
   X- Grid - fix when in ShadowDOM (Slickgrid inserts a style tag in head. I guess it's a good example of a lib that's not compatible with ShadowDom)
+  - Bugfix - WS should have a windowId, so changes don't get sent to the window that made them
 
-  - live-server 
-  - Parcel vs Webpack 
-  - Easy toggle dev vs serve dist
-  - Move table of contents to container?
-  - Definitions - micro-app, navigation 
-  - Fix WS updates using a windowId 
-  - Can micro-components build and serve instead of build:dev
+  - Definitions 
+    - Definitions - micro-app, navigation 
+    - Move table of contents to container?
+  - server and build 
+    - live-server 
+    - Parcel vs Webpack 
+    - Can micro-components build and serve instead of build:dev
+    - Easy toggle dev vs serve dist
+  - Try more micro apps: create-react-app and Vue
 - OpenFin / Electron
 - Try other micro frontend approaches 
 - More/Extras
   - Each app should save its own state 
   - More Features/framework - toasts, notifications, permissions, etc, etc, etc 
   - Middleware to send redux changes to WS?
-  - Bugfix - GoldenLayout - consider removing Redux. Could make save/restore/reinit much simpler. Would need a way to listen to websocket without redux 
+  - Bugfix - GoldenLayout sometimes redraws to an old state if you make 2 changes in a row - consider removing Redux. Could make save/restore/reinit much simpler. Would need a way to listen to websocket without redux 
   - DefinitionsService - place to define featueres, their bootstrap script, menu items + their props, etc 
   - simulate dev - try using npm live-server for built code 
 - More 
-  - ShadowDOM browser tag?
-  - Try lazy + shadowDOM 
 - Bonus points 
   - Remote component - try even more approaches 
 
