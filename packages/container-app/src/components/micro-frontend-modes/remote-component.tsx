@@ -1,14 +1,12 @@
 import * as React from 'react';
 import { Suspense, useEffect, useRef, useState } from 'react';
-import loadable from '@loadable/component';
+// import loadable from '@loadable/component';
 // const requireFromWeb = require('require-from-web')
 // const OtherComponent = require('micro-components'); 
 // import { RemoteComponent } from '@paciolan/remote-component';
 // import { createLoadRemoteModule } from "@paciolan/remote-module-loader"
 
-
-declare const window: any;
-
+// declare const window: any;
 
 export const RemoteComponent = (props) => {
   const url = props.url.replace('/micro-app', '') || '/index';

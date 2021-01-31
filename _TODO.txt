@@ -55,6 +55,7 @@ TODO
   - Bugfix - WS should have a windowId, so changes don't get sent to the window that made them
   - server and build 
     - live-server (Allows you to server a single-page-application more easily than 'http-server' or 'serve')
+    - Webpack - split vendor into separate bundle
 
     - Can micro-components build and serve instead of build:dev
     - Easy toggle dev vs serve dist
@@ -73,6 +74,8 @@ TODO
   - simulate dev - try using npm live-server for built code 
   - Types for all React props and state. Remove all "any"s.
   - Readme 
+  - Better source maps
+  - Webpack optimizations: https://webpack.js.org/configuration/optimization/
 - More 
 - Bonus points 
   - Remote component - try even more approaches 

@@ -2,17 +2,30 @@ const webpack = require('webpack');
 const path = require('path');
 const CopyPlugin = require('copy-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const config = {
-  entry: [
+  entry: {
     // 'react-hot-loader/patch',
-    './src/index.tsx'
-  ],
+    'index': './src/index.tsx',
+  },
   output: {
     path: path.resolve(__dirname, 'dist'),
     publicPath: '/micro-app/', // Needs to end in / or paths will be wrong when you serve built version
-    filename: 'index.js'
+    filename: '[name].js',
+  },
+  optimization: {
+    // minimize: false,
+    splitChunks: {
+      cacheGroups: {
+        vendor: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendors',
+          chunks: 'all',
+        },
+      },
+    },
   },
   module: {
     rules: [
@@ -100,11 +113,14 @@ const config = {
     }
   },
   plugins: [
-    new CopyPlugin({
-      patterns: [{ from: 'src/index.html' }],
-    }),
+    // new CopyPlugin({
+    //   patterns: [{ from: 'src/index.html' }],
+    // }),
     new CleanWebpackPlugin(),
-    new MiniCssExtractPlugin()
+    new MiniCssExtractPlugin(),
+    new HtmlWebpackPlugin({
+      template: './src/index.html'
+    }),
   ]
 };
 
