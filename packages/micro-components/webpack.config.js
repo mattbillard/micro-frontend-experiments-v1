@@ -19,6 +19,7 @@ const config = {
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
+    publicPath: '/micro-components/', // Needs to end in / or paths will be wrong when you serve built version
     filename: '[name].js',
     // These are IMPORTANT
     libraryTarget: 'umd',
@@ -137,7 +138,16 @@ const config = {
     // }
   },
   devServer: {
-    contentBase: './dist'
+    injectClient: false,  // Force no hot reloading. Websocket can't connect through proxy
+    
+    port: 8083,
+    contentBase: './dist',
+    publicPath: '/micro-components', // Better UX if doesn't need / on end
+    // historyApiFallback: {
+      //   index: '/micro-components/index.html'
+      // }
+      
+    writeToDisk: true,    // Always write files to disk instead of serving from memory
   },
   plugins: [
     // new CopyPlugin({

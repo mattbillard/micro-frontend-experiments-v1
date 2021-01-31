@@ -15,7 +15,7 @@ export const RemoteComponent = (props) => {
 
   useEffect(() => {
     (async () => {
-      const res = await fetch(`/micro-components/dist${url}.js`)
+      const res = await fetch(`/micro-components${url}.js`)
       const text = await res.text();
 
       let RemoteComponent;
@@ -30,7 +30,7 @@ export const RemoteComponent = (props) => {
     return (
       <>
         <div>Loading...</div>
-        <link href={`/micro-components/dist${url}.css`} rel="stylesheet" /> {/* Make sure CSS is loaded by time async JS is loaded  */}
+        <link href={`/micro-components${url}.css`} rel="stylesheet" /> {/* Make sure CSS is loaded by time async JS is loaded  */}
       </>
     )
   }
@@ -40,7 +40,7 @@ export const RemoteComponent = (props) => {
   return (
     <>
       {<LoadedComponent {...props} />}
-      <link href={`/micro-components/dist${url}.css`} rel="stylesheet" />
+      <link href={`/micro-components${url}.css`} rel="stylesheet" />
     </>
   )
 }
