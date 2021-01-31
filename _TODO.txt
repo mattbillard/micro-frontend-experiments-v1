@@ -56,6 +56,7 @@ TODO
   - server and build 
     - live-server (Allows you to server a single-page-application more easily than 'http-server' or 'serve')
     - Webpack - split vendor into separate bundle
+    - lerna - easily run all packages with 1 command at the same time
 
     - Can micro-components build and serve instead of build:dev
     - Easy toggle dev vs serve dist

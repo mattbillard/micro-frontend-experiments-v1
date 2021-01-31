@@ -5,14 +5,15 @@
   "private": true,
   "scripts": {
     "_start": "webpack-dev-server --env.NODE_ENV=development",
-    "start": "pm2 start ./node_modules/webpack-dev-server/bin/webpack-dev-server.js --no-daemon --watch -- --env.NODE_ENV=development"
+    "start": "pm2 start ./node_modules/webpack-dev-server/bin/webpack-dev-server.js --no-daemon --watch -- --env.NODE_ENV=development",
+    "serve": "pm2 start ./node_modules/webpack-dev-server/bin/webpack-dev-server.js --no-daemon --watch -- --env.NODE_ENV=development"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "micro-components": "^1.0.0",
-    "pm2": "^4.5.1"
+    "pm2": "4.5.2"
   },
   "devDependencies": {
     "chalk": "^4.1.0",
