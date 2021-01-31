@@ -9,12 +9,15 @@ import { Suspense, useEffect, useRef, useState } from 'react';
 // declare const window: any;
 
 export const RemoteComponent = (props) => {
-  const url = props.url.replace('/micro-app', '') || '/index';
+  // TODO: clean up
+  // const url = props.url.replace('/micro-app', '') || '/index';
+  const url = '/index';
   const [isLoading, setIsLoading] = useState(true);
   const ref = useRef<any>();
 
   useEffect(() => {
     (async () => {
+      // const res = await fetch(`/micro-components${url}.js`)
       const res = await fetch(`/micro-components${url}.js`)
       const text = await res.text();
 

@@ -7,15 +7,14 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const config = {
   entry: {
     // 'react-hot-loader/patch',
-    // 'index': './src/index.js',
     'index': './src/index.tsx',
-    'golden-spiral': './src/components/golden-spiral.tsx',
-    'golden-text': './src/components/golden-text.tsx',
-    'column-chart': './src/components/column-chart.tsx',
-    'pie-chart': './src/components/pie-chart.tsx',
-    'stock-chart': './src/components/stock-chart.tsx',
-    'stock-grid': './src/components/stock-grid.tsx',
-    'text-tester': './src/components/text-tester.tsx',
+    // 'golden-spiral': './src/components/golden-spiral.tsx',
+    // 'golden-text': './src/components/golden-text.tsx',
+    // 'column-chart': './src/components/column-chart.tsx',
+    // 'pie-chart': './src/components/pie-chart.tsx',
+    // 'stock-chart': './src/components/stock-chart.tsx',
+    // 'stock-grid': './src/components/stock-grid.tsx',
+    // 'text-tester': './src/components/text-tester.tsx',
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
