@@ -31,7 +31,7 @@ const sendWsMessage = (action, payload, username, windowId) => {
 }
 
 const close = (ws) => {
-  wsArr = wsArr.map(clientInfo => clientInfo.ws !== ws);
+  wsArr = wsArr.filter(clientInfo => clientInfo.ws !== ws);
 }
 
 module.exports = {

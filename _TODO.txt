@@ -57,9 +57,9 @@ TODO
     - live-server (Allows you to server a single-page-application more easily than 'http-server' or 'serve')
     - Webpack - split vendor into separate bundle
     - lerna - easily run all packages with 1 command at the same time
-
     - Can micro-components build and serve instead of build:dev
-    - Easy toggle dev vs serve dist
+    X- Easy toggle dev vs serve dist
+
   - Definitions 
     - Definitions - micro-app, navigation 
     - Move table of contents to container?
@@ -75,10 +75,9 @@ TODO
   - simulate dev - try using npm live-server for built code 
   - Types for all React props and state. Remove all "any"s.
   - Readme 
+  - Prettier 
   - Better source maps
   - Webpack optimizations: https://webpack.js.org/configuration/optimization/
-- More 
 - Bonus points 
   - Remote component - try even more approaches 
-  - Parcel - try again to resolve error with "violated rules of hooks" with multiple copies of React 
 

@@ -142,6 +142,6 @@ export enum MicroFrontendMode {
 export const DEFAULT_SETTINGS = {
   isShadow: false,
   mode: MicroFrontendMode.RemoteComponent,
-  showHints: false,
+  showHints: true,
   showSettings: false,
 };
