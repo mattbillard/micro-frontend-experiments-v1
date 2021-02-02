@@ -8,6 +8,7 @@ const config = {
   entry: {
     // 'react-hot-loader/patch',
     'index': './src/index.tsx',
+    'remote-component': './src/remote-component.tsx',
     // 'golden-spiral': './src/components/golden-spiral.tsx',
     // 'golden-text': './src/components/golden-text.tsx',
     // 'column-chart': './src/components/column-chart.tsx',

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import * as ReactDOM from "react-dom";
 import { Suspense, useEffect, useRef, useState } from 'react';
 // import loadable from '@loadable/component';
 // const requireFromWeb = require('require-from-web')
@@ -8,45 +9,83 @@ import { Suspense, useEffect, useRef, useState } from 'react';
 
 // declare const window: any;
 
+
+/**
+ * Inserting a script tag is much more efficient than XHR to get JS 
+ * Because script tags are cached, the request is only made once
+ * Result: Golden Layout with 8 components is 1mb vs 8mb for first load and less than half the time
+ */
+declare const window: any;
 export const RemoteComponent = (props) => {
-  // TODO: clean up
-  // const url = props.url.replace('/micro-app', '') || '/index';
-  const url = '/index';
-  const [isLoading, setIsLoading] = useState(true);
   const ref = useRef<any>();
 
   useEffect(() => {
-    (async () => {
-      // const res = await fetch(`/micro-components${url}.js`)
-      const res = await fetch(`/micro-components${url}.js`)
-      const text = await res.text();
-
-      let RemoteComponent;
-      eval(text);
-      ref.current = RemoteComponent;
-
-      setIsLoading(false);
-    })()
+    const div = ref.current;
+    const script = document.createElement('script');
+    script.src = '/micro-components/remote-component.js';
+    script.onload = (event) => {
+      const Component = window['microComponents'].getComponent();
+      ReactDOM.render(<Component {...props} />, event.target.previousSibling;
+    }
+    div.after(script);
   }, []);
-
-  if (isLoading) {
-    return (
-      <>
-        <div>Loading...</div>
-        <link href={`/micro-components${url}.css`} rel="stylesheet" /> {/* Make sure CSS is loaded by time async JS is loaded  */}
-      </>
-    )
-  }
-
-  const LoadedComponent = ref.current!;
 
   return (
     <>
-      {<LoadedComponent {...props} />}
-      <link href={`/micro-components${url}.css`} rel="stylesheet" />
+      <div ref={ref} className="remote-root"></div>
+      <link href={`/micro-components/remote-component.css`} rel="stylesheet" />
     </>
   )
 }
+
+
+
+// /**
+//  * Does an XHR and evals the result. Uses the variable from inside the script as component
+//  */
+// export const RemoteComponent = (props) => {
+//   // TODO: clean up
+//   // const url = props.url.replace('/micro-app', '') || '/index';
+//   const url = '/index';
+//   const [isLoading, setIsLoading] = useState(true);
+//   const ref = useRef<any>();
+
+//   useEffect(() => {
+//     (async () => {
+//       // const res = await fetch(`/micro-components${url}.js`)
+//       const res = await fetch(`/micro-components${url}.js`)
+//       const text = await res.text();
+
+//       let RemoteComponent;
+//       eval(text);
+//       ref.current = RemoteComponent;
+
+//       setIsLoading(false);
+//     })()
+//   }, []);
+
+//   if (isLoading) {
+//     return (
+//       <>
+//         <div>Loading...</div>
+//         <link href={`/micro-components${url}.css`} rel="stylesheet" /> {/* Make sure CSS is loaded by time async JS is loaded  */}
+//       </>
+//     )
+//   }
+
+//   const LoadedComponent = ref.current!;
+
+//   return (
+//     <>
+//       {<LoadedComponent {...props} />}
+//       <link href={`/micro-components${url}.css`} rel="stylesheet" />
+//     </>
+//   )
+// }
+
+
+
+
 
 
 // const OtherComponent = React.lazy(() => import('micro-components'));
