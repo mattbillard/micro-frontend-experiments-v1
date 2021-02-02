@@ -17,22 +17,31 @@ import { Suspense, useEffect, useRef, useState } from 'react';
  */
 declare const window: any;
 export const RemoteComponent = (props) => {
-  const ref = useRef<any>();
+  const mountRef = useRef<any>();
+  const componentRef = useRef<any>();
 
   useEffect(() => {
-    const div = ref.current;
+    const div = mountRef.current;
     const script = document.createElement('script');
     script.src = '/micro-components/remote-component.js';
     script.onload = (event) => {
-      const Component = window['microComponents'].getComponent();
-      ReactDOM.render(<Component {...props} />, event.target.previousSibling;
+      componentRef.current = window['microComponents'].getComponent();
+      const Component = componentRef.current;
+      ReactDOM.render(<Component {...props} />, mountRef.current);
     }
     div.after(script);
   }, []);
 
+  useEffect(() => {
+    const Component = componentRef.current;
+    if (Component) {
+      ReactDOM.render(<Component {...props} />, mountRef.current);
+    }
+  }, [props]);
+
   return (
     <>
-      <div ref={ref} className="remote-root"></div>
+      <div ref={mountRef} className="remote-root"></div>
       <link href={`/micro-components/remote-component.css`} rel="stylesheet" />
     </>
   )
