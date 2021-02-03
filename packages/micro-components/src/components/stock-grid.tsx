@@ -3,6 +3,8 @@ import * as React from 'react';
 import { useEffect, useRef, useState } from 'react';
 import Slick from 'slickgrid-es6';
 
+// import { exportRemoteComponent } from './remote-component';
+
 import '../styles/scroll-bars.less'; // TODO: should this be included in each component?
 import '../styles/stock-grid.css';
 
@@ -72,8 +74,10 @@ const generateData = () => {
 
 export default StockGrid;
 
-try {
-  // @ts-ignore
-  RemoteComponent = StockGrid;
-} catch (err) {
-}
+// try {
+//   // @ts-ignore
+//   RemoteComponent = StockGrid;
+// } catch (err) {
+// }
+
+// exportRemoteComponent('microComponents', StockGrid);

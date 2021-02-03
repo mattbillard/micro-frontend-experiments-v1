@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { useState } from 'react';
 
+// import { exportRemoteComponent } from './remote-component';
+
 // import { ChartComponent } from '../components';
 import { ChartComponent } from './chart-component';
 
@@ -48,8 +50,10 @@ export const ColumnChart = () => {
 
 export default ColumnChart;
 
-try {
-  // @ts-ignore
-  RemoteComponent = ColumnChart;
-} catch (err) {
-}
+// try {
+//   // @ts-ignore
+//   RemoteComponent = ColumnChart;
+// } catch (err) {
+// }
+
+// exportRemoteComponent('microComponents', ColumnChart);

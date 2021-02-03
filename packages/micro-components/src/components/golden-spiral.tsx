@@ -1,5 +1,7 @@
 import * as React from 'react';
 
+// import { exportRemoteComponent } from './remote-component';
+
 import '../styles/golden-spiral.css';
 
 export const GoldenSpiral = () => {
@@ -10,8 +12,10 @@ export const GoldenSpiral = () => {
 
 export default GoldenSpiral;
 
-try {
-  // @ts-ignore
-  RemoteComponent = GoldenSpiral;
-} catch (err) {
-}
+// try {
+//   // @ts-ignore
+//   RemoteComponent = GoldenSpiral;
+// } catch (err) {
+// }
+
+// exportRemoteComponent('microComponents', GoldenSpiral);

@@ -1,5 +1,7 @@
 import * as React from 'react';
 
+// import { exportRemoteComponent } from './remote-component';
+
 import '../styles/golden-text.css';
 
 export const GoldenText = () => {
@@ -15,8 +17,10 @@ export const GoldenText = () => {
 
 export default GoldenText;
 
-try {
-  // @ts-ignore
-  RemoteComponent = GoldenText;
-} catch (err) {
-}
+// try {
+//   // @ts-ignore
+//   RemoteComponent = GoldenText;
+// } catch (err) {
+// }
+
+// exportRemoteComponent('microComponents', GoldenText);

@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { useState } from 'react';
 
+// import { exportRemoteComponent } from './remote-component';
+
 // import { ChartComponent } from '../components';
 import { ChartComponent } from './chart-component';
 
@@ -57,8 +59,10 @@ export const PieChart = () => {
 
 export default PieChart;
 
-try {
-  // @ts-ignore
-  RemoteComponent = PieChart;
-} catch (err) {
-}
+// try {
+//   // @ts-ignore
+//   RemoteComponent = PieChart;
+// } catch (err) {
+// }
+
+// exportRemoteComponent('microComponents', PieChart);

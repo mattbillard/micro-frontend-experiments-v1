@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { useState } from 'react';
 
+// import { exportRemoteComponent } from './remote-component';
+
 export const TextTester = () => {
   const [rowCount, setRowCount] = useState<number>(5);
   const [colCount, setColCount] = useState<number>(5);
@@ -51,8 +53,10 @@ export const TextTester = () => {
 
 export default TextTester;
 
-try {
-  // @ts-ignore
-  RemoteComponent = TextTester;
-} catch (err) {
-}
+// try {
+//   // @ts-ignore
+//   RemoteComponent = TextTester;
+// } catch (err) {
+// }
+
+// exportRemoteComponent('microComponents', TextTester);
