@@ -26,7 +26,8 @@ export const RemoteComponent = (props) => {
     const script = document.createElement('script');
     script.src = `${url}.js`;
     script.onload = (event) => {
-      componentRef.current = window['microComponents'].getComponent();
+      componentRef.current = window.remoteComponent;
+      delete window.remoteComponent;
       const Component = componentRef.current;
       ReactDOM.render(<Component {...props} />, mountRef.current);
     }
