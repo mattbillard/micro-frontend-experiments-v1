@@ -23,7 +23,7 @@ export const RemoteComponent = (props) => {
   useEffect(() => {
     const div = mountRef.current;
     const script = document.createElement('script');
-    script.src = '/micro-components/remote-component.js';
+    script.src = '/micro-components/index.js';
     script.onload = (event) => {
       componentRef.current = window['microComponents'].getComponent();
       const Component = componentRef.current;
@@ -42,7 +42,7 @@ export const RemoteComponent = (props) => {
   return (
     <>
       <div ref={mountRef} className="remote-root"></div>
-      <link href={`/micro-components/remote-component.css`} rel="stylesheet" />
+      <link href={`/micro-components/index.css`} rel="stylesheet" />
     </>
   )
 }
