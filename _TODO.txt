@@ -65,7 +65,6 @@ TODO
     - Move table of contents to container?
   - Try more micro apps: create-react-app and Vue
 - OpenFin / Electron
-- Try other micro frontend approaches 
 - More/Extras
   - Each app should save its own state 
   - More Features/framework - toasts, notifications, permissions, etc, etc, etc 
@@ -79,6 +78,9 @@ TODO
   - Better source maps
   - Webpack optimizations: https://webpack.js.org/configuration/optimization/
 - Bonus points 
+  - Try other micro frontend approaches 
+    - https://the-tractor.store/
+    - https://github.com/neuland/micro-frontends
   - Remote component - try even more approaches 
   - Looking at the code of React.Lazy might tell how to evaluate a module. import() returns a module... and React.Lazy somehow processes it. 
-
+  - npm microbundle - try rollup instead of webpack to export micro-components 

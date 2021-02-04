@@ -1,7 +1,19 @@
 const WebSocket = require('ws')
 
-const wss = new WebSocket.Server({ noServer: true });
 let wsArr = [];
+
+const initWsServer = (server) => {
+  const wss = new WebSocket.Server({ server });
+  wss.on('connection', connect);
+
+  //   const wss = new WebSocket.Server({ noServer: true });
+//   wss.on('connection', connect);
+//   server.on('upgrade', (req, socket, head) => {
+//     wss.handleUpgrade(req, socket, head, (ws) => {
+//       wss.emit('connection', ws, req);
+//     });
+//   });
+}
 
 const connect = (ws, req) => {
   const clientInfo = JSON.parse(decodeURIComponent(req.url.replace('/ws/', '')));
@@ -13,7 +25,6 @@ const connect = (ws, req) => {
   ws.on('message', (message) => console.log(`ws message: ${message}`));
   ws.on('close', () => close(ws));
 }
-wss.on('connection', connect);
 
 const sendWsMessage = (action, payload, username, windowId) => {
   const obj = {
@@ -35,6 +46,6 @@ const close = (ws) => {
 }
 
 module.exports = {
+  initWsServer,
   sendWsMessage,
-  wss,
 };

@@ -4,6 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
+    "debug": "node ./server.js",
     "start": "sleep 1 && pm2 start ./server.js --no-daemon --watch",
     "serve": "sleep 1 && pm2 start ./server.js --no-daemon --watch"
   },

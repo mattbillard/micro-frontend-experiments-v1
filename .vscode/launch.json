@@ -5,11 +5,11 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "nodemon srever.js",
+      "name": "debug server",
       "type": "node",
       "request": "launch",
       "runtimeExecutable": "npm",
-      "runtimeArgs": ["run-script", "start"],
+      "runtimeArgs": ["run-script", "debug"],
       "console": "integratedTerminal",
       "cwd": "${workspaceRoot}/packages/server",
     }

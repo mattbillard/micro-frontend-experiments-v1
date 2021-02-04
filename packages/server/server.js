@@ -33,12 +33,8 @@ app.use('/api', require('./routes/api.route'));
 
 
 // WebSockets
-const { wss } = require('./websocket-server');
-server.on('upgrade', (req, socket, head) => {
-  wss.handleUpgrade(req, socket, head, (ws) => {
-    wss.emit('connection', ws, req);
-  });
-});
+const { initWsServer } = require('./websocket-server');
+initWsServer(server);
 
 
 // Start server
