@@ -1,18 +1,25 @@
 import * as React from 'react';
-import { connect, useSelector, Provider } from 'react-redux';
 
-import {
-  MicroFrontendModeSwitch,
-} from '../../components';
-import { IStoreState, store } from '../../redux';
+import { MicroFrontendModeSwitch } from '../../components';
+import { featureDefinitions } from '../../constants';
 
 // GoldenLayout only works with class components
 export class GoldenLayoutComponent extends React.Component<any, any> {
   render () {
-    const url = this.props.glContainer._config.componentState?.url || '/micro-app'; // TODO: fix
     const setTitle = ((title) => this.props.glContainer.setTitle(title));
-    const setState = ((state) => this.props.glContainer.setState(state));
-    const newProps = { ...this.props, setTitle, setState, url };
+    const setChildUrl = ((childUrl) => {
+      const state = {
+        childUrl,
+        featureId,
+      };
+      this.props.glContainer.setState(state);
+    });
+
+    const featureId = this.props.glContainer._config.componentState?.featureId || 'microAppFeatureId'; // TODO: fix
+    const childUrl = this.props.glContainer._config.componentState?.childUrl || '/micro-app'; // TODO: fix
+    const featureDefinition = featureDefinitions[featureId];
+
+    const newProps = { ...this.props, setTitle, setChildUrl, childUrl, featureDefinition };
   
     return (
       <MicroFrontendModeSwitch {...newProps} />

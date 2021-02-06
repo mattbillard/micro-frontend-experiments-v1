@@ -8,24 +8,21 @@ import {
   LazyImportComponent,
   RemoteComponent,
 } from '../../components';
-import { appNav, MicroFrontendMode, } from '../../constants';
+import { MicroFrontendMode, } from '../../constants';
 import { IStoreState, store } from '../../redux';
 
 interface IMicroFrontEndComponent {
-  url: string;
-  setState: (state: any) => void;
+  childUrl: string;
+  featureDefinition: any; // TODO: type
+  setChildUrl: (url: string) => void;
   setTitle: (title: string) => void;
 }
 
 export const MicroFrontendModeSwitch = (props: IMicroFrontEndComponent) =>{
   const { settings: { isShadow, mode, showHints, } } = useSelector((state: IStoreState) => state.containerAppReducer);
-  const { url } = props;
-  
-  const navItem = appNav.find(navItem => navItem.url.includes(url));
-  const featureDefinition = navItem.featureDefinition;
-
-  const newProps = {...props, featureDefinition, showHints };
-
+  const { featureDefinition } = props;  
+  const childUrl = props.childUrl || featureDefinition.defaultChildUrl;
+  const newProps = {...props, childUrl, featureDefinition, showHints };
   
   let className;
   let MicroFrontendType;
@@ -51,11 +48,11 @@ export const MicroFrontendModeSwitch = (props: IMicroFrontEndComponent) =>{
   return (
     isShadow ? (
         <ReactShadow.div className={`micro-frontend-switch ${className} shadow-dom`}>
-          <MicroFrontendType key={url} className={className} {...newProps} />
+          <MicroFrontendType key={childUrl} className={className} {...newProps} />
         </ReactShadow.div>
       ) : (
         <div className={`micro-frontend-switch ${className}`}>
-          <MicroFrontendType key={url} className={className} {...newProps} />
+          <MicroFrontendType key={childUrl} className={className} {...newProps} />
         </div>
       )
   );

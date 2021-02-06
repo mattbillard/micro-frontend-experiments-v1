@@ -29,10 +29,10 @@ export const InjectWholeAppHtmlComponent = (props) => {
 }
 
 const init = async (ref, props, renderChild) => {
-  const { url } = props;
+  const { childUrl } = props;
 
   // Fetch HTML
-  var res = await fetch(url);
+  var res = await fetch(childUrl);
   var text = await res.text();
 
   const context = ref.current;

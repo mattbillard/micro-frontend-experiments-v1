@@ -43,7 +43,7 @@ interface IIframeComponentProps {
 
 export const IframeComponent = (props) => {
   const ref = useRef(null);
-  const { url, featureDefinition: { initApp } } = props;
+  const { childUrl, featureDefinition: { initApp } } = props;
 
   useEffect(() => {
     renderChild();
@@ -57,7 +57,7 @@ export const IframeComponent = (props) => {
   }
 
   return (
-    <iframe ref={ref} src={url} style={{border:0, width:'100%', height:'100%'}} onLoad={renderChild}></iframe>
+    <iframe ref={ref} src={childUrl} style={{border:0, width:'100%', height:'100%'}} onLoad={renderChild}></iframe>
   )  
 }
 

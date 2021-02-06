@@ -17,11 +17,11 @@ import "../styles/index.less";
 
 const TheSwitch = (props) => {
   // console.log('....props', props);
-  const { showHints, url } = props;
+  const { childUrl, showHints } = props;
 
   return (
     <div className="micro-app-router flex-rows">
-      {showHints && 
+      {showHints !== false && 
         <div className="micro-nav">
           <MicroNavigation {...props} />
         </div>
@@ -36,7 +36,7 @@ const TheSwitch = (props) => {
           <Route path="/micro-app/golden-text" render={(routeProps) => <GoldenText {...routeProps} {...props} />} />
           <Route path="/micro-app/text-tester" render={(routeProps) => <TextTester {...routeProps} {...props} />} />
           <Route path="/micro-app" render={(routeProps) => <MicroTableOfContents {...routeProps} {...props} />} />
-          <Redirect from="/*" to={url || '/micro-app'} />
+          <Redirect from="/*" to={childUrl || '/micro-app'} />
         </Switch>
       </div>
     </div>
@@ -45,7 +45,7 @@ const TheSwitch = (props) => {
 
 export const MicroAppRouter = (props) => {
   const isIframe = window.parent !== window;
-  const hasUrlProp = !!props.url;
+  const hasUrlProp = !!props.childUrl;
 
   return (
     isIframe || !hasUrlProp ? 

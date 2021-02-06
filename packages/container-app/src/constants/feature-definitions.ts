@@ -1,5 +1,6 @@
-export const microFeatureDefinition = {
-  id: 'microFeature',
+export const microAppFeatureDefinition = {
+  id: 'microAppFeatureId',
+  defaultChildUrl: '/micro-app/text-tester',
  
   // iframe-component and inject-whole-app-component
   initApp: 'microAppInit', // TODO: should I go back to an object like window.microApp.init?
@@ -11,50 +12,57 @@ export const microFeatureDefinition = {
 };
 
 export const featureDefinitions = {
-  microFeature: microFeatureDefinition,
+  'microAppFeatureId': microAppFeatureDefinition,
 };
 
 export const appNav = [
   {
     text: 'Micro App',
-    url: '/container/page/micro-app',
-    featureId: 'microFeature',
-    featureDefinition: microFeatureDefinition
+    parentUrl: '/container/page/micro-project',
+    childUrl: '/micro-app',
+    featureId: 'microAppFeatureId',
+    featureDefinition: microAppFeatureDefinition
   },
   {
     text: 'Text',
-    url: '/container/page/micro-app/golden-text',
-    featureId: 'microFeature',
-    featureDefinition: microFeatureDefinition
+    parentUrl: '/container/page/micro-project/golden-text',
+    childUrl: '/micro-app/golden-text',
+    featureId: 'microAppFeatureId',
+    featureDefinition: microAppFeatureDefinition
   },
   {
     text: 'Spiral',
-    url: '/container/page/micro-app/golden-spiral',
-    featureId: 'microFeature',
-    featureDefinition: microFeatureDefinition
+    parentUrl: '/container/page/micro-project/golden-spiral',
+    childUrl: '/micro-app/golden-spiral',
+    featureId: 'microAppFeatureId',
+    featureDefinition: microAppFeatureDefinition
   },
   {
     text: 'StockGrid',
-    url: '/container/page/micro-app/stock-grid',
-    featureId: 'microFeature',
-    featureDefinition: microFeatureDefinition
+    parentUrl: '/container/page/micro-project/stock-grid',
+    childUrl: '/micro-app/stock-grid',
+    featureId: 'microAppFeatureId',
+    featureDefinition: microAppFeatureDefinition
   },
   {
     text: 'ColumnChart',
-    url: '/container/page/micro-app/column-chart',
-    featureId: 'microFeature',
-    featureDefinition: microFeatureDefinition
+    parentUrl: '/container/page/micro-project/column-chart',
+    childUrl: '/micro-app/column-chart',
+    featureId: 'microAppFeatureId',
+    featureDefinition: microAppFeatureDefinition
   },
   {
     text: 'PieChart',
-    url: '/container/page/micro-app/pie-chart',
-    featureId: 'microFeature',
-    featureDefinition: microFeatureDefinition
+    parentUrl: '/container/page/micro-project/pie-chart',
+    childUrl: '/micro-app/pie-chart',
+    featureId: 'microAppFeatureId',
+    featureDefinition: microAppFeatureDefinition
   },
   {
     text: 'StockChart',
-    url: '/container/page/micro-app/stock-chart',
-    featureId: 'microFeature',
-    featureDefinition: microFeatureDefinition
+    parentUrl: '/container/page/micro-project/stock-chart',
+    childUrl: '/micro-app/stock-chart',
+    featureId: 'microAppFeatureId',
+    featureDefinition: microAppFeatureDefinition
   },
 ];

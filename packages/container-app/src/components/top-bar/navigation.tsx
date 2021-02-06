@@ -29,7 +29,7 @@ export const Navigation = (props: INavigationProps) => {
         </span>
         <Link to='/container/golden-layout'>Golden</Link>
         {appNav.map(navItem => (
-          <Link key={navItem.url} to={navItem.url}>{navItem.text}</Link>
+          <Link key={navItem.parentUrl} to={navItem.parentUrl}>{navItem.text}</Link>
         ))}
       </div>
 
