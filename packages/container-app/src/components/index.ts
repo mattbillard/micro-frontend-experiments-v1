@@ -4,6 +4,7 @@ export * from './container-app/login-page';
 export * from './container-app/page-component';
 export * from './golden-layout/golden-layout-component';
 export * from './golden-layout/golden-layout-container';
+export * from './golden-layout/golden-layout-navigation';
 export * from './micro-frontend-modes/iframe-component';
 export * from './micro-frontend-modes/inject-whole-app-component';
 export * from './micro-frontend-modes/lazy-import-component';

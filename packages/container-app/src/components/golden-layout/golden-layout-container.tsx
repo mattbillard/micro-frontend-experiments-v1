@@ -4,6 +4,8 @@ import $ from 'jquery';
 import { connect, Provider } from 'react-redux';
 import { debounce } from 'lodash-es';
 
+import './golden-layout.less';
+
 // Golden Layout needs these
 declare const window: any;
 window.React = React;

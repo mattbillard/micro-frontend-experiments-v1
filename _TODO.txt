@@ -60,12 +60,12 @@ TODO
     - Can micro-components build and serve instead of build:dev
     X- Easy toggle dev vs serve dist
   - Definitions - micro-app, navigation 
+  - GoldenLayout - move table of contents to containerApp
 
   - Try more micro apps: create-react-app
 - OpenFin / Electron
 - More/Extras
   - Types for all React props and state. Remove all "any"s.
-  - Move table of contents to container?
   - Each app should save its own state 
   - More Features/framework - toasts, notifications, permissions, etc, etc, etc 
   - Try more micro apps: Vue and Svelte 

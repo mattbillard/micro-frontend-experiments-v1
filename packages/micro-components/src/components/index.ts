@@ -5,7 +5,6 @@ export * from './golden-spiral';
 export * from './golden-text';
 export * from './micro-app-router';
 export * from './micro-navigation';
-export * from './micro-table-of-contents';
 export * from './pie-chart';
 export * from './stock-chart';
 export * from './stock-grid';

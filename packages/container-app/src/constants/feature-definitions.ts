@@ -1,6 +1,7 @@
 export const microAppFeatureDefinition = {
   id: 'microAppFeatureId',
-  defaultChildUrl: '/micro-app/text-tester',
+  text: 'Micro App',
+  defaultChildUrl: '/micro-app',
  
   // iframe-component and inject-whole-app-component
   initApp: 'microAppInit', // TODO: should I go back to an object like window.microApp.init?
@@ -16,13 +17,13 @@ export const featureDefinitions = {
 };
 
 export const appNav = [
-  {
-    text: 'Micro App',
-    parentUrl: '/container/page/micro-project',
-    childUrl: '/micro-app',
-    featureId: 'microAppFeatureId',
-    featureDefinition: microAppFeatureDefinition
-  },
+  // {
+  //   text: 'Micro App',
+  //   parentUrl: '/container/page/micro-project',
+  //   childUrl: '/micro-app',
+  //   featureId: 'microAppFeatureId',
+  //   featureDefinition: microAppFeatureDefinition
+  // },
   {
     text: 'Text',
     parentUrl: '/container/page/micro-project/golden-text',

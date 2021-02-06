@@ -6,7 +6,6 @@ import {
   GoldenSpiral,
   GoldenText,
   MicroNavigation,
-  MicroTableOfContents,
   PieChart,
   StockChart,
   StockGrid,
@@ -35,7 +34,6 @@ const TheSwitch = (props) => {
           <Route path="/micro-app/stock-grid" render={(routeProps) => <StockGrid {...routeProps} {...props} />} />
           <Route path="/micro-app/golden-text" render={(routeProps) => <GoldenText {...routeProps} {...props} />} />
           <Route path="/micro-app/text-tester" render={(routeProps) => <TextTester {...routeProps} {...props} />} />
-          <Route path="/micro-app" render={(routeProps) => <MicroTableOfContents {...routeProps} {...props} />} />
           <Redirect from="/*" to={childUrl || '/micro-app'} />
         </Switch>
       </div>
