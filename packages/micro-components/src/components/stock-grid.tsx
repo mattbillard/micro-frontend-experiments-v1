@@ -80,4 +80,4 @@ export default StockGrid;
 // } catch (err) {
 // }
 
-// exportRemoteComponent('microComponents', StockGrid);
+// exportRemoteComponent(StockGrid);

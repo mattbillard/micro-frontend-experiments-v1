@@ -53,4 +53,4 @@ export default StockChart;
 // } catch (err) {
 // }
 
-// exportRemoteComponent('microComponents', StockChart);
+// exportRemoteComponent(StockChart);

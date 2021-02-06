@@ -18,4 +18,4 @@ export default GoldenSpiral;
 // } catch (err) {
 // }
 
-// exportRemoteComponent('microComponents', GoldenSpiral);
+// exportRemoteComponent(GoldenSpiral);

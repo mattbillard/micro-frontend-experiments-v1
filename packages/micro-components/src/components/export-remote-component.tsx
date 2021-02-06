@@ -1,5 +1,5 @@
 declare const window: any;
 
-export const exportRemoteComponent = (name: string, component) => {
+export const exportRemoteComponent = (component) => {
   window.remoteComponent = component;
 }

@@ -56,4 +56,4 @@ export default ColumnChart;
 // } catch (err) {
 // }
 
-// exportRemoteComponent('microComponents', ColumnChart);
+// exportRemoteComponent(ColumnChart);

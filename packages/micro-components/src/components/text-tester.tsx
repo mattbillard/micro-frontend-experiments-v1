@@ -59,4 +59,4 @@ export default TextTester;
 // } catch (err) {
 // }
 
-// exportRemoteComponent('microComponents', TextTester);
+// exportRemoteComponent(TextTester);

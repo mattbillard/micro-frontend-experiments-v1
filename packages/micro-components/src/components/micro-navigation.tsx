@@ -10,7 +10,7 @@ export const MicroNavigation = (props) => {
   const handleNavigate = (event, text, url) => {
     event.stopPropagation();
     props.setTitle && props.setTitle(text);
-    props.setState && props.setState({ url });
+    props.setState && props.setState({ childUrl: url });
   }
 
   const links = [

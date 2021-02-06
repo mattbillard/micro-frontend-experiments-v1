@@ -9,4 +9,4 @@ export default MicroAppRouter;
 // } catch (err) {
 // }
 
-exportRemoteComponent('microComponents', MicroAppRouter);
+exportRemoteComponent(MicroAppRouter);

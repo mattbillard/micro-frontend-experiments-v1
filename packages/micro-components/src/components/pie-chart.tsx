@@ -65,4 +65,4 @@ export default PieChart;
 // } catch (err) {
 // }
 
-// exportRemoteComponent('microComponents', PieChart);
+// exportRemoteComponent(PieChart);

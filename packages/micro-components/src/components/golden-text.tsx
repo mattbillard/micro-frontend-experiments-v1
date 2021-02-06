@@ -23,4 +23,4 @@ export default GoldenText;
 // } catch (err) {
 // }
 
-// exportRemoteComponent('microComponents', GoldenText);
+// exportRemoteComponent(GoldenText);
