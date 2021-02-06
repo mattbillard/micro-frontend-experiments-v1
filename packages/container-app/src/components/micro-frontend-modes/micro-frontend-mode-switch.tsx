@@ -8,7 +8,7 @@ import {
   LazyImportComponent,
   RemoteComponent,
 } from '../../components';
-import { MicroFrontendMode, } from '../../constants';
+import { appNav, MicroFrontendMode, } from '../../constants';
 import { IStoreState, store } from '../../redux';
 
 interface IMicroFrontEndComponent {
@@ -20,8 +20,13 @@ interface IMicroFrontEndComponent {
 export const MicroFrontendModeSwitch = (props: IMicroFrontEndComponent) =>{
   const { settings: { isShadow, mode, showHints, } } = useSelector((state: IStoreState) => state.containerAppReducer);
   const { url } = props;
-  const newProps = {...props, showHints };
+  
+  const navItem = appNav.find(navItem => navItem.url.includes(url));
+  const featureDefinition = navItem.featureDefinition;
 
+  const newProps = {...props, featureDefinition, showHints };
+
+  
   let className;
   let MicroFrontendType;
   switch (mode) {

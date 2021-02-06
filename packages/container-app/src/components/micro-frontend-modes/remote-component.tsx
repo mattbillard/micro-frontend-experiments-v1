@@ -17,34 +17,38 @@ import { Suspense, useEffect, useRef, useState } from 'react';
  */
 declare const window: any;
 export const RemoteComponent = (props) => {
-  const url = '/micro-components/index';
+  const { featureDefinition: { urlComponentCss, urlComponentJs } } = props;
   const mountRef = useRef<any>();
   const componentRef = useRef<any>();
 
   useEffect(() => {
     const div = mountRef.current;
+    // Need to manually recreate the script or Chrome will not actually fetch and execute its code
     const script = document.createElement('script');
-    script.src = `${url}.js`;
+    script.src = urlComponentJs;
     script.onload = (event) => {
       componentRef.current = window.remoteComponent;
       delete window.remoteComponent;
-      const Component = componentRef.current;
-      ReactDOM.render(<Component {...props} />, mountRef.current);
+      renderChild();
     }
     div.after(script);
   }, []);
 
   useEffect(() => {
-    const Component = componentRef.current;
-    if (Component) {
-      ReactDOM.render(<Component {...props} />, mountRef.current);
+    if (componentRef.current) {
+      renderChild();
     }
   }, [props]);
+
+  const renderChild = () => {
+    const Component = componentRef.current;
+    ReactDOM.render(<Component {...props} />, mountRef.current);
+  }
 
   return (
     <>
       <div ref={mountRef} className="remote-root"></div>
-      <link href={`${url}.css`} rel="stylesheet" />
+      <link href={urlComponentCss} rel="stylesheet" />
     </>
   )
 }

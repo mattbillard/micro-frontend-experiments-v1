@@ -8,13 +8,11 @@ import 'micro-components/dist/index.css';
 
 declare const window: any;
 
-window.microApp = {
-  init: (context, props = {}) => {
-    console.log('....init', props);  
-    const elem = context?.querySelector('.micro-app');
-    if (elem) {
-      ReactDOM.render(<MicroAppRouter {...props} />, elem);
-    }
+window.microAppInit = (context, props = {}) => {
+  console.log('....init', props);  
+  const elem = context?.querySelector('.micro-app');
+  if (elem) {
+    ReactDOM.render(<MicroAppRouter {...props} />, elem);
   }
 }
 

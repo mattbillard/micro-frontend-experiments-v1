@@ -6,7 +6,8 @@ interface IPageComponentProps {
 }
 
 export const PageComponent = (props: IPageComponentProps) => {
-  let { params } = useRouteMatch();
+  const routeMatch = useRouteMatch();
+  const { params } = routeMatch;
   const url = `/${params[0]}`;
   const setTitle = (title) => document.title = title;
   const setState = (state) => { /* noop */ };

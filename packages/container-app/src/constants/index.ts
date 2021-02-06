@@ -1,4 +1,5 @@
 
+export * from './feature-definitions';
 export * from './golden-layout.constants';
 
 export enum MicroFrontendMode {

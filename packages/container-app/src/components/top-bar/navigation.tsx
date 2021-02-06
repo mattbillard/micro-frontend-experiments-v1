@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   SettingsMenu,
 } from '../../components';
+import { appNav } from '../../constants';
 import { IStoreState, setSetting } from '../../redux';
 
 interface INavigationProps {
@@ -27,12 +28,9 @@ export const Navigation = (props: INavigationProps) => {
           MattFin
         </span>
         <Link to='/container/golden-layout'>Golden</Link>
-        <Link to='/container/page/micro-app/golden-spiral'>Spiral</Link>
-        <Link to='/container/page/micro-app/golden-text'>Text</Link>
-        <Link to='/container/page/micro-app/stock-grid'>StockGrid</Link>
-        <Link to='/container/page/micro-app/column-chart'>ColumnChart</Link>
-        <Link to='/container/page/micro-app/pie-chart'>PieChart</Link>
-        <Link to='/container/page/micro-app/stock-chart'>StockChart</Link>
+        {appNav.map(navItem => (
+          <Link key={navItem.url} to={navItem.url}>{navItem.text}</Link>
+        ))}
       </div>
 
       <div>

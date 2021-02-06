@@ -6,6 +6,7 @@ import { IStoreState } from '../../redux';
 declare const window: any;
 
 export const InjectWholeAppHtmlComponent = (props) => {
+  const { featureDefinition: { initApp } } = props;
   const ref = useRef(null);
 
   useEffect(() => {
@@ -17,7 +18,9 @@ export const InjectWholeAppHtmlComponent = (props) => {
   }, [props])
 
   const renderChild = () => {
-    window.microApp?.init(ref.current, props);
+    if (window[initApp]) {
+      window[initApp](ref.current, props);
+    }
   }
 
   return (
@@ -51,7 +54,6 @@ const init = async (ref, props, renderChild) => {
     parent.appendChild(newScript);
   });
 
-  // context.props = props;
   ref.current.props = props;
 }
 

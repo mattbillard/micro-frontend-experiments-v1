@@ -41,17 +41,19 @@ interface IIframeComponentProps {
 // }
 
 
-
-export const IframeComponent = (props: IIframeComponentProps) => {
+export const IframeComponent = (props) => {
   const ref = useRef(null);
-  const { url } = props;
+  const { url, featureDefinition: { initApp } } = props;
 
   useEffect(() => {
     renderChild();
   }, [props]);
 
   const renderChild = () => {
-    ref.current.contentWindow.microApp?.init(ref.current.contentDocument, props);
+    const { contentDocument, contentWindow } = ref.current;
+    if (contentWindow[initApp]) {
+      contentWindow[initApp](contentDocument, props);
+    }
   }
 
   return (
