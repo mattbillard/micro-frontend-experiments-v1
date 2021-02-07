@@ -1,70 +1,38 @@
 module.exports = (env = {}) => {
   const mode = env.NODE_ENV || 'production';
+
+  const proxyPaths = {
+    '/container':         'http://localhost:8081/',
+    '/micro-app':         'http://localhost:8082/',
+    '/micro-components':  'http://localhost:8083/',
+    '/api':               'http://localhost:8084/',
+    '/ws':                'http://localhost:8084/',
+    '/cra-app':           'http://localhost:8085/',
+    '/cra-components':    'http://localhost:8086/',
+  };
+
+  const proxy = Object.entries(proxyPaths).map((entry) => {
+    const [context, target] = entry;
+    return {
+      changeOrigin: true,
+      context: [context],
+      cookieDomainRewrite: 'localhost',
+      secure: false,
+      target,
+      ws: true,
+    };
+  });
+
   
   return {
     mode,
     devServer: {
-      injectClient: false,                                    // Force no hot reloading. Websocket can't connect through proxy
-
-      progress: true,
-
+      injectClient: false,  // Force no hot reloading. Websocket can't connect through proxy
       port: 8080,
       https: true,
-      host: '0.0.0.0',                                        // Allow other computers on this network to access this localhost via this machine's IP address
-      useLocalIp: true,                                       // Open browser to IP of this machine instead of 'localhost'
-      index: '',                                              // Allows proxying when URI===''
-      proxy: {                                                // NOTE: Webpack proxy is http-proxy-middleware. See their Github for extra documentation WebPack doesn't have 
-        '/container': {
-          target: 'http://localhost:8081/',
-          secure: false,
-          ws: true,
-          changeOrigin: true,
-          cookieDomainRewrite: 'localhost',
-        },
-        '/micro-app': {
-          target: 'http://localhost:8082/',
-          secure: false,
-          ws: true,
-          changeOrigin: true,
-          cookieDomainRewrite: 'localhost',
-        },
-        '/micro-components': {
-          target: 'http://localhost:8083/',
-          secure: false,
-          ws: true,
-          changeOrigin: true,
-          cookieDomainRewrite: 'localhost',
-        },
-        // TODO: consolidate?
-        '/ws': {
-          target: 'http://localhost:8084/',
-          secure: false,
-          ws: true,
-          changeOrigin: true,
-          cookieDomainRewrite: 'localhost',
-        },
-        '/api': {
-          target: 'http://localhost:8084/',
-          secure: false,
-          ws: true,
-          changeOrigin: true,
-          cookieDomainRewrite: 'localhost',
-        },
-        '/cra-app': {
-          target: 'http://localhost:8085/',
-          secure: false,
-          ws: true,
-          changeOrigin: true,
-          cookieDomainRewrite: 'localhost',
-        },
-        '/cra-components': {
-          target: 'http://localhost:8086/',
-          secure: false,
-          ws: true,
-          changeOrigin: true,
-          cookieDomainRewrite: 'localhost',
-        },
-      }
+      host: '0.0.0.0',      // Allow other computers on this network to access this localhost via this machine's IP address
+      index: '',            // Allows proxying when URI===''
+      proxy                 // NOTE: Webpack proxy is http-proxy-middleware. See their Github for extra documentation WebPack doesn't have 
     },
   };
 };
