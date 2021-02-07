@@ -4,6 +4,8 @@ const CopyPlugin = require('copy-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
+const publicPath = '/micro-components/'; // Needs to end in / or paths will be wrong when you serve built version
+
 const config = {
   entry: {
     'index': './src/index.tsx',
@@ -17,7 +19,7 @@ const config = {
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    publicPath: '/micro-components/', // Needs to end in / or paths will be wrong when you serve built version
+    publicPath,
     filename: '[name].js',
     // These are IMPORTANT
     libraryTarget: 'umd',
@@ -87,6 +89,12 @@ const config = {
         test: /\.css$/,
         use: [
           MiniCssExtractPlugin.loader,
+          // {
+          //   loader: MiniCssExtractPlugin.loader,
+          //   options: {
+          //     publicPath,
+          //   },
+          // },
           'css-loader'
         ],
         exclude: /\.module\.css$/
@@ -103,7 +111,10 @@ const config = {
             loader: 'file-loader',
             options: {
               mimetype: 'image/svg+xml',
+              // TODO: micro-components likes this publicPath b/c it's SVG is referred to from CSS. Cra-components likes the commented code b/c it's SVG is referred to from JS
               publicPath: './' // Necessary or build will fail
+              // publicPath,
+              // outputPath: 'micro-components/',
             }
           }
         ]
@@ -116,6 +127,8 @@ const config = {
             options: {
               mimetype: 'image/png',
               publicPath: './' // Necessary or build will fail
+              // publicPath,
+              // outputPath: 'micro-components/',
             }
           }
         ]

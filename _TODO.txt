@@ -61,8 +61,9 @@ TODO
     X- Easy toggle dev vs serve dist
   - Definitions - micro-app, navigation 
   - GoldenLayout - move table of contents to containerApp
-
   - Try more micro apps: create-react-app
+  - Proxy - simplify webpack
+
 - OpenFin / Electron
 - More/Extras
   - Types for all React props and state. Remove all "any"s.

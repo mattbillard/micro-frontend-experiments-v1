@@ -4,7 +4,7 @@ const CopyPlugin = require('copy-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-// const publicPath = './';
+const publicPath = '/cra-components/'; // Needs to end in / or paths will be wrong when you serve built version
 
 const config = {
   entry: {
@@ -12,7 +12,7 @@ const config = {
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    publicPath: '/cra-components/', // Needs to end in / or paths will be wrong when you serve built version
+    publicPath, 
     filename: '[name].js',
     // These are IMPORTANT
     libraryTarget: 'umd',
@@ -85,13 +85,7 @@ const config = {
             loader: 'file-loader',
             options: {
               mimetype: 'image/svg+xml',
-              publicPath: './' // Necessary or build will fail
-              // publicPath,
-              // outputPath: 'cra-app',
-              // useRelativePath: true,
-              // publicPath: '',
-              // outputPath: 'cra-components/', // is place where your want to save files
-              // publicPath: '/cra-components/', // is what url you have in js, css and etc files.
+              publicPath,
             }
           }
         ]
@@ -103,8 +97,7 @@ const config = {
             loader: 'url-loader',
             options: {
               mimetype: 'image/png',
-              publicPath: './' // Necessary or build will fail
-              // publicPath,
+              publicPath,
             }
           }
         ]
