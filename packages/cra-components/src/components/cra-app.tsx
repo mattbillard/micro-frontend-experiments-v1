@@ -1,13 +1,15 @@
 import React from 'react';
+// TODO: learn how to do svg better
 // @ts-ignore
-import logo from '../images/logo.svg';
+// import logo from '../images/logo.svg';
 import './cra-app.css';
 
 export const CraApp = () => {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        {/* <img src={logo} className="App-logo" alt="logo" /> */}
+        <div className="App-logo" />
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
         </p>

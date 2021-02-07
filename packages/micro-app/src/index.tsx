@@ -3,8 +3,6 @@ import * as ReactDOM from "react-dom";
 
 import { MicroAppRouter } from 'micro-components';
 import 'micro-components/dist/index.css';
-// import { MicroAppRouter } from 'micro-components/src';
-// import 'micro-components/src/styles/index.less';
 
 declare const window: any;
 

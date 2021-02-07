@@ -16,14 +16,10 @@ export const craAppFeatureDefinition = {
   id: 'craAppFeatureId',
   text: 'Create React App',
   defaultChildUrl: '/cra-app',
- 
-  // iframe-component and inject-whole-app-component
   initApp: 'craAppInit',
- 
-  // lazy-import-component and remote-component // TODO: URLSs should be array 
-  // lazyImport: () => import('micro-components'),
-  // urlComponentCss: '/micro-components/index.css',
-  // urlComponentJs: '/micro-components/index.js',
+  lazyImport: () => import('cra-components'),
+  urlComponentCss: '/cra-components/index.css',
+  urlComponentJs: '/cra-components/index.js',
 };
 
 export const featureDefinitions = {

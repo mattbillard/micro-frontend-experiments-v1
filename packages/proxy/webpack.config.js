@@ -57,6 +57,13 @@ module.exports = (env = {}) => {
           changeOrigin: true,
           cookieDomainRewrite: 'localhost',
         },
+        '/cra-components': {
+          target: 'http://localhost:8086/',
+          secure: false,
+          ws: true,
+          changeOrigin: true,
+          cookieDomainRewrite: 'localhost',
+        },
       }
     },
   };
