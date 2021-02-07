@@ -7,7 +7,6 @@ module.exports = (env = {}) => {
     '/api':               'http://localhost:8084/',
     '/ws':                'http://localhost:8084/',
     '/cra-app':           'http://localhost:8085/',
-    '/cra-components':    'http://localhost:8086/',
   };
 
   const proxy = Object.entries(proxyPaths).map((entry) => {

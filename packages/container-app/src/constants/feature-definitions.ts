@@ -17,9 +17,9 @@ export const craAppFeatureDefinition = {
   text: 'Create React App',
   defaultChildUrl: '/cra-app',
   initApp: 'craAppInit',
-  lazyImport: () => import('cra-components'),
-  urlComponentCss: '/cra-components/index.css',
-  urlComponentJs: '/cra-components/index.js',
+  lazyImport: () => import('cra-app'),
+  urlComponentCss: '/cra-app/components/index.css',
+  urlComponentJs: '/cra-app/components/index.js',
 };
 
 export const featureDefinitions = {

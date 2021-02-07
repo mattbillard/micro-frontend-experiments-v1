@@ -17,7 +17,7 @@
   "dependencies": {
     "axios": "^0.21.1",
     "classnames": "^2.2.6",
-    "cra-components": "file:../cra-components",
+    "cra-app": "file:../cra-app",
     "golden-layout": "^1.5.9",
     "highcharts": "^8.2.2",
     "jquery": "^3.5.1",

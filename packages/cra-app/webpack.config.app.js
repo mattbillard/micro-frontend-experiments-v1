@@ -2,61 +2,52 @@ const webpack = require('webpack');
 const path = require('path');
 const CopyPlugin = require('copy-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-
-const publicPath = '/cra-components/'; // Needs to end in / or paths will be wrong when you serve built version
 
 const config = {
   entry: {
-    'index': './src/index.tsx',
+    'index': './src/app/index.tsx',
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    publicPath, 
+    publicPath: '/cra-app/', // Needs to end in / or paths will be wrong when you serve built version
     filename: '[name].js',
-    // These are IMPORTANT
-    libraryTarget: 'umd',
-    // libraryTarget: 'commonjs',
   },
-  // Uncomment to not minify+uglify
-  // optimization: {
-  //   minimize: false
-  // },
+  optimization: {
+    // minimize: false,
+    splitChunks: {
+      cacheGroups: {
+        vendor: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendors',
+          chunks: 'all',
+        },
+      },
+    },
+  },
   resolve: {
     extensions: ['.js', '.jsx', '.tsx', '.ts'],
-    // alias: {}
+    alias: {
+      'react': path.resolve(__dirname, './node_modules/react'),
+    }
   },
-  externals: {
-    // This is IMPORTANT
-    // Don't bundle react or react-dom or you will get errors about having multiple versions of React and violating the rule of hooks
-    react: {
-      commonjs: "react",
-      commonjs2: "react",
-      amd: "React",
-      root: "React"
-    },
-    "react-dom": {
-      commonjs: "react-dom",
-      commonjs2: "react-dom",
-      amd: "ReactDOM",
-      root: "ReactDOM"
-    },
-  },
-  devServer: {
-    injectClient: false,  // Force no hot reloading. Websocket can't connect through proxy
-    progress: true,
+  // devServer: {
+  //   injectClient: false,  // Force no hot reloading. Websocket can't connect through proxy
+  //   progress: true,
 
-    port: 8086,
-    contentBase: './dist',
-    publicPath: '/cra-components', // Better UX if doesn't need / on end
-      
-    writeToDisk: true,    // Always write files to disk instead of serving from memory
-  },
+  //   port: 8085,
+  //   contentBase: './dist',
+  //   publicPath: '/cra-app', // Better UX if doesn't need / on end
+  //   historyApiFallback: {
+  //     index: '/cra-app/index.html'
+  //   }
+  // },
   plugins: [
+    // new CleanWebpackPlugin(),
     // new CopyPlugin({ patterns: [{ from: 'public/**' }] }),
-    new CleanWebpackPlugin(),
-    new MiniCssExtractPlugin()
-    // new HtmlWebpackPlugin({ template: './src/index.html' }),
+    new MiniCssExtractPlugin(),
+    new HtmlWebpackPlugin({ template: './src/app/index.html' }),
   ],
   module: {
     rules: [
@@ -80,15 +71,7 @@ const config = {
       },
       {
         test: /\.svg$/,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              mimetype: 'image/svg+xml',
-              publicPath,
-            }
-          }
-        ]
+        loader: 'file-loader'
       },
       {
         test: /\.png$/,
@@ -96,8 +79,7 @@ const config = {
           {
             loader: 'url-loader',
             options: {
-              mimetype: 'image/png',
-              publicPath,
+              mimetype: 'image/png'
             }
           }
         ]

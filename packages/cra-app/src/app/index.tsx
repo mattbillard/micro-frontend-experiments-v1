@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { CraApp } from 'cra-components';
-import 'cra-components/dist/index.css';
+import { CraApp } from '../components';
+import '../components/styles/index.css';
 
 declare const window: any;
 
