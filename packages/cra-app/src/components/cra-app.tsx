@@ -1,6 +1,7 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+// @ts-ignore
+import logo from '../images/logo.svg';
+import './cra-app.css';
 
 function App() {
   return (
