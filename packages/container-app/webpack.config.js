@@ -27,6 +27,31 @@ const config = {
       },
     },
   },  
+  resolve: {
+    extensions: ['.js', '.jsx', '.tsx', '.ts'],
+    alias: {
+      // This is IMPORTANT
+      // This provides React to the component
+      'react': path.resolve(__dirname, './node_modules/react'),
+      // 'react-dom': '@hot-loader/react-dom'
+    }
+  },
+  devServer: {
+    injectClient: false,  // Force no hot reloading. Websocket can't connect through proxy
+
+    port: 8081,
+    contentBase: './dist',
+    publicPath: '/container', // Better UX if doesn't need / on end
+    historyApiFallback: {
+      index: '/container/index.html'
+    }
+  },
+  plugins: [
+    new CleanWebpackPlugin(),
+    // new CopyPlugin({ patterns: [{ from: 'public/**' }] }),
+    new MiniCssExtractPlugin(),
+    new HtmlWebpackPlugin({ template: './src/index.html' }),
+  ],
   module: {
     rules: [
       {
@@ -86,42 +111,6 @@ const config = {
       }
     ]
   },
-  resolve: {
-    extensions: [
-      '.js',
-      '.jsx',
-      '.tsx',
-      '.ts'
-    ],
-    alias: {
-      //   'react-dom': '@hot-loader/react-dom'
-
-      // This is IMPORTANT
-      // This provides React to the component
-      'react': path.resolve(__dirname, './node_modules/react'),
-      // 'react-dom': '@hot-loader/react-dom'
-    }
-  },
-  devServer: {
-    injectClient: false,  // Force no hot reloading. Websocket can't connect through proxy
-
-    port: 8081,
-    contentBase: './dist',
-    publicPath: '/container', // Better UX if doesn't need / on end
-    historyApiFallback: {
-      index: '/container/index.html'
-    }
-  },
-  plugins: [
-    // new CopyPlugin({
-    //   patterns: [{ from: 'src/index.html' }],
-    // }),
-    new CleanWebpackPlugin(),
-    new MiniCssExtractPlugin(),
-    new HtmlWebpackPlugin({
-      template: './src/index.html'
-    }),
-  ]
 };
 
 module.exports = config;

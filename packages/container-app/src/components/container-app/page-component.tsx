@@ -16,8 +16,8 @@ export const PageComponent = (props: IPageComponentProps) => {
   const parentUrl = `/${params[0]}`;
 
   const navItem = appNav.find(navItem => navItem.parentUrl.includes(parentUrl));
-  const featureDefinition = navItem.featureDefinition;
-  const childUrl = navItem.childUrl;
+  const featureDefinition = navItem!.featureDefinition;
+  const childUrl = navItem!.childUrl;
 
   const newProps = { ...props, setTitle, setChildUrl, childUrl, featureDefinition }
 

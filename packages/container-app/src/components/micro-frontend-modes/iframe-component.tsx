@@ -42,7 +42,7 @@ interface IIframeComponentProps {
 
 
 export const IframeComponent = (props) => {
-  const ref = useRef(null);
+  const ref = useRef<any>(null);
   const { childUrl, featureDefinition: { initApp } } = props;
 
   useEffect(() => {

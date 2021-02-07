@@ -9,8 +9,8 @@
         "target": "es5",
         "allowJs": true,
         "jsx": "react",
+        "allowSyntheticDefaultImports": true,
         "noImplicitAny": false,
-        "strictNullChecks": false, // TODO: remove
     },
     "include": [
         "./src/**/*"
