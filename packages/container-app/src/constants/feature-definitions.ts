@@ -7,9 +7,9 @@ export const microAppFeatureDefinition = {
   initApp: 'microAppInit', // TODO: should I go back to an object like window.microApp.init?
  
   // lazy-import-component and remote-component // TODO: URLSs should be array 
-  lazyImport: () => import('micro-components'),
-  urlComponentCss: '/micro-components/index.css',
-  urlComponentJs: '/micro-components/index.js',
+  lazyImport: () => import('micro-app'),
+  urlComponentCss: '/micro-app/components/index.css',
+  urlComponentJs: '/micro-app/components/index.js',
 };
 
 export const craAppFeatureDefinition = {

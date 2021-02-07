@@ -4,7 +4,6 @@ module.exports = (env = {}) => {
   const proxyPaths = {
     '/container':         'http://localhost:8081/',
     '/micro-app':         'http://localhost:8082/',
-    '/micro-components':  'http://localhost:8083/',
     '/api':               'http://localhost:8084/',
     '/ws':                'http://localhost:8084/',
     '/cra-app':           'http://localhost:8085/',

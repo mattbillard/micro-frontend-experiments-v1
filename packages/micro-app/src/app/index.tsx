@@ -1,13 +1,14 @@
 import * as React from 'react';
 import * as ReactDOM from "react-dom";
 
-import { MicroAppRouter } from 'micro-components';
-import 'micro-components/dist/index.css';
+import { MicroAppRouter } from '../components';
+import '../components/styles/index.less';
 
 declare const window: any;
 
 window.microAppInit = (context, props = {}) => {
   console.log('....init', props);  
+  // alert();
   const elem = context?.querySelector('.micro-app');
   if (elem) {
     ReactDOM.render(<MicroAppRouter {...props} />, elem);

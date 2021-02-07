@@ -8,7 +8,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const config = {
   entry: {
     // 'react-hot-loader/patch',
-    'index': './src/index.tsx',
+    'index': './src/app/index.tsx',
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -36,22 +36,22 @@ const config = {
       // 'react-dom': '@hot-loader/react-dom'
     }
   },
-  devServer: {
-    injectClient: false,  // Force no hot reloading. Websocket can't connect through proxy
-    progress: true,
+  // devServer: {
+  //   injectClient: false,  // Force no hot reloading. Websocket can't connect through proxy
+  //   progress: true,
 
-    port: 8082,
-    contentBase: './dist',
-    publicPath: '/micro-app', // Better UX if doesn't need / on end
-    historyApiFallback: {
-      index: '/micro-app/index.html'
-    }
-  },
+  //   port: 8082,
+  //   contentBase: './dist',
+  //   publicPath: '/micro-app', // Better UX if doesn't need / on end
+  //   historyApiFallback: {
+  //     index: '/micro-app/index.html'
+  //   }
+  // },
   plugins: [
-    new CleanWebpackPlugin(),
+    // new CleanWebpackPlugin(),
     // new CopyPlugin({ patterns: [{ from: 'public/**' }] }),
     new MiniCssExtractPlugin(),
-    new HtmlWebpackPlugin({ template: './src/index.html' }),
+    new HtmlWebpackPlugin({ template: './src/app/index.html' }),
   ],
   module: {
     rules: [
