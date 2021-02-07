@@ -62,7 +62,8 @@ const config = {
   },
   devServer: {
     injectClient: false,  // Force no hot reloading. Websocket can't connect through proxy
-    
+    progress: true,
+
     port: 8083,
     contentBase: './dist',
     publicPath: '/micro-components', // Better UX if doesn't need / on end

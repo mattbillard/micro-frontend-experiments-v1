@@ -34,6 +34,7 @@ const config = {
   },
   devServer: {
     injectClient: false,  // Force no hot reloading. Websocket can't connect through proxy
+    progress: true,
 
     port: 8085,
     contentBase: './dist',
