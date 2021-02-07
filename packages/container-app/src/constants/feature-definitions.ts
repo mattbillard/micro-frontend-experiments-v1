@@ -12,7 +12,22 @@ export const microAppFeatureDefinition = {
   urlComponentJs: '/micro-components/index.js',
 };
 
+export const craAppFeatureDefinition = {
+  id: 'craAppFeatureId',
+  text: 'Create React App',
+  defaultChildUrl: '/cra-app',
+ 
+  // iframe-component and inject-whole-app-component
+  initApp: 'craAppInit',
+ 
+  // lazy-import-component and remote-component // TODO: URLSs should be array 
+  // lazyImport: () => import('micro-components'),
+  // urlComponentCss: '/micro-components/index.css',
+  // urlComponentJs: '/micro-components/index.js',
+};
+
 export const featureDefinitions = {
+  'craAppFeatureId': craAppFeatureDefinition,
   'microAppFeatureId': microAppFeatureDefinition,
 };
 
@@ -65,5 +80,12 @@ export const appNav = [
     childUrl: '/micro-app/stock-chart',
     featureId: 'microAppFeatureId',
     featureDefinition: microAppFeatureDefinition
+  },
+  {
+    text: 'CRA',
+    parentUrl: '/container/page/cra-app',
+    childUrl: '/cra-app',
+    featureId: 'craAppFeatureId',
+    featureDefinition: craAppFeatureDefinition
   },
 ];

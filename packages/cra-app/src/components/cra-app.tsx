@@ -3,7 +3,7 @@ import React from 'react';
 import logo from '../images/logo.svg';
 import './cra-app.css';
 
-function App() {
+export const CraApp = () => {
   return (
     <div className="App">
       <header className="App-header">
@@ -23,5 +23,3 @@ function App() {
     </div>
   );
 }
-
-export default App;
