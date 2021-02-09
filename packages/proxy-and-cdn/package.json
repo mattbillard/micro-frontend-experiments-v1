@@ -1,5 +1,5 @@
 {
-  "name": "proxy",
+  "name": "proxy-and-cdn",
   "version": "1.0.0",
   "description": "",
   "private": true,
@@ -10,7 +10,6 @@
     "clean": "rm -rf dist/*",
     "link": "mkdir -p dist && run-p _link:*",
     "postinstall": "npm run clean && npm run link",
-    "_start": "webpack-dev-server --env.NODE_ENV=development",
     "start": "pm2 start ./node_modules/webpack-dev-server/bin/webpack-dev-server.js --no-daemon --watch -- --env.NODE_ENV=development",
     "serve": "pm2 start ./node_modules/webpack-dev-server/bin/webpack-dev-server.js --no-daemon --watch -- --env.NODE_ENV=development"
   },

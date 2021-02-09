@@ -65,6 +65,7 @@ TODO
   - Proxy - simplify webpack
 - CDN - all built files served from one server (Does not include iframe apps)
 
+  - Clean up feature definitions, name of symlinks, SVG path 
 - OpenFin / Electron
 - More/Extras
   - Types for all React props and state. Remove all "any"s.
