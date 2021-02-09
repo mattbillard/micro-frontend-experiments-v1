@@ -16,7 +16,7 @@ const initWsServer = (server) => {
 }
 
 const connect = (ws, req) => {
-  const clientInfo = JSON.parse(decodeURIComponent(req.url.replace('/ws/', '')));
+  const clientInfo = JSON.parse(decodeURIComponent(req.url.replace('/wss/', '')));
   clientInfo.ws = ws;
 
   // Remember WS connection

@@ -36,19 +36,20 @@ const config = {
       // 'react-dom': '@hot-loader/react-dom'
     }
   },
-  devServer: {
-    injectClient: false,  // Force no hot reloading. Websocket can't connect through proxy
-    progress: true,
+  // devServer: {
+  //   injectClient: false,  // Force no hot reloading. Websocket can't connect through proxy
+  //   progress: true,
 
-    port: 8081,
-    contentBase: './dist',
-    publicPath: '/container', // Better UX if doesn't need / on end
-    historyApiFallback: {
-      index: '/container/index.html'
-    }
-  },
+  //   port: 8081,
+  //   contentBase: './dist',
+  //   publicPath: '/container', // Better UX if doesn't need / on end
+  //   historyApiFallback: {
+  //     index: '/container/index.html'
+  //   },
+  //   writeToDisk: true,
+  // },
   plugins: [
-    new CleanWebpackPlugin(),
+    // new CleanWebpackPlugin(),
     // new CopyPlugin({ patterns: [{ from: 'public/**' }] }),
     new MiniCssExtractPlugin(),
     new HtmlWebpackPlugin({ template: './src/index.html' }),

@@ -8,8 +8,10 @@ export const microAppFeatureDefinition = {
  
   // lazy-import-component and remote-component // TODO: URLSs should be array 
   lazyImport: () => import('micro-app'),
-  urlComponentCss: '/micro-app/components/index.css',
-  urlComponentJs: '/micro-app/components/index.js',
+  // urlComponentCss: '/micro-app/components/index.css',
+  // urlComponentJs: '/micro-app/components/index.js',
+  urlComponentCss: '/micro-components/components/index.css',
+  urlComponentJs: '/micro-components/components/index.js',
 };
 
 export const craAppFeatureDefinition = {
@@ -18,8 +20,10 @@ export const craAppFeatureDefinition = {
   defaultChildUrl: '/cra-app',
   initApp: 'craAppInit',
   lazyImport: () => import('cra-app'),
-  urlComponentCss: '/cra-app/components/index.css',
-  urlComponentJs: '/cra-app/components/index.js',
+  // urlComponentCss: '/cra-app/components/index.css',
+  // urlComponentJs: '/cra-app/components/index.js',
+  urlComponentCss: '/cra-components/components/index.css',
+  urlComponentJs: '/cra-components/components/index.js',
 };
 
 export const featureDefinitions = {
