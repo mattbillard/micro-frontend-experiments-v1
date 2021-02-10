@@ -1,8 +1,8 @@
 {
-  "name": "cra-app",
+  "name": "micro-project",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/cra-components/index.js",
+  "main": "dist/micro-components/index.js",
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -18,11 +18,16 @@
     "build:prod": "run-p _build:prod:app _build:prod:components",
     "start": "run-p _start:* serve",
     "test": "jest",
-    "serve": "live-server ./dist --no-browser --port=8085 --mount=/cra-url:./dist/cra-app --entry-file=./cra-app/index.html"
+    "serve": "live-server ./dist --no-browser --port=8082 --mount=/micro-url:./dist/micro-app --entry-file=./micro-app/index.html"
   },
   "dependencies": {
+    "highcharts": "^8.2.2",
+    "lodash-es": "^4.17.20",
     "react": "^17.0.1",
-    "react-dom": "^17.0.1"
+    "react-dom": "^17.0.1",
+    "react-hot-loader": "^4.13.0",
+    "react-router-dom": "^5.2.0",
+    "slickgrid-es6": "^3.0.3"
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",

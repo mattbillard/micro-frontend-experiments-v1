@@ -7,7 +7,7 @@ export const microAppFeatureDefinition = {
   initApp: 'microAppInit', // TODO: should I go back to an object like window.microApp.init?
  
   // lazy-import-component and remote-component // TODO: URLSs should be array 
-  lazyImport: () => import('micro-app'),
+  lazyImport: () => import('micro-project'),
   urlComponentCss: '/micro-components/index.css',
   urlComponentJs: '/micro-components/index.js',
 };
@@ -17,7 +17,7 @@ export const craAppFeatureDefinition = {
   text: 'Create React App',
   defaultChildUrl: '/cra-url',
   initApp: 'craAppInit',
-  lazyImport: () => import('cra-app'),
+  lazyImport: () => import('cra-project'),
   urlComponentCss: '/cra-components/index.css',
   urlComponentJs: '/cra-components/index.js',
 };
