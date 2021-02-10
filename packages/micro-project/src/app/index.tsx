@@ -9,7 +9,7 @@ declare const window: any;
 window.microAppInit = (context, props = {}) => {
   console.log('....init', props);  
   // alert();
-  const elem = context?.querySelector('.micro-app');
+  const elem = context?.querySelector('.micro-standalone-app');
   if (elem) {
     ReactDOM.render(<MicroAppRouter {...props} />, elem);
   }
@@ -35,7 +35,7 @@ window.microAppInit = (context, props = {}) => {
 //   }
 
 //   console.log('....render props', props);  
-//   const elem = context.querySelector('.micro-app');
+//   const elem = context.querySelector('.micro-standalone-app');
 //   ReactDOM.render(<MicroAppRouter {...props} />, elem);
 // }
 

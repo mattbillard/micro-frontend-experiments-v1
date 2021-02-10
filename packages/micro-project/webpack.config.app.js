@@ -11,7 +11,7 @@ const config = {
     'index': './src/app/index.tsx',
   },
   output: {
-    path: path.resolve(__dirname, 'dist/micro-app'),
+    path: path.resolve(__dirname, 'dist/micro-standalone-app'),
     publicPath: '/micro-url/', // Needs to end in / or paths will be wrong when you serve built version
     filename: '[name].js',
   },
@@ -42,7 +42,7 @@ const config = {
   //   progress: true,
 
   //   port: 8082,
-  //   contentBase: './dist/micro-app',
+  //   contentBase: './dist/micro-standalone-app',
   //   publicPath: '/micro-url', // Better UX if doesn't need / on end
   //   historyApiFallback: {
   //     index: '/micro-url/index.html'

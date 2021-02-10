@@ -18,7 +18,7 @@
     "build:prod": "run-p _build:prod:app _build:prod:components",
     "start": "run-p _start:* serve",
     "test": "jest",
-    "serve": "live-server ./dist --no-browser --port=8085 --mount=/cra-url:./dist/cra-app --entry-file=./cra-app/index.html"
+    "serve": "live-server ./dist --no-browser --port=8085 --mount=/cra-url:./dist/cra-standalone-app --entry-file=./cra-standalone-app/index.html"
   },
   "dependencies": {
     "react": "^17.0.1",
