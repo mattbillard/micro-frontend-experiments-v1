@@ -11,10 +11,11 @@ const config = {
     'index': './src/index.tsx',
   },
   output: {
-    path: path.resolve(__dirname, 'dist'),
-    publicPath: '/container/', // Needs to end in / or paths will be wrong when you serve built version
+    path: path.resolve(__dirname, 'dist/container-components'),
+    publicPath: '/container-components/', // Needs to end in / or paths will be wrong when you serve built version
     filename: '[name].js',
   },
+  devtool: 'source-map',
   optimization: {
     // minimize: false,
     splitChunks: {
@@ -41,10 +42,10 @@ const config = {
   //   progress: true,
 
   //   port: 8081,
-  //   contentBase: './dist',
-  //   publicPath: '/container', // Better UX if doesn't need / on end
+  //   contentBase: './dist/container-components',
+  //   publicPath: '/container-components', // Better UX if doesn't need / on end
   //   historyApiFallback: {
-  //     index: '/container/index.html'
+  //     index: '/container-components/index.html'
   //   },
   //   writeToDisk: true,
   // },

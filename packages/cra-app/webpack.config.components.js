@@ -5,20 +5,21 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 // const publicPath = '/cra-components/'; // Needs to end in / or paths will be wrong when you serve built version
-const publicPath = '/cra-app/components/'; // Needs to end in / or paths will be wrong when you serve built version
+const publicPath = '/cra-components/'; // Needs to end in / or paths will be wrong when you serve built version
 
 const config = {
   entry: {
     'index': './src/components/index.tsx',
   },
   output: {
-    path: path.resolve(__dirname, 'dist/components'),
+    path: path.resolve(__dirname, 'dist/cra-components'),
     publicPath, 
     filename: '[name].js',
     // These are IMPORTANT
     libraryTarget: 'umd',
     // libraryTarget: 'commonjs',
   },
+  devtool: 'source-map',
   // Uncomment to not minify+uglify
   // optimization: {
   //   minimize: false
@@ -47,9 +48,9 @@ const config = {
   //   injectClient: false,  // Force no hot reloading. Websocket can't connect through proxy
   //   progress: true,
 
-  //   port: 8086,
-  //   contentBase: './dist',
-  //   publicPath: '/cra-components', // Better UX if doesn't need / on end
+  //   port: 8085,
+  //   contentBase: './dist/cra-components',
+  //   publicPath: '/cra-url', // Better UX if doesn't need / on end
       
   //   writeToDisk: true,    // Always write files to disk instead of serving from memory
   // },

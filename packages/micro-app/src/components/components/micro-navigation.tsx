@@ -14,13 +14,13 @@ export const MicroNavigation = (props) => {
   }
 
   const links = [
-    { url: '/micro-app/golden-spiral', text: 'Spiral' },
-    { url: '/micro-app/golden-text', text: 'Text' },
-    { url: '/micro-app/stock-grid', text: 'StockGrid' },
-    { url: '/micro-app/column-chart', text: 'ColumnChart' },
-    { url: '/micro-app/pie-chart', text: 'PieChart' },
-    { url: '/micro-app/stock-chart', text: 'StockChart' },
-    { url: '/micro-app/text-tester', text: 'TextTester' },
+    { url: '/micro-url/golden-spiral', text: 'Spiral' },
+    { url: '/micro-url/golden-text', text: 'Text' },
+    { url: '/micro-url/stock-grid', text: 'StockGrid' },
+    { url: '/micro-url/column-chart', text: 'ColumnChart' },
+    { url: '/micro-url/pie-chart', text: 'PieChart' },
+    { url: '/micro-url/stock-chart', text: 'StockChart' },
+    { url: '/micro-url/text-tester', text: 'TextTester' },
   ]
 
   return (

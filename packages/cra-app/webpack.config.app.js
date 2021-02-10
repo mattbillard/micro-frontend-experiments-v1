@@ -10,10 +10,11 @@ const config = {
     'index': './src/app/index.tsx',
   },
   output: {
-    path: path.resolve(__dirname, 'dist'),
-    publicPath: '/cra-app/', // Needs to end in / or paths will be wrong when you serve built version
+    path: path.resolve(__dirname, 'dist/cra-app'),
+    publicPath: '/cra-url/', // Needs to end in / or paths will be wrong when you serve built version
     filename: '[name].js',
   },
+  devtool: 'source-map',
   optimization: {
     // minimize: false,
     splitChunks: {
@@ -37,10 +38,10 @@ const config = {
   //   progress: true,
 
   //   port: 8085,
-  //   contentBase: './dist',
-  //   publicPath: '/cra-app', // Better UX if doesn't need / on end
+  //   contentBase: './dist/cra-app',
+  //   publicPath: '/cra-url', // Better UX if doesn't need / on end
   //   historyApiFallback: {
-  //     index: '/cra-app/index.html'
+  //     index: '/cra-url/index.html'
   //   }
   // },
   plugins: [

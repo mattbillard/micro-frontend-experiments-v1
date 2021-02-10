@@ -1,29 +1,25 @@
 export const microAppFeatureDefinition = {
   id: 'microAppFeatureId',
   text: 'Micro App',
-  defaultChildUrl: '/micro-app',
+  defaultChildUrl: '/micro-url',
  
   // iframe-component and inject-whole-app-component
   initApp: 'microAppInit', // TODO: should I go back to an object like window.microApp.init?
  
   // lazy-import-component and remote-component // TODO: URLSs should be array 
   lazyImport: () => import('micro-app'),
-  // urlComponentCss: '/micro-app/components/index.css',
-  // urlComponentJs: '/micro-app/components/index.js',
-  urlComponentCss: '/micro-components/components/index.css',
-  urlComponentJs: '/micro-components/components/index.js',
+  urlComponentCss: '/micro-components/index.css',
+  urlComponentJs: '/micro-components/index.js',
 };
 
 export const craAppFeatureDefinition = {
   id: 'craAppFeatureId',
   text: 'Create React App',
-  defaultChildUrl: '/cra-app',
+  defaultChildUrl: '/cra-url',
   initApp: 'craAppInit',
   lazyImport: () => import('cra-app'),
-  // urlComponentCss: '/cra-app/components/index.css',
-  // urlComponentJs: '/cra-app/components/index.js',
-  urlComponentCss: '/cra-components/components/index.css',
-  urlComponentJs: '/cra-components/components/index.js',
+  urlComponentCss: '/cra-components/index.css',
+  urlComponentJs: '/cra-components/index.js',
 };
 
 export const featureDefinitions = {
@@ -34,57 +30,57 @@ export const featureDefinitions = {
 export const appNav = [
   // {
   //   text: 'Micro App',
-  //   parentUrl: '/container/page/micro-project',
-  //   childUrl: '/micro-app',
+  //   parentUrl: '/container-url/page/micro-url',
+  //   childUrl: '/micro-url',
   //   featureId: 'microAppFeatureId',
   //   featureDefinition: microAppFeatureDefinition
   // },
   {
     text: 'Text',
-    parentUrl: '/container/page/micro-project/golden-text',
-    childUrl: '/micro-app/golden-text',
+    parentUrl: '/container-url/page/micro-url/golden-text',
+    childUrl: '/micro-url/golden-text',
     featureId: 'microAppFeatureId',
     featureDefinition: microAppFeatureDefinition
   },
   {
     text: 'Spiral',
-    parentUrl: '/container/page/micro-project/golden-spiral',
-    childUrl: '/micro-app/golden-spiral',
+    parentUrl: '/container-url/page/micro-url/golden-spiral',
+    childUrl: '/micro-url/golden-spiral',
     featureId: 'microAppFeatureId',
     featureDefinition: microAppFeatureDefinition
   },
   {
     text: 'StockGrid',
-    parentUrl: '/container/page/micro-project/stock-grid',
-    childUrl: '/micro-app/stock-grid',
+    parentUrl: '/container-url/page/micro-url/stock-grid',
+    childUrl: '/micro-url/stock-grid',
     featureId: 'microAppFeatureId',
     featureDefinition: microAppFeatureDefinition
   },
   {
     text: 'ColumnChart',
-    parentUrl: '/container/page/micro-project/column-chart',
-    childUrl: '/micro-app/column-chart',
+    parentUrl: '/container-url/page/micro-url/column-chart',
+    childUrl: '/micro-url/column-chart',
     featureId: 'microAppFeatureId',
     featureDefinition: microAppFeatureDefinition
   },
   {
     text: 'PieChart',
-    parentUrl: '/container/page/micro-project/pie-chart',
-    childUrl: '/micro-app/pie-chart',
+    parentUrl: '/container-url/page/micro-url/pie-chart',
+    childUrl: '/micro-url/pie-chart',
     featureId: 'microAppFeatureId',
     featureDefinition: microAppFeatureDefinition
   },
   {
     text: 'StockChart',
-    parentUrl: '/container/page/micro-project/stock-chart',
-    childUrl: '/micro-app/stock-chart',
+    parentUrl: '/container-url/page/micro-url/stock-chart',
+    childUrl: '/micro-url/stock-chart',
     featureId: 'microAppFeatureId',
     featureDefinition: microAppFeatureDefinition
   },
   {
-    text: 'CRA',
-    parentUrl: '/container/page/cra-app',
-    childUrl: '/cra-app',
+    text: 'Create React App',
+    parentUrl: '/container-url/page/cra-url',
+    childUrl: '/cra-url',
     featureId: 'craAppFeatureId',
     featureDefinition: craAppFeatureDefinition
   },

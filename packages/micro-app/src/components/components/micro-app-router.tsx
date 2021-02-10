@@ -27,14 +27,14 @@ const TheSwitch = (props) => {
       }
       <div className="micro-app-content">
         <Switch>
-          <Route path="/micro-app/column-chart" render={(routeProps) => <ColumnChart {...routeProps} {...props} />} />
-          <Route path="/micro-app/pie-chart" render={(routeProps) => <PieChart {...routeProps} {...props} />} />
-          <Route path="/micro-app/golden-spiral" render={(routeProps) => <GoldenSpiral {...routeProps} {...props} />} />
-          <Route path="/micro-app/stock-chart" render={(routeProps) => <StockChart {...routeProps} {...props} />} />
-          <Route path="/micro-app/stock-grid" render={(routeProps) => <StockGrid {...routeProps} {...props} />} />
-          <Route path="/micro-app/golden-text" render={(routeProps) => <GoldenText {...routeProps} {...props} />} />
-          <Route path="/micro-app/text-tester" render={(routeProps) => <TextTester {...routeProps} {...props} />} />
-          <Redirect from="/*" to={childUrl || '/micro-app'} />
+          <Route path="/micro-url/column-chart" render={(routeProps) => <ColumnChart {...routeProps} {...props} />} />
+          <Route path="/micro-url/pie-chart" render={(routeProps) => <PieChart {...routeProps} {...props} />} />
+          <Route path="/micro-url/golden-spiral" render={(routeProps) => <GoldenSpiral {...routeProps} {...props} />} />
+          <Route path="/micro-url/stock-chart" render={(routeProps) => <StockChart {...routeProps} {...props} />} />
+          <Route path="/micro-url/stock-grid" render={(routeProps) => <StockGrid {...routeProps} {...props} />} />
+          <Route path="/micro-url/golden-text" render={(routeProps) => <GoldenText {...routeProps} {...props} />} />
+          <Route path="/micro-url/text-tester" render={(routeProps) => <TextTester {...routeProps} {...props} />} />
+          <Redirect from="/*" to={childUrl || '/micro-url'} />
         </Switch>
       </div>
     </div>

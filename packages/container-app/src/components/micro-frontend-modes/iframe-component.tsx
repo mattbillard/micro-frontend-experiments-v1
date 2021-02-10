@@ -51,7 +51,7 @@ export const IframeComponent = (props) => {
 
   const renderChild = () => {
     const { contentDocument, contentWindow } = ref.current;
-    if (contentWindow[initApp]) {
+    if (contentWindow && contentWindow[initApp]) {
       contentWindow[initApp](contentDocument, props);
     }
   }

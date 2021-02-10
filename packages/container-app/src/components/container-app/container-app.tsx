@@ -45,7 +45,7 @@ export const ContainerApp = (props: IContainerAppProps) => {
   // // To see if app breaks when in a shadowDom. Noteably, stylesheet link tag needs to be inside shadowDom
   // return (
   //   <ReactShadow.div>
-  //     <link href="/container/main.css" rel="stylesheet"></link>
+  //     <link href="/container-url/main.css" rel="stylesheet"></link>
   //     <Provider store={store}>
   //       <ContainerRouter />
   //     </Provider>

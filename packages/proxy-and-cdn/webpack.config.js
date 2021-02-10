@@ -4,9 +4,9 @@ module.exports = (env = {}) => {
   const proxyPaths = [
     { context: '/api',        target: 'http://localhost:8084/' },
     { context: '/wss',        target: 'http://localhost:8084/' },
-    { context: '/cra-app',    target: 'http://localhost:8085/' },
-    { context: '/micro-app',  target: 'http://localhost:8082/' },
-    // { context: '/container',  target: 'http://localhost:8081/' },
+    { context: '/cra-url',    target: 'http://localhost:8085/' },
+    { context: '/micro-url',  target: 'http://localhost:8082/' },
+    // { context: '/container-url',  target: 'http://localhost:8081/' },
   ];
 
   const proxy = proxyPaths.map((obj) => {
@@ -34,9 +34,9 @@ module.exports = (env = {}) => {
       proxy,                // NOTE: Webpack proxy is http-proxy-middleware. See their Github for extra documentation WebPack doesn't have 
 
       contentBase: './dist',
-      publicPath: '/container', // Better UX if doesn't need / on end
+      publicPath: '/container-url', // Better UX if doesn't need / on end
       historyApiFallback: {
-        index: '/container/index.html'
+        index: '/container-components/index.html'
       }
     },
   };

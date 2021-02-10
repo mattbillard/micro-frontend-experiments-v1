@@ -2,7 +2,7 @@
   "name": "micro-app",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/components/index.js",
+  "main": "dist/micro-components/index.js",
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -18,7 +18,7 @@
     "build:prod": "run-p _build:prod:app _build:prod:components",
     "start": "run-p _start:* serve",
     "test": "jest",
-    "serve": "live-server ./dist --no-browser --port=8082 --mount=/micro-app:./dist --entry-file=./index.html"
+    "serve": "live-server ./dist --no-browser --port=8082 --mount=/micro-url:./dist/micro-app --entry-file=./micro-app/index.html"
   },
   "dependencies": {
     "highcharts": "^8.2.2",

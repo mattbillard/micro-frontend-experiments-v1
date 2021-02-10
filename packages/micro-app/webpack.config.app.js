@@ -11,10 +11,11 @@ const config = {
     'index': './src/app/index.tsx',
   },
   output: {
-    path: path.resolve(__dirname, 'dist'),
-    publicPath: '/micro-app/', // Needs to end in / or paths will be wrong when you serve built version
+    path: path.resolve(__dirname, 'dist/micro-app'),
+    publicPath: '/micro-url/', // Needs to end in / or paths will be wrong when you serve built version
     filename: '[name].js',
   },
+  devtool: 'source-map',
   optimization: {
     // minimize: false,
     splitChunks: {
@@ -41,10 +42,10 @@ const config = {
   //   progress: true,
 
   //   port: 8082,
-  //   contentBase: './dist',
-  //   publicPath: '/micro-app', // Better UX if doesn't need / on end
+  //   contentBase: './dist/micro-app',
+  //   publicPath: '/micro-url', // Better UX if doesn't need / on end
   //   historyApiFallback: {
-  //     index: '/micro-app/index.html'
+  //     index: '/micro-url/index.html'
   //   }
   // },
   plugins: [

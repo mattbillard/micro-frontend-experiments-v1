@@ -27,7 +27,8 @@ export const Navigation = (props: INavigationProps) => {
         <span className="brand">
           MattFin
         </span>
-        <Link to='/container/golden-layout'>Golden</Link>
+        {/* TODO: move to feature defs? */}
+        <Link to='/container-url/golden-layout'>Golden</Link>
         {appNav.map(navItem => (
           <Link key={navItem.parentUrl} to={navItem.parentUrl}>{navItem.text}</Link>
         ))}

@@ -4,9 +4,9 @@
   "description": "",
   "private": true,
   "scripts": {
-    "_link:cra-app": "cd dist && ln -sf ../node_modules/cra-app/dist cra-components",
-    "_link:container-app": "cd dist && ln -sf ../node_modules/container-app/dist container",
-    "_link:micro-app": "cd dist && ln -sf ../node_modules/micro-app/dist micro-components",
+    "_link:cra-app": "cd dist && ln -sf ../node_modules/cra-app/dist/cra-components cra-components",
+    "_link:container-app": "cd dist && ln -sf ../node_modules/container-app/dist/container-components container-components",
+    "_link:micro-app": "cd dist && ln -sf ../node_modules/micro-app/dist/micro-components micro-components",
     "clean": "rm -rf dist/*",
     "link": "mkdir -p dist && run-p _link:*",
     "postinstall": "npm run clean && npm run link",

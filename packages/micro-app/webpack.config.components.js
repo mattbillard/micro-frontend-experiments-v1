@@ -18,13 +18,14 @@ const config = {
     // 'text-tester': './src/components/text-tester.tsx',
   },
   output: {
-    path: path.resolve(__dirname, 'dist/components'),
+    path: path.resolve(__dirname, 'dist/micro-components'),
     publicPath,
     filename: '[name].js',
     // These are IMPORTANT
     libraryTarget: 'umd',
     // libraryTarget: 'commonjs',
   },
+  devtool: 'source-map',
   // Uncomment to not minify+uglify
   // optimization: {
   //   minimize: false
@@ -66,9 +67,9 @@ const config = {
   //   injectClient: false,  // Force no hot reloading. Websocket can't connect through proxy
   //   progress: true,
 
-  //   port: 8083,
-  //   contentBase: './dist',
-  //   publicPath: '/micro-components', // Better UX if doesn't need / on end
+  //   port: 8082,
+  //   contentBase: './dist/micro-components',
+  //   publicPath: '/micro-url', // Better UX if doesn't need / on end
       
   //   writeToDisk: true,    // Always write files to disk instead of serving from memory
   // },
