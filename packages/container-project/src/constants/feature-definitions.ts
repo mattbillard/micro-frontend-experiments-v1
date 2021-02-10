@@ -30,56 +30,56 @@ export const featureDefinitions = {
 export const appNav = [
   // {
   //   text: 'Micro App',
-  //   parentUrl: '/container-url/page/micro-url',
+  //   parentUrl: '/container-url/micro-url',
   //   childUrl: '/micro-url',
   //   featureId: 'microAppFeatureId',
   //   featureDefinition: microAppFeatureDefinition
   // },
   {
     text: 'Text',
-    parentUrl: '/container-url/page/micro-url/golden-text',
+    parentUrl: '/container-url/micro-url/golden-text',
     childUrl: '/micro-url/golden-text',
     featureId: 'microAppFeatureId',
     featureDefinition: microAppFeatureDefinition
   },
   {
     text: 'Spiral',
-    parentUrl: '/container-url/page/micro-url/golden-spiral',
+    parentUrl: '/container-url/micro-url/golden-spiral',
     childUrl: '/micro-url/golden-spiral',
     featureId: 'microAppFeatureId',
     featureDefinition: microAppFeatureDefinition
   },
   {
     text: 'StockGrid',
-    parentUrl: '/container-url/page/micro-url/stock-grid',
+    parentUrl: '/container-url/micro-url/stock-grid',
     childUrl: '/micro-url/stock-grid',
     featureId: 'microAppFeatureId',
     featureDefinition: microAppFeatureDefinition
   },
   {
     text: 'ColumnChart',
-    parentUrl: '/container-url/page/micro-url/column-chart',
+    parentUrl: '/container-url/micro-url/column-chart',
     childUrl: '/micro-url/column-chart',
     featureId: 'microAppFeatureId',
     featureDefinition: microAppFeatureDefinition
   },
   {
     text: 'PieChart',
-    parentUrl: '/container-url/page/micro-url/pie-chart',
+    parentUrl: '/container-url/micro-url/pie-chart',
     childUrl: '/micro-url/pie-chart',
     featureId: 'microAppFeatureId',
     featureDefinition: microAppFeatureDefinition
   },
   {
     text: 'StockChart',
-    parentUrl: '/container-url/page/micro-url/stock-chart',
+    parentUrl: '/container-url/micro-url/stock-chart',
     childUrl: '/micro-url/stock-chart',
     featureId: 'microAppFeatureId',
     featureDefinition: microAppFeatureDefinition
   },
   {
     text: 'Create React App',
-    parentUrl: '/container-url/page/cra-url',
+    parentUrl: '/container-url/cra-url',
     childUrl: '/cra-url',
     featureId: 'craAppFeatureId',
     featureDefinition: craAppFeatureDefinition

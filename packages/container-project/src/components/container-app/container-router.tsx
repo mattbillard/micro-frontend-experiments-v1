@@ -74,7 +74,7 @@ export const ContainerRouter = (props: IContainerRouterProps) => {
         <Navigation />
         <Switch>
           <Route path="/container-url/golden-layout" component={GoldenLayoutContainer} />
-          <Route path="/container-url/page/*" component={PageComponent} />
+          <Route path="/container-url/*" component={PageComponent} />
           <Redirect from="/*" to="/container-url/golden-layout" />
         </Switch>
       </BrowserRouter>
