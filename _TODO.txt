@@ -64,8 +64,10 @@ TODO
   - Try more micro apps: create-react-app
   - Proxy - simplify webpack
 - CDN - all built files served from one server (Does not include iframe apps)
+  - Clean up feature definitions, name of symlinks
+  - Organize into team-mono-repo folders 
 
-  - Clean up feature definitions, name of symlinks, SVG path 
+  - Feature definitions - where to put them? Clean up 
 - OpenFin / Electron
 - More/Extras
   - Types for all React props and state. Remove all "any"s.

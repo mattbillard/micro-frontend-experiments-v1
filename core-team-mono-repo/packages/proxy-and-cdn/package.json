@@ -17,9 +17,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "cra-project": "file:../cra-project",
+    "cra-project": "file:../../../micro-team-mono-repo/packages/cra-project/",
     "container-project": "file:../container-project",
-    "micro-project": "file:../micro-project"
+    "micro-project": "file:../../../micro-team-mono-repo/packages/micro-project"
   },
   "devDependencies": {
     "chalk": "^4.1.0",
