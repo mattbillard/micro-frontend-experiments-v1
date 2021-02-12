@@ -1,12 +1,12 @@
 {
-  "name": "proxy-and-cdn",
+  "name": "@compaony/core-team-proxy-and-cdn",
   "version": "1.0.0",
   "description": "",
   "private": true,
   "scripts": {
-    "_link:cra-project": "cd dist && ln -sf ../node_modules/cra-project/dist/cra-components cra-components",
-    "_link:container-project": "cd dist && ln -sf ../node_modules/container-project/dist/container-components container-components",
-    "_link:micro-project": "cd dist && ln -sf ../node_modules/micro-project/dist/micro-components micro-components",
+    "_link:container-project": "cd dist && ln -sf ../node_modules/@company/core-team-container-project/dist/container-components container-components",
+    "_link:cra-project": "cd dist && ln -sf ../node_modules/@company/micro-team-cra-project/dist/cra-components cra-components",
+    "_link:micro-project": "cd dist && ln -sf ../node_modules/@company/micro-team-micro-project/dist/micro-components micro-components",
     "clean": "rm -rf dist/*",
     "link": "mkdir -p dist && run-p _link:*",
     "postinstall": "npm run clean && npm run link",
@@ -17,9 +17,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "cra-project": "file:../../../micro-team-mono-repo/packages/cra-project/",
-    "container-project": "file:../container-project",
-    "micro-project": "file:../../../micro-team-mono-repo/packages/micro-project"
+    "@company/core-team-container-project": "file:../../../core-team-mono-repo/packages/container-project",
+    "@company/micro-team-cra-project": "file:../../../micro-team-mono-repo/packages/cra-project",
+    "@company/micro-team-micro-project": "file:../../../micro-team-mono-repo/packages/micro-project"
   },
   "devDependencies": {
     "chalk": "^4.1.0",

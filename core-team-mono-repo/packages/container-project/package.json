@@ -1,5 +1,5 @@
 {
-  "name": "container-project",
+  "name": "@company/core-team-container-project",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -14,15 +14,15 @@
     "test": "jest"
   },
   "dependencies": {
+    "@company/micro-team-cra-project": "file:../../../micro-team-mono-repo/packages/cra-project",
+    "@company/micro-team-micro-project": "file:../../../micro-team-mono-repo/packages/micro-project",
     "axios": "^0.21.1",
     "classnames": "^2.2.6",
-    "cra-project": "file:../../../micro-team-mono-repo/packages/cra-project",
     "golden-layout": "^1.5.9",
     "highcharts": "^8.2.2",
     "jquery": "^3.5.1",
     "js-cookie": "^2.2.1",
     "lodash-es": "^4.17.20",
-    "micro-project": "file:../../../micro-team-mono-repo/packages/micro-project",
     "nanoid": "^3.1.20",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",

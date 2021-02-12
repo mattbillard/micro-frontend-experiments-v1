@@ -1,5 +1,5 @@
 {
-  "name": "cra-project",
+  "name": "@company/micro-team-cra-project",
   "version": "1.0.0",
   "description": "",
   "main": "dist/cra-components/index.js",

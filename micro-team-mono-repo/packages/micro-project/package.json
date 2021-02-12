@@ -1,5 +1,5 @@
 {
-  "name": "micro-project",
+  "name": "@company/micro-team-micro-project",
   "version": "1.0.0",
   "description": "",
   "main": "dist/micro-components/index.js",

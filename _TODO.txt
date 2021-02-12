@@ -66,6 +66,7 @@ TODO
 - CDN - all built files served from one server (Does not include iframe apps)
   - Clean up feature definitions, name of symlinks
   - Organize into team-mono-repo folders 
+  - Use @company/team-project in package names
 
   - Feature definitions - where to put them? Clean up 
 - OpenFin / Electron
