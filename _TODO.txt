@@ -67,8 +67,8 @@ TODO
   - Clean up feature definitions, name of symlinks
   - Organize into team-mono-repo folders 
   - Use @company/team-project in package names
+  - App and nav definitions - load via XHR as JSON 
 
-  - Feature definitions - where to put them? Clean up 
 - OpenFin / Electron
 - More/Extras
   - Types for all React props and state. Remove all "any"s.
@@ -83,6 +83,7 @@ TODO
   - Prettier 
   - Better source maps
   - Webpack optimizations: https://webpack.js.org/configuration/optimization/
+  - App and nav definitions - defined in each app. All pulled together and converted to JSON 
 - Bonus points 
   - Try other micro frontend approaches 
     - https://the-tractor.store/

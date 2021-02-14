@@ -1,53 +1,47 @@
 import * as React from 'react';
+import { useState } from 'react';
+import { useDispatch, useSelector } from "react-redux";
 
 import { GoldenLayoutNavigation, MicroFrontendModeSwitch } from '../../components';
-import { featureDefinitions } from '../../constants';
+import { IStoreState } from '../../redux';
+
+export const GoldenLayoutComponentView = (props) => {
+  const _appId = props.glContainer._config.componentState?.appId;
+  const _childUrl = props.glContainer._config.componentState?.childUrl;
+  const [state, setState] = useState({ appId:_appId, childUrl:_childUrl});
+  const appAndNavDefinitions = useSelector((state: IStoreState) => state.containerAppReducer).appAndNavDefinitions!;
+
+  const setTitle = ((title) => props.glContainer.setTitle(title));
+  const setChildUrl = ((childUrl) => {
+    const state = { childUrl, appId };
+    props.glContainer.setState(state);
+  });
+
+  const navigateToMicroApp = (appId, childUrl) => {
+    const state = { appId, childUrl };
+    props.glContainer.setState(state, childUrl);
+    setState({ childUrl, appId });
+  }
+
+  const { appId, childUrl } = state;
+
+  if (!appId || !childUrl) {
+    return <GoldenLayoutNavigation appId={appId} navigateToMicroApp={navigateToMicroApp} />
+  }
+
+  const featureDefinition = appAndNavDefinitions.apps[appId];
+  const newProps = { ...props, setTitle, setChildUrl, childUrl, featureDefinition };
+
+  return (
+    <MicroFrontendModeSwitch {...newProps} />
+  );
+}
 
 // GoldenLayout only works with class components
 export class GoldenLayoutComponent extends React.Component<any, any> {
-  constructor(props) {
-    super(props);
-    const featureId = this.props.glContainer._config.componentState?.featureId;
-    const childUrl = this.props.glContainer._config.componentState?.childUrl;
-    this.state = { 
-      childUrl,
-      featureId,
-    };
-  }
-
-  setTitle = ((title) => this.props.glContainer.setTitle(title));
-
-  setChildUrl = ((childUrl) => {
-    const state = {
-      childUrl,
-      featureId: this.state.featureId,
-    };
-    this.props.glContainer.setState(state);
-  });
-
-  navigateToMicroApp = (featureId, childUrl) => {
-    const state = {
-      featureId,
-      childUrl,
-    }
-    this.props.glContainer.setState(state, childUrl);
-    this.setState({ childUrl, featureId });
-  }
-
   render () {
-    const { navigateToMicroApp, setChildUrl, setTitle } = this;
-    const { childUrl, featureId } = this.state;
-
-    if (!featureId || !childUrl) {
-      return <GoldenLayoutNavigation featureId={featureId} navigateToMicroApp={navigateToMicroApp} />
-    }
-
-    const featureDefinition = featureDefinitions[featureId];
-
-    const newProps = { ...this.props, setTitle, setChildUrl, childUrl, featureDefinition };
-  
     return (
-      <MicroFrontendModeSwitch {...newProps} />
+      <GoldenLayoutComponentView {...this.props} />
     );
   }
 }

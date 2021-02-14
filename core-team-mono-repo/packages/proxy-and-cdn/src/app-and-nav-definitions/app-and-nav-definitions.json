@@ -1,0 +1,64 @@
+{
+  "apps": {
+    "craAppId": {
+      "id": "craAppId",
+      "text": "Create React App",
+      "defaultChildUrl": "/cra-url",
+      "initApp": "craAppInit",
+      "urlComponentCss": "/cra-components/index.css",
+      "urlComponentJs": "/cra-components/index.js"
+    },
+    "microAppId": {
+      "id": "microAppId",
+      "text": "Micro App",
+      "defaultChildUrl": "/micro-url",
+      "initApp": "microAppInit",
+      "urlComponentCss": "/micro-components/index.css",
+      "urlComponentJs": "/micro-components/index.js"
+    }
+  },
+  "nav": [
+    {
+      "text": "Text",
+      "parentUrl": "/container-url/micro-url/golden-text",
+      "childUrl": "/micro-url/golden-text",
+      "appId": "microAppId"
+    },
+    {
+      "text": "Spiral",
+      "parentUrl": "/container-url/micro-url/golden-spiral",
+      "childUrl": "/micro-url/golden-spiral",
+      "appId": "microAppId"
+    },
+    {
+      "text": "StockGrid",
+      "parentUrl": "/container-url/micro-url/stock-grid",
+      "childUrl": "/micro-url/stock-grid",
+      "appId": "microAppId"
+    },
+    {
+      "text": "ColumnChart",
+      "parentUrl": "/container-url/micro-url/column-chart",
+      "childUrl": "/micro-url/column-chart",
+      "appId": "microAppId"
+    },
+    {
+      "text": "PieChart",
+      "parentUrl": "/container-url/micro-url/pie-chart",
+      "childUrl": "/micro-url/pie-chart",
+      "appId": "microAppId"
+    },
+    {
+      "text": "StockChart",
+      "parentUrl": "/container-url/micro-url/stock-chart",
+      "childUrl": "/micro-url/stock-chart",
+      "appId": "microAppId"
+    },
+    {
+      "text": "Create React App",
+      "parentUrl": "/container-url/cra-url",
+      "childUrl": "/cra-url",
+      "appId": "craAppId"
+    }
+  ]
+}

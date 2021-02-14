@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   SettingsMenu,
 } from '../../components';
-import { appNav } from '../../constants';
+// import { appAndNavDefinitions } from '../../constants';
 import { IStoreState, setSetting } from '../../redux';
 
 interface INavigationProps {
@@ -15,6 +15,7 @@ interface INavigationProps {
 
 export const Navigation = (props: INavigationProps) => {
   const { showSettings } = useSelector((state: IStoreState) => state.containerAppReducer.settings);
+  const appAndNavDefinitions = useSelector((state: IStoreState) => state.containerAppReducer).appAndNavDefinitions!;
   const dispatch = useDispatch();
 
   const toggleShowSettings = () => {
@@ -29,7 +30,7 @@ export const Navigation = (props: INavigationProps) => {
         </span>
         {/* TODO: move to feature defs? */}
         <Link to='/container-url/golden-layout'>Golden</Link>
-        {appNav.map(navItem => (
+        {appAndNavDefinitions.nav.map(navItem => (
           <Link key={navItem.parentUrl} to={navItem.parentUrl}>{navItem.text}</Link>
         ))}
       </div>

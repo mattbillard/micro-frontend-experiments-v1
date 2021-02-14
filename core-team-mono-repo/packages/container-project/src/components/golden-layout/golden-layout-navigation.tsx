@@ -1,41 +1,44 @@
 import * as React from 'react';
 import { useState } from 'react';
-import { featureDefinitions, appNav } from '../../constants';
+import { useDispatch, useSelector } from "react-redux";
+
+import { IStoreState } from '../../redux';
 
 export const GoldenLayoutNavigation = (props) => {
-  const { featureId } = props;
+  const { appId } = props;
+  const appAndNavDefinitions = useSelector((state: IStoreState) => state.containerAppReducer).appAndNavDefinitions!;
 
-  const navigate = (event, featureId, childUrl) => {
+  const navigate = (event, appId, childUrl) => {
     event.preventDefault();
-    props.navigateToMicroApp(featureId, childUrl);
+    props.navigateToMicroApp(appId, childUrl);
   }
 
-  // Step 1: choosing featureId
+  // Step 1: choosing appId
   let links;
-  if (!featureId) {
-    links = Object.values(featureDefinitions)
+  if (!appId) {
+    links = Object.values(appAndNavDefinitions.apps)
       .map((featureDefinition) => {
         const { id, text } = featureDefinition;
         const childUrl = undefined;
-        return { childUrl, featureId: id, text };
+        return { childUrl, appId: id, text };
       });
 
   // Step 2: choosing childUrl
   } else {
-    links = appNav
-      .filter(navItem => navItem.featureId === featureId)
+    links = appAndNavDefinitions.nav
+      .filter(navItem => navItem.appId === appId)
       .map(navItem => {
         const { childUrl, text } = navItem;
-        return { childUrl, featureId, text }
+        return { childUrl, appId, text }
       });
   }
 
   return (
     <div className='golden-layout-navigation'>
       {links.map((link) => {
-        const { childUrl, featureId, text } = link;
+        const { childUrl, appId, text } = link;
         return (
-          <a key={text} href="#" onClick={(event) => navigate(event, featureId, childUrl)}>{text}</a>
+          <a key={text} href="#" onClick={(event) => navigate(event, appId, childUrl)}>{text}</a>
         )
       })}
     </div>

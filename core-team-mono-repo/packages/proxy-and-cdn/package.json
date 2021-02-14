@@ -4,6 +4,7 @@
   "description": "",
   "private": true,
   "scripts": {
+    "_link:app-and-nav-definitions": "cd dist && ln -sf ../src/app-and-nav-definitions app-and-nav-definitions",
     "_link:container-project": "cd dist && ln -sf ../node_modules/@company/core-team-container-project/dist/container-components container-components",
     "_link:cra-project": "cd dist && ln -sf ../node_modules/@company/micro-team-cra-project/dist/cra-components cra-components",
     "_link:micro-project": "cd dist && ln -sf ../node_modules/@company/micro-team-micro-project/dist/micro-components micro-components",

@@ -2,8 +2,15 @@ import * as React from 'react';
 import { Suspense, useEffect, useRef, useState } from 'react';
 // import loadable from '@loadable/component';
 
+// TODO: add a note why these are here
+const lazyImports = {
+  'microAppId': () => import('@company/micro-team-micro-project'),
+  'craAppId': () => import('@company/micro-team-cra-project'),
+};
+
 export const LazyImportComponent = (props) => {
-  const { featureDefinition: { lazyImport, urlComponentCss } } = props;
+  const { featureDefinition: { id: appId, urlComponentCss } } = props;
+  const lazyImport = lazyImports[appId];
   const OtherComponent =  React.lazy(lazyImport);
 
   return (

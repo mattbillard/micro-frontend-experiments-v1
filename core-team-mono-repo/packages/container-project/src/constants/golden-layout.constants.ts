@@ -10,7 +10,7 @@ export const DEFAULT_MINIMAL_GOLDEN_LAYOUT_CONFIG = {
       type: 'react-component',
       component: 'GoldenLayoutComponent',
       componentState: {
-        featureId: 'microAppFeatureId',
+        appId: 'microAppId',
         childUrl: '/micro-url/golden-spiral',
       },
     }
@@ -35,7 +35,7 @@ export const DEFAULT_GOLDEN_LAYOUT_CONFIG = {
               type: 'react-component',
               component: 'GoldenLayoutComponent',
               componentState: {
-                featureId: 'microAppFeatureId',
+                appId: 'microAppId',
                 childUrl: '/micro-url/stock-grid',
               },
             },
@@ -47,7 +47,7 @@ export const DEFAULT_GOLDEN_LAYOUT_CONFIG = {
                   type: 'react-component',
                   component: 'GoldenLayoutComponent',
                   componentState: {
-                    featureId: 'microAppFeatureId',
+                    appId: 'microAppId',
                     childUrl: '/micro-url/golden-spiral',
                   },
                   width: 30,
@@ -57,7 +57,7 @@ export const DEFAULT_GOLDEN_LAYOUT_CONFIG = {
                   type: 'react-component',
                   component: 'GoldenLayoutComponent',
                   componentState: {
-                    featureId: 'microAppFeatureId',
+                    appId: 'microAppId',
                     childUrl: '/micro-url/golden-text',
                   },
                 },
@@ -71,7 +71,7 @@ export const DEFAULT_GOLDEN_LAYOUT_CONFIG = {
                   type: 'react-component',
                   component: 'GoldenLayoutComponent',
                   componentState: {
-                    featureId: 'microAppFeatureId',
+                    appId: 'microAppId',
                     childUrl: '/micro-url/stock-chart',
                   },
                   componentcomponentState: {
@@ -83,7 +83,7 @@ export const DEFAULT_GOLDEN_LAYOUT_CONFIG = {
                   type: 'react-component',
                   component: 'GoldenLayoutComponent',
                   componentState: {
-                    featureId: 'microAppFeatureId',
+                    appId: 'microAppId',
                     childUrl: '/micro-url/stock-chart',
                   },
                   componentcomponentState: { companyName: 'Stock Y' },
@@ -93,7 +93,7 @@ export const DEFAULT_GOLDEN_LAYOUT_CONFIG = {
                   type: 'react-component',
                   component: 'GoldenLayoutComponent',
                   componentState: {
-                    featureId: 'microAppFeatureId',
+                    appId: 'microAppId',
                     childUrl: '/micro-url/stock-chart',
                   },
                   componentcomponentState: { companyName: 'Stock Z' },
@@ -111,7 +111,7 @@ export const DEFAULT_GOLDEN_LAYOUT_CONFIG = {
               type: 'react-component',
               component: 'GoldenLayoutComponent',
               componentState: {
-                featureId: 'microAppFeatureId',
+                appId: 'microAppId',
                 childUrl: '/micro-url/column-chart',
               },
             },
@@ -120,7 +120,7 @@ export const DEFAULT_GOLDEN_LAYOUT_CONFIG = {
               type: 'react-component',
               component: 'GoldenLayoutComponent',
               componentState: {
-                featureId: 'microAppFeatureId',
+                appId: 'microAppId',
                 childUrl: '/micro-url/pie-chart',
               },
               height: 40,

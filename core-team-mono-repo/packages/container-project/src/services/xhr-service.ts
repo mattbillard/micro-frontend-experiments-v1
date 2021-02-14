@@ -5,6 +5,16 @@ import {
   DEFAULT_SETTINGS,
 } from '../constants';
 
+
+
+export const getAppAndNavDefinitions = async () => {
+  const response = await axios.get('/app-and-nav-definitions/app-and-nav-definitions.json');
+  return response.data;
+}
+
+
+
+
 export const getGoldenLayoutConfig = async () => {
   const response = await axios.get('/api/golden-layout-config');
   return response.data;

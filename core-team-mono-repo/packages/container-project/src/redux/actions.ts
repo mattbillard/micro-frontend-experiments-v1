@@ -1,7 +1,18 @@
 import { xhrService } from '../services';
 
+export const UPDATE_APP_AND_NAV_DEFINITIONS =  'UPDATE_APP_AND_NAV_DEFINITIONS';
 export const UPDATE_GOLDEN_LAYOUT_CONFIG =  'UPDATE_GOLDEN_LAYOUT_CONFIG';
 export const UPDATE_SETTINGS =  'UPDATE_SETTINGS';
+
+
+export const loadAppAndNavDefinitions = () => async (dispatch) => {
+  const appAndNavDefinitions = await xhrService.getAppAndNavDefinitions();
+  dispatch({ type: UPDATE_APP_AND_NAV_DEFINITIONS, appAndNavDefinitions });
+}
+
+
+
+
 
 export const saveGoldenLayoutConfig = (goldenLayoutConfig) => async (dispatch) => {
   xhrService.saveGoldenLayoutConfig(goldenLayoutConfig);

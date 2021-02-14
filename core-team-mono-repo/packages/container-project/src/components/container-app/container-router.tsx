@@ -11,6 +11,7 @@ import {
 } from '../../components';
 import { 
   IStoreState,
+  loadAppAndNavDefinitions,
   loadInitialGoldenLayoutConfig,
   loadInitialSettings,
   updateGoldenLayoutConfig,
@@ -27,7 +28,7 @@ interface IContainerRouterProps {
 export const ContainerRouter = (props: IContainerRouterProps) => {
   // TODO: login should be more realistic: XHR to server. Create cookie. Also whoami XHR
   const username = jsCookie.get('username');
-  const { goldenLayoutConfig, settings, } = useSelector((state: IStoreState) => state.containerAppReducer);
+  const { appAndNavDefinitions, goldenLayoutConfig, settings, } = useSelector((state: IStoreState) => state.containerAppReducer);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -35,6 +36,7 @@ export const ContainerRouter = (props: IContainerRouterProps) => {
       wsService.connect(handleWsMessage);
   
       // Load initial data
+      dispatch(loadAppAndNavDefinitions());
       dispatch(loadInitialSettings());
 
       // Load initial data
@@ -59,7 +61,7 @@ export const ContainerRouter = (props: IContainerRouterProps) => {
     }
   }
 
-  if (!settings) {
+  if (!settings || !appAndNavDefinitions) {
     return (
       <div>Loading...</div>
     )
