@@ -12,7 +12,7 @@ const config = {
   },
   output: {
     path: path.resolve(__dirname, 'dist/container-components'),
-    publicPath: '/container-components/', // Needs to end in / or paths will be wrong when you serve built version
+    publicPath: '/cdn/container-components/', // Needs to end in / or paths will be wrong when you serve built version
     filename: '[name].js',
   },
   devtool: 'source-map',

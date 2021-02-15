@@ -5,7 +5,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 // const publicPath = '/cra-components/'; // Needs to end in / or paths will be wrong when you serve built version
-const publicPath = '/cra-components/'; // Needs to end in / or paths will be wrong when you serve built version
+const publicPath = '/cdn/cra-components/'; // Needs to end in / or paths will be wrong when you serve built version
 
 const config = {
   entry: {

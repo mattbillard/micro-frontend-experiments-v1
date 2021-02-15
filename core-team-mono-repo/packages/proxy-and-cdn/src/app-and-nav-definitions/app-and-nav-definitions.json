@@ -5,16 +5,16 @@
       "text": "Create React App",
       "defaultChildUrl": "/cra-url",
       "initApp": "craAppInit",
-      "urlComponentCss": "/cra-components/index.css",
-      "urlComponentJs": "/cra-components/index.js"
+      "urlComponentCss": "/cdn/cra-components/index.css",
+      "urlComponentJs": "/cdn/cra-components/index.js"
     },
     "microAppId": {
       "id": "microAppId",
       "text": "Micro App",
       "defaultChildUrl": "/micro-url",
       "initApp": "microAppInit",
-      "urlComponentCss": "/micro-components/index.css",
-      "urlComponentJs": "/micro-components/index.js"
+      "urlComponentCss": "/cdn/micro-components/index.css",
+      "urlComponentJs": "/cdn/micro-components/index.js"
     }
   },
   "nav": [

@@ -36,7 +36,7 @@ module.exports = (env = {}) => {
       contentBase: './dist',
       publicPath: '/container-url', // Better UX if doesn't need / on end
       historyApiFallback: {
-        index: '/container-components/index.html'
+        index: '/cdn/container-components/index.html'
       }
     },
   };
