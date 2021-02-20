@@ -1,7 +1,9 @@
 import * as jsCookie from 'js-cookie';
 
+// TODO: rever to https here and in proxy's webpack
 // TODO: rename both variable and path to 'ws'
-const url = 'wss://localhost:8080/wss'
+// const url = 'wss://localhost:8080/wss'
+const url = 'ws://localhost:8080/wss'
 const RETRY_TIMEOUT = 5000;
 
 export const connect = (callback) => {

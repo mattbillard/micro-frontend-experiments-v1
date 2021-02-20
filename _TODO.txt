@@ -70,6 +70,12 @@ TODO
   - App and nav definitions - load via XHR as JSON 
 
 - OpenFin / Electron
+  - Learn 
+  - Explore code 
+  - Basic example 
+  - Implement 
+  - Top toolbar: draggable, minimize, maximize, close 
+  - Overrite common APIs like window.open to use OpenFin's methods instead?
 - More/Extras
   - Types for all React props and state. Remove all "any"s.
   - Each app should save its own state 
@@ -91,3 +97,15 @@ TODO
   - Remote component - try even more approaches 
   - Looking at the code of React.Lazy might tell how to evaluate a module. import() returns a module... and React.Lazy somehow processes it. 
   - npm microbundle - try rollup instead of webpack to export micro-components 
+
+
+
+
+
+
+
+PRESENTATION 
+- What is it?
+- How does it help?
+- Why is it better?
+- How does it work? 

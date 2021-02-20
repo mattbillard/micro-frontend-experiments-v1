@@ -27,7 +27,8 @@ module.exports = (env = {}) => {
     devServer: {
       injectClient: false,  // Force no hot reloading. Websocket can't connect through proxy
       port: 8080,
-      https: true,
+      // TODO: rever to https here and in ws-service.js
+      // https: true,
       host: '0.0.0.0',      // Allow other computers on this network to access this localhost via this machine's IP address
 
       index: '',            // Allows proxying when URI===''
