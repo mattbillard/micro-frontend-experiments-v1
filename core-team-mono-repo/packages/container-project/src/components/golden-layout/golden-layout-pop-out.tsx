@@ -2,12 +2,9 @@ import * as React from 'react';
 import { useRouteMatch } from 'react-router-dom';
 
 import { MicroFrontendModeSwitch } from '../../components';
-import { definitionUtils } from '../../utils';
+import { definitionUtils, goldenLayoutUtils } from '../../utils';
 
-interface IPageComponentProps {
-}
-
-export const PageComponent = (props: IPageComponentProps) => {
+export const GoldenLayoutPopout = (props) => {
   const setTitle = (title) => document.title = title;
   const setChildUrl = (url) => { /* noop */ };
 
@@ -22,8 +19,20 @@ export const PageComponent = (props: IPageComponentProps) => {
   const newProps = { ...props, setTitle, setChildUrl, childUrl, featureDefinition }
 
   return (
-    <div className="page-component">
+    <div>
+      <div className="lm_popin" title="pop in" onClick={goldenLayoutUtils.popBack}>
+        <div className="lm_icon"></div>
+        <div className="lm_bg"></div>
+      </div>
+
       <MicroFrontendModeSwitch {...newProps} />
+
+      {/* TODO: do this better if we keep the popouts */}
+      <style>{`
+        .navigation{ 
+          display: none; 
+        }
+      `}</style>
     </div>
   )
 }

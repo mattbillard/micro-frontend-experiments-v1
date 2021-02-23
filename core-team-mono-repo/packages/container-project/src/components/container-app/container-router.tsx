@@ -5,7 +5,8 @@ import { useDispatch, useSelector } from "react-redux";
 import * as jsCookie from 'js-cookie';
 
 import {
-  GoldenLayoutContainer,
+  GoldenLayoutPopout,
+  GoldenLayoutWrapper,
   Navigation,
   PageComponent,
 } from '../../components';
@@ -75,7 +76,8 @@ export const ContainerRouter = (props: IContainerRouterProps) => {
       <BrowserRouter>
         <Navigation />
         <Switch>
-          <Route path="/container-url/golden-layout" component={GoldenLayoutContainer} />
+          <Route path="/container-url/golden-layout/popout/*" component={GoldenLayoutPopout} />
+          <Route path="/container-url/golden-layout" component={GoldenLayoutWrapper} />
           <Route path="/container-url/*" component={PageComponent} />
           <Redirect from="/*" to="/container-url/golden-layout" />
         </Switch>

@@ -33,7 +33,8 @@
     "redux": "^4.0.5",
     "redux-devtools-extension": "^2.13.8",
     "redux-thunk": "^2.3.0",
-    "slickgrid-es6": "^3.0.3"
+    "slickgrid-es6": "^3.0.3",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",
