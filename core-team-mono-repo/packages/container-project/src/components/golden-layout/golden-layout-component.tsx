@@ -1,35 +1,34 @@
 import * as React from 'react';
 import { useState } from 'react';
-import { useDispatch, useSelector } from "react-redux";
+import { Provider } from "react-redux";
 
 import { GoldenLayoutNavigation, MicroFrontendModeSwitch } from '../../components';
-import { IStoreState } from '../../redux';
+import { store } from '../../redux';
+import { definitionUtils } from '../../utils';
 
 export const GoldenLayoutComponentView = (props) => {
-  const _appId = props.glContainer._config.componentState?.appId;
   const _childUrl = props.glContainer._config.componentState?.childUrl;
-  const [state, setState] = useState({ appId:_appId, childUrl:_childUrl});
-  const appAndNavDefinitions = useSelector((state: IStoreState) => state.containerAppReducer).appAndNavDefinitions!;
+  const [state, setState] = useState({ childUrl:_childUrl});
 
-  const setTitle = ((title) => props.glContainer.setTitle(title));
+  const setTitle = ((title) => props.glContainer.setTitle(title)); // TODO: fix
   const setChildUrl = ((childUrl) => {
-    const state = { childUrl, appId };
+    const state = { childUrl };
     props.glContainer.setState(state);
   });
 
-  const navigateToMicroApp = (appId, childUrl) => {
-    const state = { appId, childUrl };
+  const navigateToMicroApp = (childUrl) => {
+    const state = { childUrl };
     props.glContainer.setState(state, childUrl);
-    setState({ childUrl, appId });
+    setState({ childUrl });
   }
 
-  const { appId, childUrl } = state;
+  const { childUrl } = state;
 
-  if (!appId || !childUrl) {
-    return <GoldenLayoutNavigation appId={appId} navigateToMicroApp={navigateToMicroApp} />
+  if (!childUrl) {
+    return <GoldenLayoutNavigation navigateToMicroApp={navigateToMicroApp} />
   }
 
-  const featureDefinition = appAndNavDefinitions.apps[appId];
+  const featureDefinition = definitionUtils.getFileDefinitionFromUrl(childUrl);
   const newProps = { ...props, setTitle, setChildUrl, childUrl, featureDefinition };
 
   return (
@@ -41,7 +40,10 @@ export const GoldenLayoutComponentView = (props) => {
 export class GoldenLayoutComponent extends React.Component<any, any> {
   render () {
     return (
-      <GoldenLayoutComponentView {...this.props} />
+      // Add contexts like store because Goldenlayout does not pass them down
+      <Provider store={store}>
+        <GoldenLayoutComponentView {...this.props} />
+      </Provider>
     );
   }
 }

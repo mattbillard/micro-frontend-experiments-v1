@@ -5,12 +5,17 @@ import { useDispatch, useSelector } from "react-redux";
 import { IStoreState } from '../../redux';
 
 export const GoldenLayoutNavigation = (props) => {
-  const { appId } = props;
+  const [appId, setAppId] = useState();
   const appAndNavDefinitions = useSelector((state: IStoreState) => state.containerAppReducer).appAndNavDefinitions!;
 
-  const navigate = (event, appId, childUrl) => {
+  const navigate = (event, newAppId, childUrl) => {
     event.preventDefault();
-    props.navigateToMicroApp(appId, childUrl);
+
+    if (!appId) {
+      setAppId(newAppId);
+    } else {
+      props.navigateToMicroApp(childUrl);
+    }
   }
 
   // Step 1: choosing appId
