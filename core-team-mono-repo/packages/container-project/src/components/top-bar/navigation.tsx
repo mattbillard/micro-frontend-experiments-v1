@@ -7,16 +7,15 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   SettingsMenu,
 } from '../../components';
-// import { appAndNavDefinitions } from '../../constants';
 import { IStoreState, setSetting } from '../../redux';
 
-interface INavigationProps {
-}
+declare const window: any;
 
-export const Navigation = (props: INavigationProps) => {
+export const Navigation = () => {
   const { showSettings } = useSelector((state: IStoreState) => state.containerAppReducer.settings);
   const appAndNavDefinitions = useSelector((state: IStoreState) => state.containerAppReducer).appAndNavDefinitions!;
   const dispatch = useDispatch();
+  const isOpenFin = !!window.fin;
 
   const toggleShowSettings = () => {
     dispatch(setSetting('showSettings', !showSettings));
@@ -25,9 +24,9 @@ export const Navigation = (props: INavigationProps) => {
   return (
     <div className="navigation">
       <div className="nav-links">
-        <span className="brand">
-          MattFin
-        </span>
+        {!isOpenFin && 
+          <span className="brand">MattFin</span>
+        }
         {/* TODO: move to feature defs? */}
         <Link to='/container-url/golden-layout'>Golden</Link>
         {appAndNavDefinitions.nav.map(navItem => (
@@ -37,7 +36,7 @@ export const Navigation = (props: INavigationProps) => {
 
       <div>
         <a href="#" onClick={toggleShowSettings}>Settings</a>
-          {showSettings && <SettingsMenu toggleShowSettings={toggleShowSettings} />}
+        {showSettings && <SettingsMenu toggleShowSettings={toggleShowSettings} />}
       </div>
     </div>
   )
