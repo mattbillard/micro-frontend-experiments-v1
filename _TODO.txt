@@ -68,14 +68,16 @@ TODO
   - Organize into team-mono-repo folders 
   - Use @company/team-project in package names
   - App and nav definitions - load via XHR as JSON 
-
+- Golden layout 
+  - Custom tab - move popout icon into tab 
+  - Allow windows to "pop back"
 - OpenFin / Electron
   - Learn 
   - Explore code 
-  - Basic example 
-  - Implement 
-  - Top toolbar: draggable, minimize, maximize, close 
-  - Overrite common APIs like window.open to use OpenFin's methods instead?
+  - Implement basic example 
+  - Top toolbar - draggable, minimize, maximize, close 
+  - Config - try many options 
+
 - More/Extras
   - Types for all React props and state. Remove all "any"s.
   - Each app should save its own state 
@@ -90,6 +92,12 @@ TODO
   - Better source maps
   - Webpack optimizations: https://webpack.js.org/configuration/optimization/
   - App and nav definitions - defined in each app. All pulled together and converted to JSON 
+- Golden layout 
+  - Custom tab - [+] new tab 
+  - Popout creates new GoldenLayout in separate window 
+    - This will require giving each Golden Layout an ID and using it in the URL 
+  - Enable drag out and back into the window 
+  - Responsive design - phone should stack all GL tabs 
 - Bonus points 
   - Try other micro frontend approaches 
     - https://the-tractor.store/

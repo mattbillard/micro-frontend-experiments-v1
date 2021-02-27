@@ -14,4 +14,5 @@ export * from './micro-frontend-modes/lazy-import-component';
 export * from './micro-frontend-modes/micro-frontend-mode-switch';
 export * from './micro-frontend-modes/remote-component';
 export * from './top-bar/navigation';
+export * from './top-bar/openfin-window-bar';
 export * from './top-bar/settings-menu';

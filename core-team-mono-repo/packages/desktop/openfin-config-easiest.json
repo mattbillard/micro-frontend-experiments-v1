@@ -1,0 +1,56 @@
+{
+  "runtime": {
+    "arguments": "--v=1 --inspect",
+    "version": "stable"
+  },
+  "shortcut": {
+    "company": "OpenFin",
+    "description": "OpenFin Platforms Prototype",
+    "name": "OpenFin Platforms Prototype"
+  },
+  "platform": {
+    "uuid": "example_platform",
+    "autoShow": true,
+    "defaultWindowOptions": {
+      "contextMenu": true,
+      "defaultCentered": true,
+      "url": "http://localhost:8080",
+      "accelerator": {
+          "devtools": true,
+          "reload": true, 
+          "reloadIgnoringCache": true, 
+          "zoom": true
+      }
+    }
+  },
+  "snapshot": {
+    "windows": [
+      {
+        "layout": {
+          "content": [
+            {
+              "type": "stack",
+              "content": [],
+              "NOTES": {
+                "pros": [
+                  "window.reload() works",
+                  "Both right-click menu and key commands work",
+                  "Don't have to deal with OpenFin GoldenLayout"
+                ],
+                "cons": [
+                  "Non-standard: relies on defaultWindowOptions.url to load webpage",
+                  "Non-standard: you need this half-baked snapshot or OpenFin will not launch a window or will launch it with standard OS top bar, not black OpenFin top bar",
+                  "No OpenFin GoldenLayout (if that's something you want)"
+                ],
+                "miscellanous": [
+                  "Config simplied from: https://developers.openfin.co/docs/platform-getting-started > 'JSON example'",
+                  "You have to provide your own top bar"
+                ]
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

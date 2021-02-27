@@ -18,26 +18,35 @@ import "../../styles/container-app.less";
 import {
   ContainerRouter,
   LoginPage,
+  OpenFinWindowBar,
 } from '../../components';
 import { store } from '../../redux';
 
 // TODO: probably move to a service
 sessionStorage.windowId = nanoid();
 
-interface IContainerAppProps {
+declare const window: any;
+if (window.fin) {
+  (async() => {
+    window.fin.me.showDeveloperTools();
+  })()
 }
 
-export const ContainerApp = (props: IContainerAppProps) => {
+export const ContainerApp = () => {
   const username = jsCookie.get('username');
 
   if (!username) {
     return (
-      <LoginPage />
+      <>
+        <OpenFinWindowBar />
+        <LoginPage />
+      </>
     );
   }
   
   return (
     <Provider store={store}>
+      <OpenFinWindowBar />
       <ContainerRouter />
     </Provider>
   )

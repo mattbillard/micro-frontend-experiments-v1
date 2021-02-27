@@ -7,7 +7,8 @@
   "author": "",
   "license": "ISC",
   "scripts": {
-    "start:basic": "openfin -l -c openfin-config-basic.json"
+    "start:basic": "openfin -l -c openfin-config-basic.json",
+    "start:easiest": "openfin -l -c openfin-config-easiest.json"
   },
   "dependencies": {
     "openfin-cli": "^3.0.2"
