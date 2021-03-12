@@ -1,17 +1,12 @@
 import React, { useState } from 'react';
 import { Provider } from 'react-redux';
 
-import {
-  GoldenLayoutNavigation,
-  MicroFrontendModeSwitch,
-} from '../../components';
+import { GlNavigation, MicroFrontendModeSwitch } from '../../components';
 import { store } from '../../redux';
-import { IGoldenLayoutComponentProps } from '../../types';
+import { IGlComponentProps as IGlComponentProps } from '../../types';
 import { definitionUtils } from '../../utils';
 
-export const GoldenLayoutComponentView = (
-  props: IGoldenLayoutComponentProps,
-) => {
+export const GlPaneView = (props: IGlComponentProps) => {
   const _childUrl = props.glContainer._config.componentState?.childUrl;
   const [state, setState] = useState({ childUrl: _childUrl });
 
@@ -30,7 +25,7 @@ export const GoldenLayoutComponentView = (
   const { childUrl } = state;
 
   if (!childUrl) {
-    return <GoldenLayoutNavigation navigateToMicroApp={navigateToMicroApp} />;
+    return <GlNavigation navigateToMicroApp={navigateToMicroApp} />;
   }
 
   const appDefinition = definitionUtils.getAppDefinitionFromUrl(childUrl)!;
@@ -39,16 +34,14 @@ export const GoldenLayoutComponentView = (
   return <MicroFrontendModeSwitch {...newProps} />;
 };
 
-// GoldenLayout only works with class components // TODO: not sure that is true now that I wrote my own react component adapter
-export class GoldenLayoutComponent extends React.Component<
-  IGoldenLayoutComponentProps,
-  {}
-> {
+// GoldenLayout only works with class components
+// TODO: not sure that is true now that I wrote my own react component adapter
+export class GlPane extends React.Component<IGlComponentProps, {}> {
   render() {
     return (
       // Add contexts like store because Goldenlayout does not pass them down
       <Provider store={store}>
-        <GoldenLayoutComponentView {...this.props} />
+        <GlPaneView {...this.props} />
       </Provider>
     );
   }

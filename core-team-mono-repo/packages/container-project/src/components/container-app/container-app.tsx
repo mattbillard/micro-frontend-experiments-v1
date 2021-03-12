@@ -9,7 +9,7 @@ import { ContainerRouter, LoginPage, OpenFinWindowBar } from '../../components';
 import { store } from '../../redux';
 
 export const ContainerApp = () => {
-  const username = jsCookie.get('username');
+  const username = jsCookie.get('username'); // Mock login
 
   if (!username) {
     return <LoginPage />;

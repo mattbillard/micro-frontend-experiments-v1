@@ -14,30 +14,27 @@ import 'golden-layout/src/css/goldenlayout-base.css';
 import 'golden-layout/src/css/goldenlayout-dark-theme.css';
 
 import { getDefaultNewGoldenLayoutComponent } from '../../constants';
-import { GoldenLayoutComponent, GoldenLayoutCustomTab } from '../../components';
+import { GlPane, GlCustomTab } from '../../components';
 import {
-  IGoldenLayoutComponentProps,
-  GoldenLayoutConfig,
-  IGoldenLayoutTab,
-  IGoldenLayoutConfigContent,
-  IGoldenLayoutComponentState,
+  IGlComponentProps,
+  GlConfig,
+  IGlTab,
+  IGlConfigContent,
+  IGlComponentState,
 } from '../../types';
 
-export interface IGoldenLayoutContainerProps {
-  goldenLayoutConfig: GoldenLayoutConfig;
-  dispatchSaveGoldenLayout: (config: GoldenLayoutConfig) => void;
+export interface IGlPanesProps {
+  goldenLayoutConfig: GlConfig;
+  dispatchSaveGoldenLayout: (config: GlConfig) => void;
 }
 
-export interface IGoldenLayoutContainerState {}
+export interface IGlPanesState {}
 
-export class GoldenLayoutContainer extends React.Component<
-  IGoldenLayoutContainerProps,
-  any
-> {
-  myLayout: GoldenLayoutConfig;
+export class GlPanes extends React.Component<IGlPanesProps, IGlPanesState> {
+  myLayout: GlConfig;
   ref = React.createRef<HTMLDivElement>();
 
-  constructor(props: IGoldenLayoutContainerProps) {
+  constructor(props: IGlPanesProps) {
     super(props);
   }
 
@@ -46,7 +43,7 @@ export class GoldenLayoutContainer extends React.Component<
 
     // Allows components we've popped out to come back
     window.addNewGoldenLayoutComponent = (
-      componentState: IGoldenLayoutComponentState,
+      componentState: IGlComponentState,
     ) => {
       this.addNewComponent(undefined, componentState);
       this.saveConfig();
@@ -57,7 +54,7 @@ export class GoldenLayoutContainer extends React.Component<
     return () => window.removeEventListener('resize', this.updateSizeDebounced);
   };
 
-  componentDidUpdate = (prevProps: IGoldenLayoutContainerProps) => {
+  componentDidUpdate = (prevProps: IGlPanesProps) => {
     if (prevProps.goldenLayoutConfig !== this.props.goldenLayoutConfig) {
       const myLayout = this.myLayout;
       if (!myLayout.isInitialised) {
@@ -80,7 +77,7 @@ export class GoldenLayoutContainer extends React.Component<
 
   addNewComponent = (
     event?: React.MouseEvent,
-    componentState?: IGoldenLayoutComponentState,
+    componentState?: IGlComponentState,
   ) => {
     event?.preventDefault();
 
@@ -163,7 +160,7 @@ export class GoldenLayoutContainer extends React.Component<
  * PROBLEM: when deleting lots of panes, GoldenLayout doesn't recalculate activeItemIndex properly
  * SOLUTION: if activeItemIndex >= number of children in array, fix it
  */
-const fixActiveItemIndex = (content: IGoldenLayoutConfigContent[]) => {
+const fixActiveItemIndex = (content: IGlConfigContent[]) => {
   content.forEach((item) => {
     const { activeItemIndex } = item;
     if (activeItemIndex >= item.content?.length) {
@@ -182,20 +179,20 @@ const fixActiveItemIndex = (content: IGoldenLayoutConfigContent[]) => {
  */
 const ReactWrapperComponent = (
   glContainer: any,
-  componentState: IGoldenLayoutComponentState,
+  componentState: IGlComponentState,
 ) => {
   const glEventHub = glContainer.layoutManager.eventHub;
-  const props: IGoldenLayoutComponentProps = { glContainer, glEventHub };
+  const props: IGlComponentProps = { glContainer, glEventHub };
 
   // Custom tab
-  glContainer.on('tab', (tab: IGoldenLayoutTab) => {
+  glContainer.on('tab', (tab: IGlTab) => {
     const elem = document.createElement('div');
     tab.element.find('.lm_title').after(elem);
-    ReactDOM.render(<GoldenLayoutCustomTab {...props} />, elem);
+    ReactDOM.render(<GlCustomTab {...props} />, elem);
   });
 
   setTimeout(() => {
     const elem = glContainer.getElement()[0];
-    ReactDOM.render(<GoldenLayoutComponent {...props} />, elem);
+    ReactDOM.render(<GlPane {...props} />, elem);
   });
 };

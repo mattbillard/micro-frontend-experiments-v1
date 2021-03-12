@@ -1,35 +1,35 @@
 // TODO: placeholders until GoldenLayout gets types
 
-export interface IGoldenLayoutConfigContent {
+export interface IGlConfigContent {
   activeItemIndex: number;
   componentName: string;
-  componentState: IGoldenLayoutComponentState;
-  content: IGoldenLayoutConfigContent[];
+  componentState: IGlComponentState;
+  content: IGlConfigContent[];
   isClosable: boolean;
   reorderEnabled: boolean;
   title: string;
   type: string;
 }
 
-export type GoldenLayoutConfig = {
-  content: IGoldenLayoutConfigContent[];
-  contentItems: IGoldenLayoutConfigContent[];
+export type GlConfig = {
+  content: IGlConfigContent[];
+  contentItems: IGlConfigContent[];
   isInitialised: boolean;
   root: any;
   destroy: () => void;
-  toConfig: () => GoldenLayoutConfig;
+  toConfig: () => GlConfig;
   updateSize: (width: number, height: number) => void;
 };
 
-export interface IGoldenLayoutComponentProps {
+export interface IGlComponentProps {
   glContainer: any;
   glEventHub: any;
 }
 
-export interface IGoldenLayoutTab {
-  element: HTMLElement;
+export interface IGlComponentState {
+  childUrl: string;
 }
 
-export interface IGoldenLayoutComponentState {
-  childUrl: string;
+export interface IGlTab {
+  element: HTMLElement;
 }

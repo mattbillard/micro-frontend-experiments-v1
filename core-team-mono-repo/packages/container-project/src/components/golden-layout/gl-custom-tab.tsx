@@ -1,6 +1,6 @@
 import React from 'react';
 import { v4 as uuid } from 'uuid';
-import { IGoldenLayoutComponentProps } from '../../types';
+import { IGlComponentProps as IGlComponentProps } from '../../types';
 
 import { goldenLayoutUtils } from '../../utils';
 
@@ -22,7 +22,7 @@ if (window.fin) {
   overwriteWindowOpen();
 }
 
-export const GoldenLayoutCustomTab = (props: IGoldenLayoutComponentProps) => {
+export const GlCustomTab = (props: IGlComponentProps) => {
   return (
     <div className="golden-layout-custom-tab">
       <ul className="lm_controls">
@@ -36,10 +36,7 @@ export const GoldenLayoutCustomTab = (props: IGoldenLayoutComponentProps) => {
   );
 };
 
-const openWin = (
-  event: React.MouseEvent,
-  props: IGoldenLayoutComponentProps,
-) => {
+const openWin = (event: React.MouseEvent, props: IGlComponentProps) => {
   const { glContainer } = props;
 
   const title = glContainer._config.title;

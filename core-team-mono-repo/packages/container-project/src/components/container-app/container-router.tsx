@@ -5,8 +5,8 @@ import jsCookie from 'js-cookie';
 import { nanoid } from 'nanoid';
 
 import {
-  GoldenLayoutPopout,
-  GoldenLayoutWrapper,
+  GlPopout,
+  GoldenLayout,
   Navigation,
   PageComponent,
 } from '../../components';
@@ -23,7 +23,6 @@ import { IWsMsgObj } from '../../types';
 interface IContainerRouterProps {}
 
 export const ContainerRouter = (props: IContainerRouterProps) => {
-  const username = jsCookie.get('username'); // Mock login
   const { appAndNavDefinitions, goldenLayoutConfig, settings } = useSelector(
     (state: IStoreState) => state.containerAppReducer,
   );
@@ -58,8 +57,8 @@ export const ContainerRouter = (props: IContainerRouterProps) => {
         <BrowserRouter>
           <Navigation />
           <Switch>
-            <Route path="/site-url/golden-layout/popout/*" component={GoldenLayoutPopout} />
-            <Route path="/site-url/golden-layout" component={GoldenLayoutWrapper} />
+            <Route path="/site-url/golden-layout/popout/*" component={GlPopout} />
+            <Route path="/site-url/golden-layout" component={GoldenLayout} />
             <Route path="/site-url/*" component={PageComponent} />
             <Redirect from="/*" to="/site-url/golden-layout" />
           </Switch>

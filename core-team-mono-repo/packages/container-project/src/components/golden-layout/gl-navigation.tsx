@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 
 import { IStoreState } from '../../redux';
 
-import './golden-layout-navigation.less';
+import './gl-navigation.less';
 
 export interface ILink {
   appId: string;
@@ -11,11 +11,11 @@ export interface ILink {
   text: string;
 }
 
-export interface IGoldenLayoutNavigation {
+export interface IGlNavigation {
   navigateToMicroApp: (childUrl: string) => void;
 }
 
-export const GoldenLayoutNavigation = (props: IGoldenLayoutNavigation) => {
+export const GlNavigation = (props: IGlNavigation) => {
   const [appId, setAppId] = useState<string>();
   const appAndNavDefinitions = useSelector(
     (state: IStoreState) => state.containerAppReducer,

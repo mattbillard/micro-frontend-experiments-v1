@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { GoldenLayoutContainer } from '../../components';
+import { GlPanes } from '../../components';
 import {
   goldenLayoutsettings,
   DEFAULT_GOLDEN_LAYOUT_CONFIG,
@@ -14,16 +14,16 @@ import {
   updateGoldenLayoutConfig,
 } from '../../redux';
 import { xhrService } from '../../services';
-import { GoldenLayoutConfig } from '../../types';
+import { GlConfig } from '../../types';
 
 import './golden-layout.less';
 
-export const GoldenLayoutWrapper = () => {
+export const GoldenLayout = () => {
   const { goldenLayoutConfig } = useSelector(
     (state: IStoreState) => state.containerAppReducer,
   );
   const dispatch = useDispatch();
-  const dispatchSaveGoldenLayout = (config: GoldenLayoutConfig) =>
+  const dispatchSaveGoldenLayout = (config: GlConfig) =>
     dispatch(saveGoldenLayoutConfig(config));
 
   useEffect(() => {
@@ -47,7 +47,7 @@ export const GoldenLayoutWrapper = () => {
   }
 
   return (
-    <GoldenLayoutContainer
+    <GlPanes
       goldenLayoutConfig={goldenLayoutConfig}
       dispatchSaveGoldenLayout={dispatchSaveGoldenLayout}
     />

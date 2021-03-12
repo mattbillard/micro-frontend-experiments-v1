@@ -5,7 +5,7 @@ import { MicroFrontendModeSwitch } from '../../components';
 import { IMicroFrontEndComponent } from '../../types';
 import { definitionUtils, goldenLayoutUtils } from '../../utils';
 
-export const GoldenLayoutPopout = (props: IMicroFrontEndComponent) => {
+export const GlPopout = (props: IMicroFrontEndComponent) => {
   const setTitle = (title: string) => (document.title = title);
   const setUrl = (url: string) => {
     /* noop */
