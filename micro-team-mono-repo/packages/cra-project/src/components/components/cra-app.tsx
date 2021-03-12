@@ -1,8 +1,9 @@
 import React from 'react';
+import { IMicroAppProps } from '@company/core-team-shared-tools';
 import logo from '../images/logo.svg';
 import './cra-app.css';
 
-export const CraApp = () => {
+export const CraApp = (props: IMicroAppProps) => {
   return (
     <div className="App">
       <header className="App-header">
@@ -21,4 +22,4 @@ export const CraApp = () => {
       </header>
     </div>
   );
-}
+};

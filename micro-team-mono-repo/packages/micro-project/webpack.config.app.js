@@ -1,13 +1,10 @@
 const webpack = require('webpack');
 const path = require('path');
-const CopyPlugin = require('copy-webpack-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const config = {
   entry: {
-    // 'react-hot-loader/patch',
     'index': './src/app/index.tsx',
   },
   output: {
@@ -31,26 +28,23 @@ const config = {
   resolve: {
     extensions: ['.js', '.jsx', '.tsx', '.ts'],
     alias: {
-      // This is IMPORTANT
-      // This provides React to the component
+      // IMPORTANT: this provides React to the component
       'react': path.resolve(__dirname, './node_modules/react'),
-      // 'react-dom': '@hot-loader/react-dom'
     }
   },
+  // NOTE: live-server is unbelievably faster than Webpack devServer
   // devServer: {
-  //   injectClient: false,  // Force no hot reloading. Websocket can't connect through proxy
-  //   progress: true,
-
-  //   port: 8082,
+  //   port: 8084,
   //   contentBase: './dist/micro-standalone-app',
   //   publicPath: '/micro-url', // Better UX if doesn't need / on end
   //   historyApiFallback: {
   //     index: '/micro-url/index.html'
-  //   }
+  //   },
+  //   injectClient: false,  // Force no hot reloading. Websocket can't connect through proxy
+  //   progress: true,
+  //   writeToDisk: true,    // Always write files to disk instead of serving from memory
   // },
   plugins: [
-    // new CleanWebpackPlugin(),
-    // new CopyPlugin({ patterns: [{ from: 'public/**' }] }),
     new MiniCssExtractPlugin(),
     new HtmlWebpackPlugin({ template: './src/app/index.html' }),
   ],

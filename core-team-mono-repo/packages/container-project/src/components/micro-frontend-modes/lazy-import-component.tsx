@@ -1,70 +1,26 @@
-import * as React from 'react';
-import { Suspense, useEffect, useRef, useState } from 'react';
-// import loadable from '@loadable/component';
+import React, { Suspense } from 'react';
+import { IMicroFrontEndComponent } from '../../types';
 
 // TODO: add a note why these are here
 const lazyImports = {
-  'microAppId': () => import('@company/micro-team-micro-project'),
-  'craAppId': () => import('@company/micro-team-cra-project'),
+  microAppId: () => import('@company/micro-team-micro-project'),
+  craAppId: () => import('@company/micro-team-cra-project'),
 };
 
-export const LazyImportComponent = (props) => {
-  const { featureDefinition: { id: appId, urlComponentCss } } = props;
+export const LazyImportComponent = (props: IMicroFrontEndComponent) => {
+  const {
+    appDefinition: { id: appId, urlComponentCss },
+  } = props;
   const lazyImport = lazyImports[appId];
-  const OtherComponent =  React.lazy(lazyImport);
+  const OtherComponent = React.lazy(lazyImport);
 
   return (
     <>
-      <link rel="stylesheet" href={urlComponentCss}/> {/* Putting CSS here so it doesn't leak outside ShadowDOM. Make sure CSS is loaded by time async JS is loaded  */}
+      <link rel="stylesheet" href={urlComponentCss} />{' '}
+      {/* NOTE: CSS needs to be here so it doesn't leak outside ShadowDOM. Make sure CSS is loaded by time async JS is loaded  */}
       <Suspense fallback={<div>Loading...</div>}>
         {OtherComponent && <OtherComponent {...props} />}
       </Suspense>
     </>
   );
-}
-
-
-
-// export const LazyImportComponent = (props) => {
-//   // const { featureDefinition: { initApp, urlApp } } = props;
-//   const ref = useRef<any>();
-//   const [isLoading, setIsLoading] = useState<boolean>(true);
-
-//   useEffect(() => {
-//     (async () => {
-//       ref.current = React.lazy(() => import('micro-components'));
-//       // require('micro-components/index.css'); // This leaks outside of shadowDOM
-//       setIsLoading(false);
-//     })();
-//   }, []);
-
-//   if (isLoading) {
-//     return (
-//       <div>Loading...</div>
-//     );
-//   }
-
-//   const OtherComponent = ref.current;
-
-//   return (
-//     <>
-//       <link rel="stylesheet" href="/micro-components/index.css"/> {/* Putting CSS here so it doesn't leak outside ShadowDOM. Make sure CSS is loaded by time async JS is loaded  */}
-//       <Suspense fallback={<div>Loading...</div>}>
-//         {OtherComponent && <OtherComponent {...props} />}
-//       </Suspense>
-//     </>
-//   );
-// }
-
-
-
-// TODO: figure out how React.Lazy takes a module and turns it into a component
-// const result = React.lazy(async() => { 
-//   const mod = await import('micro-components')
-//   debugger;
-//   return mod;
-// });
-// debugger;
-
-// const result = await import('micro-components');
-// debugger;
+};

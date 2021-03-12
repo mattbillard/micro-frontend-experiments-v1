@@ -1,0 +1,5 @@
+/* CSS file if we need it. Also so Stylelint doesn't fail. */
+
+body {
+  background: #fff;
+}

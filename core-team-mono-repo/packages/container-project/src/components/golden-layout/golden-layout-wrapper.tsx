@@ -1,6 +1,5 @@
-import * as React from 'react';
-import { useEffect, useRef, useState } from 'react';
-import { useDispatch, useSelector } from "react-redux";
+import React, { useEffect, useRef, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { GoldenLayoutContainer } from '../../components';
 import {
@@ -9,16 +8,26 @@ import {
   DEFAULT_TWO_COLUMN_GOLDEN_LAYOUT_CONFIG,
   DEFAULT_MINIMAL_GOLDEN_LAYOUT_CONFIG,
 } from '../../constants';
-import { IStoreState, saveGoldenLayoutConfig, updateGoldenLayoutConfig, } from '../../redux';
+import {
+  IStoreState,
+  saveGoldenLayoutConfig,
+  updateGoldenLayoutConfig,
+} from '../../redux';
 import { xhrService } from '../../services';
+import { GoldenLayoutConfig } from '../../types';
 
+import './golden-layout.less';
 
-export const GoldenLayoutWrapper = (props) => {
-  const { goldenLayoutConfig } = useSelector((state: IStoreState) => state.containerAppReducer);
+export const GoldenLayoutWrapper = () => {
+  const { goldenLayoutConfig } = useSelector(
+    (state: IStoreState) => state.containerAppReducer,
+  );
   const dispatch = useDispatch();
-  const dispatchSaveGoldenLayout = (config) => dispatch(saveGoldenLayoutConfig(config));
+  const dispatchSaveGoldenLayout = (config: GoldenLayoutConfig) =>
+    dispatch(saveGoldenLayoutConfig(config));
 
   useEffect(() => {
+    // prettier-ignore
     (async () => {
       const initialConfig = await xhrService.getGoldenLayoutConfig() || DEFAULT_GOLDEN_LAYOUT_CONFIG;
       // const initialConfig = await xhrService.getGoldenLayoutConfig() || DEFAULT_MINIMAL_GOLDEN_LAYOUT_CONFIG;
@@ -28,18 +37,19 @@ export const GoldenLayoutWrapper = (props) => {
 
       // @ts-ignore
       initialConfig.settings = goldenLayoutsettings; // These should never be saved. The app should determine these
-      
+
       dispatch(updateGoldenLayoutConfig(initialConfig));
-    })()
-  }, [])
+    })();
+  }, []);
 
   if (!goldenLayoutConfig) {
-    return (
-      <div>Loading...</div>
-    )
+    return <div>Loading...</div>;
   }
 
   return (
-    <GoldenLayoutContainer goldenLayoutConfig={goldenLayoutConfig} dispatchSaveGoldenLayout={dispatchSaveGoldenLayout} />
-  )
-}
+    <GoldenLayoutContainer
+      goldenLayoutConfig={goldenLayoutConfig}
+      dispatchSaveGoldenLayout={dispatchSaveGoldenLayout}
+    />
+  );
+};

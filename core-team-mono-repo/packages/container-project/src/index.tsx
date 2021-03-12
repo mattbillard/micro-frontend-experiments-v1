@@ -1,7 +1,7 @@
-import * as React from 'react';
-import * as ReactDOM from "react-dom";
+import React from 'react';
+import ReactDOM from 'react-dom';
 
 import { ContainerApp } from './components';
 
-var mountNode = document.getElementById("container-app");
+var mountNode = document.getElementById('container-app');
 ReactDOM.render(<ContainerApp />, mountNode);

@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "clean": "lerna run clean --stream --parallel",
-    "build:dev": "lerna run build:dev --stream",
-    "build:prod": "lerna run build:prod --stream",
+    "build": "lerna run build --stream",
+    "format": "lerna run format --stream",
     "start": "lerna run start --stream --parallel",
     "serve": "lerna run serve --stream --parallel"
   },

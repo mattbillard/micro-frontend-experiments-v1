@@ -1,0 +1,39 @@
+.navigation {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-bottom: solid 1px #222;
+
+  .brand {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-weight: bold;
+    font-size: 1.2em;
+    padding: 10px 20px;
+    display: inline-block;
+    border-right: solid 1px #333;
+
+    // Allows user to drag OpenFin window
+    -webkit-app-region: drag;
+    -webkit-user-select: none;
+  }
+
+  > div > a {
+    padding: 10px 20px;
+    text-decoration: none;
+    border-right: solid 1px #333;
+    display: inline-block;
+
+    &:hover {
+      background: #222;
+    }
+  }
+}
+
+.settings-menu {
+  position: absolute;
+  background: #333;
+  color: #aaa;
+  z-index: 100;
+  padding: 10px;
+  right: 0;
+}

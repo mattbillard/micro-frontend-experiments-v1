@@ -7,14 +7,27 @@
   "author": "",
   "license": "ISC",
   "scripts": {
-    "start:basic": "openfin -l -c openfin-config-basic.json",
-    "start:easiest": "openfin -l -c openfin-config-easiest.json",
-    "start:advanced": "openfin -l -c openfin-config-advanced.json",
-    "server": "http-server -p 5555"
+    "_format:prettier": "prettier --write './openfin/**/*.{json,js,jsx,ts,tsx,css,less,scss}'",
+    "_format:stylelint": "stylelint --fix './openfin/**/*.{css,less,scss}'",
+    "_link": "cd openfin && ln -sf ../node_modules node_modules",
+    "_start:basic": "openfin -l -c openfin-config-basic.json",
+    "_start:easiest": "openfin -l -c openfin-config-easiest.json",
+    "_start:advanced": "openfin -l -c openfin-config-advanced.json",
+    "format": "run-s _format:*",
+    "launch": "npm run _start:advanced",
+    "postinstall": "npm run _link",
+    "server": "http-server ./ -p 8082",
+    "start": "npm run server"
   },
   "dependencies": {
     "http-server": "^0.12.3",
     "lit-html": "^1.3.0",
     "openfin-cli": "^3.0.2"
+  },
+  "devDependencies": {
+    "npm-run-all": "^4.1.5",
+    "prettier": "2.2.1",
+    "stylelint": "^13.12.0",
+    "stylelint-config-standard": "^21.0.0"
   }
 }

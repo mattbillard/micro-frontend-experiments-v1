@@ -3,13 +3,15 @@
   height: 100%;
 }
 
-.slick-header.ui-state-default, .slick-headerrow.ui-state-default {
+.slick-header.ui-state-default,
+.slick-headerrow.ui-state-default {
   width: 100%;
   overflow: hidden;
-  border-left: 0px;
+  border-left: 0;
 }
 
-.slick-header-columns, .slick-headerrow-columns {
+.slick-header-columns,
+.slick-headerrow-columns {
   position: relative;
   white-space: nowrap;
   cursor: default;
@@ -27,9 +29,9 @@
   margin: 0;
   padding: 4px;
   border-right: 1px solid silver;
-  border-left: 0px;
-  border-top: 0px;
-  border-bottom: 0px;
+  border-left: 0;
+  border-top: 0;
+  border-bottom: 0;
   float: left;
 }
 
@@ -64,7 +66,7 @@
   display: block;
   cursor: col-resize;
   width: 4px;
-  right: 0px;
+  right: 0;
   top: 0;
   height: 100%;
 }
@@ -78,13 +80,15 @@
   outline: 0;
 }
 
-.slick-row.ui-widget-content, .slick-row.ui-state-active {
+.slick-row.ui-widget-content,
+.slick-row.ui-state-active {
   position: absolute;
-  border: 0px;
+  border: 0;
   width: 100%;
 }
 
-.slick-cell, .slick-headerrow-column {
+.slick-cell,
+.slick-headerrow-column {
   position: absolute;
   border: 1px solid transparent;
   border-right: 1px dotted silver;
@@ -100,11 +104,14 @@
   cursor: default;
 }
 
-.slick-group {
-}
-
 .slick-group-toggle {
   display: inline-block;
+}
+
+.slick-cell {
+  background: #222;
+  border-right: 1px solid #2a2a2a;
+  border-bottom-color: transparent;
 }
 
 .slick-cell.highlighted {
@@ -130,6 +137,10 @@
 
 .slick-cell:focus {
   outline: none;
+}
+
+.slick-row.even .slick-cell {
+  background: #242424;
 }
 
 .slick-reorder-proxy {
@@ -158,27 +169,17 @@
   overflow-x: hidden !important;
 }
 
-.ui-widget *{
+.ui-widget * {
   color: #555;
   font: 8pt/20px Arial, sans-serif;
 }
 
-.slick-header-column{
+.slick-header-column {
   background: #222;
   border-right: 1px solid #333 !important;
 }
 
-.slick-header-column *{
+.slick-header-column * {
   font-weight: bold;
   color: #666;
-}
-
-.slick-cell{
-  background: #222;
-  border-right: 1px solid #2a2a2a;
-  border-bottom-color: transparent;
-}
-
-.slick-row.even .slick-cell{
-  background: #242424;
 }

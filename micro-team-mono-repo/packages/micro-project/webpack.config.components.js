@@ -1,42 +1,25 @@
 const webpack = require('webpack');
 const path = require('path');
-const CopyPlugin = require('copy-webpack-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const publicPath = '/micro-components/components/'; // Needs to end in / or paths will be wrong when you serve built version
 
 const config = {
   entry: {
-    'index': './src/components/index.tsx',
-    // 'golden-spiral': './src/components/golden-spiral.tsx',
-    // 'golden-text': './src/components/golden-text.tsx',
-    // 'column-chart': './src/components/column-chart.tsx',
-    // 'pie-chart': './src/components/pie-chart.tsx',
-    // 'stock-chart': './src/components/stock-chart.tsx',
-    // 'stock-grid': './src/components/stock-grid.tsx',
-    // 'text-tester': './src/components/text-tester.tsx',
+    'index': './src/components/index.ts',
   },
   output: {
     path: path.resolve(__dirname, 'dist/micro-components'),
     publicPath,
     filename: '[name].js',
-    // These are IMPORTANT
-    libraryTarget: 'umd',
-    // libraryTarget: 'commonjs',
+    libraryTarget: 'umd', // IMPORTANT
   },
   devtool: 'source-map',
-  // Uncomment to not minify+uglify
-  // optimization: {
-  //   minimize: false
-  // },
   resolve: {
     extensions: ['.js', '.jsx', '.tsx', '.ts'],
-    // alias: {}
   },
   externals: {
-    // This is IMPORTANT
-    // Don't bundle react or react-dom or you will get errors about having multiple versions of React and violating the rule of hooks
+    // IMPORTANT: don't bundle react or react-dom or you will get errors about having multiple versions of React and violating the rule of hooks
     react: {
       commonjs: "react",
       commonjs2: "react",
@@ -49,7 +32,12 @@ const config = {
       amd: "ReactDOM",
       root: "ReactDOM"
     },
-    // TODO: think through if we want this or not
+    /**
+     * NOTE: 
+     * If you wanted to you could exclude highcharts and slickgrid from this build and have site provide them as global vars instead 
+     * Pros: if multiple micro apps used these, they'd be shared and the browser would have less JS to download
+     * Cons: different micro apps would be more coupled and need to upgrade at the same time
+     */
     // "highcharts": {
     //   commonjs: "highcharts",
     //   commonjs2: "highcharts",
@@ -63,21 +51,8 @@ const config = {
     //   root: "Slick"
     // }
   },
-  // devServer: {
-  //   injectClient: false,  // Force no hot reloading. Websocket can't connect through proxy
-  //   progress: true,
-
-  //   port: 8082,
-  //   contentBase: './dist/micro-components',
-  //   publicPath: '/micro-url', // Better UX if doesn't need / on end
-      
-  //   writeToDisk: true,    // Always write files to disk instead of serving from memory
-  // },
   plugins: [
-    // new CopyPlugin({ patterns: [{ from: 'public/**' }] }),
-    // new CleanWebpackPlugin(),
     new MiniCssExtractPlugin()
-    // new HtmlWebpackPlugin({ template: './src/index.html' }),
   ],
   module: {
     rules: [

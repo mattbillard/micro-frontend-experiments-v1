@@ -9,6 +9,7 @@ export * from './golden-layout/golden-layout-navigation';
 export * from './golden-layout/golden-layout-pop-out';
 export * from './golden-layout/golden-layout-wrapper';
 export * from './micro-frontend-modes/iframe-component';
+export * from './micro-frontend-modes/iframe-portal';
 export * from './micro-frontend-modes/inject-whole-app-component';
 export * from './micro-frontend-modes/lazy-import-component';
 export * from './micro-frontend-modes/micro-frontend-mode-switch';

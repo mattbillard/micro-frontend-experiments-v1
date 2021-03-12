@@ -84,10 +84,16 @@ TODO
   - Remote component - research even more approaches. 
     - (Actually can't find any npm packages that are 1) simple + 2) allow JS and CSS dependencies.)
     - (A former coworker mentioned making remote components available via global vars. Not sure if this is any better or worse than my remote component)
-
-  - Types for all React props and state. Remove all "any"s.
-  - Readme 
+- Clean up 
+  - Create shared-tools package
   - Prettier + Stylelint
+  - packge.json's 
+  - Types for all React props and state. Remove all "any"s.
+
+  - Rename folders 
+  - Rename GoldenLayout components
+  - Readme 
+- Output types 
 - Golden layout 
   - Custom tab - [+] new tab 
   - Popout creates new GoldenLayout in separate window 
@@ -95,6 +101,7 @@ TODO
   - Enable drag out and back into the window 
   - Responsive design - phone should stack all GL tabs 
 - Bonus points 
+  - Typed CSS modules 
   - Looking at the code of React.Lazy might tell how to evaluate a module. import() returns a module... and React.Lazy somehow processes it. 
   - npm microbundle - try rollup instead of webpack to export micro-components 
   - Each app should save its own state 
@@ -106,6 +113,7 @@ TODO
   - App and nav definitions - defined in each app. All pulled together and converted to JSON 
   - Better source maps
   - Webpack optimizations: https://webpack.js.org/configuration/optimization/
+  - Try replacing react-shadow with "declarative shadowDom" once browsers standardize it
 
 
 

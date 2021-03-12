@@ -1,18 +1,16 @@
 'use strict';
 
 // Config
-const PORT = 8084;
-
+const PORT = 8081;
 
 // Imports
 const bodyParser = require('body-parser');
 const chalk = require('chalk');
-const cookieParser = require("cookie-parser");
+const cookieParser = require('cookie-parser');
 const express = require('express');
 const http = require('http');
 const lessMiddleware = require('less-middleware');
 const path = require('path');
-
 
 // Express set up
 const app = express();
@@ -26,16 +24,13 @@ app.use(lessMiddleware(path.join(__dirname, 'public')));
 app.use('/public', express.static('public'));
 const server = http.createServer(app);
 
-
 // Routes
 app.use('/', require('./routes/home.route'));
 app.use('/api', require('./routes/api.route'));
 
-
 // WebSockets
 const { initWsServer } = require('./websocket-server');
 initWsServer(server);
-
 
 // Start server
 server.listen(PORT);

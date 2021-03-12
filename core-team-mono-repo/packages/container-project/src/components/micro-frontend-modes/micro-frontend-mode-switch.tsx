@@ -1,29 +1,28 @@
-import * as React from 'react';
-import { connect, useDispatch, useSelector, Provider } from 'react-redux';
+import React from 'react';
+import { useSelector } from 'react-redux';
 import ReactShadow from 'react-shadow'; // TODO: consider "declarative shadowDom" once browsers standardize it
 
 import {
   IframeComponent,
+  IframePortal,
   InjectWholeAppHtmlComponent,
   LazyImportComponent,
   RemoteComponent,
 } from '../../components';
-import { MicroFrontendMode, } from '../../constants';
-import { IStoreState, store } from '../../redux';
+import { MicroFrontendMode } from '../../constants';
+import { IStoreState } from '../../redux';
+import { IMicroFrontEndComponent } from '../../types';
 
-interface IMicroFrontEndComponent {
-  childUrl: string;
-  featureDefinition: any; // TODO: type
-  setChildUrl: (url: string) => void;
-  setTitle: (title: string) => void;
-}
+import './micro-frontend-mode-switch.less';
 
-export const MicroFrontendModeSwitch = (props: IMicroFrontEndComponent) =>{
-  const { settings: { isShadow, mode, showHints, } } = useSelector((state: IStoreState) => state.containerAppReducer);
-  const { featureDefinition } = props;  
-  const childUrl = props.childUrl || featureDefinition.defaultChildUrl;
-  const newProps = {...props, childUrl, featureDefinition, showHints };
-  
+export const MicroFrontendModeSwitch = (props: IMicroFrontEndComponent) => {
+  const {
+    settings: { isIframe, isShadow, mode, showHints },
+  } = useSelector((state: IStoreState) => state.containerAppReducer);
+  const { appDefinition } = props;
+  const childUrl = props.childUrl || appDefinition.defaultChildUrl!;
+  const newProps = { ...props, childUrl, appDefinition, showHints };
+
   let className;
   let MicroFrontendType;
   switch (mode) {
@@ -45,15 +44,21 @@ export const MicroFrontendModeSwitch = (props: IMicroFrontEndComponent) =>{
       break;
   }
 
-  return (
-    isShadow ? (
-        <ReactShadow.div className={`micro-frontend-switch ${className} shadow-dom`}>
-          <MicroFrontendType key={childUrl} className={className} {...newProps} />
-        </ReactShadow.div>
-      ) : (
-        <div className={`micro-frontend-switch ${className}`}>
-          <MicroFrontendType key={childUrl} className={className} {...newProps} />
-        </div>
-      )
+  return isIframe ? (
+    <div className={`micro-frontend-mode-switch ${className}`}>
+      <IframePortal>
+        <MicroFrontendType {...newProps} />
+      </IframePortal>
+    </div>
+  ) : isShadow ? (
+    <ReactShadow.div
+      className={`micro-frontend-mode-switch ${className} shadow-dom`}
+    >
+      <MicroFrontendType {...newProps} />
+    </ReactShadow.div>
+  ) : (
+    <div className={`micro-frontend-mode-switch ${className}`}>
+      <MicroFrontendType {...newProps} />
+    </div>
   );
-}
+};

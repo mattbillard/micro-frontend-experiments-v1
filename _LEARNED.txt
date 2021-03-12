@@ -22,8 +22,12 @@ DURING PROJECT
     - Dynamic and lazy but doesn't work with URLs
   - Iframes 
     - Updating an app with new props 
+  - Remote components 
+    - Currently no good library out there ready for use
+    - Not difficult if you use a global var 
 - live-server 
   - Great for serving dist folder as a SPA 
+  - Using live-server instead of Webpack devServer is unbelievably faster
 - lerna 
   - Better than npm run-all 
   - Not as easy as using "file:...." in package.json 

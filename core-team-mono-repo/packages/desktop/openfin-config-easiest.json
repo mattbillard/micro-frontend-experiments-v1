@@ -1,7 +1,8 @@
 {
+  "devtools_port": 9090,
   "runtime": {
     "arguments": "--v=1 --inspect",
-    "version": "stable"
+    "version": "18.87.57.35"
   },
   "shortcut": {
     "company": "OpenFin",
@@ -14,6 +15,7 @@
     "defaultWindowOptions": {
       "contextMenu": true,
       "defaultCentered": true,
+      "defaultHeight": 600,
       "url": "http://localhost:8080",
       "accelerator": {
           "devtools": true,

@@ -1,44 +1,50 @@
-import * as React from 'react';
-import { useState } from 'react';
-import { Provider } from "react-redux";
+import React, { useState } from 'react';
+import { Provider } from 'react-redux';
 
-import { GoldenLayoutNavigation, MicroFrontendModeSwitch } from '../../components';
+import {
+  GoldenLayoutNavigation,
+  MicroFrontendModeSwitch,
+} from '../../components';
 import { store } from '../../redux';
+import { IGoldenLayoutComponentProps } from '../../types';
 import { definitionUtils } from '../../utils';
 
-export const GoldenLayoutComponentView = (props) => {
+export const GoldenLayoutComponentView = (
+  props: IGoldenLayoutComponentProps,
+) => {
   const _childUrl = props.glContainer._config.componentState?.childUrl;
-  const [state, setState] = useState({ childUrl:_childUrl});
+  const [state, setState] = useState({ childUrl: _childUrl });
 
-  const setTitle = ((title) => props.glContainer.setTitle(title)); // TODO: fix
-  const setChildUrl = ((childUrl) => {
+  const setTitle = (title: string) => props.glContainer.setTitle(title); // TODO: fix
+  const setUrl = (childUrl: string) => {
     const state = { childUrl };
     props.glContainer.setState(state);
-  });
+  };
 
-  const navigateToMicroApp = (childUrl) => {
+  const navigateToMicroApp = (childUrl: string) => {
     const state = { childUrl };
     props.glContainer.setState(state, childUrl);
     setState({ childUrl });
-  }
+  };
 
   const { childUrl } = state;
 
   if (!childUrl) {
-    return <GoldenLayoutNavigation navigateToMicroApp={navigateToMicroApp} />
+    return <GoldenLayoutNavigation navigateToMicroApp={navigateToMicroApp} />;
   }
 
-  const featureDefinition = definitionUtils.getFileDefinitionFromUrl(childUrl);
-  const newProps = { ...props, setTitle, setChildUrl, childUrl, featureDefinition };
+  const appDefinition = definitionUtils.getAppDefinitionFromUrl(childUrl)!;
+  const newProps = { ...props, setTitle, setUrl, childUrl, appDefinition };
 
-  return (
-    <MicroFrontendModeSwitch {...newProps} />
-  );
-}
+  return <MicroFrontendModeSwitch {...newProps} />;
+};
 
-// GoldenLayout only works with class components
-export class GoldenLayoutComponent extends React.Component<any, any> {
-  render () {
+// GoldenLayout only works with class components // TODO: not sure that is true now that I wrote my own react component adapter
+export class GoldenLayoutComponent extends React.Component<
+  IGoldenLayoutComponentProps,
+  {}
+> {
+  render() {
     return (
       // Add contexts like store because Goldenlayout does not pass them down
       <Provider store={store}>

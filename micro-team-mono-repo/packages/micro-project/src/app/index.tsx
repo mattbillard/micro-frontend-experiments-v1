@@ -1,52 +1,29 @@
-import * as React from 'react';
-import * as ReactDOM from "react-dom";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { IMicroAppProps } from '@company/core-team-shared-tools';
+import '@company/core-team-shared-tools/src/styles/index.less';
 
 import { MicroAppRouter } from '../components';
+
 import '../components/styles/index.less';
+import './styles/micro-app.less';
 
 declare const window: any;
 
-window.microAppInit = (context, props = {}) => {
-  console.log('....init', props);  
-  // alert();
+/**
+ * NOTE:
+ * Normally React just bootstraps itself
+ * For 2 of the micro frontend approaches (iframe and injectApp), that doesn't work
+ * They need to have access to the init method, so they can rerender on prop changes
+ *
+ * Also tried other approaches
+ * - script with onload - parent app can't rerender child app on prop changes
+ * - window.currentScript - same as above and also doesn't work in shadowDOM
+ * - child app watches parent app for changes - this works against React's paradigm. Better to have parent tell child when to rerender
+ */
+window.microAppInit = (context: HTMLElement, props: IMicroAppProps = {}) => {
   const elem = context?.querySelector('.micro-standalone-app');
   if (elem) {
     ReactDOM.render(<MicroAppRouter {...props} />, elem);
   }
-}
-
-
-
-
-
-
-// /**
-//  * Experiments trying to get all types of apps to bootstrap themselves. Didn't work well with multiple shadow dom components
-//  * Also having micro-apps watch their parent containers for prop changes and rerendering to apply those changes
-//  */
-// const render = (context) => {
-//   let props;
-//   if (window !==  window.parent) {
-//     props = window.frameElement.props;    // window.frameElement = iframe tag
-//   } else {
-//     props = 
-//       scriptTag?.parentElement?.props ||   // WebComponent no shadow
-//       scriptTag.getRootNode().host.props;  // WebComponent with shadow
-//   }
-
-//   console.log('....render props', props);  
-//   const elem = context.querySelector('.micro-standalone-app');
-//   ReactDOM.render(<MicroAppRouter {...props} />, elem);
-// }
-
-// const initObserve = (context) => {
-//   const observeThis = window.frameElement || scriptTag.parentElement || scriptTag.getRootNode().host;
-//   const observer = new MutationObserver((mutationsList, observer) => { render(context);});
-//   const config = { attributes: true, childList: false, subtree: false };
-//   observer.observe(observeThis, config);
-// }
-
-// const scriptTag = window.currentScript;
-// const context = scriptTag.parentElement || scriptTag.getRootNode();
-// render(context);
-// initObserve(context);
+};

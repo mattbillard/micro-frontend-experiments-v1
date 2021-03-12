@@ -1,27 +1,29 @@
+.golden-layout-container {
+  flex-grow: 1;
 
-.golden-layout-navigation {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  overflow: auto;
-  padding: 20px;
-  
-  a {
-    display: block;
-    padding: 10px;
-    background-color: #111;
-    text-decoration: none;
-    margin-bottom: 5px;
+  .golden-layout-toolbar {
+    background: #111;
+
+    a {
+      display: inline-block;
+      padding: 2px 10px;
+      text-decoration: none;
+
+      &:hover {
+        background: #222;
+      }
+    }
+  }
+
+  .golden-layout-div {
+    flex-grow: 1;
+    flex-shrink: initial;
   }
 }
 
-// Custom tabs ---------
-
-.custom-tab {
+.golden-layout-custom-tab {
   position: absolute !important;
-  top: 0px;
+  top: 0;
   right: 15px !important;
 }
 

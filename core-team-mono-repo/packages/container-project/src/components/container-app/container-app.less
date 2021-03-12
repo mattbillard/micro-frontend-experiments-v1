@@ -1,0 +1,67 @@
+// TODO: break up by component. Use CSS modules
+
+body {
+  margin: 0;
+  padding: 0;
+  color: #aaa;
+  background: #000;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  line-height: 1.2rem;
+}
+
+a {
+  color: #aaa;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+input {
+  margin: 4px;
+  padding: 4px;
+  border: 1px solid #ddd;
+  border-radius: 2px;
+}
+
+button {
+  background: #777;
+  color: #fff;
+  margin: 4px;
+  padding: 8px;
+  border: none;
+  border-radius: 2px;
+}
+
+// prettier-ignore
+.show-hints {
+  .iframe-component { outline: dashed 1px blue; }
+  .inject-whole-app-html-component { outline: dashed 1px red; }
+  .lazy-import-component { outline: dashed 1px green; }
+  .remote-component { outline: dashed 1px #21bebb; }
+  .shadow-dom { outline-style: solid; }
+}
+
+.container-router {
+  width: 100vw;
+  height: 100vh;
+
+  .page-component {
+    flex-grow: 1;
+    flex-shrink: initial;
+    position: relative;
+  }
+}
+
+.login-page {
+  background: #000;
+}
+
+.login-form {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #333;
+  padding: 50px;
+  text-align: right;
+}

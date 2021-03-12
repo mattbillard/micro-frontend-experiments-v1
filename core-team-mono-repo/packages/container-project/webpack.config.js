@@ -1,13 +1,10 @@
 const webpack = require('webpack');
 const path = require('path');
-const CopyPlugin = require('copy-webpack-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const config = {
   entry: {
-    // 'react-hot-loader/patch',
     'index': './src/index.tsx',
   },
   output: {
@@ -31,27 +28,11 @@ const config = {
   resolve: {
     extensions: ['.js', '.jsx', '.tsx', '.ts'],
     alias: {
-      // This is IMPORTANT
-      // This provides React to the component
+      // IMPORTANT: this provides React to the component
       'react': path.resolve(__dirname, './node_modules/react'),
-      // 'react-dom': '@hot-loader/react-dom'
     }
   },
-  // devServer: {
-  //   injectClient: false,  // Force no hot reloading. Websocket can't connect through proxy
-  //   progress: true,
-
-  //   port: 8081,
-  //   contentBase: './dist/container-components',
-  //   publicPath: '/container-components', // Better UX if doesn't need / on end
-  //   historyApiFallback: {
-  //     index: '/container-components/index.html'
-  //   },
-  //   writeToDisk: true,
-  // },
   plugins: [
-    // new CleanWebpackPlugin(),
-    // new CopyPlugin({ patterns: [{ from: 'public/**' }] }),
     new MiniCssExtractPlugin(),
     new HtmlWebpackPlugin({ template: './src/index.html' }),
   ],

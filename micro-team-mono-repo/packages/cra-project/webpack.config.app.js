@@ -1,7 +1,5 @@
 const webpack = require('webpack');
 const path = require('path');
-const CopyPlugin = require('copy-webpack-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
@@ -30,23 +28,23 @@ const config = {
   resolve: {
     extensions: ['.js', '.jsx', '.tsx', '.ts'],
     alias: {
+      // IMPORTANT: this provides React to the component
       'react': path.resolve(__dirname, './node_modules/react'),
     }
   },
+  // NOTE: live-server is unbelievably faster than Webpack devServer
   // devServer: {
-  //   injectClient: false,  // Force no hot reloading. Websocket can't connect through proxy
-  //   progress: true,
-
-  //   port: 8085,
+  //   port: 8083,
   //   contentBase: './dist/cra-standalone-app',
   //   publicPath: '/cra-url', // Better UX if doesn't need / on end
   //   historyApiFallback: {
   //     index: '/cra-url/index.html'
-  //   }
+  //   },
+  //   injectClient: false,  // Force no hot reloading. Websocket can't connect through proxy
+  //   progress: true,
+  //   writeToDisk: true,    // Always write files to disk instead of serving from memory
   // },
   plugins: [
-    // new CleanWebpackPlugin(),
-    // new CopyPlugin({ patterns: [{ from: 'public/**' }] }),
     new MiniCssExtractPlugin(),
     new HtmlWebpackPlugin({ template: './src/app/index.html' }),
   ],

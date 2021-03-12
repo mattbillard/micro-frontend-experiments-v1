@@ -1,4 +1,3 @@
-
 export * from './golden-layout.constants';
 
 export enum MicroFrontendMode {
@@ -9,6 +8,7 @@ export enum MicroFrontendMode {
 }
 
 export const DEFAULT_SETTINGS = {
+  isIframe: false,
   isShadow: false,
   mode: MicroFrontendMode.RemoteComponent,
   showHints: true,

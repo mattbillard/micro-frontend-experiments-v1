@@ -15,26 +15,26 @@ export const goldenLayoutsettings = {
 export const getDefaultNewGoldenLayoutComponent = () => {
   return {
     title: 'New Tab',
-    // type: 'react-component',
-    // component: 'GoldenLayoutComponent',
     type: 'component',
     componentName: 'ReactWrapperComponent',
-  }
+    // NOTE: there didn't seem to be a way to customize Golden-Layout's tabs and use their react components.
+    // Solution: build my own wrapper around react components
+    // type: 'react-component',
+    // component: 'GoldenLayoutComponent',
+  };
 };
 
 export const DEFAULT_MINIMAL_GOLDEN_LAYOUT_CONFIG = {
   content: [
     {
       title: 'Golden',
-      // type: 'react-component',
-      // component: 'GoldenLayoutComponent',
       type: 'component',
       componentName: 'ReactWrapperComponent',
       componentState: {
         childUrl: '/micro-url/golden-spiral',
       },
-    }
-  ]
+    },
+  ],
 };
 
 export const DEFAULT_TWO_COLUMN_GOLDEN_LAYOUT_CONFIG = {
@@ -51,31 +51,27 @@ export const DEFAULT_TWO_COLUMN_GOLDEN_LAYOUT_CONFIG = {
               content: [
                 {
                   title: 'Golden',
-                  // type: 'react-component',
-                  // component: 'GoldenLayoutComponent',
                   type: 'component',
                   componentName: 'ReactWrapperComponent',
                   componentState: {
                     childUrl: '/micro-url/golden-text',
-                  }
+                  },
                 },
                 {
                   title: 'Layout',
-                  // type: 'react-component',
-                  // component: 'GoldenLayoutComponent',
                   type: 'component',
                   componentName: 'ReactWrapperComponent',
                   componentState: {
                     childUrl: '/micro-url/golden-spiral',
                   },
                 },
-              ]
+              ],
             },
-          ]
+          ],
         },
-      ]
-    }
-  ]
+      ],
+    },
+  ],
 };
 
 export const DEFAULT_GOLDEN_LAYOUT_CONFIG = {
@@ -89,8 +85,6 @@ export const DEFAULT_GOLDEN_LAYOUT_CONFIG = {
           content: [
             {
               title: 'Fnts 100',
-              // type: 'react-component',
-              // component: 'GoldenLayoutComponent',
               type: 'component',
               componentName: 'ReactWrapperComponent',
               componentState: {
@@ -102,8 +96,6 @@ export const DEFAULT_GOLDEN_LAYOUT_CONFIG = {
               content: [
                 {
                   title: 'Golden',
-                  // type: 'react-component',
-                  // component: 'GoldenLayoutComponent',
                   type: 'component',
                   componentName: 'ReactWrapperComponent',
                   componentState: {
@@ -113,36 +105,30 @@ export const DEFAULT_GOLDEN_LAYOUT_CONFIG = {
                 },
                 {
                   title: 'Layout',
-                  // type: 'react-component',
-                  // component: 'GoldenLayoutComponent',
                   type: 'component',
                   componentName: 'ReactWrapperComponent',
                   componentState: {
                     childUrl: '/micro-url/golden-text',
                   },
                 },
-              ]
+              ],
             },
             {
               type: 'stack',
               content: [
                 {
                   title: 'Acme, inc.',
-                  // type: 'react-component',
-                  // component: 'GoldenLayoutComponent',
                   type: 'component',
                   componentName: 'ReactWrapperComponent',
                   componentState: {
                     childUrl: '/micro-url/stock-chart',
                   },
                   componentcomponentState: {
-                    companyName: 'Stock X'
+                    companyName: 'Stock X',
                   },
                 },
                 {
                   title: 'LexCorp plc.',
-                  // type: 'react-component',
-                  // component: 'GoldenLayoutComponent',
                   type: 'component',
                   componentName: 'ReactWrapperComponent',
                   componentState: {
@@ -152,18 +138,16 @@ export const DEFAULT_GOLDEN_LAYOUT_CONFIG = {
                 },
                 {
                   title: 'Springshield plc.',
-                  // type: 'react-component',
-                  // component: 'GoldenLayoutComponent',
                   type: 'component',
                   componentName: 'ReactWrapperComponent',
                   componentState: {
                     childUrl: '/micro-url/stock-chart',
                   },
                   componentcomponentState: { companyName: 'Stock Z' },
-                }
-              ]
-            }
-          ]
+                },
+              ],
+            },
+          ],
         },
         {
           width: 20,
@@ -171,8 +155,6 @@ export const DEFAULT_GOLDEN_LAYOUT_CONFIG = {
           content: [
             {
               title: 'Performance',
-              // type: 'react-component',
-              // component: 'GoldenLayoutComponent',
               type: 'component',
               componentName: 'ReactWrapperComponent',
               componentState: {
@@ -181,18 +163,16 @@ export const DEFAULT_GOLDEN_LAYOUT_CONFIG = {
             },
             {
               title: 'Market',
-              // type: 'react-component',
-              // component: 'GoldenLayoutComponent',
               type: 'component',
               componentName: 'ReactWrapperComponent',
               componentState: {
                 childUrl: '/micro-url/pie-chart',
               },
               height: 40,
-            }
-          ]
-        }
-      ]
-    }
-  ]
+            },
+          ],
+        },
+      ],
+    },
+  ],
 };

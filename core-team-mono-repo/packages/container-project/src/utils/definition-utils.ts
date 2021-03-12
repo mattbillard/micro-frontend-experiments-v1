@@ -1,15 +1,21 @@
+import { IAppAndNavDefinitions, IAppDefinition } from '../types';
 
-let _appAndNavDefinitions;
-export const init = (appAndNavDefinitions) => {
+let _appAndNavDefinitions: IAppAndNavDefinitions;
+
+export const init = (appAndNavDefinitions: IAppAndNavDefinitions) => {
   _appAndNavDefinitions = appAndNavDefinitions;
-}
+};
 
-export const getNavItemFromUrl = (parentUrl) => {
-  return _appAndNavDefinitions.nav.find(navItem => navItem.parentUrl.includes(parentUrl));
-}
+export const getAppDefinitionFromUrl = (url: string) => {
+  return Object.values(
+    _appAndNavDefinitions.apps,
+  ).find((appDefinition: IAppDefinition) =>
+    url.includes(appDefinition.defaultChildUrl),
+  );
+};
 
-export const getFileDefinitionFromUrl = (parentUrl) => {
-  const navItem = getNavItemFromUrl(parentUrl);
-  const featureDefinition = _appAndNavDefinitions.apps[navItem!.appId];
-  return featureDefinition;
-}
+export const getNavItemFromUrl = (url: string) => {
+  return _appAndNavDefinitions.nav.find((navItem) =>
+    navItem.parentUrl.includes(url),
+  );
+};

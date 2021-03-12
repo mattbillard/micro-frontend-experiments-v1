@@ -1,24 +1,4 @@
-
-export interface IAppDefinition {
-  defaultChildUrl: string;
-  id: string;
-  initApp: string;
-  // lazyImport: string;
-  text: string;
-  urlComponentCss: string;
-  urlComponentJs: string;
-}
-
-export interface INavDefinition   {
-  appId: string;
-  childUrl: string;
-  parentUrl: string;
-  text: string;
-}
-
-export interface IAppAndNavDefinitions {
-  apps: {
-    [appId: string]: IAppDefinition
-  },
-  nav: INavDefinition[],
-}
+export * from './app-and-nav-definitions.types';
+export * from './golden-layout.types';
+export * from './micro-front-end-components';
+export * from './websockets.types';

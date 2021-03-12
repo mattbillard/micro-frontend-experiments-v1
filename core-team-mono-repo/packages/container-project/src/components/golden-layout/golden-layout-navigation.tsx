@@ -1,14 +1,31 @@
-import * as React from 'react';
-import { useState } from 'react';
-import { useSelector } from "react-redux";
+import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 
 import { IStoreState } from '../../redux';
 
-export const GoldenLayoutNavigation = (props) => {
-  const [appId, setAppId] = useState();
-  const appAndNavDefinitions = useSelector((state: IStoreState) => state.containerAppReducer).appAndNavDefinitions!;
+import './golden-layout-navigation.less';
 
-  const navigate = (event, newAppId, childUrl) => {
+export interface ILink {
+  appId: string;
+  childUrl?: string;
+  text: string;
+}
+
+export interface IGoldenLayoutNavigation {
+  navigateToMicroApp: (childUrl: string) => void;
+}
+
+export const GoldenLayoutNavigation = (props: IGoldenLayoutNavigation) => {
+  const [appId, setAppId] = useState<string>();
+  const appAndNavDefinitions = useSelector(
+    (state: IStoreState) => state.containerAppReducer,
+  ).appAndNavDefinitions!;
+
+  const navigate = (
+    event: React.MouseEvent,
+    newAppId: string,
+    childUrl: string,
+  ) => {
     event.preventDefault();
 
     if (!appId) {
@@ -16,36 +33,41 @@ export const GoldenLayoutNavigation = (props) => {
     } else {
       props.navigateToMicroApp(childUrl);
     }
-  }
+  };
 
   // Step 1: choosing appId
-  let links;
+  let links: ILink[];
   if (!appId) {
-    links = Object.values(appAndNavDefinitions.apps)
-      .map((featureDefinition) => {
-        const { id, text } = featureDefinition;
-        const childUrl = undefined;
-        return { childUrl, appId: id, text };
-      });
+    links = Object.values(appAndNavDefinitions.apps).map((appDefinition) => {
+      const { id, text } = appDefinition;
+      const childUrl = undefined;
+      return { childUrl, appId: id, text };
+    });
 
-  // Step 2: choosing childUrl
+    // Step 2: choosing childUrl
   } else {
     links = appAndNavDefinitions.nav
-      .filter(navItem => navItem.appId === appId)
-      .map(navItem => {
+      .filter((navItem) => navItem.appId === appId)
+      .map((navItem) => {
         const { childUrl, text } = navItem;
-        return { childUrl, appId, text }
+        return { childUrl, appId, text };
       });
   }
 
   return (
-    <div className='golden-layout-navigation'>
+    <div className="golden-layout-navigation">
       {links.map((link) => {
         const { childUrl, appId, text } = link;
         return (
-          <a key={text} href="#" onClick={(event) => navigate(event, appId, childUrl)}>{text}</a>
-        )
+          <a
+            key={text}
+            href="#"
+            onClick={(event) => navigate(event, appId, childUrl!)}
+          >
+            {text}
+          </a>
+        );
       })}
     </div>
   );
-}
+};

@@ -1,9 +1,7 @@
-import * as React from 'react';
-import { useEffect, useRef, useState } from 'react';
-import { BrowserRouter, Link, MemoryRouter, Redirect, Route, Switch, useHistory } from "react-router-dom";
-import * as jsCookie from 'js-cookie';
+import React, { useEffect, useRef, useState } from 'react';
+import jsCookie from 'js-cookie';
 
-export const LoginPage = (props) => {
+export const LoginPage = () => {
   const [username, setUsername] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const ref = useRef(null);
@@ -11,15 +9,15 @@ export const LoginPage = (props) => {
   useEffect(() => {
     // @ts-ignore
     ref.current.focus();
-  },[]);
+  }, []);
 
-  const handleSubmit = (event) => {
+  const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
-    if (username && password) {
+    if (username) {
       jsCookie.set('username', username);
       window.location.reload();
     }
-  }
+  };
 
   return (
     <div className="login-page">
@@ -28,13 +26,22 @@ export const LoginPage = (props) => {
           <div>
             <label>
               Username:
-              <input ref={ref} type="text" value={username} onChange={(event) => setUsername(event.target.value)}/>
+              <input
+                ref={ref}
+                type="text"
+                value={username}
+                onChange={(event) => setUsername(event.target.value)}
+              />
             </label>
           </div>
           <div>
-          <label>
+            <label>
               Password:
-              <input type="password" value={password} onChange={(event) => setPassword(event.target.value)}/>
+              <input
+                type="password"
+                value={password}
+                onChange={(event) => setPassword(event.target.value)}
+              />
             </label>
           </div>
           <div>
@@ -44,5 +51,4 @@ export const LoginPage = (props) => {
       </div>
     </div>
   );
-}
-
+};

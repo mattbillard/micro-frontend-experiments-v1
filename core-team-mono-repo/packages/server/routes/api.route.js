@@ -14,18 +14,17 @@ router.get('/golden-layout-config', (req, res) => {
 router.post('/golden-layout-config', (req, res) => {
   const username = req.cookies.username;
   const payload = req.body;
-  const { 
-    goldenLayoutConfig,
-    windowId,
-  } = payload;
+  const { goldenLayoutConfig, windowId } = payload;
   db.set(username, 'goldenLayoutConfig', goldenLayoutConfig);
 
-  sendWsMessage('UPDATE_GOLDEN_LAYOUT_CONFIG', goldenLayoutConfig, username, windowId);
+  sendWsMessage(
+    'UPDATE_GOLDEN_LAYOUT_CONFIG',
+    goldenLayoutConfig,
+    username,
+    windowId,
+  );
   res.send(goldenLayoutConfig);
 });
-
-
-
 
 router.get('/settings', (req, res) => {
   const username = req.cookies.username;
@@ -36,10 +35,7 @@ router.get('/settings', (req, res) => {
 router.post('/settings', (req, res) => {
   const username = req.cookies.username;
   const payload = req.body;
-  const { 
-    settings,
-    windowId,
-  } = payload;
+  const { settings, windowId } = payload;
   db.set(username, 'settings', settings);
 
   sendWsMessage('UPDATE_SETTINGS', settings, username, windowId);

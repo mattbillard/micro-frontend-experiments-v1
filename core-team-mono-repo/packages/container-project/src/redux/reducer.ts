@@ -1,6 +1,6 @@
 import { Reducer } from 'redux';
 
-import { DEFAULT_SETTINGS, MicroFrontendMode } from '../constants';
+import { MicroFrontendMode } from '../constants';
 import {
   UPDATE_APP_AND_NAV_DEFINITIONS,
   UPDATE_GOLDEN_LAYOUT_CONFIG,
@@ -11,12 +11,15 @@ import { IAppAndNavDefinitions } from '../types';
 export interface IContainerAppReducerState {
   appAndNavDefinitions?: IAppAndNavDefinitions;
   goldenLayoutConfig: any;
-  settings: any | {
-    isShadow: boolean;
-    mode: MicroFrontendMode;
-    showHints: boolean;
-    showSettings: boolean;
-  };
+  settings:
+    | any
+    | {
+        isIframe: boolean;
+        isShadow: boolean;
+        mode: MicroFrontendMode;
+        showHints: boolean;
+        showSettings: boolean;
+      };
 }
 
 const initialState: IContainerAppReducerState = {
@@ -25,15 +28,18 @@ const initialState: IContainerAppReducerState = {
   settings: undefined,
 };
 
-export const containerAppReducer: Reducer<IContainerAppReducerState> = (state = initialState, action) => {
+export const containerAppReducer: Reducer<IContainerAppReducerState> = (
+  state = initialState,
+  action,
+) => {
   switch (action.type) {
     case UPDATE_APP_AND_NAV_DEFINITIONS: {
       const { appAndNavDefinitions } = action;
 
       return {
-        ...state, 
+        ...state,
         appAndNavDefinitions,
-      }
+      };
     }
 
     case UPDATE_GOLDEN_LAYOUT_CONFIG: {
@@ -43,20 +49,20 @@ export const containerAppReducer: Reducer<IContainerAppReducerState> = (state = 
       return {
         ...state,
         goldenLayoutConfig: newGoldenLayoutConfig,
-      }
+      };
     }
 
     case UPDATE_SETTINGS: {
-      const { settings } = action;      
+      const { settings } = action;
       const newSettings = { ...settings };
 
       return {
         ...state,
         settings: newSettings,
-      }
+      };
     }
 
     default:
       return state;
   }
-}
+};
