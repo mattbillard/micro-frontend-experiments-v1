@@ -3,8 +3,8 @@ import { createPortal } from 'react-dom';
 
 export interface IIframePortalProps {
   children: React.ReactNode;
-  className: string;
-  matchHeight: boolean;
+  className?: string;
+  matchHeight?: boolean;
 }
 
 /**

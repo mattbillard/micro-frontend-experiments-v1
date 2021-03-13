@@ -16,54 +16,29 @@ export interface IGlNavigation {
 }
 
 export const GlNavigation = (props: IGlNavigation) => {
-  const [appId, setAppId] = useState<string>();
   const appAndNavDefinitions = useSelector(
     (state: IStoreState) => state.containerAppReducer,
   ).appAndNavDefinitions!;
 
-  const navigate = (
-    event: React.MouseEvent,
-    newAppId: string,
-    childUrl: string,
-  ) => {
+  const navigate = (event: React.MouseEvent, childUrl: string) => {
     event.preventDefault();
-
-    if (!appId) {
-      setAppId(newAppId);
-    } else {
-      props.navigateToMicroApp(childUrl);
-    }
+    props.navigateToMicroApp(childUrl);
   };
 
-  // Step 1: choosing appId
-  let links: ILink[];
-  if (!appId) {
-    links = Object.values(appAndNavDefinitions.apps).map((appDefinition) => {
-      const { id, text } = appDefinition;
-      const childUrl = undefined;
-      return { childUrl, appId: id, text };
-    });
-
-    // Step 2: choosing childUrl
-  } else {
-    links = appAndNavDefinitions.nav
-      .filter((navItem) => navItem.appId === appId)
-      .map((navItem) => {
-        const { childUrl, text } = navItem;
-        return { childUrl, appId, text };
-      });
-  }
+  const links = Object.values(appAndNavDefinitions.apps).map(
+    (appDefinition) => {
+      const { baseUrl, text } = appDefinition;
+      const childUrl = baseUrl;
+      return { childUrl, text };
+    },
+  );
 
   return (
     <div className="golden-layout-navigation">
       {links.map((link) => {
-        const { childUrl, appId, text } = link;
+        const { childUrl, text } = link;
         return (
-          <a
-            key={text}
-            href="#"
-            onClick={(event) => navigate(event, appId, childUrl!)}
-          >
+          <a key={text} href="#" onClick={(event) => navigate(event, childUrl)}>
             {text}
           </a>
         );

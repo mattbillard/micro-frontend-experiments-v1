@@ -20,7 +20,7 @@ export const MicroFrontendModeSwitch = (props: IMicroFrontEndComponent) => {
     settings: { isIframe, isShadow, mode, showHints },
   } = useSelector((state: IStoreState) => state.containerAppReducer);
   const { appDefinition } = props;
-  const childUrl = props.childUrl || appDefinition.defaultChildUrl!;
+  const childUrl = props.childUrl || appDefinition.baseUrl!;
   const newProps = { ...props, childUrl, appDefinition, showHints };
 
   let className;

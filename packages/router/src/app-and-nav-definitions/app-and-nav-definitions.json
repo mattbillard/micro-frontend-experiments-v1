@@ -3,7 +3,7 @@
     "craAppId": {
       "id": "craAppId",
       "text": "Create React App",
-      "defaultChildUrl": "/cra-url",
+      "baseUrl": "/cra-url",
       "initApp": "craAppInit",
       "urlComponentCss": "/cdn/cra-components/index.css",
       "urlComponentJs": "/cdn/cra-components/index.js"
@@ -11,7 +11,7 @@
     "exampleAppId": {
       "id": "exampleAppId",
       "text": "Example App",
-      "defaultChildUrl": "/example-url",
+      "baseUrl": "/example-url",
       "initApp": "exampleAppInit",
       "urlComponentCss": "/cdn/example-components/index.css",
       "urlComponentJs": "/cdn/example-components/index.js"

@@ -1,5 +1,5 @@
 export interface IAppDefinition {
-  defaultChildUrl: string;
+  baseUrl: string;
   id: string;
   initApp: string;
   // lazyImport: string;

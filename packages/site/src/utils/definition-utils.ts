@@ -10,7 +10,7 @@ export const getAppDefinitionFromUrl = (url: string) => {
   return Object.values(
     _appAndNavDefinitions.apps,
   ).find((appDefinition: IAppDefinition) =>
-    url.includes(appDefinition.defaultChildUrl),
+    url.includes(appDefinition.baseUrl),
   );
 };
 

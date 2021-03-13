@@ -21,7 +21,9 @@ import {
 import '../styles/index.less';
 
 const RouterSwitch = (props: IMicroAppProps) => {
-  const { childUrl, showHints } = props;
+  const DEFAULT_URL = '/example-url/title-text';
+  const { childUrl = DEFAULT_URL, showHints } = props;
+  const redirectUrl = childUrl === '/example-url' ? DEFAULT_URL : childUrl;
 
   // prettier-ignore
   return (
@@ -39,7 +41,7 @@ const RouterSwitch = (props: IMicroAppProps) => {
           <Route path="/example-url/stock-chart" render={(routeProps) => <StockChart />} />
           <Route path="/example-url/stock-grid" render={(routeProps) => <StockGrid />} />
           <Route path="/example-url/title-text" render={(routeProps) => <TitleText />} />
-          <Redirect from="/*" to={childUrl || '/example-url/title-text'} />
+          <Redirect from="/*" to={redirectUrl} />
         </Switch>
       </div>
     </div>
