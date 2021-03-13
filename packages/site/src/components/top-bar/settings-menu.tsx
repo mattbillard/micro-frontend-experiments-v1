@@ -1,17 +1,12 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import jsCookie from 'js-cookie';
 
 import { MicroFrontendMode } from '../../constants';
 import { IStoreState, setSetting } from '../../redux';
 
-interface ISettingsMenuProps {
-  toggleShowSettings: () => void;
-}
+interface ISettingsMenuProps {}
 
 export const SettingsMenu = (props: ISettingsMenuProps) => {
-  const username = jsCookie.get('username');
-  const { toggleShowSettings } = props;
   const dispatch = useDispatch();
   const { isIframe, isShadow, mode, showHints } = useSelector(
     (state: IStoreState) => state.containerAppReducer.settings,
@@ -25,38 +20,55 @@ export const SettingsMenu = (props: ISettingsMenuProps) => {
     }
   };
 
-  const logout = () => {
-    toggleShowSettings();
-    setTimeout(() => {
-      jsCookie.remove('username');
-      window.location.reload();
-    });
-  };
-
   // prettier-ignore
   return (
-    <div className="settings-menu">
+    <div className="dropdown-menu settings-menu">
       <div>
         <div>
-          Username: {username} <br/><br/>
-          Mode: {mode} <br/>
-          CSS Encapsulation: <a onClick={() => handleChangeSetting('isShadow', !isShadow)}>{String(isShadow)}</a><br/>
-          {/* Iframe Encapsulation: <a onClick={() => handleChangeSetting('isIframe', !isIframe)}>{String(isIframe)}</a><br/> */}
+          <h3>Try Me!</h3>
+          <strong>Micro Frontend Mode: </strong> 
+          {mode} <br/>
         </div>
+        <ol>
+          <li>
+            <a onClick={() => handleChangeSetting('mode', MicroFrontendMode.DynamicImport)}>
+              <strong>Dynamic import()</strong> <br/>
+              Standard/most common solution
+            </a>
+          </li>
+          <li>
+            <a onClick={() => handleChangeSetting('mode', MicroFrontendMode.Iframe)}>
+              <strong>Iframe</strong> <br/>
+              Easiest/oldest solution
+            </a>
+          </li>
+          <li>
+            <a onClick={() => handleChangeSetting('mode', MicroFrontendMode.InjectWholeAppHtml)}>
+              <strong>Inject App HTML</strong> <br/>
+              Innovative/weird solution
+            </a>
+          </li>
+          <li>
+            <a onClick={() => handleChangeSetting('mode', MicroFrontendMode.RemoteComponent)}>
+              <strong>Load "Remote Component" From URL</strong> <br/>
+              Best solution
+            </a>
+          </li>
+        </ol>
+      </div>
+      <div>
+        <strong>More Options</strong><br/>
         <ul>
-          <li><a onClick={() => handleChangeSetting('mode', MicroFrontendMode.LazyImport)}>Dynamic import()</a></li>
-          <li><a onClick={() => handleChangeSetting('mode', MicroFrontendMode.Iframe)}>Iframe</a></li>
-          <li><a onClick={() => handleChangeSetting('mode', MicroFrontendMode.InjectWholeAppHtml)}>Inject App HTML</a></li>
-          <li><a onClick={() => handleChangeSetting('mode', MicroFrontendMode.RemoteComponent)}>Component From URL</a></li>
+          <li>
+            ShadowDOM CSS Encapsulation: <a onClick={() => handleChangeSetting('isShadow', !isShadow)}>{String(isShadow)}</a><br/>
+          </li>
+          {/* <li>
+            Iframe Encapsulation: <a onClick={() => handleChangeSetting('isIframe', !isIframe)}>{String(isIframe)}</a><br/>
+          </li> */}
+          <li>
+            Show Hints: <a onClick={() => handleChangeSetting('showHints', !showHints)}>{String(showHints)}</a>
+          </li>
         </ul>
-      </div>
-      <div>
-        Show hints: 
-        <a onClick={() => handleChangeSetting('showHints', !showHints)}>{String(showHints)}</a>
-      </div>
-      <div>
-        <br/>
-        <button onClick={logout}>Logout</button>
       </div>
     </div>
   )

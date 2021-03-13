@@ -14,7 +14,7 @@ declare const window: any;
  * We then tell the child app to initialize
  * It results in something kind of like an iframe in that you get an entire app inside... but without the sandbox aspect of an iframe
  *
- * Assessment: strange, unique, slightly faster than an iframe, no DOM issolation, but not as good as remote components
+ * Conclusion: strange, unique, slightly faster than an iframe, no DOM issolation, but not as good as remote components
  */
 export const InjectWholeAppHtmlComponent = (props: IMicroFrontEndComponent) => {
   const ref = useRef(null);

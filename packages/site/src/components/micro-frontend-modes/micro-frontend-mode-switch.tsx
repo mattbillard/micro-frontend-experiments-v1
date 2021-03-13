@@ -6,7 +6,7 @@ import {
   IframeComponent,
   IframePortal,
   InjectWholeAppHtmlComponent,
-  LazyImportComponent,
+  DynamicImportComponent,
   RemoteComponent,
 } from '../../components';
 import { MicroFrontendMode } from '../../constants';
@@ -34,9 +34,9 @@ export const MicroFrontendModeSwitch = (props: IMicroFrontEndComponent) => {
       className = 'inject-whole-app-html-component';
       MicroFrontendType = InjectWholeAppHtmlComponent;
       break;
-    case MicroFrontendMode.LazyImport:
+    case MicroFrontendMode.DynamicImport:
       className = 'lazy-import-component';
-      MicroFrontendType = LazyImportComponent;
+      MicroFrontendType = DynamicImportComponent;
       break;
     case MicroFrontendMode.RemoteComponent:
       className = 'remote-component';

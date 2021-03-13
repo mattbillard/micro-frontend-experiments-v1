@@ -3,7 +3,7 @@ export * from './golden-layout.constants';
 export enum MicroFrontendMode {
   Iframe = 'Iframe',
   InjectWholeAppHtml = 'InjectWholeAppHtml',
-  LazyImport = 'LazyImport',
+  DynamicImport = 'LazyImport',
   RemoteComponent = 'RemoteComponent',
 }
 

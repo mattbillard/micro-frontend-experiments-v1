@@ -2,8 +2,8 @@ import React, { useEffect, useRef, useState } from 'react';
 import jsCookie from 'js-cookie';
 
 export const LoginPage = () => {
-  const [username, setUsername] = useState<string>('');
-  const [password, setPassword] = useState<string>('');
+  const [username, setUsername] = useState<string>('username');
+  const [password, setPassword] = useState<string>('12345');
   const ref = useRef(null);
 
   useEffect(() => {

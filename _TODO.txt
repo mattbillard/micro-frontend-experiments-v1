@@ -94,6 +94,7 @@ TODO
 
   - Readme 
 - Bonus points 
+  - Fix TS build errors 
   - Webpack build 
     - Output types 
     - Webpack optimizations: https://webpack.js.org/configuration/optimization/

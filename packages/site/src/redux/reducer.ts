@@ -18,7 +18,8 @@ export interface IContainerAppReducerState {
         isShadow: boolean;
         mode: MicroFrontendMode;
         showHints: boolean;
-        showSettings: boolean;
+        showSettingsMenu: boolean;
+        showUserMenu: boolean;
       };
 }
 
