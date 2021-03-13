@@ -29,7 +29,7 @@
               componentName: 'view',
               componentState: {
                 name: 'my-new-test-view1',
-                url: 'http://localhost:8080',
+                url: 'http://localhost:8080/site-url/golden-layout',
               },
             },
             {
@@ -37,7 +37,7 @@
               componentName: 'view',
               componentState: {
                 name: 'my-new-test-view2',
-                url: 'http://localhost:8080/site-url/example-url',
+                url: 'http://localhost:8080/site-url/example-url/title-text',
               },
             },
             {

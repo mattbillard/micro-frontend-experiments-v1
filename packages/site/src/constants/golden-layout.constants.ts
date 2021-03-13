@@ -31,7 +31,7 @@ export const DEFAULT_MINIMAL_GOLDEN_LAYOUT_CONFIG = {
       type: 'component',
       componentName: 'ReactWrapperComponent',
       componentState: {
-        childUrl: '/example-url/golden-spiral',
+        childUrl: '/example-url/spiral',
       },
     },
   ],
@@ -54,7 +54,7 @@ export const DEFAULT_TWO_COLUMN_GOLDEN_LAYOUT_CONFIG = {
                   type: 'component',
                   componentName: 'ReactWrapperComponent',
                   componentState: {
-                    childUrl: '/example-url/golden-text',
+                    childUrl: '/example-url/title-text',
                   },
                 },
                 {
@@ -62,7 +62,7 @@ export const DEFAULT_TWO_COLUMN_GOLDEN_LAYOUT_CONFIG = {
                   type: 'component',
                   componentName: 'ReactWrapperComponent',
                   componentState: {
-                    childUrl: '/example-url/golden-spiral',
+                    childUrl: '/example-url/spiral',
                   },
                 },
               ],
@@ -99,7 +99,7 @@ export const DEFAULT_GOLDEN_LAYOUT_CONFIG = {
                   type: 'component',
                   componentName: 'ReactWrapperComponent',
                   componentState: {
-                    childUrl: '/example-url/golden-spiral',
+                    childUrl: '/example-url/spiral',
                   },
                   width: 30,
                 },
@@ -108,7 +108,7 @@ export const DEFAULT_GOLDEN_LAYOUT_CONFIG = {
                   type: 'component',
                   componentName: 'ReactWrapperComponent',
                   componentState: {
-                    childUrl: '/example-url/golden-text',
+                    childUrl: '/example-url/title-text',
                   },
                 },
               ],

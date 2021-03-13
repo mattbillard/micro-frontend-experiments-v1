@@ -1,14 +1,13 @@
 import React, { Dispatch, useEffect } from 'react';
 import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import jsCookie from 'js-cookie';
 import { nanoid } from 'nanoid';
 
 import {
   GlPopout,
   GoldenLayout,
-  Navigation,
   PageComponent,
+  TopBar,
 } from '../../components';
 import {
   IStoreState,
@@ -20,9 +19,7 @@ import {
 import { wsService } from '../../services';
 import { IWsMsgObj } from '../../types';
 
-interface IContainerRouterProps {}
-
-export const ContainerRouter = (props: IContainerRouterProps) => {
+export const SiteRouter = () => {
   const { appAndNavDefinitions, goldenLayoutConfig, settings } = useSelector(
     (state: IStoreState) => state.containerAppReducer,
   );
@@ -48,19 +45,19 @@ export const ContainerRouter = (props: IContainerRouterProps) => {
 
   const { showHints } = settings;
   const className = showHints
-    ? 'container-router flex-rows show-hints'
-    : 'container-router flex-rows'; // TODO: clean up
+    ? 'site-router flex-rows show-hints'
+    : 'site-router flex-rows'; // TODO: clean up
 
   // prettier-ignore
   return (
       <div className={className}>
         <BrowserRouter>
-          <Navigation />
+          <TopBar />
           <Switch>
             <Route path="/site-url/golden-layout/popout/*" component={GlPopout} />
             <Route path="/site-url/golden-layout" component={GoldenLayout} />
             <Route path="/site-url/*" component={PageComponent} />
-            <Redirect from="/*" to="/site-url/golden-layout" />
+            <Redirect from="/*" to="/site-url/example-url/title-text" />
           </Switch>
         </BrowserRouter>
       </div>

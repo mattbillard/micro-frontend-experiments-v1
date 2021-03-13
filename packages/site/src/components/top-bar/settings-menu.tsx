@@ -44,7 +44,7 @@ export const SettingsMenu = (props: ISettingsMenuProps) => {
           </li>
           <li>
             <a onClick={() => handleChangeSetting('mode', MicroFrontendMode.InjectWholeAppHtml)}>
-              <strong>Inject App HTML</strong> <br/>
+              <strong>Inject Whole App HTML</strong> <br/>
               Innovative/weird solution
             </a>
           </li>

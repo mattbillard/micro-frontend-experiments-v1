@@ -16,8 +16,8 @@ export const ExampleAppNavigation = (props: TMicroNavigationProps) => {
   };
 
   const links = [
-    { url: '/example-url/golden-text', text: 'Text' },
-    { url: '/example-url/golden-spiral', text: 'Spiral' },
+    { url: '/example-url/title-text', text: 'Text' },
+    { url: '/example-url/spiral', text: 'Spiral' },
     { url: '/example-url/stock-grid', text: 'StockGrid' },
     { url: '/example-url/column-chart', text: 'ColumnChart' },
     { url: '/example-url/pie-chart', text: 'PieChart' },

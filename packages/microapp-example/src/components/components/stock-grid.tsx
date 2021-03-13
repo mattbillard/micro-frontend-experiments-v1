@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 // @ts-ignore
 import Slick from 'slickgrid-es6';
 
-import '../styles/stock-grid.css';
+import '../styles/stock-grid.less';
 
 export const StockGrid = () => {
   const ref = useRef(null);

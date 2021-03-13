@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import Highcharts, { Options } from 'highcharts';
 
-import '../styles/chart-component.css';
+import '../styles/chart-component.less';
 
 export interface IChartComponentProps {
   config: Options;

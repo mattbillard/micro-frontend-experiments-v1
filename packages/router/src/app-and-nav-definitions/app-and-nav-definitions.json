@@ -20,8 +20,8 @@
   "nav": [
     {
       "text": "Example App",
-      "parentUrl": "/site-url/example-url/golden-text",
-      "childUrl": "/example-url/golden-text",
+      "parentUrl": "/site-url/example-url/title-text",
+      "childUrl": "/example-url/title-text",
       "appId": "exampleAppId"
     },
     {

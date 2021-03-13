@@ -40,23 +40,23 @@
                   "componentName": "view",
                   "componentState": {
                     "name": "my-new-test-view1",
-                    "url": "http://localhost:8080"
-                  }
+                    "url": "http://localhost:8080/site-url/golden-layout",
+                }
                 },
                 {
                   "type": "component",
                   "componentName": "view",
                   "componentState": {
                     "name": "my-new-test-view2",
-                    "url": "http://localhost:8080/site-url/example-url"
-                  }
+                    "url": "http://localhost:8080/site-url/cra-url",
+                }
                 },
                 {
                   "type": "component",
                   "componentName": "view",
                   "componentState": {
                     "name": "my-new-test-view3",
-                    "url": "http://localhost:8080/site-url/cra-url",
+                    "url": "http://localhost:8080/site-url/example-url/title-text",
                     "NOTES": {
                       "pros": [
                         "Follows standard/recommended OpenFin",

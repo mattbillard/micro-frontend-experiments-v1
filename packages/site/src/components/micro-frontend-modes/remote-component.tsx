@@ -8,7 +8,7 @@ declare const window: any;
 /**
  * NOTE
  * Loads a react component from a JS script from a URL
- * Best solution found
+ * Best solution found. Fastest
  *
  * Inserting a script tag is much more efficient than XHR to get JS
  * Because script tags are cached, the request is only made once

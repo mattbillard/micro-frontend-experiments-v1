@@ -48,8 +48,7 @@ export const TopBar = () => {
             {navItem.text}
           </Link>
         ))}
-        {/* TODO: move to feature defs? */}
-        <Link to="/site-url/golden-layout">Golden</Link>
+        <Link to="/site-url/golden-layout">Golden Layout</Link>
       </div>
 
       <div className="menu-container">

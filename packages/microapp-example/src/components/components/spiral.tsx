@@ -1,7 +1,7 @@
 import React from 'react';
 
-import '../styles/golden-spiral.css';
+import '../styles/spiral.css';
 
-export const GoldenSpiral = () => {
+export const Spiral = () => {
   return <div className="fibonacci-spiral"></div>;
 };

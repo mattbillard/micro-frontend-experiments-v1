@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import { ContainerApp } from './components';
+import { SiteApp } from './components';
 
-var mountNode = document.getElementById('container-app');
-ReactDOM.render(<ContainerApp />, mountNode);
+var mountNode = document.getElementById('site-app');
+ReactDOM.render(<SiteApp />, mountNode);

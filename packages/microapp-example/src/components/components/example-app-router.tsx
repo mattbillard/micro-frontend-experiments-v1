@@ -10,12 +10,12 @@ import { IMicroAppProps } from '@company/shared-tools';
 
 import {
   ColumnChart,
-  GoldenSpiral,
-  GoldenText,
   ExampleAppNavigation,
   PieChart,
+  Spiral,
   StockChart,
   StockGrid,
+  TitleText,
 } from '../components';
 
 import '../styles/index.less';
@@ -35,11 +35,11 @@ const RouterSwitch = (props: IMicroAppProps) => {
         <Switch>
           <Route path="/example-url/column-chart" render={(routeProps) => <ColumnChart />} />
           <Route path="/example-url/pie-chart" render={(routeProps) => <PieChart />} />
-          <Route path="/example-url/golden-spiral" render={(routeProps) => <GoldenSpiral />} />
+          <Route path="/example-url/spiral" render={(routeProps) => <Spiral />} />
           <Route path="/example-url/stock-chart" render={(routeProps) => <StockChart />} />
           <Route path="/example-url/stock-grid" render={(routeProps) => <StockGrid />} />
-          <Route path="/example-url/golden-text" render={(routeProps) => <GoldenText />} />
-          <Redirect from="/*" to={childUrl || '/example-url/golden-text'} />
+          <Route path="/example-url/title-text" render={(routeProps) => <TitleText />} />
+          <Redirect from="/*" to={childUrl || '/example-url/title-text'} />
         </Switch>
       </div>
     </div>

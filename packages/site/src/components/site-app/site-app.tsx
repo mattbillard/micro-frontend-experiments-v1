@@ -2,18 +2,18 @@ import React, { useEffect } from 'react';
 import { Provider, useDispatch, useSelector } from 'react-redux';
 import jsCookie from 'js-cookie';
 
-import { ContainerRouter, LoginPage, OpenFinWindowBar } from '../../components';
+import { SiteRouter, LoginPage, OpenFinWindowBar } from '../../components';
 import { IStoreState, store, updateUsername } from '../../redux';
 
 import '@company/shared-tools/src/styles/index.less';
-import './container-app.less';
+import './site-app.less';
 
 declare const window: any;
 
 // OpenFin - show debugger
 // window.fin?.me.showDeveloperTools();
 
-export const ContainerAppView = () => {
+export const SiteAppView = () => {
   const dispatch = useDispatch();
   const usernameCookie = jsCookie.get('username'); // Mock login
   const { username } = useSelector(
@@ -31,15 +31,15 @@ export const ContainerAppView = () => {
   return (
     <>
       <OpenFinWindowBar />
-      <ContainerRouter />
+      <SiteRouter />
     </>
   );
 };
 
-export const ContainerApp = () => {
+export const SiteApp = () => {
   return (
     <Provider store={store}>
-      <ContainerAppView />
+      <SiteAppView />
     </Provider>
   );
 };
