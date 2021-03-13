@@ -1,6 +1,7 @@
 import { xhrService } from '../services';
 import { definitionUtils } from '../utils';
 
+export const UPDATE_USERNAME = 'UPDATE_USERNAME';
 export const UPDATE_APP_AND_NAV_DEFINITIONS = 'UPDATE_APP_AND_NAV_DEFINITIONS';
 export const UPDATE_GOLDEN_LAYOUT_CONFIG = 'UPDATE_GOLDEN_LAYOUT_CONFIG';
 export const UPDATE_SETTINGS = 'UPDATE_SETTINGS';
@@ -37,10 +38,20 @@ export const updateSettings = (settings) => {
   return { type: UPDATE_SETTINGS, settings };
 };
 
-export const setSetting = (key, value) => async (dispatch, getState) => {
+export const patchSettings = (partialSettings) => async (
+  dispatch,
+  getState,
+) => {
   const { settings } = getState().containerAppReducer;
-  settings[key] = value;
+  const updatedSettings = {
+    ...settings,
+    ...partialSettings,
+  };
 
-  xhrService.saveSettings(settings);
-  dispatch(updateSettings(settings));
+  xhrService.saveSettings(updatedSettings);
+  dispatch(updateSettings(updatedSettings));
+};
+
+export const updateUsername = (username) => {
+  return { type: UPDATE_USERNAME, username };
 };

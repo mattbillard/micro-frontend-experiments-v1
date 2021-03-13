@@ -2,6 +2,7 @@ import { Reducer } from 'redux';
 
 import { MicroFrontendMode } from '../constants';
 import {
+  UPDATE_USERNAME,
   UPDATE_APP_AND_NAV_DEFINITIONS,
   UPDATE_GOLDEN_LAYOUT_CONFIG,
   UPDATE_SETTINGS,
@@ -21,12 +22,14 @@ export interface IContainerAppReducerState {
         showSettingsMenu: boolean;
         showUserMenu: boolean;
       };
+  username?: string;
 }
 
 const initialState: IContainerAppReducerState = {
   appAndNavDefinitions: undefined,
   goldenLayoutConfig: undefined,
   settings: undefined,
+  username: undefined,
 };
 
 export const containerAppReducer: Reducer<IContainerAppReducerState> = (
@@ -34,6 +37,15 @@ export const containerAppReducer: Reducer<IContainerAppReducerState> = (
   action,
 ) => {
   switch (action.type) {
+    case UPDATE_USERNAME: {
+      const { username } = action;
+
+      return {
+        ...state,
+        username,
+      };
+    }
+
     case UPDATE_APP_AND_NAV_DEFINITIONS: {
       const { appAndNavDefinitions } = action;
 

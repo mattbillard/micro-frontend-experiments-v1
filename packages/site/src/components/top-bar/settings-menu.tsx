@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { MicroFrontendMode } from '../../constants';
-import { IStoreState, setSetting } from '../../redux';
+import { IStoreState, patchSettings } from '../../redux';
 
 interface ISettingsMenuProps {}
 
@@ -13,7 +13,7 @@ export const SettingsMenu = (props: ISettingsMenuProps) => {
   );
 
   const handleChangeSetting = (key: string, value: any, reload = false) => {
-    dispatch(setSetting(key, value));
+    dispatch(patchSettings({ [key]: value }));
 
     if (reload) {
       setTimeout(() => window.location.reload(), 100);

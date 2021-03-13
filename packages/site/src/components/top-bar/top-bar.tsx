@@ -4,13 +4,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import jsCookie from 'js-cookie';
 
 import { SettingsMenu, UserMenu } from '../../components';
-import { IStoreState, setSetting } from '../../redux';
+import { IStoreState, patchSettings } from '../../redux';
 
 import './top-bar.less';
 
 declare const window: any;
 
-export const Navigation = () => {
+export const TopBar = () => {
   const username = jsCookie.get('username');
   const { showSettingsMenu, showUserMenu } = useSelector(
     (state: IStoreState) => state.containerAppReducer.settings,
@@ -22,13 +22,21 @@ export const Navigation = () => {
   const isOpenFin = !!window.fin;
 
   const toggleSettingsMenu = () => {
-    dispatch(setSetting('showSettingsMenu', !showSettingsMenu));
-    dispatch(setSetting('showUserMenu', false));
+    dispatch(
+      patchSettings({
+        showSettingsMenu: !showSettingsMenu,
+        showUserMenu: false,
+      }),
+    );
   };
 
   const toggleUserMenu = () => {
-    dispatch(setSetting('showSettingsMenu', false));
-    dispatch(setSetting('showUserMenu', !showUserMenu));
+    dispatch(
+      patchSettings({
+        showSettingsMenu: false,
+        showUserMenu: !showUserMenu,
+      }),
+    );
   };
 
   return (

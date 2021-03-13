@@ -1,19 +1,24 @@
 import React from 'react';
 import jsCookie from 'js-cookie';
+import { useDispatch, useSelector } from 'react-redux';
+import { IStoreState, updateUsername } from '../../redux';
 
 interface IUsernameProps {
   toggleUserMenu: () => void;
 }
 
 export const UserMenu = (props: IUsernameProps) => {
-  const username = jsCookie.get('username');
+  const dispatch = useDispatch();
   const { toggleUserMenu } = props;
+  const { username } = useSelector(
+    (state: IStoreState) => state.containerAppReducer,
+  );
 
   const logout = () => {
     toggleUserMenu();
     setTimeout(() => {
       jsCookie.remove('username');
-      window.location.reload();
+      dispatch(updateUsername(undefined));
     });
   };
 
