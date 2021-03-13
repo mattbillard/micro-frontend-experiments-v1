@@ -1,0 +1,34 @@
+{
+  "apps": {
+    "craAppId": {
+      "id": "craAppId",
+      "text": "Create React App",
+      "defaultChildUrl": "/cra-url",
+      "initApp": "craAppInit",
+      "urlComponentCss": "/cdn/cra-components/index.css",
+      "urlComponentJs": "/cdn/cra-components/index.js"
+    },
+    "exampleAppId": {
+      "id": "exampleAppId",
+      "text": "Example App",
+      "defaultChildUrl": "/example-url",
+      "initApp": "exampleAppInit",
+      "urlComponentCss": "/cdn/example-components/index.css",
+      "urlComponentJs": "/cdn/example-components/index.js"
+    }
+  },
+  "nav": [
+    {
+      "text": "Example App",
+      "parentUrl": "/site-url/example-url/golden-text",
+      "childUrl": "/example-url/golden-text",
+      "appId": "exampleAppId"
+    },
+    {
+      "text": "CRA App",
+      "parentUrl": "/site-url/cra-url",
+      "childUrl": "/cra-url",
+      "appId": "craAppId"
+    }
+  ]
+}

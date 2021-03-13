@@ -89,30 +89,30 @@ TODO
   - Prettier + Stylelint
   - packge.json's 
   - Types for all React props and state. Remove all "any"s.
-
-  - Rename folders 
   - Rename GoldenLayout components
+  - Rename folders 
+
   - Readme 
-- Output types 
-- Golden layout 
-  - Custom tab - [+] new tab 
-  - Popout creates new GoldenLayout in separate window 
-    - This will require giving each Golden Layout an ID and using it in the URL 
-  - Enable drag out and back into the window 
-  - Responsive design - phone should stack all GL tabs 
 - Bonus points 
-  - Typed CSS modules 
-  - Looking at the code of React.Lazy might tell how to evaluate a module. import() returns a module... and React.Lazy somehow processes it. 
-  - npm microbundle - try rollup instead of webpack to export micro-components 
-  - Each app should save its own state 
-  - More Features/framework - toasts, notifications, permissions, etc, etc, etc 
-  - Try more micro apps: Vue and Svelte 
-  - Middleware to send redux changes to WS?
-  - Bugfix - GoldenLayout sometimes redraws to an old state if you make 2 changes in a row - consider removing Redux. Could make save/restore/reinit much simpler. Would need a way to listen to websocket without redux 
-  - simulate dev - try using npm live-server for built code 
+  - Webpack build 
+    - Output types 
+    - Webpack optimizations: https://webpack.js.org/configuration/optimization/
+  - CSS modules with types  
   - App and nav definitions - defined in each app. All pulled together and converted to JSON 
-  - Better source maps
-  - Webpack optimizations: https://webpack.js.org/configuration/optimization/
+  - Build out app platform's functionality 
+    - Each app should save its own state 
+    - More Features/framework - toasts, notifications, permissions, etc, etc, etc 
+    - Redux middleware to automatically send redux changes to WS?
+  - Golden layout 
+    - Responsive design - phone should stack all GL tabs 
+    - Custom tab. Add the following to the right of each tab set: [+] 
+    - Popout creates new GoldenLayout in separate window 
+      - This will require giving each Golden Layout an ID and using it in the URL 
+      - Enable drag out and back into the window 
+  - Try more micro apps: Vue and Svelte 
+    - Learn Webpack module federation 
+    - Looking at the code of React.Lazy might tell how to evaluate a module. import() returns a module... and React.Lazy somehow processes it. 
+    - npm microbundle - try rollup instead of webpack to export micro-components 
   - Try replacing react-shadow with "declarative shadowDom" once browsers standardize it
 
 

@@ -3,10 +3,20 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "clean": "lerna run clean --stream --parallel",
+    "build": "lerna run build --stream",
+    "format": "lerna run format --stream",
+    "launch": "cd ./packages/desktop && npm run launch",
+    "postinstall": "lerna bootstrap",
+    "start": "lerna run start --stream --parallel",
+    "serve": "lerna run serve --stream --parallel"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {},
-  "devDependencies": {}
+  "devDependencies": {
+    "lerna": "^3.22.1"
+  }
 }
