@@ -7,7 +7,7 @@
   "author": "",
   "license": "ISC",
   "scripts": {
-    "_format:prettier": "prettier --write './openfin/**/*.{json,js,jsx,ts,tsx,css,less,scss}'",
+    "_format:prettier": "prettier --write './openfin/**/*.{json,js,jsx,ts,tsx,css,less,scss,md}'",
     "_format:stylelint": "stylelint --fix './openfin/**/*.{css,less,scss}'",
     "_link": "cd openfin && ln -sf ../node_modules node_modules",
     "_start:basic": "openfin -l -c openfin-config-basic.json",

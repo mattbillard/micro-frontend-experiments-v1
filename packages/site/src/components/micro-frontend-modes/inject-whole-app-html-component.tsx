@@ -39,11 +39,7 @@ export const InjectWholeAppHtmlComponent = (props: IMicroFrontEndComponent) => {
   return <div ref={ref}></div>;
 };
 
-const init = async (
-  ref: any,
-  props: IMicroFrontEndComponent,
-  renderChild: () => void,
-) => {
+const init = async (ref: any, props: IMicroFrontEndComponent, renderChild: () => void) => {
   const { childUrl } = props;
 
   // Fetch HTML

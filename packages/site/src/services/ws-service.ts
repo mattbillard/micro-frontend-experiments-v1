@@ -1,9 +1,7 @@
 import jsCookie from 'js-cookie';
 
 const url =
-  window.location.protocol === 'https:'
-    ? 'wss://localhost:8080/wss'
-    : 'ws://localhost:8080/wss';
+  window.location.protocol === 'https:' ? 'wss://localhost:8080/wss' : 'ws://localhost:8080/wss';
 const RETRY_TIMEOUT = 5000;
 
 export const connect = (callback) => {

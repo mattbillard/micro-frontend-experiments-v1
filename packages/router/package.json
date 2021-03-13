@@ -4,7 +4,7 @@
   "description": "",
   "private": true,
   "scripts": {
-    "_format:prettier": "prettier --write './src/**/*.{json,js,jsx,ts,tsx,css,less,scss}'",
+    "_format:prettier": "prettier --write './src/**/*.{json,js,jsx,ts,tsx,css,less,scss,md}'",
     "_format:stylelint": "stylelint --fix './src/**/*.{css,less,scss}'",
     "_link:app-and-nav-definitions": "cd dist/cdn && ln -sf ../../src/app-and-nav-definitions app-and-nav-definitions",
     "_link:microapp-cra": "cd dist/cdn && ln -sf ../../node_modules/@company/microapp-cra/dist/cra-components cra-components",

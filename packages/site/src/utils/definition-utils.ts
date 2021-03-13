@@ -7,15 +7,11 @@ export const init = (appAndNavDefinitions: IAppAndNavDefinitions) => {
 };
 
 export const getAppDefinitionFromUrl = (url: string) => {
-  return Object.values(
-    _appAndNavDefinitions.apps,
-  ).find((appDefinition: IAppDefinition) =>
+  return Object.values(_appAndNavDefinitions.apps).find((appDefinition: IAppDefinition) =>
     url.includes(appDefinition.baseUrl),
   );
 };
 
 export const getNavItemFromUrl = (url: string) => {
-  return _appAndNavDefinitions.nav.find((navItem) =>
-    navItem.parentUrl.includes(url),
-  );
+  return _appAndNavDefinitions.nav.find((navItem) => navItem.parentUrl.includes(url));
 };

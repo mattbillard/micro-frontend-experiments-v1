@@ -42,9 +42,7 @@ export class GlPanes extends React.Component<IGlPanesProps, IGlPanesState> {
     this.init();
 
     // Allows components we've popped out to come back
-    window.addNewGoldenLayoutComponent = (
-      componentState: IGlComponentState,
-    ) => {
+    window.addNewGoldenLayoutComponent = (componentState: IGlComponentState) => {
       this.addNewComponent(undefined, componentState);
       this.saveConfig();
     };
@@ -63,8 +61,7 @@ export class GlPanes extends React.Component<IGlPanesProps, IGlPanesState> {
 
       const currentConfig = myLayout.toConfig();
       const goldenLayoutConfig = this.props.goldenLayoutConfig;
-      const isEqual =
-        JSON.stringify(currentConfig) === JSON.stringify(goldenLayoutConfig);
+      const isEqual = JSON.stringify(currentConfig) === JSON.stringify(goldenLayoutConfig);
 
       // Reinit
       if (!isEqual) {
@@ -75,10 +72,7 @@ export class GlPanes extends React.Component<IGlPanesProps, IGlPanesState> {
     }
   };
 
-  addNewComponent = (
-    event?: React.MouseEvent,
-    componentState?: IGlComponentState,
-  ) => {
+  addNewComponent = (event?: React.MouseEvent, componentState?: IGlComponentState) => {
     event?.preventDefault();
 
     // Figure out where to put new component
@@ -125,9 +119,7 @@ export class GlPanes extends React.Component<IGlPanesProps, IGlPanesState> {
     const myLayout = this.myLayout;
 
     const currentConfig = myLayout.toConfig();
-    const isEqual =
-      JSON.stringify(currentConfig) ===
-      JSON.stringify(this.props.goldenLayoutConfig);
+    const isEqual = JSON.stringify(currentConfig) === JSON.stringify(this.props.goldenLayoutConfig);
 
     if (!isEqual) {
       console.log('Golden Layout: save');
@@ -177,10 +169,7 @@ const fixActiveItemIndex = (content: IGlConfigContent[]) => {
  * PROBLEM: Golden Layout doesn't allow both React components and customized tabs
  * SOLUTION: reimplement Golden Layout's react-component
  */
-const ReactWrapperComponent = (
-  glContainer: any,
-  componentState: IGlComponentState,
-) => {
+const ReactWrapperComponent = (glContainer: any, componentState: IGlComponentState) => {
   const glEventHub = glContainer.layoutManager.eventHub;
   const props: IGlComponentProps = { glContainer, glEventHub };
 

@@ -15,9 +15,8 @@ export const TopBar = () => {
   const { showSettingsMenu, showUserMenu } = useSelector(
     (state: IStoreState) => state.containerAppReducer.settings,
   );
-  const appAndNavDefinitions = useSelector(
-    (state: IStoreState) => state.containerAppReducer,
-  ).appAndNavDefinitions!;
+  const appAndNavDefinitions = useSelector((state: IStoreState) => state.containerAppReducer)
+    .appAndNavDefinitions!;
   const dispatch = useDispatch();
   const isOpenFin = !!window.fin;
 

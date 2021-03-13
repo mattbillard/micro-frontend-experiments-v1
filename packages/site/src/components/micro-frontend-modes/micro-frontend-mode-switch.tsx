@@ -51,9 +51,7 @@ export const MicroFrontendModeSwitch = (props: IMicroFrontEndComponent) => {
       </IframePortal>
     </div>
   ) : isShadow ? (
-    <ReactShadow.div
-      className={`micro-frontend-mode-switch ${className} shadow-dom`}
-    >
+    <ReactShadow.div className={`micro-frontend-mode-switch ${className} shadow-dom`}>
       <MicroFrontendType {...newProps} />
     </ReactShadow.div>
   ) : (

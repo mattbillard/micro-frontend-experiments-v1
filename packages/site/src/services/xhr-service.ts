@@ -3,9 +3,7 @@ import axios from 'axios';
 import { DEFAULT_SETTINGS } from '../constants';
 
 export const getAppAndNavDefinitions = async () => {
-  const response = await axios.get(
-    '/cdn/app-and-nav-definitions/app-and-nav-definitions.json',
-  );
+  const response = await axios.get('/cdn/app-and-nav-definitions/app-and-nav-definitions.json');
   return response.data;
 };
 

@@ -5,11 +5,7 @@ import { IMicroAppProps } from '@company/shared-tools';
 export type TMicroNavigationProps = Pick<IMicroAppProps, 'setTitle' | 'setUrl'>;
 
 export const ExampleAppNavigation = (props: TMicroNavigationProps) => {
-  const handleNavigate = (
-    event: React.MouseEvent,
-    text: string,
-    url: string,
-  ) => {
+  const handleNavigate = (event: React.MouseEvent, text: string, url: string) => {
     event.stopPropagation();
     props.setTitle && props.setTitle(text);
     props.setUrl && props.setUrl(url);
@@ -29,11 +25,7 @@ export const ExampleAppNavigation = (props: TMicroNavigationProps) => {
       {links.map((link, idx) => {
         const { text, url } = link;
         return (
-          <Link
-            key={url}
-            onClick={(event) => handleNavigate(event, text, url)}
-            to={url}
-          >
+          <Link key={url} onClick={(event) => handleNavigate(event, text, url)} to={url}>
             {text}
           </Link>
         );

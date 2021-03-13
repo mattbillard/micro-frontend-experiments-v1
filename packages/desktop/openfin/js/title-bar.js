@@ -10,14 +10,10 @@ class TitleBar extends HTMLElement {
 
     fin.me.on('layout-ready', async () => {
       // Whenever a new layout is ready on this window (on init, replace, or applyPreset)
-      const {
-        settings,
-      } = await fin.Platform.Layout.getCurrentSync().getConfig();
+      const { settings } = await fin.Platform.Layout.getCurrentSync().getConfig();
 
       if (settings.hasHeaders && settings.reorderEnabled) {
-        document
-          .getElementById('lock-button')
-          .classList.remove('layout-locked');
+        document.getElementById('lock-button').classList.remove('layout-locked');
       } else {
         document.getElementById('lock-button').classList.add('layout-locked');
       }

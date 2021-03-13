@@ -8,23 +8,16 @@ import {
   DEFAULT_TWO_COLUMN_GOLDEN_LAYOUT_CONFIG,
   DEFAULT_MINIMAL_GOLDEN_LAYOUT_CONFIG,
 } from '../../constants';
-import {
-  IStoreState,
-  saveGoldenLayoutConfig,
-  updateGoldenLayoutConfig,
-} from '../../redux';
+import { IStoreState, saveGoldenLayoutConfig, updateGoldenLayoutConfig } from '../../redux';
 import { xhrService } from '../../services';
 import { GlConfig } from '../../types';
 
 import './golden-layout.less';
 
 export const GoldenLayout = () => {
-  const { goldenLayoutConfig } = useSelector(
-    (state: IStoreState) => state.containerAppReducer,
-  );
+  const { goldenLayoutConfig } = useSelector((state: IStoreState) => state.containerAppReducer);
   const dispatch = useDispatch();
-  const dispatchSaveGoldenLayout = (config: GlConfig) =>
-    dispatch(saveGoldenLayoutConfig(config));
+  const dispatchSaveGoldenLayout = (config: GlConfig) => dispatch(saveGoldenLayoutConfig(config));
 
   useEffect(() => {
     // prettier-ignore

@@ -13,9 +13,7 @@ export const loadAppAndNavDefinitions = () => async (dispatch) => {
   dispatch({ type: UPDATE_APP_AND_NAV_DEFINITIONS, appAndNavDefinitions });
 };
 
-export const saveGoldenLayoutConfig = (goldenLayoutConfig) => async (
-  dispatch,
-) => {
+export const saveGoldenLayoutConfig = (goldenLayoutConfig) => async (dispatch) => {
   xhrService.saveGoldenLayoutConfig(goldenLayoutConfig);
   dispatch(updateGoldenLayoutConfig(goldenLayoutConfig));
 };
@@ -38,10 +36,7 @@ export const updateSettings = (settings) => {
   return { type: UPDATE_SETTINGS, settings };
 };
 
-export const patchSettings = (partialSettings) => async (
-  dispatch,
-  getState,
-) => {
+export const patchSettings = (partialSettings) => async (dispatch, getState) => {
   const { settings } = getState().containerAppReducer;
   const updatedSettings = {
     ...settings,

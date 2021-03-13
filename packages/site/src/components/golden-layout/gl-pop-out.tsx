@@ -23,11 +23,7 @@ export const GlPopout = (props: IMicroFrontEndComponent) => {
 
   return (
     <div>
-      <div
-        className="lm_popin"
-        title="pop in"
-        onClick={goldenLayoutUtils.popBack}
-      >
+      <div className="lm_popin" title="pop in" onClick={goldenLayoutUtils.popBack}>
         <div className="lm_icon"></div>
         <div className="lm_bg"></div>
       </div>

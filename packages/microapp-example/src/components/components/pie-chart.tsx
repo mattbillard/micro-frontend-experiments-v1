@@ -18,8 +18,7 @@ export const PieChart = () => {
         borderColor: '#111',
         dataLabels: { enabled: false },
         tooltip: {
-          headerFormat:
-            '<span style="font-size: 10px">Market Share</span><br/>',
+          headerFormat: '<span style="font-size: 10px">Market Share</span><br/>',
           pointFormat: '<b>{point.name}</b>: {point.percentage:.1f} %',
         },
       },

@@ -16,9 +16,7 @@ declare const window: any;
 export const SiteAppView = () => {
   const dispatch = useDispatch();
   const usernameCookie = jsCookie.get('username'); // Mock login
-  const { username } = useSelector(
-    (state: IStoreState) => state.containerAppReducer,
-  );
+  const { username } = useSelector((state: IStoreState) => state.containerAppReducer);
 
   useEffect(() => {
     dispatch(updateUsername(usernameCookie));

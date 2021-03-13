@@ -10,9 +10,7 @@ interface IUsernameProps {
 export const UserMenu = (props: IUsernameProps) => {
   const dispatch = useDispatch();
   const { toggleUserMenu } = props;
-  const { username } = useSelector(
-    (state: IStoreState) => state.containerAppReducer,
-  );
+  const { username } = useSelector((state: IStoreState) => state.containerAppReducer);
 
   const logout = () => {
     toggleUserMenu();

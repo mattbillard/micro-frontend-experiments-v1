@@ -7,7 +7,7 @@
   "author": "",
   "license": "ISC",
   "scripts": {
-    "_format:prettier": "prettier --write './src/**/*.{json,js,jsx,ts,tsx,css,less,scss}'",
+    "_format:prettier": "prettier --write './src/**/*.{json,js,jsx,ts,tsx,css,less,scss,md}'",
     "_format:stylelint": "stylelint --fix './src/**/*.{css,less,scss}'",
     "format": "run-s _format:*",
     "test": "jest"

@@ -16,9 +16,7 @@ export const OpenFinWindowBar = () => {
 
   return (
     <div id="title-bar">
-      <div className="title-bar-draggable">
-        {/* <div id="title">MattFin</div> */}
-      </div>
+      <div className="title-bar-draggable">{/* <div id="title">MattFin</div> */}</div>
       <div id="buttons-wrapper">
         <div
           className="button"

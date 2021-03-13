@@ -50,8 +50,7 @@ export const IframePortal = (props: IIframePortalProps) => {
         className={`iframe-portal ${props.className || ''}`}
         style={{ height: height }}
       />
-      {isLoaded &&
-        createPortal(props.children, ref.current!.contentDocument!.body)}
+      {isLoaded && createPortal(props.children, ref.current!.contentDocument!.body)}
     </>
   );
 };

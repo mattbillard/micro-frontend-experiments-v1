@@ -1,11 +1,5 @@
 import React from 'react';
-import {
-  BrowserRouter,
-  MemoryRouter,
-  Redirect,
-  Route,
-  Switch,
-} from 'react-router-dom';
+import { BrowserRouter, MemoryRouter, Redirect, Route, Switch } from 'react-router-dom';
 import { IMicroAppProps } from '@company/shared-tools';
 
 import {

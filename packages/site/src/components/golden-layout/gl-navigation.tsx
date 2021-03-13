@@ -16,22 +16,19 @@ export interface IGlNavigation {
 }
 
 export const GlNavigation = (props: IGlNavigation) => {
-  const appAndNavDefinitions = useSelector(
-    (state: IStoreState) => state.containerAppReducer,
-  ).appAndNavDefinitions!;
+  const appAndNavDefinitions = useSelector((state: IStoreState) => state.containerAppReducer)
+    .appAndNavDefinitions!;
 
   const navigate = (event: React.MouseEvent, childUrl: string) => {
     event.preventDefault();
     props.navigateToMicroApp(childUrl);
   };
 
-  const links = Object.values(appAndNavDefinitions.apps).map(
-    (appDefinition) => {
-      const { baseUrl, text } = appDefinition;
-      const childUrl = baseUrl;
-      return { childUrl, text };
-    },
-  );
+  const links = Object.values(appAndNavDefinitions.apps).map((appDefinition) => {
+    const { baseUrl, text } = appDefinition;
+    const childUrl = baseUrl;
+    return { childUrl, text };
+  });
 
   return (
     <div className="golden-layout-navigation">

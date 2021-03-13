@@ -3,12 +3,7 @@ import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { nanoid } from 'nanoid';
 
-import {
-  GlPopout,
-  GoldenLayout,
-  PageComponent,
-  TopBar,
-} from '../../components';
+import { GlPopout, GoldenLayout, PageComponent, TopBar } from '../../components';
 import {
   IStoreState,
   loadAppAndNavDefinitions,
@@ -29,9 +24,7 @@ export const SiteRouter = () => {
     (async () => {
       // Init WebSockets
       sessionStorage.windowId = nanoid(); // Used by WebSocket server to identify each client and so it knows not to send updates to the window that just messaged it
-      wsService.connect((wsMsgObj: IWsMsgObj) =>
-        handleWsMessage(wsMsgObj, dispatch),
-      );
+      wsService.connect((wsMsgObj: IWsMsgObj) => handleWsMessage(wsMsgObj, dispatch));
 
       // Load initial data
       dispatch(loadAppAndNavDefinitions());
@@ -44,9 +37,7 @@ export const SiteRouter = () => {
   }
 
   const { showHints } = settings;
-  const className = showHints
-    ? 'site-router flex-rows show-hints'
-    : 'site-router flex-rows'; // TODO: clean up
+  const className = showHints ? 'site-router flex-rows show-hints' : 'site-router flex-rows'; // TODO: clean up
 
   // prettier-ignore
   return (

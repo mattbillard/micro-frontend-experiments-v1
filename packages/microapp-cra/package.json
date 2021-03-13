@@ -9,7 +9,7 @@
   "scripts": {
     "_build:app": "webpack --config webpack.config.app.js --mode production",
     "_build:components": "webpack --config webpack.config.components.js --mode production",
-    "_format:prettier": "prettier --write './src/**/*.{json,js,jsx,ts,tsx,css,less,scss}'",
+    "_format:prettier": "prettier --write './src/**/*.{json,js,jsx,ts,tsx,css,less,scss,md}'",
     "_format:stylelint": "stylelint --fix './src/**/*.{css,less,scss}'",
     "_start:app": "webpack --config webpack.config.app.js --mode development --watch",
     "_start:appserver": "live-server ./dist --no-browser --port=8083 --mount=/cra-url:./dist/cra-standalone-app --entry-file=./cra-standalone-app/index.html",
