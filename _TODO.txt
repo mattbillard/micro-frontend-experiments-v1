@@ -91,8 +91,8 @@ TODO
   - Types for all React props and state. Remove all "any"s.
   - Rename GoldenLayout components
   - Rename folders 
-
   - Readme 
+
 - Bonus points 
   - Fix TS build errors 
   - Webpack build 
