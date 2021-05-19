@@ -189,7 +189,7 @@ do the following
   - Packages should probably be named with a pattern like "@company/team-name-project-name"
 - Local workflow
   - Micro apps would clone their own repo and the router+desktop repo
-  - They would use npm link or simlinks to link their projects into the local copy of the router
+  - They would use npm link or symlinks to link their projects into the local copy of the router
   - All they would have to do is run their micro app, router, and desktop. Very fast and easy.
   - This would mean each team would be building in a version of the parent app that was as real as
     possible
@@ -203,7 +203,7 @@ do the following
 ## Notes and Known Issues
 
 - Windows  
-  This was developed on a Mac. Presumably the simlink commands would need to be modified for
+  This was developed on a Mac. Presumably the symlink commands would need to be modified for
   Windows. (Work in progress)
 - LESS vs SASS/SCSS vs CSS modules  
   In my experience, corporate environments and tools like Gitlab block the installation of SASS/SCSS
