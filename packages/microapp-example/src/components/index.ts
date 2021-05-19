@@ -1,3 +1,4 @@
+import ReactDOM from 'react-dom';
 import { exportRemoteComponent } from '@company/shared-tools';
 
 export * from './components';
@@ -7,4 +8,4 @@ import { ExampleAppRouter } from './components';
 export default ExampleAppRouter;
 
 // Needed for remote components
-exportRemoteComponent(ExampleAppRouter);
+exportRemoteComponent(ExampleAppRouter, ReactDOM);

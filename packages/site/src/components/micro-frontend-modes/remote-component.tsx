@@ -20,6 +20,7 @@ export const RemoteComponent = (props: IMicroFrontEndComponent) => {
   } = props;
   const mountRef = useRef<HTMLDivElement>(null);
   const componentRef = useRef<any>();
+  const ReactDOMRef = useRef<any>();
 
   useEffect(() => {
     const div = mountRef.current;
@@ -28,6 +29,7 @@ export const RemoteComponent = (props: IMicroFrontEndComponent) => {
     script.src = urlComponentJs;
     script.onload = (event) => {
       componentRef.current = window.remoteComponent;
+      ReactDOMRef.current = window.ReactDOM2;
       delete window.remoteComponent;
       renderChild();
     };
@@ -42,7 +44,8 @@ export const RemoteComponent = (props: IMicroFrontEndComponent) => {
 
   const renderChild = () => {
     const Component = componentRef.current;
-    ReactDOM.render(<Component {...props} />, mountRef.current);
+    // ReactDOM.render(<Component {...props} />, mountRef.current);
+    ReactDOMRef.current.render(<Component {...props} />, mountRef.current);
   };
 
   return (

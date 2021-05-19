@@ -1,3 +1,4 @@
+import ReactDOM from 'react-dom';
 import { exportRemoteComponent } from '@company/shared-tools';
 export * from './components';
 import { CraApp } from './components';
@@ -8,4 +9,5 @@ import './styles/index.css';
 export default CraApp;
 
 // Needed for remote components
-exportRemoteComponent(CraApp);
+exportRemoteComponent(CraApp, ReactDOM);
+

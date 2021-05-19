@@ -29,7 +29,7 @@ const config = {
     extensions: ['.js', '.jsx', '.tsx', '.ts'],
     alias: {
       // IMPORTANT: this provides React to the component
-      'react': path.resolve(__dirname, './node_modules/react'),
+      // 'react': path.resolve(__dirname, './node_modules/react'),
     }
   },
   plugins: [

@@ -20,18 +20,18 @@ const config = {
   },
   externals: {
     // IMPORTANT: don't bundle react or react-dom or you will get errors about having multiple versions of React and violating the rule of hooks
-    react: {
-      commonjs: "react",
-      commonjs2: "react",
-      amd: "React",
-      root: "React"
-    },
-    "react-dom": {
-      commonjs: "react-dom",
-      commonjs2: "react-dom",
-      amd: "ReactDOM",
-      root: "ReactDOM"
-    },
+    // react: {
+    //   commonjs: "react",
+    //   commonjs2: "react",
+    //   amd: "React",
+    //   root: "React"
+    // },
+    // "react-dom": {
+    //   commonjs: "react-dom",
+    //   commonjs2: "react-dom",
+    //   amd: "ReactDOM",
+    //   root: "ReactDOM"
+    // },
     /**
      * NOTE: 
      * If you wanted to you could exclude highcharts and slickgrid from this build and have site provide them as global vars instead 
