@@ -18,21 +18,21 @@ const config = {
   resolve: {
     extensions: ['.js', '.jsx', '.tsx', '.ts'],
   },
-  externals: {
-    // IMPORTANT: don't bundle react or react-dom or you will get errors about having multiple versions of React and violating the rule of hooks
-    react: {
-      commonjs: "react",
-      commonjs2: "react",
-      amd: "React",
-      root: "React"
-    },
-    "react-dom": {
-      commonjs: "react-dom",
-      commonjs2: "react-dom",
-      amd: "ReactDOM",
-      root: "ReactDOM"
-    },
-  },
+  // externals: {
+  //   // IMPORTANT: don't bundle react or react-dom or you will get errors about having multiple versions of React and violating the rule of hooks
+  //   react: {
+  //     commonjs: "react",
+  //     commonjs2: "react",
+  //     amd: "React",
+  //     root: "React"
+  //   },
+  //   "react-dom": {
+  //     commonjs: "react-dom",
+  //     commonjs2: "react-dom",
+  //     amd: "ReactDOM",
+  //     root: "ReactDOM"
+  //   },
+  // },
   plugins: [
     new MiniCssExtractPlugin()
   ],
