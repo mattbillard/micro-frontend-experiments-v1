@@ -5,16 +5,16 @@
       "text": "Create React App",
       "baseUrl": "/cra-url",
       "initApp": "craAppInit",
-      "urlComponentCss": "/cdn/cra-components/index.css",
-      "urlComponentJs": "/cdn/cra-components/index.js"
+      "urlComponentCss": ["/cdn/cra-components/index.css"],
+      "urlComponentJs": ["/cdn/cra-components/index.js"]
     },
     "exampleAppId": {
       "id": "exampleAppId",
       "text": "Example App",
       "baseUrl": "/example-url",
       "initApp": "exampleAppInit",
-      "urlComponentCss": "/cdn/example-components/index.css",
-      "urlComponentJs": "/cdn/example-components/index.js"
+      "urlComponentCss": ["/cdn/example-components/index.css"],
+      "urlComponentJs": ["/cdn/example-components/index.js"]
     }
   },
   "nav": [

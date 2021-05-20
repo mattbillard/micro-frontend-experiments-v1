@@ -23,22 +23,34 @@ export const RemoteComponent = (props: IMicroFrontEndComponent) => {
 
   useEffect(() => {
     const div = mountRef.current;
-    // Need to manually recreate the script or Chrome will not actually fetch and execute its code
-    const script = document.createElement('script');
-    script.src = urlComponentJs;
-    script.onload = (event) => {
-      componentRef.current = window.remoteComponent;
-      delete window.remoteComponent;
-      renderChild();
-    };
-    div!.after(script);
+
+    // After all scripts are loaded, render component
+    const resolves: any[] = [];
+    const promises = urlComponentJs.map((_item, idx) => new Promise(resolve => resolves[idx] = resolve));
+    Promise.all(promises).then(onAllScriptsLoaded);
+
+    // Inject all scripts
+    urlComponentJs.forEach((jsUrl: string, idx: number) => {
+      // Need to manually recreate the script or Chrome will not actually fetch and execute its code
+      const script = document.createElement('script');
+      script.src = jsUrl;
+      script.onload = resolves[idx];
+      div!.after(script);
+    })
   }, []);
 
+  // If props change, rerender
   useEffect(() => {
     if (componentRef.current) {
       renderChild();
     }
   }, [props]);
+
+  const onAllScriptsLoaded = () => {
+    componentRef.current = window.remoteComponent;
+    delete window.remoteComponent;
+    renderChild();
+  }
 
   const renderChild = () => {
     const Component = componentRef.current;
@@ -48,7 +60,9 @@ export const RemoteComponent = (props: IMicroFrontEndComponent) => {
   return (
     <>
       <div ref={mountRef} className="remote-root"></div>
-      <link href={urlComponentCss} rel="stylesheet" />
+      {urlComponentCss.map((cssUrl) => (
+        <link rel="stylesheet" key={cssUrl} href={cssUrl} />
+      ))}
     </>
   );
 };
