@@ -4,8 +4,8 @@ export interface IAppDefinition {
   initApp: string;
   // lazyImport: string;
   text: string;
-  urlComponentCss: string;
-  urlComponentJs: string;
+  urlComponentCss: string[];
+  urlComponentJs: string[];
 }
 
 export interface INavDefinition {
