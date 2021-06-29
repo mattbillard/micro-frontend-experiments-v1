@@ -25,7 +25,7 @@ export const GlNavigation = (props: IGlNavigation) => {
   };
 
   const links = Object.values(appAndNavDefinitions.apps).map((appDefinition) => {
-    const { baseUrl, text } = appDefinition;
+    const { baseUrl, appName: text } = appDefinition;
     const childUrl = baseUrl;
     return { childUrl, text };
   });

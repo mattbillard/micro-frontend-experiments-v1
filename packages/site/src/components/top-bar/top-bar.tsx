@@ -44,7 +44,7 @@ export const TopBar = () => {
         {!isOpenFin && <span className="brand">MattFin</span>}
         {appAndNavDefinitions.nav.map((navItem) => (
           <Link key={navItem.parentUrl} to={navItem.parentUrl}>
-            {navItem.text}
+            {navItem.navItemText}
           </Link>
         ))}
         <Link to="/site-url/golden-layout">Golden Layout</Link>

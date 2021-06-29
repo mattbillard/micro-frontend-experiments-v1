@@ -2,7 +2,7 @@ export interface IAppDefinition {
   baseUrl: string;
   id: string;
   initApp: string;
-  text: string;
+  appName: string;
   urlComponentCss: string[];
   urlComponentJs: string[];
 }
@@ -10,7 +10,7 @@ export interface IAppDefinition {
 export interface INavDefinition {
   appId: string;
   parentUrl: string;
-  text: string;
+  navItemText: string;
 }
 
 export interface IAppAndNavDefinitions {

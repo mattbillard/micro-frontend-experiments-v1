@@ -2,7 +2,7 @@
   "apps": {
     "craAppId": {
       "id": "craAppId",
-      "text": "Create React App",
+      "appName": "Create React App",
       "baseUrl": "/cra-url",
       "initApp": "craAppInit",
       "urlComponentCss": ["/cdn/cra-components/index.css"],
@@ -10,7 +10,7 @@
     },
     "exampleAppId": {
       "id": "exampleAppId",
-      "text": "Example App",
+      "appName": "Example App",
       "baseUrl": "/example-url",
       "initApp": "exampleAppInit",
       "urlComponentCss": ["/cdn/example-components/index.css"],
@@ -19,12 +19,12 @@
   },
   "nav": [
     {
-      "text": "Example App",
+      "navItemText": "Example App",
       "parentUrl": "/site-url/example-url",
       "appId": "exampleAppId"
     },
     {
-      "text": "CRA App",
+      "navItemText": "CRA App",
       "parentUrl": "/site-url/cra-url",
       "appId": "craAppId"
     }
