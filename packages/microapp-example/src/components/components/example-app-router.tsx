@@ -45,11 +45,12 @@ const RouterSwitch = (props: IMicroAppProps) => {
 export const ExampleAppRouter = (props: IMicroAppProps) => {
   const isIframe = window.parent !== window;
   const hasUrlProp = !!props.childUrl;
+  const useBrowserRouter = isIframe || !hasUrlProp; // Only use browserRouter if is in iframe or is stand-alone app
 
   // Need to use MemoryRouter when in GoldenLayout b/c otherwise navigating a pane would navigate the parent app's URL
   // prettier-ignore
   return (
-    isIframe || !hasUrlProp ? 
+    useBrowserRouter ? 
       <BrowserRouter><RouterSwitch {...props} /></BrowserRouter> :
       <MemoryRouter><RouterSwitch {...props}/></MemoryRouter>
   );

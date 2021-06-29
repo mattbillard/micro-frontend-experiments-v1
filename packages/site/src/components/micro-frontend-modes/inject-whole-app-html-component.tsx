@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { IMicroFrontEndComponent } from '../../types';
 
 declare const window: any;
@@ -20,10 +20,12 @@ export const InjectWholeAppHtmlComponent = (props: IMicroFrontEndComponent) => {
   const ref = useRef(null);
   const {
     appDefinition: { initApp },
+    childUrl,
   } = props;
+  const [initialUrl] = useState(childUrl); // Prevents the browser from rerendering the iframe needlessly
 
   useEffect(() => {
-    init(ref, props, renderChild);
+    init(ref, initialUrl, renderChild);
   }, []);
 
   useEffect(() => {
@@ -39,11 +41,9 @@ export const InjectWholeAppHtmlComponent = (props: IMicroFrontEndComponent) => {
   return <div ref={ref}></div>;
 };
 
-const init = async (ref: any, props: IMicroFrontEndComponent, renderChild: () => void) => {
-  const { childUrl } = props;
-
+const init = async (ref: any, initialUrl: string, renderChild: () => void) => {
   // Fetch HTML
-  var res = await fetch(childUrl);
+  var res = await fetch(initialUrl);
   var text = await res.text();
 
   const context = ref!.current!;
