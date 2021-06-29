@@ -8,7 +8,6 @@ export interface IPageComponentProps {
 }
 
 export const PageComponent = (props: IPageComponentProps) => {
-  debugger;
   const history = useHistory();
   const setTitle = (title: string) => (document.title = title);
   const setUrl = (url: string) => {

@@ -2,7 +2,6 @@ export interface IAppDefinition {
   baseUrl: string;
   id: string;
   initApp: string;
-  // lazyImport: string;
   text: string;
   urlComponentCss: string[];
   urlComponentJs: string[];
