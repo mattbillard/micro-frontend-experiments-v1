@@ -10,8 +10,6 @@ export interface IAppDefinition {
 
 export interface INavDefinition {
   appId: string;
-  childUrl: string;
-  isVisible?: boolean;
   parentUrl: string;
   text: string;
 }

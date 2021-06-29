@@ -6,9 +6,9 @@ export const init = (appAndNavDefinitions: IAppAndNavDefinitions) => {
   _appAndNavDefinitions = appAndNavDefinitions;
 };
 
-export const getAppDefinitionFromUrl = (url: string) => {
+export const getAppDefinitionFromUrl = (childUrl: string) => {
   return Object.values(_appAndNavDefinitions.apps).find((appDefinition: IAppDefinition) =>
-    url.includes(appDefinition.baseUrl),
+    childUrl.startsWith(appDefinition.baseUrl),
   );
 };
 

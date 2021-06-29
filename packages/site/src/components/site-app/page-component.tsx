@@ -5,10 +5,10 @@ import { MicroFrontendModeSwitch } from '../../components';
 import { definitionUtils } from '../../utils';
 
 export interface IPageComponentProps {
-  params: RouteProps;
 }
 
 export const PageComponent = (props: IPageComponentProps) => {
+  debugger;
   const history = useHistory();
   const setTitle = (title: string) => (document.title = title);
   const setUrl = (url: string) => {
@@ -18,16 +18,14 @@ export const PageComponent = (props: IPageComponentProps) => {
 
   const routeMatch = useRouteMatch();
   const { params } = routeMatch;
-  const parentUrl = `/${params[0]}`;
+  const childUrl = `/${params[0]}`;
 
-  const appDefinition = definitionUtils.getAppDefinitionFromUrl(parentUrl)!;
-  const childUrl = parentUrl.replace('/site', '');
-
+  const appDefinition = definitionUtils.getAppDefinitionFromUrl(childUrl)!;
   const newProps = { ...props, setTitle, setUrl, childUrl, appDefinition };
 
   return (
     <div className="page-component">
-      <MicroFrontendModeSwitch key={parentUrl} {...newProps} />
+      <MicroFrontendModeSwitch {...newProps} />
     </div>
   );
 };

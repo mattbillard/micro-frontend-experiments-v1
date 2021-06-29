@@ -20,14 +20,12 @@
   "nav": [
     {
       "text": "Example App",
-      "parentUrl": "/site-url/example-url/title-text",
-      "childUrl": "/example-url/title-text",
+      "parentUrl": "/site-url/example-url",
       "appId": "exampleAppId"
     },
     {
       "text": "CRA App",
       "parentUrl": "/site-url/cra-url",
-      "childUrl": "/cra-url",
       "appId": "craAppId"
     }
   ]

@@ -1,24 +1,24 @@
 import React from 'react';
-import { useRouteMatch } from 'react-router-dom';
+import { useHistory, useRouteMatch } from 'react-router-dom';
 
 import { MicroFrontendModeSwitch } from '../../components';
 import { IMicroFrontEndComponent } from '../../types';
 import { definitionUtils, goldenLayoutUtils } from '../../utils';
 
 export const GlPopout = (props: IMicroFrontEndComponent) => {
+  const history = useHistory();
   const setTitle = (title: string) => (document.title = title);
   const setUrl = (url: string) => {
-    /* noop */
+    const newUrl = `/site-url/golden-layout/popout${url}`;
+    history.push(newUrl);
   };
+
 
   const routeMatch = useRouteMatch();
   const { params } = routeMatch;
-  const parentUrl = `/${params[0]}`;
+  const childUrl = `/${params[0]}`;
 
-  const appDefinition = definitionUtils.getAppDefinitionFromUrl(parentUrl)!;
-  const navItem = definitionUtils.getNavItemFromUrl(parentUrl);
-  const childUrl = navItem!.childUrl;
-
+  const appDefinition = definitionUtils.getAppDefinitionFromUrl(childUrl)!;
   const newProps = { ...props, setTitle, setUrl, childUrl, appDefinition };
 
   return (

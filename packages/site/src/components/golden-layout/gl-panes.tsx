@@ -31,6 +31,7 @@ export interface IGlPanesProps {
 export interface IGlPanesState {}
 
 export class GlPanes extends React.Component<IGlPanesProps, IGlPanesState> {
+  // @ts-ignore
   myLayout: GlConfig;
   ref = React.createRef<HTMLDivElement>();
 
