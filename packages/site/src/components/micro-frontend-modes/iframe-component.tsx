@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { IMicroFrontEndComponent } from '../../types';
 
 /**
@@ -15,6 +15,7 @@ export const IframeComponent = (props: IMicroFrontEndComponent) => {
     appDefinition: { initApp },
     childUrl,
   } = props;
+  const [initialUrl] = useState(childUrl); // Prevents the browser from rerendering the iframe needlessly
 
   useEffect(() => {
     renderChild();
@@ -32,7 +33,7 @@ export const IframeComponent = (props: IMicroFrontEndComponent) => {
   return (
     <iframe
       ref={ref}
-      src={childUrl}
+      src={initialUrl}
       onLoad={renderChild}
       style={{
         border: '0',
