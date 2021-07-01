@@ -24,7 +24,7 @@ export const PageComponent = (props: IPageComponentProps) => {
 
   return (
     <div className="page-component">
-      <MicroFrontendModeSwitch {...newProps} />
+      <MicroFrontendModeSwitch key={appDefinition.id} {...newProps} />
     </div>
   );
 };
