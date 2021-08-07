@@ -24,6 +24,8 @@ Project to learn and experiments with micro frontend architecture
 - Advantages
   - Each team works locally in an environment that accurately reflects the full app
   - Each team can deploy quickly, easily, and independently
+  - Each team builds separately, so builds of the site and desktop teams would be much faster
+  - Each team's CSS is separate, so the built site and destop CSS file would be much smaller
 
 ---
 
@@ -61,7 +63,7 @@ Project to learn and experiments with micro frontend architecture
 3. Login with any username and password
 4. Click the settings menu at the top right and try the various options
 5. Click the Golden Layout navigation link and try it out
-6. Open a 2nd browser. Login with the same username
+6. Run the desktop version or open a 2nd browser. Login with the same username
 7. Notice changes to the settings and Golden Layout are mirrored between both windows in real time
    via WebSockets
 
