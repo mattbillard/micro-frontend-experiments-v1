@@ -262,3 +262,9 @@ This project has been a source of tremendous learning.
   - Golden Layout, especially adapting it to React
   - Wepback plugins
   - JavaScript formats: CommonJS, UMD, modules, etc
+
+
+## Screenshot
+- App in Chrome and OpenFin. Changes to one is mirrored live to the other one.
+
+![Screenshot](./screenshot.png)
